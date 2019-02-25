@@ -1,0 +1,45 @@
+#include "Device.h"
+
+#include"gSoap/thread_setup.h"
+
+int main(int argc, char *argv[])
+{
+	// make OpenSSL MT-safe with mutex
+	CRYPTO_thread_setup();
+	Onvif::AuthorizationHolder holder;
+
+	struct soap *soap = soap_new();
+	soap_register_plugin_arg(soap, http_da, http_da_md5());
+
+	auto device = std::make_shared<Onvif::Device>(soap, &holder);
+
+	if (!soap_valid_socket(soap_bind(soap, NULL, 8080, 100)))
+		exit(EXIT_FAILURE);
+	soap->max_keep_alive = 0;
+	while (1)
+	{
+		if (!soap_valid_socket(soap_accept(soap)))
+			exit(EXIT_FAILURE);
+		if (device->serve())
+		{
+			soap_stream_fault(soap, std::cerr);
+		}
+		/*else if (device->dispatch() == SOAP_NO_METHOD)
+		{
+			//if (uvw.dispatch() == SOAP_NO_METHOD)
+			{
+				//if (xyz.dispatch() == SOAP_NO_METHOD)
+					soap_send_fault(soap); // send fault to client 
+			}
+		}*/
+		soap_destroy(soap);
+		soap_end(soap);
+	}
+
+	soap_free(soap); // safe to delete when abc, uvw, xyz are also deleted
+
+	// clean up OpenSSL mutex
+	CRYPTO_thread_cleanup();
+
+	return 0;
+}
