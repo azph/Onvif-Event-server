@@ -1,17 +1,17 @@
 #include "Device.h"
 
-#include"gSoap/thread_setup.h"
+#include <gSoap/thread_setup.h>
+#include <gSoap/httpda.h>
 
 int main(int argc, char *argv[])
 {
 	// make OpenSSL MT-safe with mutex
 	CRYPTO_thread_setup();
-	Onvif::AuthorizationHolder holder;
 
 	struct soap *soap = soap_new();
 	soap_register_plugin_arg(soap, http_da, http_da_md5());
 
-	auto device = std::make_shared<Onvif::Device>(soap, &holder);
+	auto device = std::make_shared<Onvif::Device>(soap);
 
 	if (!soap_valid_socket(soap_bind(soap, NULL, 8080, 100)))
 		exit(EXIT_FAILURE);

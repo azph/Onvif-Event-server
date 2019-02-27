@@ -47,6 +47,8 @@ gsoap_generate(
 set(Onvif_SRCS
 	src/Device.cpp
 	src/Device.h
+	src/Event.cpp
+	src/Event.h	
 	src/main.cpp
 )
 

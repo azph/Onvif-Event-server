@@ -1,7 +1,6 @@
 #ifndef ONVIF_DEVICE_H
 #define ONVIF_DEVICE_H
 
-#include <gSoap/SoapWrapper.h>
 #include <gSoap/soapDeviceBindingService.h>
 
 namespace Onvif
@@ -10,10 +9,9 @@ namespace Onvif
 class Device : public DeviceBindingService
 {
 public:
-	Device(struct soap *_soap, Onvif::AuthorizationHolder* authHolder);
+	Device(struct soap *_soap);
 
 	bool verifyPasswordDA();
-
 
 	int GetSystemDateAndTime(_tds__GetSystemDateAndTime *tds__GetSystemDateAndTime, _tds__GetSystemDateAndTimeResponse &tds__GetSystemDateAndTimeResponse) override;
 	int GetDeviceInformation(_tds__GetDeviceInformation *tds__GetDeviceInformation, _tds__GetDeviceInformationResponse &tds__GetDeviceInformationResponse) override;

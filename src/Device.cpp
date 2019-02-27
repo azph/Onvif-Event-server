@@ -4,11 +4,12 @@
 #include <map>
 #include <ctime>
 
+#include <gSoap/httpda.h>
+
 namespace Onvif
 {
 
-Device::Device(struct soap *_soap, Onvif::AuthorizationHolder* authHolder):
-	//SoapWrapper(endpoint, authHolder),
+Device::Device(struct soap *_soap):
 	DeviceBindingService(_soap)
 {
 }
@@ -81,7 +82,7 @@ int Device::GetDeviceInformation(_tds__GetDeviceInformation *tds__GetDeviceInfor
 	}
 
 	tds__GetDeviceInformationResponse.Manufacturer = "Sphinx";
-	tds__GetDeviceInformationResponse.Model = "BM-612";
+	tds__GetDeviceInformationResponse.Model = "OKO-STRIM";
 	tds__GetDeviceInformationResponse.FirmwareVersion = "1.0.0";
 	tds__GetDeviceInformationResponse.SerialNumber = "1.0.0";
 	tds__GetDeviceInformationResponse.HardwareId = "1.0.0";
@@ -95,11 +96,18 @@ int Device::GetServices(_tds__GetServices *tds__GetServices, _tds__GetServicesRe
 		return 401;
 	}
 
+	// Device service.
 	auto deviceService = soap_new_tds__Service(soap);
-
 	deviceService->Namespace = SOAP_NAMESPACE_OF_tds;
 	deviceService->XAddr = soap->endpoint;
 	tds__GetServicesResponse.Service.push_back(deviceService);
+
+	// Event service.
+	auto eventService = soap_new_tds__Service(soap);
+	eventService->Namespace = SOAP_NAMESPACE_OF_tds;
+	eventService->XAddr = soap->endpoint;
+	tds__GetServicesResponse.Service.push_back(eventService);
+
 	return SOAP_OK;
 }
 
@@ -114,7 +122,7 @@ int Device::GetScopes(_tds__GetScopes *tds__GetScopes, _tds__GetScopesResponse &
 	{
 		{ "onvif://www.onvif.org/Profile/C", tt__ScopeDefinition::Fixed },
 		{ "onvif://www.onvif.org/type/", tt__ScopeDefinition::Fixed },
-		{ "onvif://www.onvif.org/hardware/BM-612", tt__ScopeDefinition::Fixed },
+		{ "onvif://www.onvif.org/hardware/OKO-STRIM", tt__ScopeDefinition::Fixed },
 		{ "onvif://www.onvif.org/name/Sphinx", tt__ScopeDefinition::Fixed },
 		{ "onvif://www.onvif.org/location/country/russia", tt__ScopeDefinition::Fixed }
 	};
