@@ -5,6 +5,7 @@
 #include <ctime>
 
 #include <gSoap/httpda.h>
+#include <gSoap/wsseapi.h>
 
 namespace Onvif
 {
@@ -20,13 +21,24 @@ bool Device::verifyPasswordDA()
 	static const std::string passwd = "0eydozFnrrsF";
 	static const std::string userid = "admin";
 
-	if (!soap->authrealm || !soap->userid || authrealm != soap->authrealm || userid != soap->userid
-		|| http_da_verify_post(soap, passwd.c_str()) != SOAP_OK)
+	if (soap->authrealm && soap->userid && authrealm == soap->authrealm && userid == soap->userid
+		&& http_da_verify_post(soap, passwd.c_str()) == SOAP_OK)
 	{
-		soap->authrealm = authrealm.c_str();
-		return false;
+		return true;
 	}
-	return true;
+
+	if (soap->header && soap->header->wsse__Security)
+	{
+		const char *username = soap_wsse_get_Username(soap);
+
+		if (username && username == userid && soap_wsse_verify_Password(soap, passwd.c_str()) == SOAP_OK)
+		{
+			return true;
+		}
+	}
+
+	soap->authrealm = authrealm.c_str();
+	return false;
 }
 
 tt__DateTime* toDateTime(struct soap* soap, std::tm* time)
@@ -141,6 +153,36 @@ int Device::GetScopes(_tds__GetScopes *tds__GetScopes, _tds__GetScopesResponse &
 
 int Device::GetCapabilities(_tds__GetCapabilities *tds__GetCapabilities, _tds__GetCapabilitiesResponse &tds__GetCapabilitiesResponse)
 {
+	if (!verifyPasswordDA())
+	{
+		return 401;
+	}
+
+	tds__GetCapabilitiesResponse.Capabilities = soap_new_tt__Capabilities(soap);
+	
+	// Device.
+	auto deviceCapabilities = soap_new_tt__DeviceCapabilities(soap);
+
+	deviceCapabilities->XAddr = soap->endpoint;
+	deviceCapabilities->System = soap_new_tt__SystemCapabilities(soap);
+	deviceCapabilities->System->DiscoveryResolve = true;
+	deviceCapabilities->System->DiscoveryBye = true;
+	deviceCapabilities->System->RemoteDiscovery = false;
+	deviceCapabilities->System->SystemBackup = false;
+	deviceCapabilities->System->SystemLogging = false;
+	deviceCapabilities->System->FirmwareUpgrade = false;
+
+	auto version = soap_new_tt__OnvifVersion(soap);
+	version->Major = 2;
+	version->Minor = 4;
+	deviceCapabilities->System->SupportedVersions.push_back(version);
+
+	tds__GetCapabilitiesResponse.Capabilities->Device = deviceCapabilities;
+
+	// Event.
+	tds__GetCapabilitiesResponse.Capabilities->Events = soap_new_req_tt__EventCapabilities(soap,
+		soap->endpoint, false, false, false);
+
 	return SOAP_OK;
 }
 

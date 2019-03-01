@@ -1,6 +1,7 @@
 #include "Event.h"
 
 #include <gSoap/httpda.h>
+#include <gSoap/wsseapi.h>
 
 namespace Onvif
 {
@@ -17,13 +18,44 @@ bool Event::verifyPasswordDA()
 	static const std::string passwd = "0eydozFnrrsF";
 	static const std::string userid = "admin";
 
-	if (!soap->authrealm || !soap->userid || authrealm != soap->authrealm || userid != soap->userid
-		|| http_da_verify_post(soap, passwd.c_str()) != SOAP_OK)
+	if (soap->authrealm && soap->userid && authrealm == soap->authrealm && userid == soap->userid
+		&& http_da_verify_post(soap, passwd.c_str()) == SOAP_OK)
 	{
-		soap->authrealm = authrealm.c_str();
-		return false;
+		return true;
 	}
-	return true;
+
+	if (soap->header && soap->header->wsse__Security)
+	{
+		const char *username = soap_wsse_get_Username(soap);
+
+		if (username && username == userid && soap_wsse_verify_Password(soap, passwd.c_str()) == SOAP_OK)
+		{
+			return true;
+		}
+	}
+
+	soap->authrealm = authrealm.c_str();
+	return false;
+}
+
+int Event::CreatePullPointSubscription(_tev__CreatePullPointSubscription *tev__CreatePullPointSubscription, _tev__CreatePullPointSubscriptionResponse &tev__CreatePullPointSubscriptionResponse)
+{
+	if (!verifyPasswordDA())
+	{
+		return 401;
+	}
+
+	std::time_t lt = std::time(nullptr);
+	std::string str = "http://172.17.12.52/event/evtservice/Subscription?4a00ed2400";
+	tev__CreatePullPointSubscriptionResponse.SubscriptionReference.Address = soap_strdup(soap, str.c_str());
+
+	tev__CreatePullPointSubscriptionResponse.wsnt__CurrentTime.tv_sec = lt / 1000000;
+	tev__CreatePullPointSubscriptionResponse.wsnt__CurrentTime.tv_sec = lt % 1000000;
+
+	tev__CreatePullPointSubscriptionResponse.wsnt__CurrentTime.tv_sec = lt / 1000000 + 60;
+	tev__CreatePullPointSubscriptionResponse.wsnt__CurrentTime.tv_sec = lt % 1000000;
+
+	return SOAP_OK;
 }
 
 static soap_dom_element AddHolder(struct soap* soap, soap_dom_element& child, const char* holderName, bool isTopic)
@@ -46,6 +78,11 @@ static soap_dom_element AddHolder(struct soap* soap, soap_dom_element& child, co
 
 int Event::GetEventProperties(_tev__GetEventProperties *tev__GetEventProperties, _tev__GetEventPropertiesResponse &tev__GetEventPropertiesResponse)
 {
+	if (!verifyPasswordDA())
+	{
+		return 401;
+	}
+
 	tev__GetEventPropertiesResponse.TopicNamespaceLocation.push_back("http://www.onvif.org/onvif/ver10/topics/topicns.xml");
 	tev__GetEventPropertiesResponse.wsnt__FixedTopicSet = true;
 	tev__GetEventPropertiesResponse.wsnt__TopicExpressionDialect.push_back("http://www.onvif.org/ver10/tev/topicExpression/ConcreteSet");
