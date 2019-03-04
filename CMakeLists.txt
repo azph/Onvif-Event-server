@@ -41,14 +41,17 @@ gsoap_generate(
         WS/event.wsdl
         WS/ws-discovery.wsdl
         WS/onvif.xsd
-		WS/sensors.xsd
+	WS/sensors.xsd
     )
 
 set(Onvif_SRCS
 	src/Device.cpp
 	src/Device.h
 	src/Event.cpp
-	src/Event.h	
+	src/Event.h
+	src/LicenseChecker.h
+	src/LicenseChecker.cpp
+	src/md5Util.h
 	src/main.cpp
 )
 
@@ -127,7 +130,11 @@ source_group("gSoap\\Header Files" FILES ${Onvif_gSoap_HDRS})
 
 set_source_files_properties(${Onvif_gSoap_CPP_SRCS} PROPERTIES LANGUAGE CXX)
 
-include_directories(${OPENSSL_INCLUDE_DIR})
+include_directories(${OPENSSL_INCLUDE_DIR} sysinfo/ src/)
+
+add_subdirectory(sysinfo sysinfo/build)
+
+add_subdirectory(keygen keygen/build)
 
 set(ONVIF_gSOAP_DEFINITIONS
 	-DWITH_NONAMESPACES -DWITH_OPENSSL -DWITH_DOM -DWITH_DEFAULT_VIRTUAL -DSOAP_DEBUG)
@@ -144,6 +151,7 @@ add_executable(Onvif
 target_link_libraries(Onvif
 	${OPENSSL_LIBRARIES} 
 	${CMAKE_THREAD_LIBS_INIT}
+	sysinfo
 	)
 	
 if (MSVC)

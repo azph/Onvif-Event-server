@@ -1,5 +1,6 @@
 #include "Device.h"
 #include "Event.h"
+#include "LicenseChecker.h"
 
 #include <gSoap/thread_setup.h>
 #include <gSoap/httpda.h>
@@ -7,6 +8,12 @@
 
 int main(int argc, char *argv[])
 {
+	if (!isKeyValid())
+	{
+		std::cerr << "Licene key is invalid" << std::endl;
+		return -1;
+	}
+	
 	// make OpenSSL MT-safe with mutex
 	CRYPTO_thread_setup();
 
