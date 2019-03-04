@@ -12,7 +12,7 @@ bool isKeyValid()
 	
 	try
 	{
-		sysinfo << GetMac() << GetMicroSDCID() << GetCPUSerial();
+		sysinfo << GetMac() << "||" << GetMicroSDCID() << "||" << GetCPUSerial();
 	}
 	catch(std::exception& ex)
 	{
