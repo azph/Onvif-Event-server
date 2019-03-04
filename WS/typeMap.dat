@@ -46,6 +46,7 @@ tnet = "http://www.onvif.org/ver10/network/wsdl"
 tns1 = "http://www.onvif.org/ver10/topics"
 ter = "http://www.onvif.org/ver10/error"
 dn = "http://www.onvif.org/ver10/network/wsdl"
+tmk = "http://www.inforion.ru/schemas/sstmk/onvif/topics/sensors"
 
 trc = http://www.onvif.org/ver10/recording/wsdl
 trp = http://www.onvif.org/ver10/replay/wsdl

@@ -18,7 +18,7 @@ A commercial use license is available from Genivia Inc., contact@genivia.com
 
 #include "soapH.h"
 
-SOAP_SOURCE_STAMP("@(#) soapC_nnn.cpp ver 2.8.78 2019-02-01 23:56:04 GMT")
+SOAP_SOURCE_STAMP("@(#) soapC_nnn.cpp ver 2.8.78 2019-03-03 12:56:03 GMT")
 
 
 void wstop__FullTopicExpression__::soap_default(struct soap *soap)
@@ -9533,152 +9533,152 @@ SOAP_FMAC3 std::string * SOAP_FMAC4 soap_get_tds__EAPMethodTypes(struct soap *so
 	return p;
 }
 
-void ns2__VideoSurveillanceSystem::soap_default(struct soap *soap)
+void tmk__VideoSurveillanceSystem::soap_default(struct soap *soap)
 {
 	(void)soap; /* appease -Wall -Werror */
-	this->ns2__VideoSurveillanceSystem::ChannelDisconnect = NULL;
-	this->ns2__VideoSurveillanceSystem::ChannelConnect = NULL;
-	this->ns2__VideoSurveillanceSystem::RecordTurnOff = NULL;
-	this->ns2__VideoSurveillanceSystem::RecordTurnOn = NULL;
-	this->ns2__VideoSurveillanceSystem::MotionDetectorTrigger = NULL;
-	this->ns2__VideoSurveillanceSystem::ReadRecordRequest = NULL;
-	this->ns2__VideoSurveillanceSystem::DeleteRecordRequest = NULL;
-	this->ns2__VideoSurveillanceSystem::EditDbRecordRequest = NULL;
-	this->ns2__VideoSurveillanceSystem::CopyDbRecordRequest = NULL;
-	this->ns2__VideoSurveillanceSystem::Authorization = NULL;
-	this->ns2__VideoSurveillanceSystem::ServerPowerOn = NULL;
-	this->ns2__VideoSurveillanceSystem::ServerPowerOff = NULL;
-	soap_default_bool(soap, &this->ns2__VideoSurveillanceSystem::topic);
+	this->tmk__VideoSurveillanceSystem::ChannelDisconnect = NULL;
+	this->tmk__VideoSurveillanceSystem::ChannelConnect = NULL;
+	this->tmk__VideoSurveillanceSystem::RecordTurnOff = NULL;
+	this->tmk__VideoSurveillanceSystem::RecordTurnOn = NULL;
+	this->tmk__VideoSurveillanceSystem::MotionDetectorTrigger = NULL;
+	this->tmk__VideoSurveillanceSystem::ReadRecordRequest = NULL;
+	this->tmk__VideoSurveillanceSystem::DeleteRecordRequest = NULL;
+	this->tmk__VideoSurveillanceSystem::EditDbRecordRequest = NULL;
+	this->tmk__VideoSurveillanceSystem::CopyDbRecordRequest = NULL;
+	this->tmk__VideoSurveillanceSystem::Authorization = NULL;
+	this->tmk__VideoSurveillanceSystem::ServerPowerOn = NULL;
+	this->tmk__VideoSurveillanceSystem::ServerPowerOff = NULL;
+	soap_default_bool(soap, &this->tmk__VideoSurveillanceSystem::topic);
 }
 
-void ns2__VideoSurveillanceSystem::soap_serialize(struct soap *soap) const
+void tmk__VideoSurveillanceSystem::soap_serialize(struct soap *soap) const
 {
 	(void)soap; /* appease -Wall -Werror */
 #ifndef WITH_NOIDREF
-	soap_serialize_PointerTott__MessageDescription(soap, &this->ns2__VideoSurveillanceSystem::ChannelDisconnect);
-	soap_serialize_PointerTott__MessageDescription(soap, &this->ns2__VideoSurveillanceSystem::ChannelConnect);
-	soap_serialize_PointerTott__MessageDescription(soap, &this->ns2__VideoSurveillanceSystem::RecordTurnOff);
-	soap_serialize_PointerTott__MessageDescription(soap, &this->ns2__VideoSurveillanceSystem::RecordTurnOn);
-	soap_serialize_PointerTott__MessageDescription(soap, &this->ns2__VideoSurveillanceSystem::MotionDetectorTrigger);
-	soap_serialize_PointerTott__MessageDescription(soap, &this->ns2__VideoSurveillanceSystem::ReadRecordRequest);
-	soap_serialize_PointerTott__MessageDescription(soap, &this->ns2__VideoSurveillanceSystem::DeleteRecordRequest);
-	soap_serialize_PointerTott__MessageDescription(soap, &this->ns2__VideoSurveillanceSystem::EditDbRecordRequest);
-	soap_serialize_PointerTott__MessageDescription(soap, &this->ns2__VideoSurveillanceSystem::CopyDbRecordRequest);
-	soap_serialize_PointerTott__MessageDescription(soap, &this->ns2__VideoSurveillanceSystem::Authorization);
-	soap_serialize_PointerTott__MessageDescription(soap, &this->ns2__VideoSurveillanceSystem::ServerPowerOn);
-	soap_serialize_PointerTott__MessageDescription(soap, &this->ns2__VideoSurveillanceSystem::ServerPowerOff);
+	soap_serialize_PointerTott__MessageDescription(soap, &this->tmk__VideoSurveillanceSystem::ChannelDisconnect);
+	soap_serialize_PointerTott__MessageDescription(soap, &this->tmk__VideoSurveillanceSystem::ChannelConnect);
+	soap_serialize_PointerTott__MessageDescription(soap, &this->tmk__VideoSurveillanceSystem::RecordTurnOff);
+	soap_serialize_PointerTott__MessageDescription(soap, &this->tmk__VideoSurveillanceSystem::RecordTurnOn);
+	soap_serialize_PointerTott__MessageDescription(soap, &this->tmk__VideoSurveillanceSystem::MotionDetectorTrigger);
+	soap_serialize_PointerTott__MessageDescription(soap, &this->tmk__VideoSurveillanceSystem::ReadRecordRequest);
+	soap_serialize_PointerTott__MessageDescription(soap, &this->tmk__VideoSurveillanceSystem::DeleteRecordRequest);
+	soap_serialize_PointerTott__MessageDescription(soap, &this->tmk__VideoSurveillanceSystem::EditDbRecordRequest);
+	soap_serialize_PointerTott__MessageDescription(soap, &this->tmk__VideoSurveillanceSystem::CopyDbRecordRequest);
+	soap_serialize_PointerTott__MessageDescription(soap, &this->tmk__VideoSurveillanceSystem::Authorization);
+	soap_serialize_PointerTott__MessageDescription(soap, &this->tmk__VideoSurveillanceSystem::ServerPowerOn);
+	soap_serialize_PointerTott__MessageDescription(soap, &this->tmk__VideoSurveillanceSystem::ServerPowerOff);
 #endif
 }
 
-int ns2__VideoSurveillanceSystem::soap_out(struct soap *soap, const char *tag, int id, const char *type) const
+int tmk__VideoSurveillanceSystem::soap_out(struct soap *soap, const char *tag, int id, const char *type) const
 {
-	return soap_out_ns2__VideoSurveillanceSystem(soap, tag, id, this, type);
+	return soap_out_tmk__VideoSurveillanceSystem(soap, tag, id, this, type);
 }
 
-SOAP_FMAC3 int SOAP_FMAC4 soap_out_ns2__VideoSurveillanceSystem(struct soap *soap, const char *tag, int id, const ns2__VideoSurveillanceSystem *a, const char *type)
+SOAP_FMAC3 int SOAP_FMAC4 soap_out_tmk__VideoSurveillanceSystem(struct soap *soap, const char *tag, int id, const tmk__VideoSurveillanceSystem *a, const char *type)
 {
-	soap_set_attr(soap, "topic", soap_bool2s(soap, ((ns2__VideoSurveillanceSystem*)a)->topic), 1);
+	soap_set_attr(soap, "topic", soap_bool2s(soap, ((tmk__VideoSurveillanceSystem*)a)->topic), 1);
 	(void)soap; (void)tag; (void)id; (void)a; (void)type; /* appease -Wall -Werror */
-	if (soap_element_begin_out(soap, tag, soap_embedded_id(soap, id, a, SOAP_TYPE_ns2__VideoSurveillanceSystem), type))
+	if (soap_element_begin_out(soap, tag, soap_embedded_id(soap, id, a, SOAP_TYPE_tmk__VideoSurveillanceSystem), type))
 		return soap->error;
-	if (!a->ns2__VideoSurveillanceSystem::ChannelDisconnect)
-	{	if (soap_element_empty(soap, "ns2:ChannelDisconnect"))
+	if (!a->tmk__VideoSurveillanceSystem::ChannelDisconnect)
+	{	if (soap_element_empty(soap, "tmk:ChannelDisconnect"))
 			return soap->error;
 	}
-	else if (soap_out_PointerTott__MessageDescription(soap, "ns2:ChannelDisconnect", -1, &a->ns2__VideoSurveillanceSystem::ChannelDisconnect, ""))
+	else if (soap_out_PointerTott__MessageDescription(soap, "tmk:ChannelDisconnect", -1, &a->tmk__VideoSurveillanceSystem::ChannelDisconnect, ""))
 		return soap->error;
-	if (!a->ns2__VideoSurveillanceSystem::ChannelConnect)
-	{	if (soap_element_empty(soap, "ns2:ChannelConnect"))
+	if (!a->tmk__VideoSurveillanceSystem::ChannelConnect)
+	{	if (soap_element_empty(soap, "tmk:ChannelConnect"))
 			return soap->error;
 	}
-	else if (soap_out_PointerTott__MessageDescription(soap, "ns2:ChannelConnect", -1, &a->ns2__VideoSurveillanceSystem::ChannelConnect, ""))
+	else if (soap_out_PointerTott__MessageDescription(soap, "tmk:ChannelConnect", -1, &a->tmk__VideoSurveillanceSystem::ChannelConnect, ""))
 		return soap->error;
-	if (!a->ns2__VideoSurveillanceSystem::RecordTurnOff)
-	{	if (soap_element_empty(soap, "ns2:RecordTurnOff"))
+	if (!a->tmk__VideoSurveillanceSystem::RecordTurnOff)
+	{	if (soap_element_empty(soap, "tmk:RecordTurnOff"))
 			return soap->error;
 	}
-	else if (soap_out_PointerTott__MessageDescription(soap, "ns2:RecordTurnOff", -1, &a->ns2__VideoSurveillanceSystem::RecordTurnOff, ""))
+	else if (soap_out_PointerTott__MessageDescription(soap, "tmk:RecordTurnOff", -1, &a->tmk__VideoSurveillanceSystem::RecordTurnOff, ""))
 		return soap->error;
-	if (!a->ns2__VideoSurveillanceSystem::RecordTurnOn)
-	{	if (soap_element_empty(soap, "ns2:RecordTurnOn"))
+	if (!a->tmk__VideoSurveillanceSystem::RecordTurnOn)
+	{	if (soap_element_empty(soap, "tmk:RecordTurnOn"))
 			return soap->error;
 	}
-	else if (soap_out_PointerTott__MessageDescription(soap, "ns2:RecordTurnOn", -1, &a->ns2__VideoSurveillanceSystem::RecordTurnOn, ""))
+	else if (soap_out_PointerTott__MessageDescription(soap, "tmk:RecordTurnOn", -1, &a->tmk__VideoSurveillanceSystem::RecordTurnOn, ""))
 		return soap->error;
-	if (!a->ns2__VideoSurveillanceSystem::MotionDetectorTrigger)
-	{	if (soap_element_empty(soap, "ns2:MotionDetectorTrigger"))
+	if (!a->tmk__VideoSurveillanceSystem::MotionDetectorTrigger)
+	{	if (soap_element_empty(soap, "tmk:MotionDetectorTrigger"))
 			return soap->error;
 	}
-	else if (soap_out_PointerTott__MessageDescription(soap, "ns2:MotionDetectorTrigger", -1, &a->ns2__VideoSurveillanceSystem::MotionDetectorTrigger, ""))
+	else if (soap_out_PointerTott__MessageDescription(soap, "tmk:MotionDetectorTrigger", -1, &a->tmk__VideoSurveillanceSystem::MotionDetectorTrigger, ""))
 		return soap->error;
-	if (!a->ns2__VideoSurveillanceSystem::ReadRecordRequest)
-	{	if (soap_element_empty(soap, "ns2:ReadRecordRequest"))
+	if (!a->tmk__VideoSurveillanceSystem::ReadRecordRequest)
+	{	if (soap_element_empty(soap, "tmk:ReadRecordRequest"))
 			return soap->error;
 	}
-	else if (soap_out_PointerTott__MessageDescription(soap, "ns2:ReadRecordRequest", -1, &a->ns2__VideoSurveillanceSystem::ReadRecordRequest, ""))
+	else if (soap_out_PointerTott__MessageDescription(soap, "tmk:ReadRecordRequest", -1, &a->tmk__VideoSurveillanceSystem::ReadRecordRequest, ""))
 		return soap->error;
-	if (!a->ns2__VideoSurveillanceSystem::DeleteRecordRequest)
-	{	if (soap_element_empty(soap, "ns2:DeleteRecordRequest"))
+	if (!a->tmk__VideoSurveillanceSystem::DeleteRecordRequest)
+	{	if (soap_element_empty(soap, "tmk:DeleteRecordRequest"))
 			return soap->error;
 	}
-	else if (soap_out_PointerTott__MessageDescription(soap, "ns2:DeleteRecordRequest", -1, &a->ns2__VideoSurveillanceSystem::DeleteRecordRequest, ""))
+	else if (soap_out_PointerTott__MessageDescription(soap, "tmk:DeleteRecordRequest", -1, &a->tmk__VideoSurveillanceSystem::DeleteRecordRequest, ""))
 		return soap->error;
-	if (!a->ns2__VideoSurveillanceSystem::EditDbRecordRequest)
-	{	if (soap_element_empty(soap, "ns2:EditDbRecordRequest"))
+	if (!a->tmk__VideoSurveillanceSystem::EditDbRecordRequest)
+	{	if (soap_element_empty(soap, "tmk:EditDbRecordRequest"))
 			return soap->error;
 	}
-	else if (soap_out_PointerTott__MessageDescription(soap, "ns2:EditDbRecordRequest", -1, &a->ns2__VideoSurveillanceSystem::EditDbRecordRequest, ""))
+	else if (soap_out_PointerTott__MessageDescription(soap, "tmk:EditDbRecordRequest", -1, &a->tmk__VideoSurveillanceSystem::EditDbRecordRequest, ""))
 		return soap->error;
-	if (!a->ns2__VideoSurveillanceSystem::CopyDbRecordRequest)
-	{	if (soap_element_empty(soap, "ns2:CopyDbRecordRequest"))
+	if (!a->tmk__VideoSurveillanceSystem::CopyDbRecordRequest)
+	{	if (soap_element_empty(soap, "tmk:CopyDbRecordRequest"))
 			return soap->error;
 	}
-	else if (soap_out_PointerTott__MessageDescription(soap, "ns2:CopyDbRecordRequest", -1, &a->ns2__VideoSurveillanceSystem::CopyDbRecordRequest, ""))
+	else if (soap_out_PointerTott__MessageDescription(soap, "tmk:CopyDbRecordRequest", -1, &a->tmk__VideoSurveillanceSystem::CopyDbRecordRequest, ""))
 		return soap->error;
-	if (!a->ns2__VideoSurveillanceSystem::Authorization)
-	{	if (soap_element_empty(soap, "ns2:Authorization"))
+	if (!a->tmk__VideoSurveillanceSystem::Authorization)
+	{	if (soap_element_empty(soap, "tmk:Authorization"))
 			return soap->error;
 	}
-	else if (soap_out_PointerTott__MessageDescription(soap, "ns2:Authorization", -1, &a->ns2__VideoSurveillanceSystem::Authorization, ""))
+	else if (soap_out_PointerTott__MessageDescription(soap, "tmk:Authorization", -1, &a->tmk__VideoSurveillanceSystem::Authorization, ""))
 		return soap->error;
-	if (!a->ns2__VideoSurveillanceSystem::ServerPowerOn)
-	{	if (soap_element_empty(soap, "ns2:ServerPowerOn"))
+	if (!a->tmk__VideoSurveillanceSystem::ServerPowerOn)
+	{	if (soap_element_empty(soap, "tmk:ServerPowerOn"))
 			return soap->error;
 	}
-	else if (soap_out_PointerTott__MessageDescription(soap, "ns2:ServerPowerOn", -1, &a->ns2__VideoSurveillanceSystem::ServerPowerOn, ""))
+	else if (soap_out_PointerTott__MessageDescription(soap, "tmk:ServerPowerOn", -1, &a->tmk__VideoSurveillanceSystem::ServerPowerOn, ""))
 		return soap->error;
-	if (!a->ns2__VideoSurveillanceSystem::ServerPowerOff)
-	{	if (soap_element_empty(soap, "ns2:ServerPowerOff"))
+	if (!a->tmk__VideoSurveillanceSystem::ServerPowerOff)
+	{	if (soap_element_empty(soap, "tmk:ServerPowerOff"))
 			return soap->error;
 	}
-	else if (soap_out_PointerTott__MessageDescription(soap, "ns2:ServerPowerOff", -1, &a->ns2__VideoSurveillanceSystem::ServerPowerOff, ""))
+	else if (soap_out_PointerTott__MessageDescription(soap, "tmk:ServerPowerOff", -1, &a->tmk__VideoSurveillanceSystem::ServerPowerOff, ""))
 		return soap->error;
 	if (soap_out_xsd__anyType(soap, NULL, -1, static_cast<const soap_dom_element*>(a), NULL))
 		return soap->error;
 	return soap_element_end_out(soap, tag);
 }
 
-void *ns2__VideoSurveillanceSystem::soap_in(struct soap *soap, const char *tag, const char *type)
+void *tmk__VideoSurveillanceSystem::soap_in(struct soap *soap, const char *tag, const char *type)
 {
-	return soap_in_ns2__VideoSurveillanceSystem(soap, tag, this, type);
+	return soap_in_tmk__VideoSurveillanceSystem(soap, tag, this, type);
 }
 
-SOAP_FMAC3 ns2__VideoSurveillanceSystem * SOAP_FMAC4 soap_in_ns2__VideoSurveillanceSystem(struct soap *soap, const char *tag, ns2__VideoSurveillanceSystem *a, const char *type)
+SOAP_FMAC3 tmk__VideoSurveillanceSystem * SOAP_FMAC4 soap_in_tmk__VideoSurveillanceSystem(struct soap *soap, const char *tag, tmk__VideoSurveillanceSystem *a, const char *type)
 {
 	(void)type; /* appease -Wall -Werror */
 	if (soap_element_begin_in(soap, tag, 0, NULL))
 		return NULL;
-	a = (ns2__VideoSurveillanceSystem*)soap_id_enter(soap, soap->id, a, SOAP_TYPE_ns2__VideoSurveillanceSystem, sizeof(ns2__VideoSurveillanceSystem), soap->type, soap->arrayType, soap_instantiate, soap_fbase);
+	a = (tmk__VideoSurveillanceSystem*)soap_id_enter(soap, soap->id, a, SOAP_TYPE_tmk__VideoSurveillanceSystem, sizeof(tmk__VideoSurveillanceSystem), soap->type, soap->arrayType, soap_instantiate, soap_fbase);
 	if (!a)
 		return NULL;
-	if (soap->alloced && soap->alloced != SOAP_TYPE_ns2__VideoSurveillanceSystem)
+	if (soap->alloced && soap->alloced != SOAP_TYPE_tmk__VideoSurveillanceSystem)
 	{	soap_revert(soap);
 		*soap->id = '\0';
-		return (ns2__VideoSurveillanceSystem *)a->soap_in(soap, tag, type);
+		return (tmk__VideoSurveillanceSystem *)a->soap_in(soap, tag, type);
 	}
 	if (soap->alloced)
 		a->soap_default(soap);
-	if (soap_s2bool(soap, soap_attr_value(soap, "topic", 5, 1), &((ns2__VideoSurveillanceSystem*)a)->topic))
+	if (soap_s2bool(soap, soap_attr_value(soap, "topic", 5, 1), &((tmk__VideoSurveillanceSystem*)a)->topic))
 		return NULL;
 	size_t soap_flag_soap_dom_element = 1;
 	size_t soap_flag_ChannelDisconnect1 = 1;
@@ -9698,73 +9698,73 @@ SOAP_FMAC3 ns2__VideoSurveillanceSystem * SOAP_FMAC4 soap_in_ns2__VideoSurveilla
 		for (;;)
 		{	soap->error = SOAP_TAG_MISMATCH;
 			if (soap_flag_ChannelDisconnect1 && soap->error == SOAP_TAG_MISMATCH)
-			{	if (soap_in_PointerTott__MessageDescription(soap, "ns2:ChannelDisconnect", &a->ns2__VideoSurveillanceSystem::ChannelDisconnect, "tt:MessageDescription"))
+			{	if (soap_in_PointerTott__MessageDescription(soap, "tmk:ChannelDisconnect", &a->tmk__VideoSurveillanceSystem::ChannelDisconnect, "tt:MessageDescription"))
 				{	soap_flag_ChannelDisconnect1--;
 					continue;
 				}
 			}
 			if (soap_flag_ChannelConnect1 && soap->error == SOAP_TAG_MISMATCH)
-			{	if (soap_in_PointerTott__MessageDescription(soap, "ns2:ChannelConnect", &a->ns2__VideoSurveillanceSystem::ChannelConnect, "tt:MessageDescription"))
+			{	if (soap_in_PointerTott__MessageDescription(soap, "tmk:ChannelConnect", &a->tmk__VideoSurveillanceSystem::ChannelConnect, "tt:MessageDescription"))
 				{	soap_flag_ChannelConnect1--;
 					continue;
 				}
 			}
 			if (soap_flag_RecordTurnOff1 && soap->error == SOAP_TAG_MISMATCH)
-			{	if (soap_in_PointerTott__MessageDescription(soap, "ns2:RecordTurnOff", &a->ns2__VideoSurveillanceSystem::RecordTurnOff, "tt:MessageDescription"))
+			{	if (soap_in_PointerTott__MessageDescription(soap, "tmk:RecordTurnOff", &a->tmk__VideoSurveillanceSystem::RecordTurnOff, "tt:MessageDescription"))
 				{	soap_flag_RecordTurnOff1--;
 					continue;
 				}
 			}
 			if (soap_flag_RecordTurnOn1 && soap->error == SOAP_TAG_MISMATCH)
-			{	if (soap_in_PointerTott__MessageDescription(soap, "ns2:RecordTurnOn", &a->ns2__VideoSurveillanceSystem::RecordTurnOn, "tt:MessageDescription"))
+			{	if (soap_in_PointerTott__MessageDescription(soap, "tmk:RecordTurnOn", &a->tmk__VideoSurveillanceSystem::RecordTurnOn, "tt:MessageDescription"))
 				{	soap_flag_RecordTurnOn1--;
 					continue;
 				}
 			}
 			if (soap_flag_MotionDetectorTrigger1 && soap->error == SOAP_TAG_MISMATCH)
-			{	if (soap_in_PointerTott__MessageDescription(soap, "ns2:MotionDetectorTrigger", &a->ns2__VideoSurveillanceSystem::MotionDetectorTrigger, "tt:MessageDescription"))
+			{	if (soap_in_PointerTott__MessageDescription(soap, "tmk:MotionDetectorTrigger", &a->tmk__VideoSurveillanceSystem::MotionDetectorTrigger, "tt:MessageDescription"))
 				{	soap_flag_MotionDetectorTrigger1--;
 					continue;
 				}
 			}
 			if (soap_flag_ReadRecordRequest1 && soap->error == SOAP_TAG_MISMATCH)
-			{	if (soap_in_PointerTott__MessageDescription(soap, "ns2:ReadRecordRequest", &a->ns2__VideoSurveillanceSystem::ReadRecordRequest, "tt:MessageDescription"))
+			{	if (soap_in_PointerTott__MessageDescription(soap, "tmk:ReadRecordRequest", &a->tmk__VideoSurveillanceSystem::ReadRecordRequest, "tt:MessageDescription"))
 				{	soap_flag_ReadRecordRequest1--;
 					continue;
 				}
 			}
 			if (soap_flag_DeleteRecordRequest1 && soap->error == SOAP_TAG_MISMATCH)
-			{	if (soap_in_PointerTott__MessageDescription(soap, "ns2:DeleteRecordRequest", &a->ns2__VideoSurveillanceSystem::DeleteRecordRequest, "tt:MessageDescription"))
+			{	if (soap_in_PointerTott__MessageDescription(soap, "tmk:DeleteRecordRequest", &a->tmk__VideoSurveillanceSystem::DeleteRecordRequest, "tt:MessageDescription"))
 				{	soap_flag_DeleteRecordRequest1--;
 					continue;
 				}
 			}
 			if (soap_flag_EditDbRecordRequest1 && soap->error == SOAP_TAG_MISMATCH)
-			{	if (soap_in_PointerTott__MessageDescription(soap, "ns2:EditDbRecordRequest", &a->ns2__VideoSurveillanceSystem::EditDbRecordRequest, "tt:MessageDescription"))
+			{	if (soap_in_PointerTott__MessageDescription(soap, "tmk:EditDbRecordRequest", &a->tmk__VideoSurveillanceSystem::EditDbRecordRequest, "tt:MessageDescription"))
 				{	soap_flag_EditDbRecordRequest1--;
 					continue;
 				}
 			}
 			if (soap_flag_CopyDbRecordRequest1 && soap->error == SOAP_TAG_MISMATCH)
-			{	if (soap_in_PointerTott__MessageDescription(soap, "ns2:CopyDbRecordRequest", &a->ns2__VideoSurveillanceSystem::CopyDbRecordRequest, "tt:MessageDescription"))
+			{	if (soap_in_PointerTott__MessageDescription(soap, "tmk:CopyDbRecordRequest", &a->tmk__VideoSurveillanceSystem::CopyDbRecordRequest, "tt:MessageDescription"))
 				{	soap_flag_CopyDbRecordRequest1--;
 					continue;
 				}
 			}
 			if (soap_flag_Authorization1 && soap->error == SOAP_TAG_MISMATCH)
-			{	if (soap_in_PointerTott__MessageDescription(soap, "ns2:Authorization", &a->ns2__VideoSurveillanceSystem::Authorization, "tt:MessageDescription"))
+			{	if (soap_in_PointerTott__MessageDescription(soap, "tmk:Authorization", &a->tmk__VideoSurveillanceSystem::Authorization, "tt:MessageDescription"))
 				{	soap_flag_Authorization1--;
 					continue;
 				}
 			}
 			if (soap_flag_ServerPowerOn1 && soap->error == SOAP_TAG_MISMATCH)
-			{	if (soap_in_PointerTott__MessageDescription(soap, "ns2:ServerPowerOn", &a->ns2__VideoSurveillanceSystem::ServerPowerOn, "tt:MessageDescription"))
+			{	if (soap_in_PointerTott__MessageDescription(soap, "tmk:ServerPowerOn", &a->tmk__VideoSurveillanceSystem::ServerPowerOn, "tt:MessageDescription"))
 				{	soap_flag_ServerPowerOn1--;
 					continue;
 				}
 			}
 			if (soap_flag_ServerPowerOff1 && soap->error == SOAP_TAG_MISMATCH)
-			{	if (soap_in_PointerTott__MessageDescription(soap, "ns2:ServerPowerOff", &a->ns2__VideoSurveillanceSystem::ServerPowerOff, "tt:MessageDescription"))
+			{	if (soap_in_PointerTott__MessageDescription(soap, "tmk:ServerPowerOff", &a->tmk__VideoSurveillanceSystem::ServerPowerOff, "tt:MessageDescription"))
 				{	soap_flag_ServerPowerOff1--;
 					continue;
 				}
@@ -9783,7 +9783,7 @@ SOAP_FMAC3 ns2__VideoSurveillanceSystem * SOAP_FMAC4 soap_in_ns2__VideoSurveilla
 		}
 		if (soap_element_end_in(soap, tag))
 			return NULL;
-		if ((soap->mode & SOAP_XML_STRICT) && (!a->ns2__VideoSurveillanceSystem::ChannelDisconnect || !a->ns2__VideoSurveillanceSystem::ChannelConnect || !a->ns2__VideoSurveillanceSystem::RecordTurnOff || !a->ns2__VideoSurveillanceSystem::RecordTurnOn || !a->ns2__VideoSurveillanceSystem::MotionDetectorTrigger || !a->ns2__VideoSurveillanceSystem::ReadRecordRequest || !a->ns2__VideoSurveillanceSystem::DeleteRecordRequest || !a->ns2__VideoSurveillanceSystem::EditDbRecordRequest || !a->ns2__VideoSurveillanceSystem::CopyDbRecordRequest || !a->ns2__VideoSurveillanceSystem::Authorization || !a->ns2__VideoSurveillanceSystem::ServerPowerOn || !a->ns2__VideoSurveillanceSystem::ServerPowerOff))
+		if ((soap->mode & SOAP_XML_STRICT) && (!a->tmk__VideoSurveillanceSystem::ChannelDisconnect || !a->tmk__VideoSurveillanceSystem::ChannelConnect || !a->tmk__VideoSurveillanceSystem::RecordTurnOff || !a->tmk__VideoSurveillanceSystem::RecordTurnOn || !a->tmk__VideoSurveillanceSystem::MotionDetectorTrigger || !a->tmk__VideoSurveillanceSystem::ReadRecordRequest || !a->tmk__VideoSurveillanceSystem::DeleteRecordRequest || !a->tmk__VideoSurveillanceSystem::EditDbRecordRequest || !a->tmk__VideoSurveillanceSystem::CopyDbRecordRequest || !a->tmk__VideoSurveillanceSystem::Authorization || !a->tmk__VideoSurveillanceSystem::ServerPowerOn || !a->tmk__VideoSurveillanceSystem::ServerPowerOff))
 		{	soap->error = SOAP_OCCURS;
 			return NULL;
 		}
@@ -9793,30 +9793,30 @@ SOAP_FMAC3 ns2__VideoSurveillanceSystem * SOAP_FMAC4 soap_in_ns2__VideoSurveilla
 		return NULL;
 	}
 	else
-	{	a = (ns2__VideoSurveillanceSystem *)soap_id_forward(soap, soap->href, (void*)a, 0, SOAP_TYPE_ns2__VideoSurveillanceSystem, SOAP_TYPE_ns2__VideoSurveillanceSystem, sizeof(ns2__VideoSurveillanceSystem), 0, soap_finsert, soap_fbase);
+	{	a = (tmk__VideoSurveillanceSystem *)soap_id_forward(soap, soap->href, (void*)a, 0, SOAP_TYPE_tmk__VideoSurveillanceSystem, SOAP_TYPE_tmk__VideoSurveillanceSystem, sizeof(tmk__VideoSurveillanceSystem), 0, soap_finsert, soap_fbase);
 		if (soap->body && soap_element_end_in(soap, tag))
 			return NULL;
 	}
 	return a;
 }
 
-SOAP_FMAC1 ns2__VideoSurveillanceSystem * SOAP_FMAC2 soap_instantiate_ns2__VideoSurveillanceSystem(struct soap *soap, int n, const char *type, const char *arrayType, size_t *size)
+SOAP_FMAC1 tmk__VideoSurveillanceSystem * SOAP_FMAC2 soap_instantiate_tmk__VideoSurveillanceSystem(struct soap *soap, int n, const char *type, const char *arrayType, size_t *size)
 {
-	DBGLOG(TEST, SOAP_MESSAGE(fdebug, "soap_instantiate_ns2__VideoSurveillanceSystem(%p, %d, %s, %s)\n", (void*)soap, n, type?type:"", arrayType?arrayType:""));
+	DBGLOG(TEST, SOAP_MESSAGE(fdebug, "soap_instantiate_tmk__VideoSurveillanceSystem(%p, %d, %s, %s)\n", (void*)soap, n, type?type:"", arrayType?arrayType:""));
 	(void)type; (void)arrayType; /* appease -Wall -Werror */
-	ns2__VideoSurveillanceSystem *p;
-	size_t k = sizeof(ns2__VideoSurveillanceSystem);
-	struct soap_clist *cp = soap_link(soap, SOAP_TYPE_ns2__VideoSurveillanceSystem, n, soap_fdelete);
+	tmk__VideoSurveillanceSystem *p;
+	size_t k = sizeof(tmk__VideoSurveillanceSystem);
+	struct soap_clist *cp = soap_link(soap, SOAP_TYPE_tmk__VideoSurveillanceSystem, n, soap_fdelete);
 	if (!cp && soap && n != SOAP_NO_LINK_TO_DELETE)
 		return NULL;
 	if (n < 0)
-	{	p = SOAP_NEW(soap, ns2__VideoSurveillanceSystem);
+	{	p = SOAP_NEW(soap, tmk__VideoSurveillanceSystem);
 	}
 	else
-	{	p = SOAP_NEW_ARRAY(soap, ns2__VideoSurveillanceSystem, n);
+	{	p = SOAP_NEW_ARRAY(soap, tmk__VideoSurveillanceSystem, n);
 		k *= n;
 	}
-	DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Instantiated ns2__VideoSurveillanceSystem location=%p n=%d\n", (void*)p, n));
+	DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Instantiated tmk__VideoSurveillanceSystem location=%p n=%d\n", (void*)p, n));
 	if (size)
 		*size = k;
 	if (!p)
@@ -9826,84 +9826,84 @@ SOAP_FMAC1 ns2__VideoSurveillanceSystem * SOAP_FMAC2 soap_instantiate_ns2__Video
 	return p;
 }
 
-int ns2__VideoSurveillanceSystem::soap_put(struct soap *soap, const char *tag, const  char *type) const
+int tmk__VideoSurveillanceSystem::soap_put(struct soap *soap, const char *tag, const  char *type) const
 {
-	if (soap_out_ns2__VideoSurveillanceSystem(soap, tag ? tag : "ns2:VideoSurveillanceSystem", -2, this, type))
+	if (soap_out_tmk__VideoSurveillanceSystem(soap, tag ? tag : "tmk:VideoSurveillanceSystem", -2, this, type))
 		return soap->error;
 	return soap_putindependent(soap);
 }
 
-void *ns2__VideoSurveillanceSystem::soap_get(struct soap *soap, const char *tag, const char *type)
+void *tmk__VideoSurveillanceSystem::soap_get(struct soap *soap, const char *tag, const char *type)
 {
-	return soap_get_ns2__VideoSurveillanceSystem(soap, this, tag, type);
+	return soap_get_tmk__VideoSurveillanceSystem(soap, this, tag, type);
 }
 
-SOAP_FMAC3 ns2__VideoSurveillanceSystem * SOAP_FMAC4 soap_get_ns2__VideoSurveillanceSystem(struct soap *soap, ns2__VideoSurveillanceSystem *p, const char *tag, const char *type)
+SOAP_FMAC3 tmk__VideoSurveillanceSystem * SOAP_FMAC4 soap_get_tmk__VideoSurveillanceSystem(struct soap *soap, tmk__VideoSurveillanceSystem *p, const char *tag, const char *type)
 {
-	if ((p = soap_in_ns2__VideoSurveillanceSystem(soap, tag, p, type)))
+	if ((p = soap_in_tmk__VideoSurveillanceSystem(soap, tag, p, type)))
 		if (soap_getindependent(soap))
 			return NULL;
 	return p;
 }
 
-void ns2__MetalDetector::soap_default(struct soap *soap)
+void tmk__MetalDetector::soap_default(struct soap *soap)
 {
 	(void)soap; /* appease -Wall -Werror */
-	this->ns2__MetalDetector::Detect = NULL;
-	soap_default_bool(soap, &this->ns2__MetalDetector::topic);
+	this->tmk__MetalDetector::Detect = NULL;
+	soap_default_bool(soap, &this->tmk__MetalDetector::topic);
 }
 
-void ns2__MetalDetector::soap_serialize(struct soap *soap) const
+void tmk__MetalDetector::soap_serialize(struct soap *soap) const
 {
 	(void)soap; /* appease -Wall -Werror */
 #ifndef WITH_NOIDREF
-	soap_serialize_PointerTott__MessageDescription(soap, &this->ns2__MetalDetector::Detect);
+	soap_serialize_PointerTott__MessageDescription(soap, &this->tmk__MetalDetector::Detect);
 #endif
 }
 
-int ns2__MetalDetector::soap_out(struct soap *soap, const char *tag, int id, const char *type) const
+int tmk__MetalDetector::soap_out(struct soap *soap, const char *tag, int id, const char *type) const
 {
-	return soap_out_ns2__MetalDetector(soap, tag, id, this, type);
+	return soap_out_tmk__MetalDetector(soap, tag, id, this, type);
 }
 
-SOAP_FMAC3 int SOAP_FMAC4 soap_out_ns2__MetalDetector(struct soap *soap, const char *tag, int id, const ns2__MetalDetector *a, const char *type)
+SOAP_FMAC3 int SOAP_FMAC4 soap_out_tmk__MetalDetector(struct soap *soap, const char *tag, int id, const tmk__MetalDetector *a, const char *type)
 {
-	soap_set_attr(soap, "topic", soap_bool2s(soap, ((ns2__MetalDetector*)a)->topic), 1);
+	soap_set_attr(soap, "topic", soap_bool2s(soap, ((tmk__MetalDetector*)a)->topic), 1);
 	(void)soap; (void)tag; (void)id; (void)a; (void)type; /* appease -Wall -Werror */
-	if (soap_element_begin_out(soap, tag, soap_embedded_id(soap, id, a, SOAP_TYPE_ns2__MetalDetector), type))
+	if (soap_element_begin_out(soap, tag, soap_embedded_id(soap, id, a, SOAP_TYPE_tmk__MetalDetector), type))
 		return soap->error;
-	if (!a->ns2__MetalDetector::Detect)
-	{	if (soap_element_empty(soap, "ns2:Detect"))
+	if (!a->tmk__MetalDetector::Detect)
+	{	if (soap_element_empty(soap, "tmk:Detect"))
 			return soap->error;
 	}
-	else if (soap_out_PointerTott__MessageDescription(soap, "ns2:Detect", -1, &a->ns2__MetalDetector::Detect, ""))
+	else if (soap_out_PointerTott__MessageDescription(soap, "tmk:Detect", -1, &a->tmk__MetalDetector::Detect, ""))
 		return soap->error;
 	if (soap_out_xsd__anyType(soap, NULL, -1, static_cast<const soap_dom_element*>(a), NULL))
 		return soap->error;
 	return soap_element_end_out(soap, tag);
 }
 
-void *ns2__MetalDetector::soap_in(struct soap *soap, const char *tag, const char *type)
+void *tmk__MetalDetector::soap_in(struct soap *soap, const char *tag, const char *type)
 {
-	return soap_in_ns2__MetalDetector(soap, tag, this, type);
+	return soap_in_tmk__MetalDetector(soap, tag, this, type);
 }
 
-SOAP_FMAC3 ns2__MetalDetector * SOAP_FMAC4 soap_in_ns2__MetalDetector(struct soap *soap, const char *tag, ns2__MetalDetector *a, const char *type)
+SOAP_FMAC3 tmk__MetalDetector * SOAP_FMAC4 soap_in_tmk__MetalDetector(struct soap *soap, const char *tag, tmk__MetalDetector *a, const char *type)
 {
 	(void)type; /* appease -Wall -Werror */
 	if (soap_element_begin_in(soap, tag, 0, NULL))
 		return NULL;
-	a = (ns2__MetalDetector*)soap_id_enter(soap, soap->id, a, SOAP_TYPE_ns2__MetalDetector, sizeof(ns2__MetalDetector), soap->type, soap->arrayType, soap_instantiate, soap_fbase);
+	a = (tmk__MetalDetector*)soap_id_enter(soap, soap->id, a, SOAP_TYPE_tmk__MetalDetector, sizeof(tmk__MetalDetector), soap->type, soap->arrayType, soap_instantiate, soap_fbase);
 	if (!a)
 		return NULL;
-	if (soap->alloced && soap->alloced != SOAP_TYPE_ns2__MetalDetector)
+	if (soap->alloced && soap->alloced != SOAP_TYPE_tmk__MetalDetector)
 	{	soap_revert(soap);
 		*soap->id = '\0';
-		return (ns2__MetalDetector *)a->soap_in(soap, tag, type);
+		return (tmk__MetalDetector *)a->soap_in(soap, tag, type);
 	}
 	if (soap->alloced)
 		a->soap_default(soap);
-	if (soap_s2bool(soap, soap_attr_value(soap, "topic", 5, 1), &((ns2__MetalDetector*)a)->topic))
+	if (soap_s2bool(soap, soap_attr_value(soap, "topic", 5, 1), &((tmk__MetalDetector*)a)->topic))
 		return NULL;
 	size_t soap_flag_soap_dom_element = 1;
 	size_t soap_flag_Detect1 = 1;
@@ -9912,7 +9912,7 @@ SOAP_FMAC3 ns2__MetalDetector * SOAP_FMAC4 soap_in_ns2__MetalDetector(struct soa
 		for (;;)
 		{	soap->error = SOAP_TAG_MISMATCH;
 			if (soap_flag_Detect1 && soap->error == SOAP_TAG_MISMATCH)
-			{	if (soap_in_PointerTott__MessageDescription(soap, "ns2:Detect", &a->ns2__MetalDetector::Detect, "tt:MessageDescription"))
+			{	if (soap_in_PointerTott__MessageDescription(soap, "tmk:Detect", &a->tmk__MetalDetector::Detect, "tt:MessageDescription"))
 				{	soap_flag_Detect1--;
 					continue;
 				}
@@ -9931,7 +9931,7 @@ SOAP_FMAC3 ns2__MetalDetector * SOAP_FMAC4 soap_in_ns2__MetalDetector(struct soa
 		}
 		if (soap_element_end_in(soap, tag))
 			return NULL;
-		if ((soap->mode & SOAP_XML_STRICT) && (!a->ns2__MetalDetector::Detect))
+		if ((soap->mode & SOAP_XML_STRICT) && (!a->tmk__MetalDetector::Detect))
 		{	soap->error = SOAP_OCCURS;
 			return NULL;
 		}
@@ -9941,30 +9941,30 @@ SOAP_FMAC3 ns2__MetalDetector * SOAP_FMAC4 soap_in_ns2__MetalDetector(struct soa
 		return NULL;
 	}
 	else
-	{	a = (ns2__MetalDetector *)soap_id_forward(soap, soap->href, (void*)a, 0, SOAP_TYPE_ns2__MetalDetector, SOAP_TYPE_ns2__MetalDetector, sizeof(ns2__MetalDetector), 0, soap_finsert, soap_fbase);
+	{	a = (tmk__MetalDetector *)soap_id_forward(soap, soap->href, (void*)a, 0, SOAP_TYPE_tmk__MetalDetector, SOAP_TYPE_tmk__MetalDetector, sizeof(tmk__MetalDetector), 0, soap_finsert, soap_fbase);
 		if (soap->body && soap_element_end_in(soap, tag))
 			return NULL;
 	}
 	return a;
 }
 
-SOAP_FMAC1 ns2__MetalDetector * SOAP_FMAC2 soap_instantiate_ns2__MetalDetector(struct soap *soap, int n, const char *type, const char *arrayType, size_t *size)
+SOAP_FMAC1 tmk__MetalDetector * SOAP_FMAC2 soap_instantiate_tmk__MetalDetector(struct soap *soap, int n, const char *type, const char *arrayType, size_t *size)
 {
-	DBGLOG(TEST, SOAP_MESSAGE(fdebug, "soap_instantiate_ns2__MetalDetector(%p, %d, %s, %s)\n", (void*)soap, n, type?type:"", arrayType?arrayType:""));
+	DBGLOG(TEST, SOAP_MESSAGE(fdebug, "soap_instantiate_tmk__MetalDetector(%p, %d, %s, %s)\n", (void*)soap, n, type?type:"", arrayType?arrayType:""));
 	(void)type; (void)arrayType; /* appease -Wall -Werror */
-	ns2__MetalDetector *p;
-	size_t k = sizeof(ns2__MetalDetector);
-	struct soap_clist *cp = soap_link(soap, SOAP_TYPE_ns2__MetalDetector, n, soap_fdelete);
+	tmk__MetalDetector *p;
+	size_t k = sizeof(tmk__MetalDetector);
+	struct soap_clist *cp = soap_link(soap, SOAP_TYPE_tmk__MetalDetector, n, soap_fdelete);
 	if (!cp && soap && n != SOAP_NO_LINK_TO_DELETE)
 		return NULL;
 	if (n < 0)
-	{	p = SOAP_NEW(soap, ns2__MetalDetector);
+	{	p = SOAP_NEW(soap, tmk__MetalDetector);
 	}
 	else
-	{	p = SOAP_NEW_ARRAY(soap, ns2__MetalDetector, n);
+	{	p = SOAP_NEW_ARRAY(soap, tmk__MetalDetector, n);
 		k *= n;
 	}
-	DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Instantiated ns2__MetalDetector location=%p n=%d\n", (void*)p, n));
+	DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Instantiated tmk__MetalDetector location=%p n=%d\n", (void*)p, n));
 	if (size)
 		*size = k;
 	if (!p)
@@ -9974,84 +9974,84 @@ SOAP_FMAC1 ns2__MetalDetector * SOAP_FMAC2 soap_instantiate_ns2__MetalDetector(s
 	return p;
 }
 
-int ns2__MetalDetector::soap_put(struct soap *soap, const char *tag, const  char *type) const
+int tmk__MetalDetector::soap_put(struct soap *soap, const char *tag, const  char *type) const
 {
-	if (soap_out_ns2__MetalDetector(soap, tag ? tag : "ns2:MetalDetector", -2, this, type))
+	if (soap_out_tmk__MetalDetector(soap, tag ? tag : "tmk:MetalDetector", -2, this, type))
 		return soap->error;
 	return soap_putindependent(soap);
 }
 
-void *ns2__MetalDetector::soap_get(struct soap *soap, const char *tag, const char *type)
+void *tmk__MetalDetector::soap_get(struct soap *soap, const char *tag, const char *type)
 {
-	return soap_get_ns2__MetalDetector(soap, this, tag, type);
+	return soap_get_tmk__MetalDetector(soap, this, tag, type);
 }
 
-SOAP_FMAC3 ns2__MetalDetector * SOAP_FMAC4 soap_get_ns2__MetalDetector(struct soap *soap, ns2__MetalDetector *p, const char *tag, const char *type)
+SOAP_FMAC3 tmk__MetalDetector * SOAP_FMAC4 soap_get_tmk__MetalDetector(struct soap *soap, tmk__MetalDetector *p, const char *tag, const char *type)
 {
-	if ((p = soap_in_ns2__MetalDetector(soap, tag, p, type)))
+	if ((p = soap_in_tmk__MetalDetector(soap, tag, p, type)))
 		if (soap_getindependent(soap))
 			return NULL;
 	return p;
 }
 
-void ns2__SteamDetector::soap_default(struct soap *soap)
+void tmk__SteamDetector::soap_default(struct soap *soap)
 {
 	(void)soap; /* appease -Wall -Werror */
-	this->ns2__SteamDetector::Detect = NULL;
-	soap_default_bool(soap, &this->ns2__SteamDetector::topic);
+	this->tmk__SteamDetector::Detect = NULL;
+	soap_default_bool(soap, &this->tmk__SteamDetector::topic);
 }
 
-void ns2__SteamDetector::soap_serialize(struct soap *soap) const
+void tmk__SteamDetector::soap_serialize(struct soap *soap) const
 {
 	(void)soap; /* appease -Wall -Werror */
 #ifndef WITH_NOIDREF
-	soap_serialize_PointerTott__MessageDescription(soap, &this->ns2__SteamDetector::Detect);
+	soap_serialize_PointerTott__MessageDescription(soap, &this->tmk__SteamDetector::Detect);
 #endif
 }
 
-int ns2__SteamDetector::soap_out(struct soap *soap, const char *tag, int id, const char *type) const
+int tmk__SteamDetector::soap_out(struct soap *soap, const char *tag, int id, const char *type) const
 {
-	return soap_out_ns2__SteamDetector(soap, tag, id, this, type);
+	return soap_out_tmk__SteamDetector(soap, tag, id, this, type);
 }
 
-SOAP_FMAC3 int SOAP_FMAC4 soap_out_ns2__SteamDetector(struct soap *soap, const char *tag, int id, const ns2__SteamDetector *a, const char *type)
+SOAP_FMAC3 int SOAP_FMAC4 soap_out_tmk__SteamDetector(struct soap *soap, const char *tag, int id, const tmk__SteamDetector *a, const char *type)
 {
-	soap_set_attr(soap, "topic", soap_bool2s(soap, ((ns2__SteamDetector*)a)->topic), 1);
+	soap_set_attr(soap, "topic", soap_bool2s(soap, ((tmk__SteamDetector*)a)->topic), 1);
 	(void)soap; (void)tag; (void)id; (void)a; (void)type; /* appease -Wall -Werror */
-	if (soap_element_begin_out(soap, tag, soap_embedded_id(soap, id, a, SOAP_TYPE_ns2__SteamDetector), type))
+	if (soap_element_begin_out(soap, tag, soap_embedded_id(soap, id, a, SOAP_TYPE_tmk__SteamDetector), type))
 		return soap->error;
-	if (!a->ns2__SteamDetector::Detect)
-	{	if (soap_element_empty(soap, "ns2:Detect"))
+	if (!a->tmk__SteamDetector::Detect)
+	{	if (soap_element_empty(soap, "tmk:Detect"))
 			return soap->error;
 	}
-	else if (soap_out_PointerTott__MessageDescription(soap, "ns2:Detect", -1, &a->ns2__SteamDetector::Detect, ""))
+	else if (soap_out_PointerTott__MessageDescription(soap, "tmk:Detect", -1, &a->tmk__SteamDetector::Detect, ""))
 		return soap->error;
 	if (soap_out_xsd__anyType(soap, NULL, -1, static_cast<const soap_dom_element*>(a), NULL))
 		return soap->error;
 	return soap_element_end_out(soap, tag);
 }
 
-void *ns2__SteamDetector::soap_in(struct soap *soap, const char *tag, const char *type)
+void *tmk__SteamDetector::soap_in(struct soap *soap, const char *tag, const char *type)
 {
-	return soap_in_ns2__SteamDetector(soap, tag, this, type);
+	return soap_in_tmk__SteamDetector(soap, tag, this, type);
 }
 
-SOAP_FMAC3 ns2__SteamDetector * SOAP_FMAC4 soap_in_ns2__SteamDetector(struct soap *soap, const char *tag, ns2__SteamDetector *a, const char *type)
+SOAP_FMAC3 tmk__SteamDetector * SOAP_FMAC4 soap_in_tmk__SteamDetector(struct soap *soap, const char *tag, tmk__SteamDetector *a, const char *type)
 {
 	(void)type; /* appease -Wall -Werror */
 	if (soap_element_begin_in(soap, tag, 0, NULL))
 		return NULL;
-	a = (ns2__SteamDetector*)soap_id_enter(soap, soap->id, a, SOAP_TYPE_ns2__SteamDetector, sizeof(ns2__SteamDetector), soap->type, soap->arrayType, soap_instantiate, soap_fbase);
+	a = (tmk__SteamDetector*)soap_id_enter(soap, soap->id, a, SOAP_TYPE_tmk__SteamDetector, sizeof(tmk__SteamDetector), soap->type, soap->arrayType, soap_instantiate, soap_fbase);
 	if (!a)
 		return NULL;
-	if (soap->alloced && soap->alloced != SOAP_TYPE_ns2__SteamDetector)
+	if (soap->alloced && soap->alloced != SOAP_TYPE_tmk__SteamDetector)
 	{	soap_revert(soap);
 		*soap->id = '\0';
-		return (ns2__SteamDetector *)a->soap_in(soap, tag, type);
+		return (tmk__SteamDetector *)a->soap_in(soap, tag, type);
 	}
 	if (soap->alloced)
 		a->soap_default(soap);
-	if (soap_s2bool(soap, soap_attr_value(soap, "topic", 5, 1), &((ns2__SteamDetector*)a)->topic))
+	if (soap_s2bool(soap, soap_attr_value(soap, "topic", 5, 1), &((tmk__SteamDetector*)a)->topic))
 		return NULL;
 	size_t soap_flag_soap_dom_element = 1;
 	size_t soap_flag_Detect1 = 1;
@@ -10060,7 +10060,7 @@ SOAP_FMAC3 ns2__SteamDetector * SOAP_FMAC4 soap_in_ns2__SteamDetector(struct soa
 		for (;;)
 		{	soap->error = SOAP_TAG_MISMATCH;
 			if (soap_flag_Detect1 && soap->error == SOAP_TAG_MISMATCH)
-			{	if (soap_in_PointerTott__MessageDescription(soap, "ns2:Detect", &a->ns2__SteamDetector::Detect, "tt:MessageDescription"))
+			{	if (soap_in_PointerTott__MessageDescription(soap, "tmk:Detect", &a->tmk__SteamDetector::Detect, "tt:MessageDescription"))
 				{	soap_flag_Detect1--;
 					continue;
 				}
@@ -10079,7 +10079,7 @@ SOAP_FMAC3 ns2__SteamDetector * SOAP_FMAC4 soap_in_ns2__SteamDetector(struct soa
 		}
 		if (soap_element_end_in(soap, tag))
 			return NULL;
-		if ((soap->mode & SOAP_XML_STRICT) && (!a->ns2__SteamDetector::Detect))
+		if ((soap->mode & SOAP_XML_STRICT) && (!a->tmk__SteamDetector::Detect))
 		{	soap->error = SOAP_OCCURS;
 			return NULL;
 		}
@@ -10089,30 +10089,30 @@ SOAP_FMAC3 ns2__SteamDetector * SOAP_FMAC4 soap_in_ns2__SteamDetector(struct soa
 		return NULL;
 	}
 	else
-	{	a = (ns2__SteamDetector *)soap_id_forward(soap, soap->href, (void*)a, 0, SOAP_TYPE_ns2__SteamDetector, SOAP_TYPE_ns2__SteamDetector, sizeof(ns2__SteamDetector), 0, soap_finsert, soap_fbase);
+	{	a = (tmk__SteamDetector *)soap_id_forward(soap, soap->href, (void*)a, 0, SOAP_TYPE_tmk__SteamDetector, SOAP_TYPE_tmk__SteamDetector, sizeof(tmk__SteamDetector), 0, soap_finsert, soap_fbase);
 		if (soap->body && soap_element_end_in(soap, tag))
 			return NULL;
 	}
 	return a;
 }
 
-SOAP_FMAC1 ns2__SteamDetector * SOAP_FMAC2 soap_instantiate_ns2__SteamDetector(struct soap *soap, int n, const char *type, const char *arrayType, size_t *size)
+SOAP_FMAC1 tmk__SteamDetector * SOAP_FMAC2 soap_instantiate_tmk__SteamDetector(struct soap *soap, int n, const char *type, const char *arrayType, size_t *size)
 {
-	DBGLOG(TEST, SOAP_MESSAGE(fdebug, "soap_instantiate_ns2__SteamDetector(%p, %d, %s, %s)\n", (void*)soap, n, type?type:"", arrayType?arrayType:""));
+	DBGLOG(TEST, SOAP_MESSAGE(fdebug, "soap_instantiate_tmk__SteamDetector(%p, %d, %s, %s)\n", (void*)soap, n, type?type:"", arrayType?arrayType:""));
 	(void)type; (void)arrayType; /* appease -Wall -Werror */
-	ns2__SteamDetector *p;
-	size_t k = sizeof(ns2__SteamDetector);
-	struct soap_clist *cp = soap_link(soap, SOAP_TYPE_ns2__SteamDetector, n, soap_fdelete);
+	tmk__SteamDetector *p;
+	size_t k = sizeof(tmk__SteamDetector);
+	struct soap_clist *cp = soap_link(soap, SOAP_TYPE_tmk__SteamDetector, n, soap_fdelete);
 	if (!cp && soap && n != SOAP_NO_LINK_TO_DELETE)
 		return NULL;
 	if (n < 0)
-	{	p = SOAP_NEW(soap, ns2__SteamDetector);
+	{	p = SOAP_NEW(soap, tmk__SteamDetector);
 	}
 	else
-	{	p = SOAP_NEW_ARRAY(soap, ns2__SteamDetector, n);
+	{	p = SOAP_NEW_ARRAY(soap, tmk__SteamDetector, n);
 		k *= n;
 	}
-	DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Instantiated ns2__SteamDetector location=%p n=%d\n", (void*)p, n));
+	DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Instantiated tmk__SteamDetector location=%p n=%d\n", (void*)p, n));
 	if (size)
 		*size = k;
 	if (!p)
@@ -10122,84 +10122,84 @@ SOAP_FMAC1 ns2__SteamDetector * SOAP_FMAC2 soap_instantiate_ns2__SteamDetector(s
 	return p;
 }
 
-int ns2__SteamDetector::soap_put(struct soap *soap, const char *tag, const  char *type) const
+int tmk__SteamDetector::soap_put(struct soap *soap, const char *tag, const  char *type) const
 {
-	if (soap_out_ns2__SteamDetector(soap, tag ? tag : "ns2:SteamDetector", -2, this, type))
+	if (soap_out_tmk__SteamDetector(soap, tag ? tag : "tmk:SteamDetector", -2, this, type))
 		return soap->error;
 	return soap_putindependent(soap);
 }
 
-void *ns2__SteamDetector::soap_get(struct soap *soap, const char *tag, const char *type)
+void *tmk__SteamDetector::soap_get(struct soap *soap, const char *tag, const char *type)
 {
-	return soap_get_ns2__SteamDetector(soap, this, tag, type);
+	return soap_get_tmk__SteamDetector(soap, this, tag, type);
 }
 
-SOAP_FMAC3 ns2__SteamDetector * SOAP_FMAC4 soap_get_ns2__SteamDetector(struct soap *soap, ns2__SteamDetector *p, const char *tag, const char *type)
+SOAP_FMAC3 tmk__SteamDetector * SOAP_FMAC4 soap_get_tmk__SteamDetector(struct soap *soap, tmk__SteamDetector *p, const char *tag, const char *type)
 {
-	if ((p = soap_in_ns2__SteamDetector(soap, tag, p, type)))
+	if ((p = soap_in_tmk__SteamDetector(soap, tag, p, type)))
 		if (soap_getindependent(soap))
 			return NULL;
 	return p;
 }
 
-void ns2__RadiationMonitoring::soap_default(struct soap *soap)
+void tmk__RadiationMonitoring::soap_default(struct soap *soap)
 {
 	(void)soap; /* appease -Wall -Werror */
-	this->ns2__RadiationMonitoring::Detect = NULL;
-	soap_default_bool(soap, &this->ns2__RadiationMonitoring::topic);
+	this->tmk__RadiationMonitoring::Detect = NULL;
+	soap_default_bool(soap, &this->tmk__RadiationMonitoring::topic);
 }
 
-void ns2__RadiationMonitoring::soap_serialize(struct soap *soap) const
+void tmk__RadiationMonitoring::soap_serialize(struct soap *soap) const
 {
 	(void)soap; /* appease -Wall -Werror */
 #ifndef WITH_NOIDREF
-	soap_serialize_PointerTott__MessageDescription(soap, &this->ns2__RadiationMonitoring::Detect);
+	soap_serialize_PointerTott__MessageDescription(soap, &this->tmk__RadiationMonitoring::Detect);
 #endif
 }
 
-int ns2__RadiationMonitoring::soap_out(struct soap *soap, const char *tag, int id, const char *type) const
+int tmk__RadiationMonitoring::soap_out(struct soap *soap, const char *tag, int id, const char *type) const
 {
-	return soap_out_ns2__RadiationMonitoring(soap, tag, id, this, type);
+	return soap_out_tmk__RadiationMonitoring(soap, tag, id, this, type);
 }
 
-SOAP_FMAC3 int SOAP_FMAC4 soap_out_ns2__RadiationMonitoring(struct soap *soap, const char *tag, int id, const ns2__RadiationMonitoring *a, const char *type)
+SOAP_FMAC3 int SOAP_FMAC4 soap_out_tmk__RadiationMonitoring(struct soap *soap, const char *tag, int id, const tmk__RadiationMonitoring *a, const char *type)
 {
-	soap_set_attr(soap, "topic", soap_bool2s(soap, ((ns2__RadiationMonitoring*)a)->topic), 1);
+	soap_set_attr(soap, "topic", soap_bool2s(soap, ((tmk__RadiationMonitoring*)a)->topic), 1);
 	(void)soap; (void)tag; (void)id; (void)a; (void)type; /* appease -Wall -Werror */
-	if (soap_element_begin_out(soap, tag, soap_embedded_id(soap, id, a, SOAP_TYPE_ns2__RadiationMonitoring), type))
+	if (soap_element_begin_out(soap, tag, soap_embedded_id(soap, id, a, SOAP_TYPE_tmk__RadiationMonitoring), type))
 		return soap->error;
-	if (!a->ns2__RadiationMonitoring::Detect)
-	{	if (soap_element_empty(soap, "ns2:Detect"))
+	if (!a->tmk__RadiationMonitoring::Detect)
+	{	if (soap_element_empty(soap, "tmk:Detect"))
 			return soap->error;
 	}
-	else if (soap_out_PointerTott__MessageDescription(soap, "ns2:Detect", -1, &a->ns2__RadiationMonitoring::Detect, ""))
+	else if (soap_out_PointerTott__MessageDescription(soap, "tmk:Detect", -1, &a->tmk__RadiationMonitoring::Detect, ""))
 		return soap->error;
 	if (soap_out_xsd__anyType(soap, NULL, -1, static_cast<const soap_dom_element*>(a), NULL))
 		return soap->error;
 	return soap_element_end_out(soap, tag);
 }
 
-void *ns2__RadiationMonitoring::soap_in(struct soap *soap, const char *tag, const char *type)
+void *tmk__RadiationMonitoring::soap_in(struct soap *soap, const char *tag, const char *type)
 {
-	return soap_in_ns2__RadiationMonitoring(soap, tag, this, type);
+	return soap_in_tmk__RadiationMonitoring(soap, tag, this, type);
 }
 
-SOAP_FMAC3 ns2__RadiationMonitoring * SOAP_FMAC4 soap_in_ns2__RadiationMonitoring(struct soap *soap, const char *tag, ns2__RadiationMonitoring *a, const char *type)
+SOAP_FMAC3 tmk__RadiationMonitoring * SOAP_FMAC4 soap_in_tmk__RadiationMonitoring(struct soap *soap, const char *tag, tmk__RadiationMonitoring *a, const char *type)
 {
 	(void)type; /* appease -Wall -Werror */
 	if (soap_element_begin_in(soap, tag, 0, NULL))
 		return NULL;
-	a = (ns2__RadiationMonitoring*)soap_id_enter(soap, soap->id, a, SOAP_TYPE_ns2__RadiationMonitoring, sizeof(ns2__RadiationMonitoring), soap->type, soap->arrayType, soap_instantiate, soap_fbase);
+	a = (tmk__RadiationMonitoring*)soap_id_enter(soap, soap->id, a, SOAP_TYPE_tmk__RadiationMonitoring, sizeof(tmk__RadiationMonitoring), soap->type, soap->arrayType, soap_instantiate, soap_fbase);
 	if (!a)
 		return NULL;
-	if (soap->alloced && soap->alloced != SOAP_TYPE_ns2__RadiationMonitoring)
+	if (soap->alloced && soap->alloced != SOAP_TYPE_tmk__RadiationMonitoring)
 	{	soap_revert(soap);
 		*soap->id = '\0';
-		return (ns2__RadiationMonitoring *)a->soap_in(soap, tag, type);
+		return (tmk__RadiationMonitoring *)a->soap_in(soap, tag, type);
 	}
 	if (soap->alloced)
 		a->soap_default(soap);
-	if (soap_s2bool(soap, soap_attr_value(soap, "topic", 5, 1), &((ns2__RadiationMonitoring*)a)->topic))
+	if (soap_s2bool(soap, soap_attr_value(soap, "topic", 5, 1), &((tmk__RadiationMonitoring*)a)->topic))
 		return NULL;
 	size_t soap_flag_soap_dom_element = 1;
 	size_t soap_flag_Detect1 = 1;
@@ -10208,7 +10208,7 @@ SOAP_FMAC3 ns2__RadiationMonitoring * SOAP_FMAC4 soap_in_ns2__RadiationMonitorin
 		for (;;)
 		{	soap->error = SOAP_TAG_MISMATCH;
 			if (soap_flag_Detect1 && soap->error == SOAP_TAG_MISMATCH)
-			{	if (soap_in_PointerTott__MessageDescription(soap, "ns2:Detect", &a->ns2__RadiationMonitoring::Detect, "tt:MessageDescription"))
+			{	if (soap_in_PointerTott__MessageDescription(soap, "tmk:Detect", &a->tmk__RadiationMonitoring::Detect, "tt:MessageDescription"))
 				{	soap_flag_Detect1--;
 					continue;
 				}
@@ -10227,7 +10227,7 @@ SOAP_FMAC3 ns2__RadiationMonitoring * SOAP_FMAC4 soap_in_ns2__RadiationMonitorin
 		}
 		if (soap_element_end_in(soap, tag))
 			return NULL;
-		if ((soap->mode & SOAP_XML_STRICT) && (!a->ns2__RadiationMonitoring::Detect))
+		if ((soap->mode & SOAP_XML_STRICT) && (!a->tmk__RadiationMonitoring::Detect))
 		{	soap->error = SOAP_OCCURS;
 			return NULL;
 		}
@@ -10237,30 +10237,30 @@ SOAP_FMAC3 ns2__RadiationMonitoring * SOAP_FMAC4 soap_in_ns2__RadiationMonitorin
 		return NULL;
 	}
 	else
-	{	a = (ns2__RadiationMonitoring *)soap_id_forward(soap, soap->href, (void*)a, 0, SOAP_TYPE_ns2__RadiationMonitoring, SOAP_TYPE_ns2__RadiationMonitoring, sizeof(ns2__RadiationMonitoring), 0, soap_finsert, soap_fbase);
+	{	a = (tmk__RadiationMonitoring *)soap_id_forward(soap, soap->href, (void*)a, 0, SOAP_TYPE_tmk__RadiationMonitoring, SOAP_TYPE_tmk__RadiationMonitoring, sizeof(tmk__RadiationMonitoring), 0, soap_finsert, soap_fbase);
 		if (soap->body && soap_element_end_in(soap, tag))
 			return NULL;
 	}
 	return a;
 }
 
-SOAP_FMAC1 ns2__RadiationMonitoring * SOAP_FMAC2 soap_instantiate_ns2__RadiationMonitoring(struct soap *soap, int n, const char *type, const char *arrayType, size_t *size)
+SOAP_FMAC1 tmk__RadiationMonitoring * SOAP_FMAC2 soap_instantiate_tmk__RadiationMonitoring(struct soap *soap, int n, const char *type, const char *arrayType, size_t *size)
 {
-	DBGLOG(TEST, SOAP_MESSAGE(fdebug, "soap_instantiate_ns2__RadiationMonitoring(%p, %d, %s, %s)\n", (void*)soap, n, type?type:"", arrayType?arrayType:""));
+	DBGLOG(TEST, SOAP_MESSAGE(fdebug, "soap_instantiate_tmk__RadiationMonitoring(%p, %d, %s, %s)\n", (void*)soap, n, type?type:"", arrayType?arrayType:""));
 	(void)type; (void)arrayType; /* appease -Wall -Werror */
-	ns2__RadiationMonitoring *p;
-	size_t k = sizeof(ns2__RadiationMonitoring);
-	struct soap_clist *cp = soap_link(soap, SOAP_TYPE_ns2__RadiationMonitoring, n, soap_fdelete);
+	tmk__RadiationMonitoring *p;
+	size_t k = sizeof(tmk__RadiationMonitoring);
+	struct soap_clist *cp = soap_link(soap, SOAP_TYPE_tmk__RadiationMonitoring, n, soap_fdelete);
 	if (!cp && soap && n != SOAP_NO_LINK_TO_DELETE)
 		return NULL;
 	if (n < 0)
-	{	p = SOAP_NEW(soap, ns2__RadiationMonitoring);
+	{	p = SOAP_NEW(soap, tmk__RadiationMonitoring);
 	}
 	else
-	{	p = SOAP_NEW_ARRAY(soap, ns2__RadiationMonitoring, n);
+	{	p = SOAP_NEW_ARRAY(soap, tmk__RadiationMonitoring, n);
 		k *= n;
 	}
-	DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Instantiated ns2__RadiationMonitoring location=%p n=%d\n", (void*)p, n));
+	DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Instantiated tmk__RadiationMonitoring location=%p n=%d\n", (void*)p, n));
 	if (size)
 		*size = k;
 	if (!p)
@@ -10270,84 +10270,84 @@ SOAP_FMAC1 ns2__RadiationMonitoring * SOAP_FMAC2 soap_instantiate_ns2__Radiation
 	return p;
 }
 
-int ns2__RadiationMonitoring::soap_put(struct soap *soap, const char *tag, const  char *type) const
+int tmk__RadiationMonitoring::soap_put(struct soap *soap, const char *tag, const  char *type) const
 {
-	if (soap_out_ns2__RadiationMonitoring(soap, tag ? tag : "ns2:RadiationMonitoring", -2, this, type))
+	if (soap_out_tmk__RadiationMonitoring(soap, tag ? tag : "tmk:RadiationMonitoring", -2, this, type))
 		return soap->error;
 	return soap_putindependent(soap);
 }
 
-void *ns2__RadiationMonitoring::soap_get(struct soap *soap, const char *tag, const char *type)
+void *tmk__RadiationMonitoring::soap_get(struct soap *soap, const char *tag, const char *type)
 {
-	return soap_get_ns2__RadiationMonitoring(soap, this, tag, type);
+	return soap_get_tmk__RadiationMonitoring(soap, this, tag, type);
 }
 
-SOAP_FMAC3 ns2__RadiationMonitoring * SOAP_FMAC4 soap_get_ns2__RadiationMonitoring(struct soap *soap, ns2__RadiationMonitoring *p, const char *tag, const char *type)
+SOAP_FMAC3 tmk__RadiationMonitoring * SOAP_FMAC4 soap_get_tmk__RadiationMonitoring(struct soap *soap, tmk__RadiationMonitoring *p, const char *tag, const char *type)
 {
-	if ((p = soap_in_ns2__RadiationMonitoring(soap, tag, p, type)))
+	if ((p = soap_in_tmk__RadiationMonitoring(soap, tag, p, type)))
 		if (soap_getindependent(soap))
 			return NULL;
 	return p;
 }
 
-void ns2__NeutronProbing::soap_default(struct soap *soap)
+void tmk__NeutronProbing::soap_default(struct soap *soap)
 {
 	(void)soap; /* appease -Wall -Werror */
-	this->ns2__NeutronProbing::Detect = NULL;
-	soap_default_bool(soap, &this->ns2__NeutronProbing::topic);
+	this->tmk__NeutronProbing::Detect = NULL;
+	soap_default_bool(soap, &this->tmk__NeutronProbing::topic);
 }
 
-void ns2__NeutronProbing::soap_serialize(struct soap *soap) const
+void tmk__NeutronProbing::soap_serialize(struct soap *soap) const
 {
 	(void)soap; /* appease -Wall -Werror */
 #ifndef WITH_NOIDREF
-	soap_serialize_PointerTott__MessageDescription(soap, &this->ns2__NeutronProbing::Detect);
+	soap_serialize_PointerTott__MessageDescription(soap, &this->tmk__NeutronProbing::Detect);
 #endif
 }
 
-int ns2__NeutronProbing::soap_out(struct soap *soap, const char *tag, int id, const char *type) const
+int tmk__NeutronProbing::soap_out(struct soap *soap, const char *tag, int id, const char *type) const
 {
-	return soap_out_ns2__NeutronProbing(soap, tag, id, this, type);
+	return soap_out_tmk__NeutronProbing(soap, tag, id, this, type);
 }
 
-SOAP_FMAC3 int SOAP_FMAC4 soap_out_ns2__NeutronProbing(struct soap *soap, const char *tag, int id, const ns2__NeutronProbing *a, const char *type)
+SOAP_FMAC3 int SOAP_FMAC4 soap_out_tmk__NeutronProbing(struct soap *soap, const char *tag, int id, const tmk__NeutronProbing *a, const char *type)
 {
-	soap_set_attr(soap, "topic", soap_bool2s(soap, ((ns2__NeutronProbing*)a)->topic), 1);
+	soap_set_attr(soap, "topic", soap_bool2s(soap, ((tmk__NeutronProbing*)a)->topic), 1);
 	(void)soap; (void)tag; (void)id; (void)a; (void)type; /* appease -Wall -Werror */
-	if (soap_element_begin_out(soap, tag, soap_embedded_id(soap, id, a, SOAP_TYPE_ns2__NeutronProbing), type))
+	if (soap_element_begin_out(soap, tag, soap_embedded_id(soap, id, a, SOAP_TYPE_tmk__NeutronProbing), type))
 		return soap->error;
-	if (!a->ns2__NeutronProbing::Detect)
-	{	if (soap_element_empty(soap, "ns2:Detect"))
+	if (!a->tmk__NeutronProbing::Detect)
+	{	if (soap_element_empty(soap, "tmk:Detect"))
 			return soap->error;
 	}
-	else if (soap_out_PointerTott__MessageDescription(soap, "ns2:Detect", -1, &a->ns2__NeutronProbing::Detect, ""))
+	else if (soap_out_PointerTott__MessageDescription(soap, "tmk:Detect", -1, &a->tmk__NeutronProbing::Detect, ""))
 		return soap->error;
 	if (soap_out_xsd__anyType(soap, NULL, -1, static_cast<const soap_dom_element*>(a), NULL))
 		return soap->error;
 	return soap_element_end_out(soap, tag);
 }
 
-void *ns2__NeutronProbing::soap_in(struct soap *soap, const char *tag, const char *type)
+void *tmk__NeutronProbing::soap_in(struct soap *soap, const char *tag, const char *type)
 {
-	return soap_in_ns2__NeutronProbing(soap, tag, this, type);
+	return soap_in_tmk__NeutronProbing(soap, tag, this, type);
 }
 
-SOAP_FMAC3 ns2__NeutronProbing * SOAP_FMAC4 soap_in_ns2__NeutronProbing(struct soap *soap, const char *tag, ns2__NeutronProbing *a, const char *type)
+SOAP_FMAC3 tmk__NeutronProbing * SOAP_FMAC4 soap_in_tmk__NeutronProbing(struct soap *soap, const char *tag, tmk__NeutronProbing *a, const char *type)
 {
 	(void)type; /* appease -Wall -Werror */
 	if (soap_element_begin_in(soap, tag, 0, NULL))
 		return NULL;
-	a = (ns2__NeutronProbing*)soap_id_enter(soap, soap->id, a, SOAP_TYPE_ns2__NeutronProbing, sizeof(ns2__NeutronProbing), soap->type, soap->arrayType, soap_instantiate, soap_fbase);
+	a = (tmk__NeutronProbing*)soap_id_enter(soap, soap->id, a, SOAP_TYPE_tmk__NeutronProbing, sizeof(tmk__NeutronProbing), soap->type, soap->arrayType, soap_instantiate, soap_fbase);
 	if (!a)
 		return NULL;
-	if (soap->alloced && soap->alloced != SOAP_TYPE_ns2__NeutronProbing)
+	if (soap->alloced && soap->alloced != SOAP_TYPE_tmk__NeutronProbing)
 	{	soap_revert(soap);
 		*soap->id = '\0';
-		return (ns2__NeutronProbing *)a->soap_in(soap, tag, type);
+		return (tmk__NeutronProbing *)a->soap_in(soap, tag, type);
 	}
 	if (soap->alloced)
 		a->soap_default(soap);
-	if (soap_s2bool(soap, soap_attr_value(soap, "topic", 5, 1), &((ns2__NeutronProbing*)a)->topic))
+	if (soap_s2bool(soap, soap_attr_value(soap, "topic", 5, 1), &((tmk__NeutronProbing*)a)->topic))
 		return NULL;
 	size_t soap_flag_soap_dom_element = 1;
 	size_t soap_flag_Detect1 = 1;
@@ -10356,7 +10356,7 @@ SOAP_FMAC3 ns2__NeutronProbing * SOAP_FMAC4 soap_in_ns2__NeutronProbing(struct s
 		for (;;)
 		{	soap->error = SOAP_TAG_MISMATCH;
 			if (soap_flag_Detect1 && soap->error == SOAP_TAG_MISMATCH)
-			{	if (soap_in_PointerTott__MessageDescription(soap, "ns2:Detect", &a->ns2__NeutronProbing::Detect, "tt:MessageDescription"))
+			{	if (soap_in_PointerTott__MessageDescription(soap, "tmk:Detect", &a->tmk__NeutronProbing::Detect, "tt:MessageDescription"))
 				{	soap_flag_Detect1--;
 					continue;
 				}
@@ -10375,7 +10375,7 @@ SOAP_FMAC3 ns2__NeutronProbing * SOAP_FMAC4 soap_in_ns2__NeutronProbing(struct s
 		}
 		if (soap_element_end_in(soap, tag))
 			return NULL;
-		if ((soap->mode & SOAP_XML_STRICT) && (!a->ns2__NeutronProbing::Detect))
+		if ((soap->mode & SOAP_XML_STRICT) && (!a->tmk__NeutronProbing::Detect))
 		{	soap->error = SOAP_OCCURS;
 			return NULL;
 		}
@@ -10385,30 +10385,30 @@ SOAP_FMAC3 ns2__NeutronProbing * SOAP_FMAC4 soap_in_ns2__NeutronProbing(struct s
 		return NULL;
 	}
 	else
-	{	a = (ns2__NeutronProbing *)soap_id_forward(soap, soap->href, (void*)a, 0, SOAP_TYPE_ns2__NeutronProbing, SOAP_TYPE_ns2__NeutronProbing, sizeof(ns2__NeutronProbing), 0, soap_finsert, soap_fbase);
+	{	a = (tmk__NeutronProbing *)soap_id_forward(soap, soap->href, (void*)a, 0, SOAP_TYPE_tmk__NeutronProbing, SOAP_TYPE_tmk__NeutronProbing, sizeof(tmk__NeutronProbing), 0, soap_finsert, soap_fbase);
 		if (soap->body && soap_element_end_in(soap, tag))
 			return NULL;
 	}
 	return a;
 }
 
-SOAP_FMAC1 ns2__NeutronProbing * SOAP_FMAC2 soap_instantiate_ns2__NeutronProbing(struct soap *soap, int n, const char *type, const char *arrayType, size_t *size)
+SOAP_FMAC1 tmk__NeutronProbing * SOAP_FMAC2 soap_instantiate_tmk__NeutronProbing(struct soap *soap, int n, const char *type, const char *arrayType, size_t *size)
 {
-	DBGLOG(TEST, SOAP_MESSAGE(fdebug, "soap_instantiate_ns2__NeutronProbing(%p, %d, %s, %s)\n", (void*)soap, n, type?type:"", arrayType?arrayType:""));
+	DBGLOG(TEST, SOAP_MESSAGE(fdebug, "soap_instantiate_tmk__NeutronProbing(%p, %d, %s, %s)\n", (void*)soap, n, type?type:"", arrayType?arrayType:""));
 	(void)type; (void)arrayType; /* appease -Wall -Werror */
-	ns2__NeutronProbing *p;
-	size_t k = sizeof(ns2__NeutronProbing);
-	struct soap_clist *cp = soap_link(soap, SOAP_TYPE_ns2__NeutronProbing, n, soap_fdelete);
+	tmk__NeutronProbing *p;
+	size_t k = sizeof(tmk__NeutronProbing);
+	struct soap_clist *cp = soap_link(soap, SOAP_TYPE_tmk__NeutronProbing, n, soap_fdelete);
 	if (!cp && soap && n != SOAP_NO_LINK_TO_DELETE)
 		return NULL;
 	if (n < 0)
-	{	p = SOAP_NEW(soap, ns2__NeutronProbing);
+	{	p = SOAP_NEW(soap, tmk__NeutronProbing);
 	}
 	else
-	{	p = SOAP_NEW_ARRAY(soap, ns2__NeutronProbing, n);
+	{	p = SOAP_NEW_ARRAY(soap, tmk__NeutronProbing, n);
 		k *= n;
 	}
-	DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Instantiated ns2__NeutronProbing location=%p n=%d\n", (void*)p, n));
+	DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Instantiated tmk__NeutronProbing location=%p n=%d\n", (void*)p, n));
 	if (size)
 		*size = k;
 	if (!p)
@@ -10418,84 +10418,84 @@ SOAP_FMAC1 ns2__NeutronProbing * SOAP_FMAC2 soap_instantiate_ns2__NeutronProbing
 	return p;
 }
 
-int ns2__NeutronProbing::soap_put(struct soap *soap, const char *tag, const  char *type) const
+int tmk__NeutronProbing::soap_put(struct soap *soap, const char *tag, const  char *type) const
 {
-	if (soap_out_ns2__NeutronProbing(soap, tag ? tag : "ns2:NeutronProbing", -2, this, type))
+	if (soap_out_tmk__NeutronProbing(soap, tag ? tag : "tmk:NeutronProbing", -2, this, type))
 		return soap->error;
 	return soap_putindependent(soap);
 }
 
-void *ns2__NeutronProbing::soap_get(struct soap *soap, const char *tag, const char *type)
+void *tmk__NeutronProbing::soap_get(struct soap *soap, const char *tag, const char *type)
 {
-	return soap_get_ns2__NeutronProbing(soap, this, tag, type);
+	return soap_get_tmk__NeutronProbing(soap, this, tag, type);
 }
 
-SOAP_FMAC3 ns2__NeutronProbing * SOAP_FMAC4 soap_get_ns2__NeutronProbing(struct soap *soap, ns2__NeutronProbing *p, const char *tag, const char *type)
+SOAP_FMAC3 tmk__NeutronProbing * SOAP_FMAC4 soap_get_tmk__NeutronProbing(struct soap *soap, tmk__NeutronProbing *p, const char *tag, const char *type)
 {
-	if ((p = soap_in_ns2__NeutronProbing(soap, tag, p, type)))
+	if ((p = soap_in_tmk__NeutronProbing(soap, tag, p, type)))
 		if (soap_getindependent(soap))
 			return NULL;
 	return p;
 }
 
-void ns2__Introscopy::soap_default(struct soap *soap)
+void tmk__Introscopy::soap_default(struct soap *soap)
 {
 	(void)soap; /* appease -Wall -Werror */
-	this->ns2__Introscopy::LimitExceeded = NULL;
-	soap_default_bool(soap, &this->ns2__Introscopy::topic);
+	this->tmk__Introscopy::LimitExceeded = NULL;
+	soap_default_bool(soap, &this->tmk__Introscopy::topic);
 }
 
-void ns2__Introscopy::soap_serialize(struct soap *soap) const
+void tmk__Introscopy::soap_serialize(struct soap *soap) const
 {
 	(void)soap; /* appease -Wall -Werror */
 #ifndef WITH_NOIDREF
-	soap_serialize_PointerTott__MessageDescription(soap, &this->ns2__Introscopy::LimitExceeded);
+	soap_serialize_PointerTott__MessageDescription(soap, &this->tmk__Introscopy::LimitExceeded);
 #endif
 }
 
-int ns2__Introscopy::soap_out(struct soap *soap, const char *tag, int id, const char *type) const
+int tmk__Introscopy::soap_out(struct soap *soap, const char *tag, int id, const char *type) const
 {
-	return soap_out_ns2__Introscopy(soap, tag, id, this, type);
+	return soap_out_tmk__Introscopy(soap, tag, id, this, type);
 }
 
-SOAP_FMAC3 int SOAP_FMAC4 soap_out_ns2__Introscopy(struct soap *soap, const char *tag, int id, const ns2__Introscopy *a, const char *type)
+SOAP_FMAC3 int SOAP_FMAC4 soap_out_tmk__Introscopy(struct soap *soap, const char *tag, int id, const tmk__Introscopy *a, const char *type)
 {
-	soap_set_attr(soap, "topic", soap_bool2s(soap, ((ns2__Introscopy*)a)->topic), 1);
+	soap_set_attr(soap, "topic", soap_bool2s(soap, ((tmk__Introscopy*)a)->topic), 1);
 	(void)soap; (void)tag; (void)id; (void)a; (void)type; /* appease -Wall -Werror */
-	if (soap_element_begin_out(soap, tag, soap_embedded_id(soap, id, a, SOAP_TYPE_ns2__Introscopy), type))
+	if (soap_element_begin_out(soap, tag, soap_embedded_id(soap, id, a, SOAP_TYPE_tmk__Introscopy), type))
 		return soap->error;
-	if (!a->ns2__Introscopy::LimitExceeded)
-	{	if (soap_element_empty(soap, "ns2:LimitExceeded"))
+	if (!a->tmk__Introscopy::LimitExceeded)
+	{	if (soap_element_empty(soap, "tmk:LimitExceeded"))
 			return soap->error;
 	}
-	else if (soap_out_PointerTott__MessageDescription(soap, "ns2:LimitExceeded", -1, &a->ns2__Introscopy::LimitExceeded, ""))
+	else if (soap_out_PointerTott__MessageDescription(soap, "tmk:LimitExceeded", -1, &a->tmk__Introscopy::LimitExceeded, ""))
 		return soap->error;
 	if (soap_out_xsd__anyType(soap, NULL, -1, static_cast<const soap_dom_element*>(a), NULL))
 		return soap->error;
 	return soap_element_end_out(soap, tag);
 }
 
-void *ns2__Introscopy::soap_in(struct soap *soap, const char *tag, const char *type)
+void *tmk__Introscopy::soap_in(struct soap *soap, const char *tag, const char *type)
 {
-	return soap_in_ns2__Introscopy(soap, tag, this, type);
+	return soap_in_tmk__Introscopy(soap, tag, this, type);
 }
 
-SOAP_FMAC3 ns2__Introscopy * SOAP_FMAC4 soap_in_ns2__Introscopy(struct soap *soap, const char *tag, ns2__Introscopy *a, const char *type)
+SOAP_FMAC3 tmk__Introscopy * SOAP_FMAC4 soap_in_tmk__Introscopy(struct soap *soap, const char *tag, tmk__Introscopy *a, const char *type)
 {
 	(void)type; /* appease -Wall -Werror */
 	if (soap_element_begin_in(soap, tag, 0, NULL))
 		return NULL;
-	a = (ns2__Introscopy*)soap_id_enter(soap, soap->id, a, SOAP_TYPE_ns2__Introscopy, sizeof(ns2__Introscopy), soap->type, soap->arrayType, soap_instantiate, soap_fbase);
+	a = (tmk__Introscopy*)soap_id_enter(soap, soap->id, a, SOAP_TYPE_tmk__Introscopy, sizeof(tmk__Introscopy), soap->type, soap->arrayType, soap_instantiate, soap_fbase);
 	if (!a)
 		return NULL;
-	if (soap->alloced && soap->alloced != SOAP_TYPE_ns2__Introscopy)
+	if (soap->alloced && soap->alloced != SOAP_TYPE_tmk__Introscopy)
 	{	soap_revert(soap);
 		*soap->id = '\0';
-		return (ns2__Introscopy *)a->soap_in(soap, tag, type);
+		return (tmk__Introscopy *)a->soap_in(soap, tag, type);
 	}
 	if (soap->alloced)
 		a->soap_default(soap);
-	if (soap_s2bool(soap, soap_attr_value(soap, "topic", 5, 1), &((ns2__Introscopy*)a)->topic))
+	if (soap_s2bool(soap, soap_attr_value(soap, "topic", 5, 1), &((tmk__Introscopy*)a)->topic))
 		return NULL;
 	size_t soap_flag_soap_dom_element = 1;
 	size_t soap_flag_LimitExceeded1 = 1;
@@ -10504,7 +10504,7 @@ SOAP_FMAC3 ns2__Introscopy * SOAP_FMAC4 soap_in_ns2__Introscopy(struct soap *soa
 		for (;;)
 		{	soap->error = SOAP_TAG_MISMATCH;
 			if (soap_flag_LimitExceeded1 && soap->error == SOAP_TAG_MISMATCH)
-			{	if (soap_in_PointerTott__MessageDescription(soap, "ns2:LimitExceeded", &a->ns2__Introscopy::LimitExceeded, "tt:MessageDescription"))
+			{	if (soap_in_PointerTott__MessageDescription(soap, "tmk:LimitExceeded", &a->tmk__Introscopy::LimitExceeded, "tt:MessageDescription"))
 				{	soap_flag_LimitExceeded1--;
 					continue;
 				}
@@ -10523,7 +10523,7 @@ SOAP_FMAC3 ns2__Introscopy * SOAP_FMAC4 soap_in_ns2__Introscopy(struct soap *soa
 		}
 		if (soap_element_end_in(soap, tag))
 			return NULL;
-		if ((soap->mode & SOAP_XML_STRICT) && (!a->ns2__Introscopy::LimitExceeded))
+		if ((soap->mode & SOAP_XML_STRICT) && (!a->tmk__Introscopy::LimitExceeded))
 		{	soap->error = SOAP_OCCURS;
 			return NULL;
 		}
@@ -10533,30 +10533,30 @@ SOAP_FMAC3 ns2__Introscopy * SOAP_FMAC4 soap_in_ns2__Introscopy(struct soap *soa
 		return NULL;
 	}
 	else
-	{	a = (ns2__Introscopy *)soap_id_forward(soap, soap->href, (void*)a, 0, SOAP_TYPE_ns2__Introscopy, SOAP_TYPE_ns2__Introscopy, sizeof(ns2__Introscopy), 0, soap_finsert, soap_fbase);
+	{	a = (tmk__Introscopy *)soap_id_forward(soap, soap->href, (void*)a, 0, SOAP_TYPE_tmk__Introscopy, SOAP_TYPE_tmk__Introscopy, sizeof(tmk__Introscopy), 0, soap_finsert, soap_fbase);
 		if (soap->body && soap_element_end_in(soap, tag))
 			return NULL;
 	}
 	return a;
 }
 
-SOAP_FMAC1 ns2__Introscopy * SOAP_FMAC2 soap_instantiate_ns2__Introscopy(struct soap *soap, int n, const char *type, const char *arrayType, size_t *size)
+SOAP_FMAC1 tmk__Introscopy * SOAP_FMAC2 soap_instantiate_tmk__Introscopy(struct soap *soap, int n, const char *type, const char *arrayType, size_t *size)
 {
-	DBGLOG(TEST, SOAP_MESSAGE(fdebug, "soap_instantiate_ns2__Introscopy(%p, %d, %s, %s)\n", (void*)soap, n, type?type:"", arrayType?arrayType:""));
+	DBGLOG(TEST, SOAP_MESSAGE(fdebug, "soap_instantiate_tmk__Introscopy(%p, %d, %s, %s)\n", (void*)soap, n, type?type:"", arrayType?arrayType:""));
 	(void)type; (void)arrayType; /* appease -Wall -Werror */
-	ns2__Introscopy *p;
-	size_t k = sizeof(ns2__Introscopy);
-	struct soap_clist *cp = soap_link(soap, SOAP_TYPE_ns2__Introscopy, n, soap_fdelete);
+	tmk__Introscopy *p;
+	size_t k = sizeof(tmk__Introscopy);
+	struct soap_clist *cp = soap_link(soap, SOAP_TYPE_tmk__Introscopy, n, soap_fdelete);
 	if (!cp && soap && n != SOAP_NO_LINK_TO_DELETE)
 		return NULL;
 	if (n < 0)
-	{	p = SOAP_NEW(soap, ns2__Introscopy);
+	{	p = SOAP_NEW(soap, tmk__Introscopy);
 	}
 	else
-	{	p = SOAP_NEW_ARRAY(soap, ns2__Introscopy, n);
+	{	p = SOAP_NEW_ARRAY(soap, tmk__Introscopy, n);
 		k *= n;
 	}
-	DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Instantiated ns2__Introscopy location=%p n=%d\n", (void*)p, n));
+	DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Instantiated tmk__Introscopy location=%p n=%d\n", (void*)p, n));
 	if (size)
 		*size = k;
 	if (!p)
@@ -10566,84 +10566,84 @@ SOAP_FMAC1 ns2__Introscopy * SOAP_FMAC2 soap_instantiate_ns2__Introscopy(struct 
 	return p;
 }
 
-int ns2__Introscopy::soap_put(struct soap *soap, const char *tag, const  char *type) const
+int tmk__Introscopy::soap_put(struct soap *soap, const char *tag, const  char *type) const
 {
-	if (soap_out_ns2__Introscopy(soap, tag ? tag : "ns2:Introscopy", -2, this, type))
+	if (soap_out_tmk__Introscopy(soap, tag ? tag : "tmk:Introscopy", -2, this, type))
 		return soap->error;
 	return soap_putindependent(soap);
 }
 
-void *ns2__Introscopy::soap_get(struct soap *soap, const char *tag, const char *type)
+void *tmk__Introscopy::soap_get(struct soap *soap, const char *tag, const char *type)
 {
-	return soap_get_ns2__Introscopy(soap, this, tag, type);
+	return soap_get_tmk__Introscopy(soap, this, tag, type);
 }
 
-SOAP_FMAC3 ns2__Introscopy * SOAP_FMAC4 soap_get_ns2__Introscopy(struct soap *soap, ns2__Introscopy *p, const char *tag, const char *type)
+SOAP_FMAC3 tmk__Introscopy * SOAP_FMAC4 soap_get_tmk__Introscopy(struct soap *soap, tmk__Introscopy *p, const char *tag, const char *type)
 {
-	if ((p = soap_in_ns2__Introscopy(soap, tag, p, type)))
+	if ((p = soap_in_tmk__Introscopy(soap, tag, p, type)))
 		if (soap_getindependent(soap))
 			return NULL;
 	return p;
 }
 
-void ns2__GasAnalysis::soap_default(struct soap *soap)
+void tmk__GasAnalysis::soap_default(struct soap *soap)
 {
 	(void)soap; /* appease -Wall -Werror */
-	this->ns2__GasAnalysis::ConcentrationExceeded = NULL;
-	soap_default_bool(soap, &this->ns2__GasAnalysis::topic);
+	this->tmk__GasAnalysis::ConcentrationExceeded = NULL;
+	soap_default_bool(soap, &this->tmk__GasAnalysis::topic);
 }
 
-void ns2__GasAnalysis::soap_serialize(struct soap *soap) const
+void tmk__GasAnalysis::soap_serialize(struct soap *soap) const
 {
 	(void)soap; /* appease -Wall -Werror */
 #ifndef WITH_NOIDREF
-	soap_serialize_PointerTott__MessageDescription(soap, &this->ns2__GasAnalysis::ConcentrationExceeded);
+	soap_serialize_PointerTott__MessageDescription(soap, &this->tmk__GasAnalysis::ConcentrationExceeded);
 #endif
 }
 
-int ns2__GasAnalysis::soap_out(struct soap *soap, const char *tag, int id, const char *type) const
+int tmk__GasAnalysis::soap_out(struct soap *soap, const char *tag, int id, const char *type) const
 {
-	return soap_out_ns2__GasAnalysis(soap, tag, id, this, type);
+	return soap_out_tmk__GasAnalysis(soap, tag, id, this, type);
 }
 
-SOAP_FMAC3 int SOAP_FMAC4 soap_out_ns2__GasAnalysis(struct soap *soap, const char *tag, int id, const ns2__GasAnalysis *a, const char *type)
+SOAP_FMAC3 int SOAP_FMAC4 soap_out_tmk__GasAnalysis(struct soap *soap, const char *tag, int id, const tmk__GasAnalysis *a, const char *type)
 {
-	soap_set_attr(soap, "topic", soap_bool2s(soap, ((ns2__GasAnalysis*)a)->topic), 1);
+	soap_set_attr(soap, "topic", soap_bool2s(soap, ((tmk__GasAnalysis*)a)->topic), 1);
 	(void)soap; (void)tag; (void)id; (void)a; (void)type; /* appease -Wall -Werror */
-	if (soap_element_begin_out(soap, tag, soap_embedded_id(soap, id, a, SOAP_TYPE_ns2__GasAnalysis), type))
+	if (soap_element_begin_out(soap, tag, soap_embedded_id(soap, id, a, SOAP_TYPE_tmk__GasAnalysis), type))
 		return soap->error;
-	if (!a->ns2__GasAnalysis::ConcentrationExceeded)
-	{	if (soap_element_empty(soap, "ns2:ConcentrationExceeded"))
+	if (!a->tmk__GasAnalysis::ConcentrationExceeded)
+	{	if (soap_element_empty(soap, "tmk:ConcentrationExceeded"))
 			return soap->error;
 	}
-	else if (soap_out_PointerTott__MessageDescription(soap, "ns2:ConcentrationExceeded", -1, &a->ns2__GasAnalysis::ConcentrationExceeded, ""))
+	else if (soap_out_PointerTott__MessageDescription(soap, "tmk:ConcentrationExceeded", -1, &a->tmk__GasAnalysis::ConcentrationExceeded, ""))
 		return soap->error;
 	if (soap_out_xsd__anyType(soap, NULL, -1, static_cast<const soap_dom_element*>(a), NULL))
 		return soap->error;
 	return soap_element_end_out(soap, tag);
 }
 
-void *ns2__GasAnalysis::soap_in(struct soap *soap, const char *tag, const char *type)
+void *tmk__GasAnalysis::soap_in(struct soap *soap, const char *tag, const char *type)
 {
-	return soap_in_ns2__GasAnalysis(soap, tag, this, type);
+	return soap_in_tmk__GasAnalysis(soap, tag, this, type);
 }
 
-SOAP_FMAC3 ns2__GasAnalysis * SOAP_FMAC4 soap_in_ns2__GasAnalysis(struct soap *soap, const char *tag, ns2__GasAnalysis *a, const char *type)
+SOAP_FMAC3 tmk__GasAnalysis * SOAP_FMAC4 soap_in_tmk__GasAnalysis(struct soap *soap, const char *tag, tmk__GasAnalysis *a, const char *type)
 {
 	(void)type; /* appease -Wall -Werror */
 	if (soap_element_begin_in(soap, tag, 0, NULL))
 		return NULL;
-	a = (ns2__GasAnalysis*)soap_id_enter(soap, soap->id, a, SOAP_TYPE_ns2__GasAnalysis, sizeof(ns2__GasAnalysis), soap->type, soap->arrayType, soap_instantiate, soap_fbase);
+	a = (tmk__GasAnalysis*)soap_id_enter(soap, soap->id, a, SOAP_TYPE_tmk__GasAnalysis, sizeof(tmk__GasAnalysis), soap->type, soap->arrayType, soap_instantiate, soap_fbase);
 	if (!a)
 		return NULL;
-	if (soap->alloced && soap->alloced != SOAP_TYPE_ns2__GasAnalysis)
+	if (soap->alloced && soap->alloced != SOAP_TYPE_tmk__GasAnalysis)
 	{	soap_revert(soap);
 		*soap->id = '\0';
-		return (ns2__GasAnalysis *)a->soap_in(soap, tag, type);
+		return (tmk__GasAnalysis *)a->soap_in(soap, tag, type);
 	}
 	if (soap->alloced)
 		a->soap_default(soap);
-	if (soap_s2bool(soap, soap_attr_value(soap, "topic", 5, 1), &((ns2__GasAnalysis*)a)->topic))
+	if (soap_s2bool(soap, soap_attr_value(soap, "topic", 5, 1), &((tmk__GasAnalysis*)a)->topic))
 		return NULL;
 	size_t soap_flag_soap_dom_element = 1;
 	size_t soap_flag_ConcentrationExceeded1 = 1;
@@ -10652,7 +10652,7 @@ SOAP_FMAC3 ns2__GasAnalysis * SOAP_FMAC4 soap_in_ns2__GasAnalysis(struct soap *s
 		for (;;)
 		{	soap->error = SOAP_TAG_MISMATCH;
 			if (soap_flag_ConcentrationExceeded1 && soap->error == SOAP_TAG_MISMATCH)
-			{	if (soap_in_PointerTott__MessageDescription(soap, "ns2:ConcentrationExceeded", &a->ns2__GasAnalysis::ConcentrationExceeded, "tt:MessageDescription"))
+			{	if (soap_in_PointerTott__MessageDescription(soap, "tmk:ConcentrationExceeded", &a->tmk__GasAnalysis::ConcentrationExceeded, "tt:MessageDescription"))
 				{	soap_flag_ConcentrationExceeded1--;
 					continue;
 				}
@@ -10671,7 +10671,7 @@ SOAP_FMAC3 ns2__GasAnalysis * SOAP_FMAC4 soap_in_ns2__GasAnalysis(struct soap *s
 		}
 		if (soap_element_end_in(soap, tag))
 			return NULL;
-		if ((soap->mode & SOAP_XML_STRICT) && (!a->ns2__GasAnalysis::ConcentrationExceeded))
+		if ((soap->mode & SOAP_XML_STRICT) && (!a->tmk__GasAnalysis::ConcentrationExceeded))
 		{	soap->error = SOAP_OCCURS;
 			return NULL;
 		}
@@ -10681,30 +10681,30 @@ SOAP_FMAC3 ns2__GasAnalysis * SOAP_FMAC4 soap_in_ns2__GasAnalysis(struct soap *s
 		return NULL;
 	}
 	else
-	{	a = (ns2__GasAnalysis *)soap_id_forward(soap, soap->href, (void*)a, 0, SOAP_TYPE_ns2__GasAnalysis, SOAP_TYPE_ns2__GasAnalysis, sizeof(ns2__GasAnalysis), 0, soap_finsert, soap_fbase);
+	{	a = (tmk__GasAnalysis *)soap_id_forward(soap, soap->href, (void*)a, 0, SOAP_TYPE_tmk__GasAnalysis, SOAP_TYPE_tmk__GasAnalysis, sizeof(tmk__GasAnalysis), 0, soap_finsert, soap_fbase);
 		if (soap->body && soap_element_end_in(soap, tag))
 			return NULL;
 	}
 	return a;
 }
 
-SOAP_FMAC1 ns2__GasAnalysis * SOAP_FMAC2 soap_instantiate_ns2__GasAnalysis(struct soap *soap, int n, const char *type, const char *arrayType, size_t *size)
+SOAP_FMAC1 tmk__GasAnalysis * SOAP_FMAC2 soap_instantiate_tmk__GasAnalysis(struct soap *soap, int n, const char *type, const char *arrayType, size_t *size)
 {
-	DBGLOG(TEST, SOAP_MESSAGE(fdebug, "soap_instantiate_ns2__GasAnalysis(%p, %d, %s, %s)\n", (void*)soap, n, type?type:"", arrayType?arrayType:""));
+	DBGLOG(TEST, SOAP_MESSAGE(fdebug, "soap_instantiate_tmk__GasAnalysis(%p, %d, %s, %s)\n", (void*)soap, n, type?type:"", arrayType?arrayType:""));
 	(void)type; (void)arrayType; /* appease -Wall -Werror */
-	ns2__GasAnalysis *p;
-	size_t k = sizeof(ns2__GasAnalysis);
-	struct soap_clist *cp = soap_link(soap, SOAP_TYPE_ns2__GasAnalysis, n, soap_fdelete);
+	tmk__GasAnalysis *p;
+	size_t k = sizeof(tmk__GasAnalysis);
+	struct soap_clist *cp = soap_link(soap, SOAP_TYPE_tmk__GasAnalysis, n, soap_fdelete);
 	if (!cp && soap && n != SOAP_NO_LINK_TO_DELETE)
 		return NULL;
 	if (n < 0)
-	{	p = SOAP_NEW(soap, ns2__GasAnalysis);
+	{	p = SOAP_NEW(soap, tmk__GasAnalysis);
 	}
 	else
-	{	p = SOAP_NEW_ARRAY(soap, ns2__GasAnalysis, n);
+	{	p = SOAP_NEW_ARRAY(soap, tmk__GasAnalysis, n);
 		k *= n;
 	}
-	DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Instantiated ns2__GasAnalysis location=%p n=%d\n", (void*)p, n));
+	DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Instantiated tmk__GasAnalysis location=%p n=%d\n", (void*)p, n));
 	if (size)
 		*size = k;
 	if (!p)
@@ -10714,100 +10714,100 @@ SOAP_FMAC1 ns2__GasAnalysis * SOAP_FMAC2 soap_instantiate_ns2__GasAnalysis(struc
 	return p;
 }
 
-int ns2__GasAnalysis::soap_put(struct soap *soap, const char *tag, const  char *type) const
+int tmk__GasAnalysis::soap_put(struct soap *soap, const char *tag, const  char *type) const
 {
-	if (soap_out_ns2__GasAnalysis(soap, tag ? tag : "ns2:GasAnalysis", -2, this, type))
+	if (soap_out_tmk__GasAnalysis(soap, tag ? tag : "tmk:GasAnalysis", -2, this, type))
 		return soap->error;
 	return soap_putindependent(soap);
 }
 
-void *ns2__GasAnalysis::soap_get(struct soap *soap, const char *tag, const char *type)
+void *tmk__GasAnalysis::soap_get(struct soap *soap, const char *tag, const char *type)
 {
-	return soap_get_ns2__GasAnalysis(soap, this, tag, type);
+	return soap_get_tmk__GasAnalysis(soap, this, tag, type);
 }
 
-SOAP_FMAC3 ns2__GasAnalysis * SOAP_FMAC4 soap_get_ns2__GasAnalysis(struct soap *soap, ns2__GasAnalysis *p, const char *tag, const char *type)
+SOAP_FMAC3 tmk__GasAnalysis * SOAP_FMAC4 soap_get_tmk__GasAnalysis(struct soap *soap, tmk__GasAnalysis *p, const char *tag, const char *type)
 {
-	if ((p = soap_in_ns2__GasAnalysis(soap, tag, p, type)))
+	if ((p = soap_in_tmk__GasAnalysis(soap, tag, p, type)))
 		if (soap_getindependent(soap))
 			return NULL;
 	return p;
 }
 
-void ns2__FireAlarm::soap_default(struct soap *soap)
+void tmk__FireAlarm::soap_default(struct soap *soap)
 {
 	(void)soap; /* appease -Wall -Werror */
-	this->ns2__FireAlarm::Alarm = NULL;
-	this->ns2__FireAlarm::Fire = NULL;
-	this->ns2__FireAlarm::Fault = NULL;
-	soap_default_bool(soap, &this->ns2__FireAlarm::topic);
+	this->tmk__FireAlarm::Alarm = NULL;
+	this->tmk__FireAlarm::Fire = NULL;
+	this->tmk__FireAlarm::Fault = NULL;
+	soap_default_bool(soap, &this->tmk__FireAlarm::topic);
 }
 
-void ns2__FireAlarm::soap_serialize(struct soap *soap) const
+void tmk__FireAlarm::soap_serialize(struct soap *soap) const
 {
 	(void)soap; /* appease -Wall -Werror */
 #ifndef WITH_NOIDREF
-	soap_serialize_PointerTott__MessageDescription(soap, &this->ns2__FireAlarm::Alarm);
-	soap_serialize_PointerTott__MessageDescription(soap, &this->ns2__FireAlarm::Fire);
-	soap_serialize_PointerTott__MessageDescription(soap, &this->ns2__FireAlarm::Fault);
+	soap_serialize_PointerTott__MessageDescription(soap, &this->tmk__FireAlarm::Alarm);
+	soap_serialize_PointerTott__MessageDescription(soap, &this->tmk__FireAlarm::Fire);
+	soap_serialize_PointerTott__MessageDescription(soap, &this->tmk__FireAlarm::Fault);
 #endif
 }
 
-int ns2__FireAlarm::soap_out(struct soap *soap, const char *tag, int id, const char *type) const
+int tmk__FireAlarm::soap_out(struct soap *soap, const char *tag, int id, const char *type) const
 {
-	return soap_out_ns2__FireAlarm(soap, tag, id, this, type);
+	return soap_out_tmk__FireAlarm(soap, tag, id, this, type);
 }
 
-SOAP_FMAC3 int SOAP_FMAC4 soap_out_ns2__FireAlarm(struct soap *soap, const char *tag, int id, const ns2__FireAlarm *a, const char *type)
+SOAP_FMAC3 int SOAP_FMAC4 soap_out_tmk__FireAlarm(struct soap *soap, const char *tag, int id, const tmk__FireAlarm *a, const char *type)
 {
-	soap_set_attr(soap, "topic", soap_bool2s(soap, ((ns2__FireAlarm*)a)->topic), 1);
+	soap_set_attr(soap, "topic", soap_bool2s(soap, ((tmk__FireAlarm*)a)->topic), 1);
 	(void)soap; (void)tag; (void)id; (void)a; (void)type; /* appease -Wall -Werror */
-	if (soap_element_begin_out(soap, tag, soap_embedded_id(soap, id, a, SOAP_TYPE_ns2__FireAlarm), type))
+	if (soap_element_begin_out(soap, tag, soap_embedded_id(soap, id, a, SOAP_TYPE_tmk__FireAlarm), type))
 		return soap->error;
-	if (!a->ns2__FireAlarm::Alarm)
-	{	if (soap_element_empty(soap, "ns2:Alarm"))
+	if (!a->tmk__FireAlarm::Alarm)
+	{	if (soap_element_empty(soap, "tmk:Alarm"))
 			return soap->error;
 	}
-	else if (soap_out_PointerTott__MessageDescription(soap, "ns2:Alarm", -1, &a->ns2__FireAlarm::Alarm, ""))
+	else if (soap_out_PointerTott__MessageDescription(soap, "tmk:Alarm", -1, &a->tmk__FireAlarm::Alarm, ""))
 		return soap->error;
-	if (!a->ns2__FireAlarm::Fire)
-	{	if (soap_element_empty(soap, "ns2:Fire"))
+	if (!a->tmk__FireAlarm::Fire)
+	{	if (soap_element_empty(soap, "tmk:Fire"))
 			return soap->error;
 	}
-	else if (soap_out_PointerTott__MessageDescription(soap, "ns2:Fire", -1, &a->ns2__FireAlarm::Fire, ""))
+	else if (soap_out_PointerTott__MessageDescription(soap, "tmk:Fire", -1, &a->tmk__FireAlarm::Fire, ""))
 		return soap->error;
-	if (!a->ns2__FireAlarm::Fault)
-	{	if (soap_element_empty(soap, "ns2:Fault"))
+	if (!a->tmk__FireAlarm::Fault)
+	{	if (soap_element_empty(soap, "tmk:Fault"))
 			return soap->error;
 	}
-	else if (soap_out_PointerTott__MessageDescription(soap, "ns2:Fault", -1, &a->ns2__FireAlarm::Fault, ""))
+	else if (soap_out_PointerTott__MessageDescription(soap, "tmk:Fault", -1, &a->tmk__FireAlarm::Fault, ""))
 		return soap->error;
 	if (soap_out_xsd__anyType(soap, NULL, -1, static_cast<const soap_dom_element*>(a), NULL))
 		return soap->error;
 	return soap_element_end_out(soap, tag);
 }
 
-void *ns2__FireAlarm::soap_in(struct soap *soap, const char *tag, const char *type)
+void *tmk__FireAlarm::soap_in(struct soap *soap, const char *tag, const char *type)
 {
-	return soap_in_ns2__FireAlarm(soap, tag, this, type);
+	return soap_in_tmk__FireAlarm(soap, tag, this, type);
 }
 
-SOAP_FMAC3 ns2__FireAlarm * SOAP_FMAC4 soap_in_ns2__FireAlarm(struct soap *soap, const char *tag, ns2__FireAlarm *a, const char *type)
+SOAP_FMAC3 tmk__FireAlarm * SOAP_FMAC4 soap_in_tmk__FireAlarm(struct soap *soap, const char *tag, tmk__FireAlarm *a, const char *type)
 {
 	(void)type; /* appease -Wall -Werror */
 	if (soap_element_begin_in(soap, tag, 0, NULL))
 		return NULL;
-	a = (ns2__FireAlarm*)soap_id_enter(soap, soap->id, a, SOAP_TYPE_ns2__FireAlarm, sizeof(ns2__FireAlarm), soap->type, soap->arrayType, soap_instantiate, soap_fbase);
+	a = (tmk__FireAlarm*)soap_id_enter(soap, soap->id, a, SOAP_TYPE_tmk__FireAlarm, sizeof(tmk__FireAlarm), soap->type, soap->arrayType, soap_instantiate, soap_fbase);
 	if (!a)
 		return NULL;
-	if (soap->alloced && soap->alloced != SOAP_TYPE_ns2__FireAlarm)
+	if (soap->alloced && soap->alloced != SOAP_TYPE_tmk__FireAlarm)
 	{	soap_revert(soap);
 		*soap->id = '\0';
-		return (ns2__FireAlarm *)a->soap_in(soap, tag, type);
+		return (tmk__FireAlarm *)a->soap_in(soap, tag, type);
 	}
 	if (soap->alloced)
 		a->soap_default(soap);
-	if (soap_s2bool(soap, soap_attr_value(soap, "topic", 5, 1), &((ns2__FireAlarm*)a)->topic))
+	if (soap_s2bool(soap, soap_attr_value(soap, "topic", 5, 1), &((tmk__FireAlarm*)a)->topic))
 		return NULL;
 	size_t soap_flag_soap_dom_element = 1;
 	size_t soap_flag_Alarm1 = 1;
@@ -10818,19 +10818,19 @@ SOAP_FMAC3 ns2__FireAlarm * SOAP_FMAC4 soap_in_ns2__FireAlarm(struct soap *soap,
 		for (;;)
 		{	soap->error = SOAP_TAG_MISMATCH;
 			if (soap_flag_Alarm1 && soap->error == SOAP_TAG_MISMATCH)
-			{	if (soap_in_PointerTott__MessageDescription(soap, "ns2:Alarm", &a->ns2__FireAlarm::Alarm, "tt:MessageDescription"))
+			{	if (soap_in_PointerTott__MessageDescription(soap, "tmk:Alarm", &a->tmk__FireAlarm::Alarm, "tt:MessageDescription"))
 				{	soap_flag_Alarm1--;
 					continue;
 				}
 			}
 			if (soap_flag_Fire1 && soap->error == SOAP_TAG_MISMATCH)
-			{	if (soap_in_PointerTott__MessageDescription(soap, "ns2:Fire", &a->ns2__FireAlarm::Fire, "tt:MessageDescription"))
+			{	if (soap_in_PointerTott__MessageDescription(soap, "tmk:Fire", &a->tmk__FireAlarm::Fire, "tt:MessageDescription"))
 				{	soap_flag_Fire1--;
 					continue;
 				}
 			}
 			if (soap_flag_Fault1 && soap->error == SOAP_TAG_MISMATCH)
-			{	if (soap_in_PointerTott__MessageDescription(soap, "ns2:Fault", &a->ns2__FireAlarm::Fault, "tt:MessageDescription"))
+			{	if (soap_in_PointerTott__MessageDescription(soap, "tmk:Fault", &a->tmk__FireAlarm::Fault, "tt:MessageDescription"))
 				{	soap_flag_Fault1--;
 					continue;
 				}
@@ -10849,7 +10849,7 @@ SOAP_FMAC3 ns2__FireAlarm * SOAP_FMAC4 soap_in_ns2__FireAlarm(struct soap *soap,
 		}
 		if (soap_element_end_in(soap, tag))
 			return NULL;
-		if ((soap->mode & SOAP_XML_STRICT) && (!a->ns2__FireAlarm::Alarm || !a->ns2__FireAlarm::Fire || !a->ns2__FireAlarm::Fault))
+		if ((soap->mode & SOAP_XML_STRICT) && (!a->tmk__FireAlarm::Alarm || !a->tmk__FireAlarm::Fire || !a->tmk__FireAlarm::Fault))
 		{	soap->error = SOAP_OCCURS;
 			return NULL;
 		}
@@ -10859,30 +10859,30 @@ SOAP_FMAC3 ns2__FireAlarm * SOAP_FMAC4 soap_in_ns2__FireAlarm(struct soap *soap,
 		return NULL;
 	}
 	else
-	{	a = (ns2__FireAlarm *)soap_id_forward(soap, soap->href, (void*)a, 0, SOAP_TYPE_ns2__FireAlarm, SOAP_TYPE_ns2__FireAlarm, sizeof(ns2__FireAlarm), 0, soap_finsert, soap_fbase);
+	{	a = (tmk__FireAlarm *)soap_id_forward(soap, soap->href, (void*)a, 0, SOAP_TYPE_tmk__FireAlarm, SOAP_TYPE_tmk__FireAlarm, sizeof(tmk__FireAlarm), 0, soap_finsert, soap_fbase);
 		if (soap->body && soap_element_end_in(soap, tag))
 			return NULL;
 	}
 	return a;
 }
 
-SOAP_FMAC1 ns2__FireAlarm * SOAP_FMAC2 soap_instantiate_ns2__FireAlarm(struct soap *soap, int n, const char *type, const char *arrayType, size_t *size)
+SOAP_FMAC1 tmk__FireAlarm * SOAP_FMAC2 soap_instantiate_tmk__FireAlarm(struct soap *soap, int n, const char *type, const char *arrayType, size_t *size)
 {
-	DBGLOG(TEST, SOAP_MESSAGE(fdebug, "soap_instantiate_ns2__FireAlarm(%p, %d, %s, %s)\n", (void*)soap, n, type?type:"", arrayType?arrayType:""));
+	DBGLOG(TEST, SOAP_MESSAGE(fdebug, "soap_instantiate_tmk__FireAlarm(%p, %d, %s, %s)\n", (void*)soap, n, type?type:"", arrayType?arrayType:""));
 	(void)type; (void)arrayType; /* appease -Wall -Werror */
-	ns2__FireAlarm *p;
-	size_t k = sizeof(ns2__FireAlarm);
-	struct soap_clist *cp = soap_link(soap, SOAP_TYPE_ns2__FireAlarm, n, soap_fdelete);
+	tmk__FireAlarm *p;
+	size_t k = sizeof(tmk__FireAlarm);
+	struct soap_clist *cp = soap_link(soap, SOAP_TYPE_tmk__FireAlarm, n, soap_fdelete);
 	if (!cp && soap && n != SOAP_NO_LINK_TO_DELETE)
 		return NULL;
 	if (n < 0)
-	{	p = SOAP_NEW(soap, ns2__FireAlarm);
+	{	p = SOAP_NEW(soap, tmk__FireAlarm);
 	}
 	else
-	{	p = SOAP_NEW_ARRAY(soap, ns2__FireAlarm, n);
+	{	p = SOAP_NEW_ARRAY(soap, tmk__FireAlarm, n);
 		k *= n;
 	}
-	DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Instantiated ns2__FireAlarm location=%p n=%d\n", (void*)p, n));
+	DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Instantiated tmk__FireAlarm location=%p n=%d\n", (void*)p, n));
 	if (size)
 		*size = k;
 	if (!p)
@@ -10892,92 +10892,92 @@ SOAP_FMAC1 ns2__FireAlarm * SOAP_FMAC2 soap_instantiate_ns2__FireAlarm(struct so
 	return p;
 }
 
-int ns2__FireAlarm::soap_put(struct soap *soap, const char *tag, const  char *type) const
+int tmk__FireAlarm::soap_put(struct soap *soap, const char *tag, const  char *type) const
 {
-	if (soap_out_ns2__FireAlarm(soap, tag ? tag : "ns2:FireAlarm", -2, this, type))
+	if (soap_out_tmk__FireAlarm(soap, tag ? tag : "tmk:FireAlarm", -2, this, type))
 		return soap->error;
 	return soap_putindependent(soap);
 }
 
-void *ns2__FireAlarm::soap_get(struct soap *soap, const char *tag, const char *type)
+void *tmk__FireAlarm::soap_get(struct soap *soap, const char *tag, const char *type)
 {
-	return soap_get_ns2__FireAlarm(soap, this, tag, type);
+	return soap_get_tmk__FireAlarm(soap, this, tag, type);
 }
 
-SOAP_FMAC3 ns2__FireAlarm * SOAP_FMAC4 soap_get_ns2__FireAlarm(struct soap *soap, ns2__FireAlarm *p, const char *tag, const char *type)
+SOAP_FMAC3 tmk__FireAlarm * SOAP_FMAC4 soap_get_tmk__FireAlarm(struct soap *soap, tmk__FireAlarm *p, const char *tag, const char *type)
 {
-	if ((p = soap_in_ns2__FireAlarm(soap, tag, p, type)))
+	if ((p = soap_in_tmk__FireAlarm(soap, tag, p, type)))
 		if (soap_getindependent(soap))
 			return NULL;
 	return p;
 }
 
-void ns2__AccessControl::soap_default(struct soap *soap)
+void tmk__AccessControl::soap_default(struct soap *soap)
 {
 	(void)soap; /* appease -Wall -Werror */
-	this->ns2__AccessControl::Accident = NULL;
-	this->ns2__AccessControl::Fault = NULL;
-	soap_default_bool(soap, &this->ns2__AccessControl::topic);
+	this->tmk__AccessControl::Accident = NULL;
+	this->tmk__AccessControl::Fault = NULL;
+	soap_default_bool(soap, &this->tmk__AccessControl::topic);
 }
 
-void ns2__AccessControl::soap_serialize(struct soap *soap) const
+void tmk__AccessControl::soap_serialize(struct soap *soap) const
 {
 	(void)soap; /* appease -Wall -Werror */
 #ifndef WITH_NOIDREF
-	soap_serialize_PointerTott__MessageDescription(soap, &this->ns2__AccessControl::Accident);
-	soap_serialize_PointerTott__MessageDescription(soap, &this->ns2__AccessControl::Fault);
+	soap_serialize_PointerTott__MessageDescription(soap, &this->tmk__AccessControl::Accident);
+	soap_serialize_PointerTott__MessageDescription(soap, &this->tmk__AccessControl::Fault);
 #endif
 }
 
-int ns2__AccessControl::soap_out(struct soap *soap, const char *tag, int id, const char *type) const
+int tmk__AccessControl::soap_out(struct soap *soap, const char *tag, int id, const char *type) const
 {
-	return soap_out_ns2__AccessControl(soap, tag, id, this, type);
+	return soap_out_tmk__AccessControl(soap, tag, id, this, type);
 }
 
-SOAP_FMAC3 int SOAP_FMAC4 soap_out_ns2__AccessControl(struct soap *soap, const char *tag, int id, const ns2__AccessControl *a, const char *type)
+SOAP_FMAC3 int SOAP_FMAC4 soap_out_tmk__AccessControl(struct soap *soap, const char *tag, int id, const tmk__AccessControl *a, const char *type)
 {
-	soap_set_attr(soap, "topic", soap_bool2s(soap, ((ns2__AccessControl*)a)->topic), 1);
+	soap_set_attr(soap, "topic", soap_bool2s(soap, ((tmk__AccessControl*)a)->topic), 1);
 	(void)soap; (void)tag; (void)id; (void)a; (void)type; /* appease -Wall -Werror */
-	if (soap_element_begin_out(soap, tag, soap_embedded_id(soap, id, a, SOAP_TYPE_ns2__AccessControl), type))
+	if (soap_element_begin_out(soap, tag, soap_embedded_id(soap, id, a, SOAP_TYPE_tmk__AccessControl), type))
 		return soap->error;
-	if (!a->ns2__AccessControl::Accident)
-	{	if (soap_element_empty(soap, "ns2:Accident"))
+	if (!a->tmk__AccessControl::Accident)
+	{	if (soap_element_empty(soap, "tmk:Accident"))
 			return soap->error;
 	}
-	else if (soap_out_PointerTott__MessageDescription(soap, "ns2:Accident", -1, &a->ns2__AccessControl::Accident, ""))
+	else if (soap_out_PointerTott__MessageDescription(soap, "tmk:Accident", -1, &a->tmk__AccessControl::Accident, ""))
 		return soap->error;
-	if (!a->ns2__AccessControl::Fault)
-	{	if (soap_element_empty(soap, "ns2:Fault"))
+	if (!a->tmk__AccessControl::Fault)
+	{	if (soap_element_empty(soap, "tmk:Fault"))
 			return soap->error;
 	}
-	else if (soap_out_PointerTott__MessageDescription(soap, "ns2:Fault", -1, &a->ns2__AccessControl::Fault, ""))
+	else if (soap_out_PointerTott__MessageDescription(soap, "tmk:Fault", -1, &a->tmk__AccessControl::Fault, ""))
 		return soap->error;
 	if (soap_out_xsd__anyType(soap, NULL, -1, static_cast<const soap_dom_element*>(a), NULL))
 		return soap->error;
 	return soap_element_end_out(soap, tag);
 }
 
-void *ns2__AccessControl::soap_in(struct soap *soap, const char *tag, const char *type)
+void *tmk__AccessControl::soap_in(struct soap *soap, const char *tag, const char *type)
 {
-	return soap_in_ns2__AccessControl(soap, tag, this, type);
+	return soap_in_tmk__AccessControl(soap, tag, this, type);
 }
 
-SOAP_FMAC3 ns2__AccessControl * SOAP_FMAC4 soap_in_ns2__AccessControl(struct soap *soap, const char *tag, ns2__AccessControl *a, const char *type)
+SOAP_FMAC3 tmk__AccessControl * SOAP_FMAC4 soap_in_tmk__AccessControl(struct soap *soap, const char *tag, tmk__AccessControl *a, const char *type)
 {
 	(void)type; /* appease -Wall -Werror */
 	if (soap_element_begin_in(soap, tag, 0, NULL))
 		return NULL;
-	a = (ns2__AccessControl*)soap_id_enter(soap, soap->id, a, SOAP_TYPE_ns2__AccessControl, sizeof(ns2__AccessControl), soap->type, soap->arrayType, soap_instantiate, soap_fbase);
+	a = (tmk__AccessControl*)soap_id_enter(soap, soap->id, a, SOAP_TYPE_tmk__AccessControl, sizeof(tmk__AccessControl), soap->type, soap->arrayType, soap_instantiate, soap_fbase);
 	if (!a)
 		return NULL;
-	if (soap->alloced && soap->alloced != SOAP_TYPE_ns2__AccessControl)
+	if (soap->alloced && soap->alloced != SOAP_TYPE_tmk__AccessControl)
 	{	soap_revert(soap);
 		*soap->id = '\0';
-		return (ns2__AccessControl *)a->soap_in(soap, tag, type);
+		return (tmk__AccessControl *)a->soap_in(soap, tag, type);
 	}
 	if (soap->alloced)
 		a->soap_default(soap);
-	if (soap_s2bool(soap, soap_attr_value(soap, "topic", 5, 1), &((ns2__AccessControl*)a)->topic))
+	if (soap_s2bool(soap, soap_attr_value(soap, "topic", 5, 1), &((tmk__AccessControl*)a)->topic))
 		return NULL;
 	size_t soap_flag_soap_dom_element = 1;
 	size_t soap_flag_Accident1 = 1;
@@ -10987,13 +10987,13 @@ SOAP_FMAC3 ns2__AccessControl * SOAP_FMAC4 soap_in_ns2__AccessControl(struct soa
 		for (;;)
 		{	soap->error = SOAP_TAG_MISMATCH;
 			if (soap_flag_Accident1 && soap->error == SOAP_TAG_MISMATCH)
-			{	if (soap_in_PointerTott__MessageDescription(soap, "ns2:Accident", &a->ns2__AccessControl::Accident, "tt:MessageDescription"))
+			{	if (soap_in_PointerTott__MessageDescription(soap, "tmk:Accident", &a->tmk__AccessControl::Accident, "tt:MessageDescription"))
 				{	soap_flag_Accident1--;
 					continue;
 				}
 			}
 			if (soap_flag_Fault1 && soap->error == SOAP_TAG_MISMATCH)
-			{	if (soap_in_PointerTott__MessageDescription(soap, "ns2:Fault", &a->ns2__AccessControl::Fault, "tt:MessageDescription"))
+			{	if (soap_in_PointerTott__MessageDescription(soap, "tmk:Fault", &a->tmk__AccessControl::Fault, "tt:MessageDescription"))
 				{	soap_flag_Fault1--;
 					continue;
 				}
@@ -11012,7 +11012,7 @@ SOAP_FMAC3 ns2__AccessControl * SOAP_FMAC4 soap_in_ns2__AccessControl(struct soa
 		}
 		if (soap_element_end_in(soap, tag))
 			return NULL;
-		if ((soap->mode & SOAP_XML_STRICT) && (!a->ns2__AccessControl::Accident || !a->ns2__AccessControl::Fault))
+		if ((soap->mode & SOAP_XML_STRICT) && (!a->tmk__AccessControl::Accident || !a->tmk__AccessControl::Fault))
 		{	soap->error = SOAP_OCCURS;
 			return NULL;
 		}
@@ -11022,30 +11022,30 @@ SOAP_FMAC3 ns2__AccessControl * SOAP_FMAC4 soap_in_ns2__AccessControl(struct soa
 		return NULL;
 	}
 	else
-	{	a = (ns2__AccessControl *)soap_id_forward(soap, soap->href, (void*)a, 0, SOAP_TYPE_ns2__AccessControl, SOAP_TYPE_ns2__AccessControl, sizeof(ns2__AccessControl), 0, soap_finsert, soap_fbase);
+	{	a = (tmk__AccessControl *)soap_id_forward(soap, soap->href, (void*)a, 0, SOAP_TYPE_tmk__AccessControl, SOAP_TYPE_tmk__AccessControl, sizeof(tmk__AccessControl), 0, soap_finsert, soap_fbase);
 		if (soap->body && soap_element_end_in(soap, tag))
 			return NULL;
 	}
 	return a;
 }
 
-SOAP_FMAC1 ns2__AccessControl * SOAP_FMAC2 soap_instantiate_ns2__AccessControl(struct soap *soap, int n, const char *type, const char *arrayType, size_t *size)
+SOAP_FMAC1 tmk__AccessControl * SOAP_FMAC2 soap_instantiate_tmk__AccessControl(struct soap *soap, int n, const char *type, const char *arrayType, size_t *size)
 {
-	DBGLOG(TEST, SOAP_MESSAGE(fdebug, "soap_instantiate_ns2__AccessControl(%p, %d, %s, %s)\n", (void*)soap, n, type?type:"", arrayType?arrayType:""));
+	DBGLOG(TEST, SOAP_MESSAGE(fdebug, "soap_instantiate_tmk__AccessControl(%p, %d, %s, %s)\n", (void*)soap, n, type?type:"", arrayType?arrayType:""));
 	(void)type; (void)arrayType; /* appease -Wall -Werror */
-	ns2__AccessControl *p;
-	size_t k = sizeof(ns2__AccessControl);
-	struct soap_clist *cp = soap_link(soap, SOAP_TYPE_ns2__AccessControl, n, soap_fdelete);
+	tmk__AccessControl *p;
+	size_t k = sizeof(tmk__AccessControl);
+	struct soap_clist *cp = soap_link(soap, SOAP_TYPE_tmk__AccessControl, n, soap_fdelete);
 	if (!cp && soap && n != SOAP_NO_LINK_TO_DELETE)
 		return NULL;
 	if (n < 0)
-	{	p = SOAP_NEW(soap, ns2__AccessControl);
+	{	p = SOAP_NEW(soap, tmk__AccessControl);
 	}
 	else
-	{	p = SOAP_NEW_ARRAY(soap, ns2__AccessControl, n);
+	{	p = SOAP_NEW_ARRAY(soap, tmk__AccessControl, n);
 		k *= n;
 	}
-	DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Instantiated ns2__AccessControl location=%p n=%d\n", (void*)p, n));
+	DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Instantiated tmk__AccessControl location=%p n=%d\n", (void*)p, n));
 	if (size)
 		*size = k;
 	if (!p)
@@ -11055,21 +11055,21 @@ SOAP_FMAC1 ns2__AccessControl * SOAP_FMAC2 soap_instantiate_ns2__AccessControl(s
 	return p;
 }
 
-int ns2__AccessControl::soap_put(struct soap *soap, const char *tag, const  char *type) const
+int tmk__AccessControl::soap_put(struct soap *soap, const char *tag, const  char *type) const
 {
-	if (soap_out_ns2__AccessControl(soap, tag ? tag : "ns2:AccessControl", -2, this, type))
+	if (soap_out_tmk__AccessControl(soap, tag ? tag : "tmk:AccessControl", -2, this, type))
 		return soap->error;
 	return soap_putindependent(soap);
 }
 
-void *ns2__AccessControl::soap_get(struct soap *soap, const char *tag, const char *type)
+void *tmk__AccessControl::soap_get(struct soap *soap, const char *tag, const char *type)
 {
-	return soap_get_ns2__AccessControl(soap, this, tag, type);
+	return soap_get_tmk__AccessControl(soap, this, tag, type);
 }
 
-SOAP_FMAC3 ns2__AccessControl * SOAP_FMAC4 soap_get_ns2__AccessControl(struct soap *soap, ns2__AccessControl *p, const char *tag, const char *type)
+SOAP_FMAC3 tmk__AccessControl * SOAP_FMAC4 soap_get_tmk__AccessControl(struct soap *soap, tmk__AccessControl *p, const char *tag, const char *type)
 {
-	if ((p = soap_in_ns2__AccessControl(soap, tag, p, type)))
+	if ((p = soap_in_tmk__AccessControl(soap, tag, p, type)))
 		if (soap_getindependent(soap))
 			return NULL;
 	return p;

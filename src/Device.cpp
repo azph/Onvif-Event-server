@@ -4,8 +4,7 @@
 #include <map>
 #include <ctime>
 
-#include <gSoap/httpda.h>
-#include <gSoap/wsseapi.h>
+#include "AuthorisationHolder.h"
 
 namespace Onvif
 {
@@ -13,32 +12,6 @@ namespace Onvif
 Device::Device(struct soap *_soap):
 	DeviceBindingService(_soap)
 {
-}
-
-bool Device::verifyPasswordDA()
-{
-	static const std::string authrealm = "WEB SERVER";
-	static const std::string passwd = "0eydozFnrrsF";
-	static const std::string userid = "admin";
-
-	if (soap->authrealm && soap->userid && authrealm == soap->authrealm && userid == soap->userid
-		&& http_da_verify_post(soap, passwd.c_str()) == SOAP_OK)
-	{
-		return true;
-	}
-
-	if (soap->header && soap->header->wsse__Security)
-	{
-		const char *username = soap_wsse_get_Username(soap);
-
-		if (username && username == userid && soap_wsse_verify_Password(soap, passwd.c_str()) == SOAP_OK)
-		{
-			return true;
-		}
-	}
-
-	soap->authrealm = authrealm.c_str();
-	return false;
 }
 
 tt__DateTime* toDateTime(struct soap* soap, std::tm* time)
@@ -88,7 +61,7 @@ int Device::GetSystemDateAndTime(_tds__GetSystemDateAndTime *tds__GetSystemDateA
 
 int Device::GetDeviceInformation(_tds__GetDeviceInformation *tds__GetDeviceInformation, _tds__GetDeviceInformationResponse &tds__GetDeviceInformationResponse)
 {
-	if (!verifyPasswordDA())
+	if (!AuthorisationHolder::getInstance().verifyPassword(soap))
 	{
 		return 401;
 	}
@@ -103,7 +76,7 @@ int Device::GetDeviceInformation(_tds__GetDeviceInformation *tds__GetDeviceInfor
 
 int Device::GetServices(_tds__GetServices *tds__GetServices, _tds__GetServicesResponse &tds__GetServicesResponse)
 {
-	if (!verifyPasswordDA())
+	if (!AuthorisationHolder::getInstance().verifyPassword(soap))
 	{
 		return 401;
 	}
@@ -125,7 +98,7 @@ int Device::GetServices(_tds__GetServices *tds__GetServices, _tds__GetServicesRe
 
 int Device::GetScopes(_tds__GetScopes *tds__GetScopes, _tds__GetScopesResponse &tds__GetScopesResponse)
 {
-	if (!verifyPasswordDA())
+	if (!AuthorisationHolder::getInstance().verifyPassword(soap))
 	{
 		return 401;
 	}
@@ -153,7 +126,7 @@ int Device::GetScopes(_tds__GetScopes *tds__GetScopes, _tds__GetScopesResponse &
 
 int Device::GetCapabilities(_tds__GetCapabilities *tds__GetCapabilities, _tds__GetCapabilitiesResponse &tds__GetCapabilitiesResponse)
 {
-	if (!verifyPasswordDA())
+	if (!AuthorisationHolder::getInstance().verifyPassword(soap))
 	{
 		return 401;
 	}
@@ -188,7 +161,7 @@ int Device::GetCapabilities(_tds__GetCapabilities *tds__GetCapabilities, _tds__G
 
 int Device::GetNetworkInterfaces(_tds__GetNetworkInterfaces *tds__GetNetworkInterfaces, _tds__GetNetworkInterfacesResponse &tds__GetNetworkInterfacesResponse)
 {
-	if (!verifyPasswordDA())
+	if (!AuthorisationHolder::getInstance().verifyPassword(soap))
 	{
 		return 401;
 	}
@@ -221,7 +194,7 @@ int Device::GetNetworkInterfaces(_tds__GetNetworkInterfaces *tds__GetNetworkInte
 
 int Device::GetZeroConfiguration(_tds__GetZeroConfiguration *tds__GetZeroConfiguration, _tds__GetZeroConfigurationResponse &tds__GetZeroConfigurationResponse)
 {
-	if (!verifyPasswordDA())
+	if (!AuthorisationHolder::getInstance().verifyPassword(soap))
 	{
 		return 401;
 	}

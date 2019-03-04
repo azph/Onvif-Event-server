@@ -11,8 +11,6 @@ class Event : public EventBindingService
 public:
 	Event(struct soap *_soap);
 
-	bool verifyPasswordDA();
-
 	int CreatePullPointSubscription(_tev__CreatePullPointSubscription *tev__CreatePullPointSubscription, _tev__CreatePullPointSubscriptionResponse &tev__CreatePullPointSubscriptionResponse) override;
 	int GetEventProperties(_tev__GetEventProperties *tev__GetEventProperties, _tev__GetEventPropertiesResponse &tev__GetEventPropertiesResponse) override;
 };

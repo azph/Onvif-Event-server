@@ -18,7 +18,7 @@ A commercial use license is available from Genivia Inc., contact@genivia.com
 
 #include "soapH.h"
 
-SOAP_SOURCE_STAMP("@(#) soapC_nnn.cpp ver 2.8.78 2019-02-01 23:56:04 GMT")
+SOAP_SOURCE_STAMP("@(#) soapC_nnn.cpp ver 2.8.78 2019-03-03 12:56:03 GMT")
 
 
 #ifndef WITH_NOGLOBAL
@@ -639,24 +639,24 @@ SOAP_FMAC3 void * SOAP_FMAC4 soap_getelement(struct soap *soap, const char *tag,
 		return soap_in_tt__IntAttrList(soap, tag, NULL, "tt:IntAttrList");
 	case SOAP_TYPE_tds__EAPMethodTypes:
 		return soap_in_tds__EAPMethodTypes(soap, tag, NULL, "tds:EAPMethodTypes");
-	case SOAP_TYPE_ns2__VideoSurveillanceSystem:
-		return soap_in_ns2__VideoSurveillanceSystem(soap, tag, NULL, "ns2:VideoSurveillanceSystem");
-	case SOAP_TYPE_ns2__MetalDetector:
-		return soap_in_ns2__MetalDetector(soap, tag, NULL, "ns2:MetalDetector");
-	case SOAP_TYPE_ns2__SteamDetector:
-		return soap_in_ns2__SteamDetector(soap, tag, NULL, "ns2:SteamDetector");
-	case SOAP_TYPE_ns2__RadiationMonitoring:
-		return soap_in_ns2__RadiationMonitoring(soap, tag, NULL, "ns2:RadiationMonitoring");
-	case SOAP_TYPE_ns2__NeutronProbing:
-		return soap_in_ns2__NeutronProbing(soap, tag, NULL, "ns2:NeutronProbing");
-	case SOAP_TYPE_ns2__Introscopy:
-		return soap_in_ns2__Introscopy(soap, tag, NULL, "ns2:Introscopy");
-	case SOAP_TYPE_ns2__GasAnalysis:
-		return soap_in_ns2__GasAnalysis(soap, tag, NULL, "ns2:GasAnalysis");
-	case SOAP_TYPE_ns2__FireAlarm:
-		return soap_in_ns2__FireAlarm(soap, tag, NULL, "ns2:FireAlarm");
-	case SOAP_TYPE_ns2__AccessControl:
-		return soap_in_ns2__AccessControl(soap, tag, NULL, "ns2:AccessControl");
+	case SOAP_TYPE_tmk__VideoSurveillanceSystem:
+		return soap_in_tmk__VideoSurveillanceSystem(soap, tag, NULL, "tmk:VideoSurveillanceSystem");
+	case SOAP_TYPE_tmk__MetalDetector:
+		return soap_in_tmk__MetalDetector(soap, tag, NULL, "tmk:MetalDetector");
+	case SOAP_TYPE_tmk__SteamDetector:
+		return soap_in_tmk__SteamDetector(soap, tag, NULL, "tmk:SteamDetector");
+	case SOAP_TYPE_tmk__RadiationMonitoring:
+		return soap_in_tmk__RadiationMonitoring(soap, tag, NULL, "tmk:RadiationMonitoring");
+	case SOAP_TYPE_tmk__NeutronProbing:
+		return soap_in_tmk__NeutronProbing(soap, tag, NULL, "tmk:NeutronProbing");
+	case SOAP_TYPE_tmk__Introscopy:
+		return soap_in_tmk__Introscopy(soap, tag, NULL, "tmk:Introscopy");
+	case SOAP_TYPE_tmk__GasAnalysis:
+		return soap_in_tmk__GasAnalysis(soap, tag, NULL, "tmk:GasAnalysis");
+	case SOAP_TYPE_tmk__FireAlarm:
+		return soap_in_tmk__FireAlarm(soap, tag, NULL, "tmk:FireAlarm");
+	case SOAP_TYPE_tmk__AccessControl:
+		return soap_in_tmk__AccessControl(soap, tag, NULL, "tmk:AccessControl");
 	case SOAP_TYPE_wsa__AttributedURI:
 		return soap_in_wsa__AttributedURI(soap, tag, NULL, "wsa:AttributedURI");
 	case SOAP_TYPE_wsa__AttributedQName:
@@ -3926,41 +3926,41 @@ SOAP_FMAC3 void * SOAP_FMAC4 soap_getelement(struct soap *soap, const char *tag,
 		{	*type = SOAP_TYPE_tds__EAPMethodTypes;
 			return soap_in_tds__EAPMethodTypes(soap, tag, NULL, NULL);
 		}
-		if (!soap_match_tag(soap, t, "ns2:VideoSurveillanceSystem"))
-		{	*type = SOAP_TYPE_ns2__VideoSurveillanceSystem;
-			return soap_in_ns2__VideoSurveillanceSystem(soap, tag, NULL, NULL);
+		if (!soap_match_tag(soap, t, "tmk:VideoSurveillanceSystem"))
+		{	*type = SOAP_TYPE_tmk__VideoSurveillanceSystem;
+			return soap_in_tmk__VideoSurveillanceSystem(soap, tag, NULL, NULL);
 		}
-		if (!soap_match_tag(soap, t, "ns2:MetalDetector"))
-		{	*type = SOAP_TYPE_ns2__MetalDetector;
-			return soap_in_ns2__MetalDetector(soap, tag, NULL, NULL);
+		if (!soap_match_tag(soap, t, "tmk:MetalDetector"))
+		{	*type = SOAP_TYPE_tmk__MetalDetector;
+			return soap_in_tmk__MetalDetector(soap, tag, NULL, NULL);
 		}
-		if (!soap_match_tag(soap, t, "ns2:SteamDetector"))
-		{	*type = SOAP_TYPE_ns2__SteamDetector;
-			return soap_in_ns2__SteamDetector(soap, tag, NULL, NULL);
+		if (!soap_match_tag(soap, t, "tmk:SteamDetector"))
+		{	*type = SOAP_TYPE_tmk__SteamDetector;
+			return soap_in_tmk__SteamDetector(soap, tag, NULL, NULL);
 		}
-		if (!soap_match_tag(soap, t, "ns2:RadiationMonitoring"))
-		{	*type = SOAP_TYPE_ns2__RadiationMonitoring;
-			return soap_in_ns2__RadiationMonitoring(soap, tag, NULL, NULL);
+		if (!soap_match_tag(soap, t, "tmk:RadiationMonitoring"))
+		{	*type = SOAP_TYPE_tmk__RadiationMonitoring;
+			return soap_in_tmk__RadiationMonitoring(soap, tag, NULL, NULL);
 		}
-		if (!soap_match_tag(soap, t, "ns2:NeutronProbing"))
-		{	*type = SOAP_TYPE_ns2__NeutronProbing;
-			return soap_in_ns2__NeutronProbing(soap, tag, NULL, NULL);
+		if (!soap_match_tag(soap, t, "tmk:NeutronProbing"))
+		{	*type = SOAP_TYPE_tmk__NeutronProbing;
+			return soap_in_tmk__NeutronProbing(soap, tag, NULL, NULL);
 		}
-		if (!soap_match_tag(soap, t, "ns2:Introscopy"))
-		{	*type = SOAP_TYPE_ns2__Introscopy;
-			return soap_in_ns2__Introscopy(soap, tag, NULL, NULL);
+		if (!soap_match_tag(soap, t, "tmk:Introscopy"))
+		{	*type = SOAP_TYPE_tmk__Introscopy;
+			return soap_in_tmk__Introscopy(soap, tag, NULL, NULL);
 		}
-		if (!soap_match_tag(soap, t, "ns2:GasAnalysis"))
-		{	*type = SOAP_TYPE_ns2__GasAnalysis;
-			return soap_in_ns2__GasAnalysis(soap, tag, NULL, NULL);
+		if (!soap_match_tag(soap, t, "tmk:GasAnalysis"))
+		{	*type = SOAP_TYPE_tmk__GasAnalysis;
+			return soap_in_tmk__GasAnalysis(soap, tag, NULL, NULL);
 		}
-		if (!soap_match_tag(soap, t, "ns2:FireAlarm"))
-		{	*type = SOAP_TYPE_ns2__FireAlarm;
-			return soap_in_ns2__FireAlarm(soap, tag, NULL, NULL);
+		if (!soap_match_tag(soap, t, "tmk:FireAlarm"))
+		{	*type = SOAP_TYPE_tmk__FireAlarm;
+			return soap_in_tmk__FireAlarm(soap, tag, NULL, NULL);
 		}
-		if (!soap_match_tag(soap, t, "ns2:AccessControl"))
-		{	*type = SOAP_TYPE_ns2__AccessControl;
-			return soap_in_ns2__AccessControl(soap, tag, NULL, NULL);
+		if (!soap_match_tag(soap, t, "tmk:AccessControl"))
+		{	*type = SOAP_TYPE_tmk__AccessControl;
+			return soap_in_tmk__AccessControl(soap, tag, NULL, NULL);
 		}
 		if (!soap_match_tag(soap, t, "wsa:AttributedURI"))
 		{	*type = SOAP_TYPE_wsa__AttributedURI;
@@ -9242,24 +9242,24 @@ SOAP_FMAC3 int SOAP_FMAC4 soap_putelement(struct soap *soap, const void *ptr, co
 		return soap_out_tt__IntAttrList(soap, tag, id, (const std::string *)ptr, "tt:IntAttrList");
 	case SOAP_TYPE_tds__EAPMethodTypes:
 		return soap_out_tds__EAPMethodTypes(soap, tag, id, (const std::string *)ptr, "tds:EAPMethodTypes");
-	case SOAP_TYPE_ns2__VideoSurveillanceSystem:
-		return ((ns2__VideoSurveillanceSystem *)ptr)->soap_out(soap, tag, id, "ns2:VideoSurveillanceSystem");
-	case SOAP_TYPE_ns2__MetalDetector:
-		return ((ns2__MetalDetector *)ptr)->soap_out(soap, tag, id, "ns2:MetalDetector");
-	case SOAP_TYPE_ns2__SteamDetector:
-		return ((ns2__SteamDetector *)ptr)->soap_out(soap, tag, id, "ns2:SteamDetector");
-	case SOAP_TYPE_ns2__RadiationMonitoring:
-		return ((ns2__RadiationMonitoring *)ptr)->soap_out(soap, tag, id, "ns2:RadiationMonitoring");
-	case SOAP_TYPE_ns2__NeutronProbing:
-		return ((ns2__NeutronProbing *)ptr)->soap_out(soap, tag, id, "ns2:NeutronProbing");
-	case SOAP_TYPE_ns2__Introscopy:
-		return ((ns2__Introscopy *)ptr)->soap_out(soap, tag, id, "ns2:Introscopy");
-	case SOAP_TYPE_ns2__GasAnalysis:
-		return ((ns2__GasAnalysis *)ptr)->soap_out(soap, tag, id, "ns2:GasAnalysis");
-	case SOAP_TYPE_ns2__FireAlarm:
-		return ((ns2__FireAlarm *)ptr)->soap_out(soap, tag, id, "ns2:FireAlarm");
-	case SOAP_TYPE_ns2__AccessControl:
-		return ((ns2__AccessControl *)ptr)->soap_out(soap, tag, id, "ns2:AccessControl");
+	case SOAP_TYPE_tmk__VideoSurveillanceSystem:
+		return ((tmk__VideoSurveillanceSystem *)ptr)->soap_out(soap, tag, id, "tmk:VideoSurveillanceSystem");
+	case SOAP_TYPE_tmk__MetalDetector:
+		return ((tmk__MetalDetector *)ptr)->soap_out(soap, tag, id, "tmk:MetalDetector");
+	case SOAP_TYPE_tmk__SteamDetector:
+		return ((tmk__SteamDetector *)ptr)->soap_out(soap, tag, id, "tmk:SteamDetector");
+	case SOAP_TYPE_tmk__RadiationMonitoring:
+		return ((tmk__RadiationMonitoring *)ptr)->soap_out(soap, tag, id, "tmk:RadiationMonitoring");
+	case SOAP_TYPE_tmk__NeutronProbing:
+		return ((tmk__NeutronProbing *)ptr)->soap_out(soap, tag, id, "tmk:NeutronProbing");
+	case SOAP_TYPE_tmk__Introscopy:
+		return ((tmk__Introscopy *)ptr)->soap_out(soap, tag, id, "tmk:Introscopy");
+	case SOAP_TYPE_tmk__GasAnalysis:
+		return ((tmk__GasAnalysis *)ptr)->soap_out(soap, tag, id, "tmk:GasAnalysis");
+	case SOAP_TYPE_tmk__FireAlarm:
+		return ((tmk__FireAlarm *)ptr)->soap_out(soap, tag, id, "tmk:FireAlarm");
+	case SOAP_TYPE_tmk__AccessControl:
+		return ((tmk__AccessControl *)ptr)->soap_out(soap, tag, id, "tmk:AccessControl");
 	case SOAP_TYPE_wsa__AttributedURI:
 		return ((wsa__AttributedURI *)ptr)->soap_out(soap, tag, id, "wsa:AttributedURI");
 	case SOAP_TYPE_wsa__AttributedQName:
@@ -13259,32 +13259,32 @@ SOAP_FMAC3 void SOAP_FMAC4 soap_markelement(struct soap *soap, const void *ptr, 
 	case SOAP_TYPE_tds__EAPMethodTypes:
 		soap_serialize_tds__EAPMethodTypes(soap, (const std::string *)ptr);
 		break;
-	case SOAP_TYPE_ns2__VideoSurveillanceSystem:
-		((ns2__VideoSurveillanceSystem *)ptr)->soap_serialize(soap);
+	case SOAP_TYPE_tmk__VideoSurveillanceSystem:
+		((tmk__VideoSurveillanceSystem *)ptr)->soap_serialize(soap);
 		break;
-	case SOAP_TYPE_ns2__MetalDetector:
-		((ns2__MetalDetector *)ptr)->soap_serialize(soap);
+	case SOAP_TYPE_tmk__MetalDetector:
+		((tmk__MetalDetector *)ptr)->soap_serialize(soap);
 		break;
-	case SOAP_TYPE_ns2__SteamDetector:
-		((ns2__SteamDetector *)ptr)->soap_serialize(soap);
+	case SOAP_TYPE_tmk__SteamDetector:
+		((tmk__SteamDetector *)ptr)->soap_serialize(soap);
 		break;
-	case SOAP_TYPE_ns2__RadiationMonitoring:
-		((ns2__RadiationMonitoring *)ptr)->soap_serialize(soap);
+	case SOAP_TYPE_tmk__RadiationMonitoring:
+		((tmk__RadiationMonitoring *)ptr)->soap_serialize(soap);
 		break;
-	case SOAP_TYPE_ns2__NeutronProbing:
-		((ns2__NeutronProbing *)ptr)->soap_serialize(soap);
+	case SOAP_TYPE_tmk__NeutronProbing:
+		((tmk__NeutronProbing *)ptr)->soap_serialize(soap);
 		break;
-	case SOAP_TYPE_ns2__Introscopy:
-		((ns2__Introscopy *)ptr)->soap_serialize(soap);
+	case SOAP_TYPE_tmk__Introscopy:
+		((tmk__Introscopy *)ptr)->soap_serialize(soap);
 		break;
-	case SOAP_TYPE_ns2__GasAnalysis:
-		((ns2__GasAnalysis *)ptr)->soap_serialize(soap);
+	case SOAP_TYPE_tmk__GasAnalysis:
+		((tmk__GasAnalysis *)ptr)->soap_serialize(soap);
 		break;
-	case SOAP_TYPE_ns2__FireAlarm:
-		((ns2__FireAlarm *)ptr)->soap_serialize(soap);
+	case SOAP_TYPE_tmk__FireAlarm:
+		((tmk__FireAlarm *)ptr)->soap_serialize(soap);
 		break;
-	case SOAP_TYPE_ns2__AccessControl:
-		((ns2__AccessControl *)ptr)->soap_serialize(soap);
+	case SOAP_TYPE_tmk__AccessControl:
+		((tmk__AccessControl *)ptr)->soap_serialize(soap);
 		break;
 	case SOAP_TYPE_wsa__AttributedURI:
 		((wsa__AttributedURI *)ptr)->soap_serialize(soap);
@@ -20355,24 +20355,24 @@ SOAP_FMAC3 void * SOAP_FMAC4 soap_instantiate(struct soap *soap, int t, const ch
 		return (void*)soap_instantiate_wsa__ReferencePropertiesType(soap, -1, type, arrayType, n);
 	case SOAP_TYPE_wsa__ReferenceParametersType:
 		return (void*)soap_instantiate_wsa__ReferenceParametersType(soap, -1, type, arrayType, n);
-	case SOAP_TYPE_ns2__AccessControl:
-		return (void*)soap_instantiate_ns2__AccessControl(soap, -1, type, arrayType, n);
-	case SOAP_TYPE_ns2__FireAlarm:
-		return (void*)soap_instantiate_ns2__FireAlarm(soap, -1, type, arrayType, n);
-	case SOAP_TYPE_ns2__GasAnalysis:
-		return (void*)soap_instantiate_ns2__GasAnalysis(soap, -1, type, arrayType, n);
-	case SOAP_TYPE_ns2__Introscopy:
-		return (void*)soap_instantiate_ns2__Introscopy(soap, -1, type, arrayType, n);
-	case SOAP_TYPE_ns2__NeutronProbing:
-		return (void*)soap_instantiate_ns2__NeutronProbing(soap, -1, type, arrayType, n);
-	case SOAP_TYPE_ns2__RadiationMonitoring:
-		return (void*)soap_instantiate_ns2__RadiationMonitoring(soap, -1, type, arrayType, n);
-	case SOAP_TYPE_ns2__SteamDetector:
-		return (void*)soap_instantiate_ns2__SteamDetector(soap, -1, type, arrayType, n);
-	case SOAP_TYPE_ns2__MetalDetector:
-		return (void*)soap_instantiate_ns2__MetalDetector(soap, -1, type, arrayType, n);
-	case SOAP_TYPE_ns2__VideoSurveillanceSystem:
-		return (void*)soap_instantiate_ns2__VideoSurveillanceSystem(soap, -1, type, arrayType, n);
+	case SOAP_TYPE_tmk__AccessControl:
+		return (void*)soap_instantiate_tmk__AccessControl(soap, -1, type, arrayType, n);
+	case SOAP_TYPE_tmk__FireAlarm:
+		return (void*)soap_instantiate_tmk__FireAlarm(soap, -1, type, arrayType, n);
+	case SOAP_TYPE_tmk__GasAnalysis:
+		return (void*)soap_instantiate_tmk__GasAnalysis(soap, -1, type, arrayType, n);
+	case SOAP_TYPE_tmk__Introscopy:
+		return (void*)soap_instantiate_tmk__Introscopy(soap, -1, type, arrayType, n);
+	case SOAP_TYPE_tmk__NeutronProbing:
+		return (void*)soap_instantiate_tmk__NeutronProbing(soap, -1, type, arrayType, n);
+	case SOAP_TYPE_tmk__RadiationMonitoring:
+		return (void*)soap_instantiate_tmk__RadiationMonitoring(soap, -1, type, arrayType, n);
+	case SOAP_TYPE_tmk__SteamDetector:
+		return (void*)soap_instantiate_tmk__SteamDetector(soap, -1, type, arrayType, n);
+	case SOAP_TYPE_tmk__MetalDetector:
+		return (void*)soap_instantiate_tmk__MetalDetector(soap, -1, type, arrayType, n);
+	case SOAP_TYPE_tmk__VideoSurveillanceSystem:
+		return (void*)soap_instantiate_tmk__VideoSurveillanceSystem(soap, -1, type, arrayType, n);
 	case SOAP_TYPE_tds__StorageConfiguration:
 		return (void*)soap_instantiate_tds__StorageConfiguration(soap, -1, type, arrayType, n);
 	case SOAP_TYPE_tt__VideoSource:
@@ -26492,59 +26492,59 @@ SOAP_FMAC3 int SOAP_FMAC4 soap_fdelete(struct soap *soap, struct soap_clist *p)
 		else
 			SOAP_DELETE_ARRAY(soap, static_cast<wsa__ReferenceParametersType*>(p->ptr), wsa__ReferenceParametersType);
 		break;
-	case SOAP_TYPE_ns2__AccessControl:
+	case SOAP_TYPE_tmk__AccessControl:
 		if (p->size < 0)
-			SOAP_DELETE(soap, static_cast<ns2__AccessControl*>(p->ptr), ns2__AccessControl);
+			SOAP_DELETE(soap, static_cast<tmk__AccessControl*>(p->ptr), tmk__AccessControl);
 		else
-			SOAP_DELETE_ARRAY(soap, static_cast<ns2__AccessControl*>(p->ptr), ns2__AccessControl);
+			SOAP_DELETE_ARRAY(soap, static_cast<tmk__AccessControl*>(p->ptr), tmk__AccessControl);
 		break;
-	case SOAP_TYPE_ns2__FireAlarm:
+	case SOAP_TYPE_tmk__FireAlarm:
 		if (p->size < 0)
-			SOAP_DELETE(soap, static_cast<ns2__FireAlarm*>(p->ptr), ns2__FireAlarm);
+			SOAP_DELETE(soap, static_cast<tmk__FireAlarm*>(p->ptr), tmk__FireAlarm);
 		else
-			SOAP_DELETE_ARRAY(soap, static_cast<ns2__FireAlarm*>(p->ptr), ns2__FireAlarm);
+			SOAP_DELETE_ARRAY(soap, static_cast<tmk__FireAlarm*>(p->ptr), tmk__FireAlarm);
 		break;
-	case SOAP_TYPE_ns2__GasAnalysis:
+	case SOAP_TYPE_tmk__GasAnalysis:
 		if (p->size < 0)
-			SOAP_DELETE(soap, static_cast<ns2__GasAnalysis*>(p->ptr), ns2__GasAnalysis);
+			SOAP_DELETE(soap, static_cast<tmk__GasAnalysis*>(p->ptr), tmk__GasAnalysis);
 		else
-			SOAP_DELETE_ARRAY(soap, static_cast<ns2__GasAnalysis*>(p->ptr), ns2__GasAnalysis);
+			SOAP_DELETE_ARRAY(soap, static_cast<tmk__GasAnalysis*>(p->ptr), tmk__GasAnalysis);
 		break;
-	case SOAP_TYPE_ns2__Introscopy:
+	case SOAP_TYPE_tmk__Introscopy:
 		if (p->size < 0)
-			SOAP_DELETE(soap, static_cast<ns2__Introscopy*>(p->ptr), ns2__Introscopy);
+			SOAP_DELETE(soap, static_cast<tmk__Introscopy*>(p->ptr), tmk__Introscopy);
 		else
-			SOAP_DELETE_ARRAY(soap, static_cast<ns2__Introscopy*>(p->ptr), ns2__Introscopy);
+			SOAP_DELETE_ARRAY(soap, static_cast<tmk__Introscopy*>(p->ptr), tmk__Introscopy);
 		break;
-	case SOAP_TYPE_ns2__NeutronProbing:
+	case SOAP_TYPE_tmk__NeutronProbing:
 		if (p->size < 0)
-			SOAP_DELETE(soap, static_cast<ns2__NeutronProbing*>(p->ptr), ns2__NeutronProbing);
+			SOAP_DELETE(soap, static_cast<tmk__NeutronProbing*>(p->ptr), tmk__NeutronProbing);
 		else
-			SOAP_DELETE_ARRAY(soap, static_cast<ns2__NeutronProbing*>(p->ptr), ns2__NeutronProbing);
+			SOAP_DELETE_ARRAY(soap, static_cast<tmk__NeutronProbing*>(p->ptr), tmk__NeutronProbing);
 		break;
-	case SOAP_TYPE_ns2__RadiationMonitoring:
+	case SOAP_TYPE_tmk__RadiationMonitoring:
 		if (p->size < 0)
-			SOAP_DELETE(soap, static_cast<ns2__RadiationMonitoring*>(p->ptr), ns2__RadiationMonitoring);
+			SOAP_DELETE(soap, static_cast<tmk__RadiationMonitoring*>(p->ptr), tmk__RadiationMonitoring);
 		else
-			SOAP_DELETE_ARRAY(soap, static_cast<ns2__RadiationMonitoring*>(p->ptr), ns2__RadiationMonitoring);
+			SOAP_DELETE_ARRAY(soap, static_cast<tmk__RadiationMonitoring*>(p->ptr), tmk__RadiationMonitoring);
 		break;
-	case SOAP_TYPE_ns2__SteamDetector:
+	case SOAP_TYPE_tmk__SteamDetector:
 		if (p->size < 0)
-			SOAP_DELETE(soap, static_cast<ns2__SteamDetector*>(p->ptr), ns2__SteamDetector);
+			SOAP_DELETE(soap, static_cast<tmk__SteamDetector*>(p->ptr), tmk__SteamDetector);
 		else
-			SOAP_DELETE_ARRAY(soap, static_cast<ns2__SteamDetector*>(p->ptr), ns2__SteamDetector);
+			SOAP_DELETE_ARRAY(soap, static_cast<tmk__SteamDetector*>(p->ptr), tmk__SteamDetector);
 		break;
-	case SOAP_TYPE_ns2__MetalDetector:
+	case SOAP_TYPE_tmk__MetalDetector:
 		if (p->size < 0)
-			SOAP_DELETE(soap, static_cast<ns2__MetalDetector*>(p->ptr), ns2__MetalDetector);
+			SOAP_DELETE(soap, static_cast<tmk__MetalDetector*>(p->ptr), tmk__MetalDetector);
 		else
-			SOAP_DELETE_ARRAY(soap, static_cast<ns2__MetalDetector*>(p->ptr), ns2__MetalDetector);
+			SOAP_DELETE_ARRAY(soap, static_cast<tmk__MetalDetector*>(p->ptr), tmk__MetalDetector);
 		break;
-	case SOAP_TYPE_ns2__VideoSurveillanceSystem:
+	case SOAP_TYPE_tmk__VideoSurveillanceSystem:
 		if (p->size < 0)
-			SOAP_DELETE(soap, static_cast<ns2__VideoSurveillanceSystem*>(p->ptr), ns2__VideoSurveillanceSystem);
+			SOAP_DELETE(soap, static_cast<tmk__VideoSurveillanceSystem*>(p->ptr), tmk__VideoSurveillanceSystem);
 		else
-			SOAP_DELETE_ARRAY(soap, static_cast<ns2__VideoSurveillanceSystem*>(p->ptr), ns2__VideoSurveillanceSystem);
+			SOAP_DELETE_ARRAY(soap, static_cast<tmk__VideoSurveillanceSystem*>(p->ptr), tmk__VideoSurveillanceSystem);
 		break;
 	case SOAP_TYPE_tds__StorageConfiguration:
 		if (p->size < 0)
@@ -33930,41 +33930,41 @@ SOAP_FMAC3 void SOAP_FMAC4 soap_finsert(struct soap *soap, int t, int tt, void *
 		DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Copy wsa__ReferenceParametersType type=%d location=%p object=%p\n", t, p, q));
 		*(wsa__ReferenceParametersType*)p = *(wsa__ReferenceParametersType*)q;
 		break;
-	case SOAP_TYPE_ns2__AccessControl:
-		DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Copy ns2__AccessControl type=%d location=%p object=%p\n", t, p, q));
-		*(ns2__AccessControl*)p = *(ns2__AccessControl*)q;
+	case SOAP_TYPE_tmk__AccessControl:
+		DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Copy tmk__AccessControl type=%d location=%p object=%p\n", t, p, q));
+		*(tmk__AccessControl*)p = *(tmk__AccessControl*)q;
 		break;
-	case SOAP_TYPE_ns2__FireAlarm:
-		DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Copy ns2__FireAlarm type=%d location=%p object=%p\n", t, p, q));
-		*(ns2__FireAlarm*)p = *(ns2__FireAlarm*)q;
+	case SOAP_TYPE_tmk__FireAlarm:
+		DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Copy tmk__FireAlarm type=%d location=%p object=%p\n", t, p, q));
+		*(tmk__FireAlarm*)p = *(tmk__FireAlarm*)q;
 		break;
-	case SOAP_TYPE_ns2__GasAnalysis:
-		DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Copy ns2__GasAnalysis type=%d location=%p object=%p\n", t, p, q));
-		*(ns2__GasAnalysis*)p = *(ns2__GasAnalysis*)q;
+	case SOAP_TYPE_tmk__GasAnalysis:
+		DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Copy tmk__GasAnalysis type=%d location=%p object=%p\n", t, p, q));
+		*(tmk__GasAnalysis*)p = *(tmk__GasAnalysis*)q;
 		break;
-	case SOAP_TYPE_ns2__Introscopy:
-		DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Copy ns2__Introscopy type=%d location=%p object=%p\n", t, p, q));
-		*(ns2__Introscopy*)p = *(ns2__Introscopy*)q;
+	case SOAP_TYPE_tmk__Introscopy:
+		DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Copy tmk__Introscopy type=%d location=%p object=%p\n", t, p, q));
+		*(tmk__Introscopy*)p = *(tmk__Introscopy*)q;
 		break;
-	case SOAP_TYPE_ns2__NeutronProbing:
-		DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Copy ns2__NeutronProbing type=%d location=%p object=%p\n", t, p, q));
-		*(ns2__NeutronProbing*)p = *(ns2__NeutronProbing*)q;
+	case SOAP_TYPE_tmk__NeutronProbing:
+		DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Copy tmk__NeutronProbing type=%d location=%p object=%p\n", t, p, q));
+		*(tmk__NeutronProbing*)p = *(tmk__NeutronProbing*)q;
 		break;
-	case SOAP_TYPE_ns2__RadiationMonitoring:
-		DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Copy ns2__RadiationMonitoring type=%d location=%p object=%p\n", t, p, q));
-		*(ns2__RadiationMonitoring*)p = *(ns2__RadiationMonitoring*)q;
+	case SOAP_TYPE_tmk__RadiationMonitoring:
+		DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Copy tmk__RadiationMonitoring type=%d location=%p object=%p\n", t, p, q));
+		*(tmk__RadiationMonitoring*)p = *(tmk__RadiationMonitoring*)q;
 		break;
-	case SOAP_TYPE_ns2__SteamDetector:
-		DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Copy ns2__SteamDetector type=%d location=%p object=%p\n", t, p, q));
-		*(ns2__SteamDetector*)p = *(ns2__SteamDetector*)q;
+	case SOAP_TYPE_tmk__SteamDetector:
+		DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Copy tmk__SteamDetector type=%d location=%p object=%p\n", t, p, q));
+		*(tmk__SteamDetector*)p = *(tmk__SteamDetector*)q;
 		break;
-	case SOAP_TYPE_ns2__MetalDetector:
-		DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Copy ns2__MetalDetector type=%d location=%p object=%p\n", t, p, q));
-		*(ns2__MetalDetector*)p = *(ns2__MetalDetector*)q;
+	case SOAP_TYPE_tmk__MetalDetector:
+		DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Copy tmk__MetalDetector type=%d location=%p object=%p\n", t, p, q));
+		*(tmk__MetalDetector*)p = *(tmk__MetalDetector*)q;
 		break;
-	case SOAP_TYPE_ns2__VideoSurveillanceSystem:
-		DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Copy ns2__VideoSurveillanceSystem type=%d location=%p object=%p\n", t, p, q));
-		*(ns2__VideoSurveillanceSystem*)p = *(ns2__VideoSurveillanceSystem*)q;
+	case SOAP_TYPE_tmk__VideoSurveillanceSystem:
+		DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Copy tmk__VideoSurveillanceSystem type=%d location=%p object=%p\n", t, p, q));
+		*(tmk__VideoSurveillanceSystem*)p = *(tmk__VideoSurveillanceSystem*)q;
 		break;
 	case SOAP_TYPE_tds__StorageConfiguration:
 		DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Copy tds__StorageConfiguration type=%d location=%p object=%p\n", t, p, q));

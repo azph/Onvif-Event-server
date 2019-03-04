@@ -1,7 +1,9 @@
 #include "Event.h"
 
-#include <gSoap/httpda.h>
-#include <gSoap/wsseapi.h>
+#include <gSoap/wsaapi.h>
+
+#include "AuthorisationHolder.h"
+
 
 namespace Onvif
 {
@@ -12,50 +14,26 @@ Event::Event(struct soap *_soap):
 {
 }
 
-bool Event::verifyPasswordDA()
-{
-	static const std::string authrealm = "WEB SERVER";
-	static const std::string passwd = "0eydozFnrrsF";
-	static const std::string userid = "admin";
 
-	if (soap->authrealm && soap->userid && authrealm == soap->authrealm && userid == soap->userid
-		&& http_da_verify_post(soap, passwd.c_str()) == SOAP_OK)
-	{
-		return true;
-	}
-
-	if (soap->header && soap->header->wsse__Security)
-	{
-		const char *username = soap_wsse_get_Username(soap);
-
-		if (username && username == userid && soap_wsse_verify_Password(soap, passwd.c_str()) == SOAP_OK)
-		{
-			return true;
-		}
-	}
-
-	soap->authrealm = authrealm.c_str();
-	return false;
-}
 
 int Event::CreatePullPointSubscription(_tev__CreatePullPointSubscription *tev__CreatePullPointSubscription, _tev__CreatePullPointSubscriptionResponse &tev__CreatePullPointSubscriptionResponse)
 {
-	if (!verifyPasswordDA())
+	if (!AuthorisationHolder::getInstance().verifyPassword(soap))
 	{
 		return 401;
 	}
 
-	std::time_t lt = std::time(nullptr);
-	std::string str = "http://172.17.12.52/event/evtservice/Subscription?4a00ed2400";
+	std::time_t lt = std::time(nullptr) * 1000;
+	std::string str = soap->endpoint + std::string("?sub=1");
 	tev__CreatePullPointSubscriptionResponse.SubscriptionReference.Address = soap_strdup(soap, str.c_str());
 
 	tev__CreatePullPointSubscriptionResponse.wsnt__CurrentTime.tv_sec = lt / 1000000;
-	tev__CreatePullPointSubscriptionResponse.wsnt__CurrentTime.tv_sec = lt % 1000000;
+	tev__CreatePullPointSubscriptionResponse.wsnt__CurrentTime.tv_usec = lt % 1000000;
 
 	tev__CreatePullPointSubscriptionResponse.wsnt__CurrentTime.tv_sec = lt / 1000000 + 60;
-	tev__CreatePullPointSubscriptionResponse.wsnt__CurrentTime.tv_sec = lt % 1000000;
-
-	return SOAP_OK;
+	tev__CreatePullPointSubscriptionResponse.wsnt__CurrentTime.tv_usec = lt % 1000000;
+	
+	return soap_wsa_reply(this->soap, nullptr, "http://www.onvif.org/ver10/events/wsdl/EventPortType/CreatePullPointSubscriptionResponse");
 }
 
 static soap_dom_element AddHolder(struct soap* soap, soap_dom_element& child, const char* holderName, bool isTopic)
@@ -78,7 +56,7 @@ static soap_dom_element AddHolder(struct soap* soap, soap_dom_element& child, co
 
 int Event::GetEventProperties(_tev__GetEventProperties *tev__GetEventProperties, _tev__GetEventPropertiesResponse &tev__GetEventPropertiesResponse)
 {
-	if (!verifyPasswordDA())
+	if (!AuthorisationHolder::getInstance().verifyPassword(soap))
 	{
 		return 401;
 	}
@@ -93,7 +71,7 @@ int Event::GetEventProperties(_tev__GetEventProperties *tev__GetEventProperties,
 	tev__GetEventPropertiesResponse.wstop__TopicSet = tev__GetEventPropertiesResponse.wstop__TopicSet = soap_new_wstop__TopicSetType(soap);
 
 	tev__GetEventPropertiesResponse.wstop__TopicSet->__any.push_back(createMetalDetectorDescription(soap));
-	return SOAP_OK;
+	return soap_wsa_reply(this->soap, nullptr, "http://www.onvif.org/ver10/events/wsdl/EventPortType/GetEventPropertiesResponse");
 }
 
 soap_dom_element createMetalDetectorDescription(struct soap* soap)

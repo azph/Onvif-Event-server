@@ -25,7 +25,7 @@ A commercial use license is available from Genivia Inc., contact@genivia.com
 #define SOAP_NAMESPACE_OF_wsrf	"http://docs.oasis-open.org/wsrf/r-2"
 #define SOAP_NAMESPACE_OF_wsd	"http://schemas.xmlsoap.org/ws/2005/04/discovery"
 #define SOAP_NAMESPACE_OF_wsa	"http://schemas.xmlsoap.org/ws/2004/08/addressing"
-#define SOAP_NAMESPACE_OF_ns2	"http://www.inforion.ru/schemas/sstmk/onvif/topics/sensors"
+#define SOAP_NAMESPACE_OF_tmk	"http://www.inforion.ru/schemas/sstmk/onvif/topics/sensors"
 #include <ctime>
 #include <chrono>
 #define SOAP_NAMESPACE_OF_wsu	"http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd"
@@ -1813,15 +1813,15 @@ class wsd__SigType;	/* onvif.h:1881 */
 class wsa__EndpointReferenceType;	/* onvif.h:1885 */
 class wsa__ReferencePropertiesType;	/* onvif.h:1887 */
 class wsa__ReferenceParametersType;	/* onvif.h:1889 */
-class ns2__AccessControl;	/* onvif.h:1903 */
-class ns2__FireAlarm;	/* onvif.h:1905 */
-class ns2__GasAnalysis;	/* onvif.h:1907 */
-class ns2__Introscopy;	/* onvif.h:1909 */
-class ns2__NeutronProbing;	/* onvif.h:1911 */
-class ns2__RadiationMonitoring;	/* onvif.h:1913 */
-class ns2__SteamDetector;	/* onvif.h:1915 */
-class ns2__MetalDetector;	/* onvif.h:1917 */
-class ns2__VideoSurveillanceSystem;	/* onvif.h:1919 */
+class tmk__AccessControl;	/* onvif.h:1903 */
+class tmk__FireAlarm;	/* onvif.h:1905 */
+class tmk__GasAnalysis;	/* onvif.h:1907 */
+class tmk__Introscopy;	/* onvif.h:1909 */
+class tmk__NeutronProbing;	/* onvif.h:1911 */
+class tmk__RadiationMonitoring;	/* onvif.h:1913 */
+class tmk__SteamDetector;	/* onvif.h:1915 */
+class tmk__MetalDetector;	/* onvif.h:1917 */
+class tmk__VideoSurveillanceSystem;	/* onvif.h:1919 */
 class tds__StorageConfiguration;	/* onvif.h:428 */
 class tt__VideoSource;	/* onvif.h:808 */
 class tt__AudioSource;	/* onvif.h:814 */
@@ -33347,20 +33347,20 @@ class SOAP_CMAC wsa__ReferenceParametersType : public soap_dom_element {
 #endif
 
 /* onvif.h:1903 */
-#ifndef SOAP_TYPE_ns2__AccessControl
-#define SOAP_TYPE_ns2__AccessControl (854)
-/* complex XML schema type 'ns2:AccessControl': */
-class SOAP_CMAC ns2__AccessControl : public soap_dom_element {
+#ifndef SOAP_TYPE_tmk__AccessControl
+#define SOAP_TYPE_tmk__AccessControl (854)
+/* complex XML schema type 'tmk:AccessControl': */
+class SOAP_CMAC tmk__AccessControl : public soap_dom_element {
       public:
-        /// Required element 'ns2:Accident' of XML schema type 'tt:MessageDescription'
+        /// Required element 'tmk:Accident' of XML schema type 'tt:MessageDescription'
         tt__MessageDescription *Accident;
-        /// Required element 'ns2:Fault' of XML schema type 'tt:MessageDescription'
+        /// Required element 'tmk:Fault' of XML schema type 'tt:MessageDescription'
         tt__MessageDescription *Fault;
         /// Required attribute 'topic' of XML schema type 'xsd:boolean'
         bool topic;
       public:
-        /// Return unique type id SOAP_TYPE_ns2__AccessControl
-        virtual long soap_type(void) const { return SOAP_TYPE_ns2__AccessControl; }
+        /// Return unique type id SOAP_TYPE_tmk__AccessControl
+        virtual long soap_type(void) const { return SOAP_TYPE_tmk__AccessControl; }
         /// (Re)set members to default values
         virtual void soap_default(struct soap*);
         /// Serialize object to prepare for SOAP 1.1/1.2 encoded output (or with SOAP_XML_GRAPH) by analyzing its (cyclic) structures
@@ -33373,34 +33373,34 @@ class SOAP_CMAC ns2__AccessControl : public soap_dom_element {
         virtual void *soap_get(struct soap*, const char *tag, const char *type);
         /// Get object from XML, with matching tag and type (NULL matches any tag and type), return pointer to object or NULL on error
         virtual void *soap_in(struct soap*, const char *tag, const char *type);
-        /// Return a new object of type ns2__AccessControl, default initialized and not managed by a soap context
-        virtual ns2__AccessControl *soap_alloc(void) const { return SOAP_NEW_UNMANAGED(ns2__AccessControl); }
+        /// Return a new object of type tmk__AccessControl, default initialized and not managed by a soap context
+        virtual tmk__AccessControl *soap_alloc(void) const { return SOAP_NEW_UNMANAGED(tmk__AccessControl); }
       public:
         /// Constructor with default initializations
-        ns2__AccessControl() : Accident(), Fault(), topic() { }
-        virtual ~ns2__AccessControl() { }
-        /// Friend allocator used by soap_new_ns2__AccessControl(struct soap*, int)
-        friend SOAP_FMAC1 ns2__AccessControl * SOAP_FMAC2 soap_instantiate_ns2__AccessControl(struct soap*, int, const char*, const char*, size_t*);
+        tmk__AccessControl() : Accident(), Fault(), topic() { }
+        virtual ~tmk__AccessControl() { }
+        /// Friend allocator used by soap_new_tmk__AccessControl(struct soap*, int)
+        friend SOAP_FMAC1 tmk__AccessControl * SOAP_FMAC2 soap_instantiate_tmk__AccessControl(struct soap*, int, const char*, const char*, size_t*);
 };
 #endif
 
 /* onvif.h:1905 */
-#ifndef SOAP_TYPE_ns2__FireAlarm
-#define SOAP_TYPE_ns2__FireAlarm (855)
-/* complex XML schema type 'ns2:FireAlarm': */
-class SOAP_CMAC ns2__FireAlarm : public soap_dom_element {
+#ifndef SOAP_TYPE_tmk__FireAlarm
+#define SOAP_TYPE_tmk__FireAlarm (855)
+/* complex XML schema type 'tmk:FireAlarm': */
+class SOAP_CMAC tmk__FireAlarm : public soap_dom_element {
       public:
-        /// Required element 'ns2:Alarm' of XML schema type 'tt:MessageDescription'
+        /// Required element 'tmk:Alarm' of XML schema type 'tt:MessageDescription'
         tt__MessageDescription *Alarm;
-        /// Required element 'ns2:Fire' of XML schema type 'tt:MessageDescription'
+        /// Required element 'tmk:Fire' of XML schema type 'tt:MessageDescription'
         tt__MessageDescription *Fire;
-        /// Required element 'ns2:Fault' of XML schema type 'tt:MessageDescription'
+        /// Required element 'tmk:Fault' of XML schema type 'tt:MessageDescription'
         tt__MessageDescription *Fault;
         /// Required attribute 'topic' of XML schema type 'xsd:boolean'
         bool topic;
       public:
-        /// Return unique type id SOAP_TYPE_ns2__FireAlarm
-        virtual long soap_type(void) const { return SOAP_TYPE_ns2__FireAlarm; }
+        /// Return unique type id SOAP_TYPE_tmk__FireAlarm
+        virtual long soap_type(void) const { return SOAP_TYPE_tmk__FireAlarm; }
         /// (Re)set members to default values
         virtual void soap_default(struct soap*);
         /// Serialize object to prepare for SOAP 1.1/1.2 encoded output (or with SOAP_XML_GRAPH) by analyzing its (cyclic) structures
@@ -33413,30 +33413,30 @@ class SOAP_CMAC ns2__FireAlarm : public soap_dom_element {
         virtual void *soap_get(struct soap*, const char *tag, const char *type);
         /// Get object from XML, with matching tag and type (NULL matches any tag and type), return pointer to object or NULL on error
         virtual void *soap_in(struct soap*, const char *tag, const char *type);
-        /// Return a new object of type ns2__FireAlarm, default initialized and not managed by a soap context
-        virtual ns2__FireAlarm *soap_alloc(void) const { return SOAP_NEW_UNMANAGED(ns2__FireAlarm); }
+        /// Return a new object of type tmk__FireAlarm, default initialized and not managed by a soap context
+        virtual tmk__FireAlarm *soap_alloc(void) const { return SOAP_NEW_UNMANAGED(tmk__FireAlarm); }
       public:
         /// Constructor with default initializations
-        ns2__FireAlarm() : Alarm(), Fire(), Fault(), topic() { }
-        virtual ~ns2__FireAlarm() { }
-        /// Friend allocator used by soap_new_ns2__FireAlarm(struct soap*, int)
-        friend SOAP_FMAC1 ns2__FireAlarm * SOAP_FMAC2 soap_instantiate_ns2__FireAlarm(struct soap*, int, const char*, const char*, size_t*);
+        tmk__FireAlarm() : Alarm(), Fire(), Fault(), topic() { }
+        virtual ~tmk__FireAlarm() { }
+        /// Friend allocator used by soap_new_tmk__FireAlarm(struct soap*, int)
+        friend SOAP_FMAC1 tmk__FireAlarm * SOAP_FMAC2 soap_instantiate_tmk__FireAlarm(struct soap*, int, const char*, const char*, size_t*);
 };
 #endif
 
 /* onvif.h:1907 */
-#ifndef SOAP_TYPE_ns2__GasAnalysis
-#define SOAP_TYPE_ns2__GasAnalysis (856)
-/* complex XML schema type 'ns2:GasAnalysis': */
-class SOAP_CMAC ns2__GasAnalysis : public soap_dom_element {
+#ifndef SOAP_TYPE_tmk__GasAnalysis
+#define SOAP_TYPE_tmk__GasAnalysis (856)
+/* complex XML schema type 'tmk:GasAnalysis': */
+class SOAP_CMAC tmk__GasAnalysis : public soap_dom_element {
       public:
-        /// Required element 'ns2:ConcentrationExceeded' of XML schema type 'tt:MessageDescription'
+        /// Required element 'tmk:ConcentrationExceeded' of XML schema type 'tt:MessageDescription'
         tt__MessageDescription *ConcentrationExceeded;
         /// Required attribute 'topic' of XML schema type 'xsd:boolean'
         bool topic;
       public:
-        /// Return unique type id SOAP_TYPE_ns2__GasAnalysis
-        virtual long soap_type(void) const { return SOAP_TYPE_ns2__GasAnalysis; }
+        /// Return unique type id SOAP_TYPE_tmk__GasAnalysis
+        virtual long soap_type(void) const { return SOAP_TYPE_tmk__GasAnalysis; }
         /// (Re)set members to default values
         virtual void soap_default(struct soap*);
         /// Serialize object to prepare for SOAP 1.1/1.2 encoded output (or with SOAP_XML_GRAPH) by analyzing its (cyclic) structures
@@ -33449,30 +33449,30 @@ class SOAP_CMAC ns2__GasAnalysis : public soap_dom_element {
         virtual void *soap_get(struct soap*, const char *tag, const char *type);
         /// Get object from XML, with matching tag and type (NULL matches any tag and type), return pointer to object or NULL on error
         virtual void *soap_in(struct soap*, const char *tag, const char *type);
-        /// Return a new object of type ns2__GasAnalysis, default initialized and not managed by a soap context
-        virtual ns2__GasAnalysis *soap_alloc(void) const { return SOAP_NEW_UNMANAGED(ns2__GasAnalysis); }
+        /// Return a new object of type tmk__GasAnalysis, default initialized and not managed by a soap context
+        virtual tmk__GasAnalysis *soap_alloc(void) const { return SOAP_NEW_UNMANAGED(tmk__GasAnalysis); }
       public:
         /// Constructor with default initializations
-        ns2__GasAnalysis() : ConcentrationExceeded(), topic() { }
-        virtual ~ns2__GasAnalysis() { }
-        /// Friend allocator used by soap_new_ns2__GasAnalysis(struct soap*, int)
-        friend SOAP_FMAC1 ns2__GasAnalysis * SOAP_FMAC2 soap_instantiate_ns2__GasAnalysis(struct soap*, int, const char*, const char*, size_t*);
+        tmk__GasAnalysis() : ConcentrationExceeded(), topic() { }
+        virtual ~tmk__GasAnalysis() { }
+        /// Friend allocator used by soap_new_tmk__GasAnalysis(struct soap*, int)
+        friend SOAP_FMAC1 tmk__GasAnalysis * SOAP_FMAC2 soap_instantiate_tmk__GasAnalysis(struct soap*, int, const char*, const char*, size_t*);
 };
 #endif
 
 /* onvif.h:1909 */
-#ifndef SOAP_TYPE_ns2__Introscopy
-#define SOAP_TYPE_ns2__Introscopy (857)
-/* complex XML schema type 'ns2:Introscopy': */
-class SOAP_CMAC ns2__Introscopy : public soap_dom_element {
+#ifndef SOAP_TYPE_tmk__Introscopy
+#define SOAP_TYPE_tmk__Introscopy (857)
+/* complex XML schema type 'tmk:Introscopy': */
+class SOAP_CMAC tmk__Introscopy : public soap_dom_element {
       public:
-        /// Required element 'ns2:LimitExceeded' of XML schema type 'tt:MessageDescription'
+        /// Required element 'tmk:LimitExceeded' of XML schema type 'tt:MessageDescription'
         tt__MessageDescription *LimitExceeded;
         /// Required attribute 'topic' of XML schema type 'xsd:boolean'
         bool topic;
       public:
-        /// Return unique type id SOAP_TYPE_ns2__Introscopy
-        virtual long soap_type(void) const { return SOAP_TYPE_ns2__Introscopy; }
+        /// Return unique type id SOAP_TYPE_tmk__Introscopy
+        virtual long soap_type(void) const { return SOAP_TYPE_tmk__Introscopy; }
         /// (Re)set members to default values
         virtual void soap_default(struct soap*);
         /// Serialize object to prepare for SOAP 1.1/1.2 encoded output (or with SOAP_XML_GRAPH) by analyzing its (cyclic) structures
@@ -33485,30 +33485,30 @@ class SOAP_CMAC ns2__Introscopy : public soap_dom_element {
         virtual void *soap_get(struct soap*, const char *tag, const char *type);
         /// Get object from XML, with matching tag and type (NULL matches any tag and type), return pointer to object or NULL on error
         virtual void *soap_in(struct soap*, const char *tag, const char *type);
-        /// Return a new object of type ns2__Introscopy, default initialized and not managed by a soap context
-        virtual ns2__Introscopy *soap_alloc(void) const { return SOAP_NEW_UNMANAGED(ns2__Introscopy); }
+        /// Return a new object of type tmk__Introscopy, default initialized and not managed by a soap context
+        virtual tmk__Introscopy *soap_alloc(void) const { return SOAP_NEW_UNMANAGED(tmk__Introscopy); }
       public:
         /// Constructor with default initializations
-        ns2__Introscopy() : LimitExceeded(), topic() { }
-        virtual ~ns2__Introscopy() { }
-        /// Friend allocator used by soap_new_ns2__Introscopy(struct soap*, int)
-        friend SOAP_FMAC1 ns2__Introscopy * SOAP_FMAC2 soap_instantiate_ns2__Introscopy(struct soap*, int, const char*, const char*, size_t*);
+        tmk__Introscopy() : LimitExceeded(), topic() { }
+        virtual ~tmk__Introscopy() { }
+        /// Friend allocator used by soap_new_tmk__Introscopy(struct soap*, int)
+        friend SOAP_FMAC1 tmk__Introscopy * SOAP_FMAC2 soap_instantiate_tmk__Introscopy(struct soap*, int, const char*, const char*, size_t*);
 };
 #endif
 
 /* onvif.h:1911 */
-#ifndef SOAP_TYPE_ns2__NeutronProbing
-#define SOAP_TYPE_ns2__NeutronProbing (858)
-/* complex XML schema type 'ns2:NeutronProbing': */
-class SOAP_CMAC ns2__NeutronProbing : public soap_dom_element {
+#ifndef SOAP_TYPE_tmk__NeutronProbing
+#define SOAP_TYPE_tmk__NeutronProbing (858)
+/* complex XML schema type 'tmk:NeutronProbing': */
+class SOAP_CMAC tmk__NeutronProbing : public soap_dom_element {
       public:
-        /// Required element 'ns2:Detect' of XML schema type 'tt:MessageDescription'
+        /// Required element 'tmk:Detect' of XML schema type 'tt:MessageDescription'
         tt__MessageDescription *Detect;
         /// Required attribute 'topic' of XML schema type 'xsd:boolean'
         bool topic;
       public:
-        /// Return unique type id SOAP_TYPE_ns2__NeutronProbing
-        virtual long soap_type(void) const { return SOAP_TYPE_ns2__NeutronProbing; }
+        /// Return unique type id SOAP_TYPE_tmk__NeutronProbing
+        virtual long soap_type(void) const { return SOAP_TYPE_tmk__NeutronProbing; }
         /// (Re)set members to default values
         virtual void soap_default(struct soap*);
         /// Serialize object to prepare for SOAP 1.1/1.2 encoded output (or with SOAP_XML_GRAPH) by analyzing its (cyclic) structures
@@ -33521,30 +33521,30 @@ class SOAP_CMAC ns2__NeutronProbing : public soap_dom_element {
         virtual void *soap_get(struct soap*, const char *tag, const char *type);
         /// Get object from XML, with matching tag and type (NULL matches any tag and type), return pointer to object or NULL on error
         virtual void *soap_in(struct soap*, const char *tag, const char *type);
-        /// Return a new object of type ns2__NeutronProbing, default initialized and not managed by a soap context
-        virtual ns2__NeutronProbing *soap_alloc(void) const { return SOAP_NEW_UNMANAGED(ns2__NeutronProbing); }
+        /// Return a new object of type tmk__NeutronProbing, default initialized and not managed by a soap context
+        virtual tmk__NeutronProbing *soap_alloc(void) const { return SOAP_NEW_UNMANAGED(tmk__NeutronProbing); }
       public:
         /// Constructor with default initializations
-        ns2__NeutronProbing() : Detect(), topic() { }
-        virtual ~ns2__NeutronProbing() { }
-        /// Friend allocator used by soap_new_ns2__NeutronProbing(struct soap*, int)
-        friend SOAP_FMAC1 ns2__NeutronProbing * SOAP_FMAC2 soap_instantiate_ns2__NeutronProbing(struct soap*, int, const char*, const char*, size_t*);
+        tmk__NeutronProbing() : Detect(), topic() { }
+        virtual ~tmk__NeutronProbing() { }
+        /// Friend allocator used by soap_new_tmk__NeutronProbing(struct soap*, int)
+        friend SOAP_FMAC1 tmk__NeutronProbing * SOAP_FMAC2 soap_instantiate_tmk__NeutronProbing(struct soap*, int, const char*, const char*, size_t*);
 };
 #endif
 
 /* onvif.h:1913 */
-#ifndef SOAP_TYPE_ns2__RadiationMonitoring
-#define SOAP_TYPE_ns2__RadiationMonitoring (859)
-/* complex XML schema type 'ns2:RadiationMonitoring': */
-class SOAP_CMAC ns2__RadiationMonitoring : public soap_dom_element {
+#ifndef SOAP_TYPE_tmk__RadiationMonitoring
+#define SOAP_TYPE_tmk__RadiationMonitoring (859)
+/* complex XML schema type 'tmk:RadiationMonitoring': */
+class SOAP_CMAC tmk__RadiationMonitoring : public soap_dom_element {
       public:
-        /// Required element 'ns2:Detect' of XML schema type 'tt:MessageDescription'
+        /// Required element 'tmk:Detect' of XML schema type 'tt:MessageDescription'
         tt__MessageDescription *Detect;
         /// Required attribute 'topic' of XML schema type 'xsd:boolean'
         bool topic;
       public:
-        /// Return unique type id SOAP_TYPE_ns2__RadiationMonitoring
-        virtual long soap_type(void) const { return SOAP_TYPE_ns2__RadiationMonitoring; }
+        /// Return unique type id SOAP_TYPE_tmk__RadiationMonitoring
+        virtual long soap_type(void) const { return SOAP_TYPE_tmk__RadiationMonitoring; }
         /// (Re)set members to default values
         virtual void soap_default(struct soap*);
         /// Serialize object to prepare for SOAP 1.1/1.2 encoded output (or with SOAP_XML_GRAPH) by analyzing its (cyclic) structures
@@ -33557,30 +33557,30 @@ class SOAP_CMAC ns2__RadiationMonitoring : public soap_dom_element {
         virtual void *soap_get(struct soap*, const char *tag, const char *type);
         /// Get object from XML, with matching tag and type (NULL matches any tag and type), return pointer to object or NULL on error
         virtual void *soap_in(struct soap*, const char *tag, const char *type);
-        /// Return a new object of type ns2__RadiationMonitoring, default initialized and not managed by a soap context
-        virtual ns2__RadiationMonitoring *soap_alloc(void) const { return SOAP_NEW_UNMANAGED(ns2__RadiationMonitoring); }
+        /// Return a new object of type tmk__RadiationMonitoring, default initialized and not managed by a soap context
+        virtual tmk__RadiationMonitoring *soap_alloc(void) const { return SOAP_NEW_UNMANAGED(tmk__RadiationMonitoring); }
       public:
         /// Constructor with default initializations
-        ns2__RadiationMonitoring() : Detect(), topic() { }
-        virtual ~ns2__RadiationMonitoring() { }
-        /// Friend allocator used by soap_new_ns2__RadiationMonitoring(struct soap*, int)
-        friend SOAP_FMAC1 ns2__RadiationMonitoring * SOAP_FMAC2 soap_instantiate_ns2__RadiationMonitoring(struct soap*, int, const char*, const char*, size_t*);
+        tmk__RadiationMonitoring() : Detect(), topic() { }
+        virtual ~tmk__RadiationMonitoring() { }
+        /// Friend allocator used by soap_new_tmk__RadiationMonitoring(struct soap*, int)
+        friend SOAP_FMAC1 tmk__RadiationMonitoring * SOAP_FMAC2 soap_instantiate_tmk__RadiationMonitoring(struct soap*, int, const char*, const char*, size_t*);
 };
 #endif
 
 /* onvif.h:1915 */
-#ifndef SOAP_TYPE_ns2__SteamDetector
-#define SOAP_TYPE_ns2__SteamDetector (860)
-/* complex XML schema type 'ns2:SteamDetector': */
-class SOAP_CMAC ns2__SteamDetector : public soap_dom_element {
+#ifndef SOAP_TYPE_tmk__SteamDetector
+#define SOAP_TYPE_tmk__SteamDetector (860)
+/* complex XML schema type 'tmk:SteamDetector': */
+class SOAP_CMAC tmk__SteamDetector : public soap_dom_element {
       public:
-        /// Required element 'ns2:Detect' of XML schema type 'tt:MessageDescription'
+        /// Required element 'tmk:Detect' of XML schema type 'tt:MessageDescription'
         tt__MessageDescription *Detect;
         /// Required attribute 'topic' of XML schema type 'xsd:boolean'
         bool topic;
       public:
-        /// Return unique type id SOAP_TYPE_ns2__SteamDetector
-        virtual long soap_type(void) const { return SOAP_TYPE_ns2__SteamDetector; }
+        /// Return unique type id SOAP_TYPE_tmk__SteamDetector
+        virtual long soap_type(void) const { return SOAP_TYPE_tmk__SteamDetector; }
         /// (Re)set members to default values
         virtual void soap_default(struct soap*);
         /// Serialize object to prepare for SOAP 1.1/1.2 encoded output (or with SOAP_XML_GRAPH) by analyzing its (cyclic) structures
@@ -33593,30 +33593,30 @@ class SOAP_CMAC ns2__SteamDetector : public soap_dom_element {
         virtual void *soap_get(struct soap*, const char *tag, const char *type);
         /// Get object from XML, with matching tag and type (NULL matches any tag and type), return pointer to object or NULL on error
         virtual void *soap_in(struct soap*, const char *tag, const char *type);
-        /// Return a new object of type ns2__SteamDetector, default initialized and not managed by a soap context
-        virtual ns2__SteamDetector *soap_alloc(void) const { return SOAP_NEW_UNMANAGED(ns2__SteamDetector); }
+        /// Return a new object of type tmk__SteamDetector, default initialized and not managed by a soap context
+        virtual tmk__SteamDetector *soap_alloc(void) const { return SOAP_NEW_UNMANAGED(tmk__SteamDetector); }
       public:
         /// Constructor with default initializations
-        ns2__SteamDetector() : Detect(), topic() { }
-        virtual ~ns2__SteamDetector() { }
-        /// Friend allocator used by soap_new_ns2__SteamDetector(struct soap*, int)
-        friend SOAP_FMAC1 ns2__SteamDetector * SOAP_FMAC2 soap_instantiate_ns2__SteamDetector(struct soap*, int, const char*, const char*, size_t*);
+        tmk__SteamDetector() : Detect(), topic() { }
+        virtual ~tmk__SteamDetector() { }
+        /// Friend allocator used by soap_new_tmk__SteamDetector(struct soap*, int)
+        friend SOAP_FMAC1 tmk__SteamDetector * SOAP_FMAC2 soap_instantiate_tmk__SteamDetector(struct soap*, int, const char*, const char*, size_t*);
 };
 #endif
 
 /* onvif.h:1917 */
-#ifndef SOAP_TYPE_ns2__MetalDetector
-#define SOAP_TYPE_ns2__MetalDetector (861)
-/* complex XML schema type 'ns2:MetalDetector': */
-class SOAP_CMAC ns2__MetalDetector : public soap_dom_element {
+#ifndef SOAP_TYPE_tmk__MetalDetector
+#define SOAP_TYPE_tmk__MetalDetector (861)
+/* complex XML schema type 'tmk:MetalDetector': */
+class SOAP_CMAC tmk__MetalDetector : public soap_dom_element {
       public:
-        /// Required element 'ns2:Detect' of XML schema type 'tt:MessageDescription'
+        /// Required element 'tmk:Detect' of XML schema type 'tt:MessageDescription'
         tt__MessageDescription *Detect;
         /// Required attribute 'topic' of XML schema type 'xsd:boolean'
         bool topic;
       public:
-        /// Return unique type id SOAP_TYPE_ns2__MetalDetector
-        virtual long soap_type(void) const { return SOAP_TYPE_ns2__MetalDetector; }
+        /// Return unique type id SOAP_TYPE_tmk__MetalDetector
+        virtual long soap_type(void) const { return SOAP_TYPE_tmk__MetalDetector; }
         /// (Re)set members to default values
         virtual void soap_default(struct soap*);
         /// Serialize object to prepare for SOAP 1.1/1.2 encoded output (or with SOAP_XML_GRAPH) by analyzing its (cyclic) structures
@@ -33629,52 +33629,52 @@ class SOAP_CMAC ns2__MetalDetector : public soap_dom_element {
         virtual void *soap_get(struct soap*, const char *tag, const char *type);
         /// Get object from XML, with matching tag and type (NULL matches any tag and type), return pointer to object or NULL on error
         virtual void *soap_in(struct soap*, const char *tag, const char *type);
-        /// Return a new object of type ns2__MetalDetector, default initialized and not managed by a soap context
-        virtual ns2__MetalDetector *soap_alloc(void) const { return SOAP_NEW_UNMANAGED(ns2__MetalDetector); }
+        /// Return a new object of type tmk__MetalDetector, default initialized and not managed by a soap context
+        virtual tmk__MetalDetector *soap_alloc(void) const { return SOAP_NEW_UNMANAGED(tmk__MetalDetector); }
       public:
         /// Constructor with default initializations
-        ns2__MetalDetector() : Detect(), topic() { }
-        virtual ~ns2__MetalDetector() { }
-        /// Friend allocator used by soap_new_ns2__MetalDetector(struct soap*, int)
-        friend SOAP_FMAC1 ns2__MetalDetector * SOAP_FMAC2 soap_instantiate_ns2__MetalDetector(struct soap*, int, const char*, const char*, size_t*);
+        tmk__MetalDetector() : Detect(), topic() { }
+        virtual ~tmk__MetalDetector() { }
+        /// Friend allocator used by soap_new_tmk__MetalDetector(struct soap*, int)
+        friend SOAP_FMAC1 tmk__MetalDetector * SOAP_FMAC2 soap_instantiate_tmk__MetalDetector(struct soap*, int, const char*, const char*, size_t*);
 };
 #endif
 
 /* onvif.h:1919 */
-#ifndef SOAP_TYPE_ns2__VideoSurveillanceSystem
-#define SOAP_TYPE_ns2__VideoSurveillanceSystem (862)
-/* complex XML schema type 'ns2:VideoSurveillanceSystem': */
-class SOAP_CMAC ns2__VideoSurveillanceSystem : public soap_dom_element {
+#ifndef SOAP_TYPE_tmk__VideoSurveillanceSystem
+#define SOAP_TYPE_tmk__VideoSurveillanceSystem (862)
+/* complex XML schema type 'tmk:VideoSurveillanceSystem': */
+class SOAP_CMAC tmk__VideoSurveillanceSystem : public soap_dom_element {
       public:
-        /// Required element 'ns2:ChannelDisconnect' of XML schema type 'tt:MessageDescription'
+        /// Required element 'tmk:ChannelDisconnect' of XML schema type 'tt:MessageDescription'
         tt__MessageDescription *ChannelDisconnect;
-        /// Required element 'ns2:ChannelConnect' of XML schema type 'tt:MessageDescription'
+        /// Required element 'tmk:ChannelConnect' of XML schema type 'tt:MessageDescription'
         tt__MessageDescription *ChannelConnect;
-        /// Required element 'ns2:RecordTurnOff' of XML schema type 'tt:MessageDescription'
+        /// Required element 'tmk:RecordTurnOff' of XML schema type 'tt:MessageDescription'
         tt__MessageDescription *RecordTurnOff;
-        /// Required element 'ns2:RecordTurnOn' of XML schema type 'tt:MessageDescription'
+        /// Required element 'tmk:RecordTurnOn' of XML schema type 'tt:MessageDescription'
         tt__MessageDescription *RecordTurnOn;
-        /// Required element 'ns2:MotionDetectorTrigger' of XML schema type 'tt:MessageDescription'
+        /// Required element 'tmk:MotionDetectorTrigger' of XML schema type 'tt:MessageDescription'
         tt__MessageDescription *MotionDetectorTrigger;
-        /// Required element 'ns2:ReadRecordRequest' of XML schema type 'tt:MessageDescription'
+        /// Required element 'tmk:ReadRecordRequest' of XML schema type 'tt:MessageDescription'
         tt__MessageDescription *ReadRecordRequest;
-        /// Required element 'ns2:DeleteRecordRequest' of XML schema type 'tt:MessageDescription'
+        /// Required element 'tmk:DeleteRecordRequest' of XML schema type 'tt:MessageDescription'
         tt__MessageDescription *DeleteRecordRequest;
-        /// Required element 'ns2:EditDbRecordRequest' of XML schema type 'tt:MessageDescription'
+        /// Required element 'tmk:EditDbRecordRequest' of XML schema type 'tt:MessageDescription'
         tt__MessageDescription *EditDbRecordRequest;
-        /// Required element 'ns2:CopyDbRecordRequest' of XML schema type 'tt:MessageDescription'
+        /// Required element 'tmk:CopyDbRecordRequest' of XML schema type 'tt:MessageDescription'
         tt__MessageDescription *CopyDbRecordRequest;
-        /// Required element 'ns2:Authorization' of XML schema type 'tt:MessageDescription'
+        /// Required element 'tmk:Authorization' of XML schema type 'tt:MessageDescription'
         tt__MessageDescription *Authorization;
-        /// Required element 'ns2:ServerPowerOn' of XML schema type 'tt:MessageDescription'
+        /// Required element 'tmk:ServerPowerOn' of XML schema type 'tt:MessageDescription'
         tt__MessageDescription *ServerPowerOn;
-        /// Required element 'ns2:ServerPowerOff' of XML schema type 'tt:MessageDescription'
+        /// Required element 'tmk:ServerPowerOff' of XML schema type 'tt:MessageDescription'
         tt__MessageDescription *ServerPowerOff;
         /// Required attribute 'topic' of XML schema type 'xsd:boolean'
         bool topic;
       public:
-        /// Return unique type id SOAP_TYPE_ns2__VideoSurveillanceSystem
-        virtual long soap_type(void) const { return SOAP_TYPE_ns2__VideoSurveillanceSystem; }
+        /// Return unique type id SOAP_TYPE_tmk__VideoSurveillanceSystem
+        virtual long soap_type(void) const { return SOAP_TYPE_tmk__VideoSurveillanceSystem; }
         /// (Re)set members to default values
         virtual void soap_default(struct soap*);
         /// Serialize object to prepare for SOAP 1.1/1.2 encoded output (or with SOAP_XML_GRAPH) by analyzing its (cyclic) structures
@@ -33687,14 +33687,14 @@ class SOAP_CMAC ns2__VideoSurveillanceSystem : public soap_dom_element {
         virtual void *soap_get(struct soap*, const char *tag, const char *type);
         /// Get object from XML, with matching tag and type (NULL matches any tag and type), return pointer to object or NULL on error
         virtual void *soap_in(struct soap*, const char *tag, const char *type);
-        /// Return a new object of type ns2__VideoSurveillanceSystem, default initialized and not managed by a soap context
-        virtual ns2__VideoSurveillanceSystem *soap_alloc(void) const { return SOAP_NEW_UNMANAGED(ns2__VideoSurveillanceSystem); }
+        /// Return a new object of type tmk__VideoSurveillanceSystem, default initialized and not managed by a soap context
+        virtual tmk__VideoSurveillanceSystem *soap_alloc(void) const { return SOAP_NEW_UNMANAGED(tmk__VideoSurveillanceSystem); }
       public:
         /// Constructor with default initializations
-        ns2__VideoSurveillanceSystem() : ChannelDisconnect(), ChannelConnect(), RecordTurnOff(), RecordTurnOn(), MotionDetectorTrigger(), ReadRecordRequest(), DeleteRecordRequest(), EditDbRecordRequest(), CopyDbRecordRequest(), Authorization(), ServerPowerOn(), ServerPowerOff(), topic() { }
-        virtual ~ns2__VideoSurveillanceSystem() { }
-        /// Friend allocator used by soap_new_ns2__VideoSurveillanceSystem(struct soap*, int)
-        friend SOAP_FMAC1 ns2__VideoSurveillanceSystem * SOAP_FMAC2 soap_instantiate_ns2__VideoSurveillanceSystem(struct soap*, int, const char*, const char*, size_t*);
+        tmk__VideoSurveillanceSystem() : ChannelDisconnect(), ChannelConnect(), RecordTurnOff(), RecordTurnOn(), MotionDetectorTrigger(), ReadRecordRequest(), DeleteRecordRequest(), EditDbRecordRequest(), CopyDbRecordRequest(), Authorization(), ServerPowerOn(), ServerPowerOff(), topic() { }
+        virtual ~tmk__VideoSurveillanceSystem() { }
+        /// Friend allocator used by soap_new_tmk__VideoSurveillanceSystem(struct soap*, int)
+        friend SOAP_FMAC1 tmk__VideoSurveillanceSystem * SOAP_FMAC2 soap_instantiate_tmk__VideoSurveillanceSystem(struct soap*, int, const char*, const char*, size_t*);
 };
 #endif
 
@@ -43282,49 +43282,49 @@ typedef std::string tns1__dummy;
 #define SOAP_TYPE_tds__EAPMethodTypes (863)
 #endif
 
-/* ns2__VideoSurveillanceSystem has binding name 'ns2__VideoSurveillanceSystem' for type 'ns2:VideoSurveillanceSystem' */
-#ifndef SOAP_TYPE_ns2__VideoSurveillanceSystem
-#define SOAP_TYPE_ns2__VideoSurveillanceSystem (862)
+/* tmk__VideoSurveillanceSystem has binding name 'tmk__VideoSurveillanceSystem' for type 'tmk:VideoSurveillanceSystem' */
+#ifndef SOAP_TYPE_tmk__VideoSurveillanceSystem
+#define SOAP_TYPE_tmk__VideoSurveillanceSystem (862)
 #endif
 
-/* ns2__MetalDetector has binding name 'ns2__MetalDetector' for type 'ns2:MetalDetector' */
-#ifndef SOAP_TYPE_ns2__MetalDetector
-#define SOAP_TYPE_ns2__MetalDetector (861)
+/* tmk__MetalDetector has binding name 'tmk__MetalDetector' for type 'tmk:MetalDetector' */
+#ifndef SOAP_TYPE_tmk__MetalDetector
+#define SOAP_TYPE_tmk__MetalDetector (861)
 #endif
 
-/* ns2__SteamDetector has binding name 'ns2__SteamDetector' for type 'ns2:SteamDetector' */
-#ifndef SOAP_TYPE_ns2__SteamDetector
-#define SOAP_TYPE_ns2__SteamDetector (860)
+/* tmk__SteamDetector has binding name 'tmk__SteamDetector' for type 'tmk:SteamDetector' */
+#ifndef SOAP_TYPE_tmk__SteamDetector
+#define SOAP_TYPE_tmk__SteamDetector (860)
 #endif
 
-/* ns2__RadiationMonitoring has binding name 'ns2__RadiationMonitoring' for type 'ns2:RadiationMonitoring' */
-#ifndef SOAP_TYPE_ns2__RadiationMonitoring
-#define SOAP_TYPE_ns2__RadiationMonitoring (859)
+/* tmk__RadiationMonitoring has binding name 'tmk__RadiationMonitoring' for type 'tmk:RadiationMonitoring' */
+#ifndef SOAP_TYPE_tmk__RadiationMonitoring
+#define SOAP_TYPE_tmk__RadiationMonitoring (859)
 #endif
 
-/* ns2__NeutronProbing has binding name 'ns2__NeutronProbing' for type 'ns2:NeutronProbing' */
-#ifndef SOAP_TYPE_ns2__NeutronProbing
-#define SOAP_TYPE_ns2__NeutronProbing (858)
+/* tmk__NeutronProbing has binding name 'tmk__NeutronProbing' for type 'tmk:NeutronProbing' */
+#ifndef SOAP_TYPE_tmk__NeutronProbing
+#define SOAP_TYPE_tmk__NeutronProbing (858)
 #endif
 
-/* ns2__Introscopy has binding name 'ns2__Introscopy' for type 'ns2:Introscopy' */
-#ifndef SOAP_TYPE_ns2__Introscopy
-#define SOAP_TYPE_ns2__Introscopy (857)
+/* tmk__Introscopy has binding name 'tmk__Introscopy' for type 'tmk:Introscopy' */
+#ifndef SOAP_TYPE_tmk__Introscopy
+#define SOAP_TYPE_tmk__Introscopy (857)
 #endif
 
-/* ns2__GasAnalysis has binding name 'ns2__GasAnalysis' for type 'ns2:GasAnalysis' */
-#ifndef SOAP_TYPE_ns2__GasAnalysis
-#define SOAP_TYPE_ns2__GasAnalysis (856)
+/* tmk__GasAnalysis has binding name 'tmk__GasAnalysis' for type 'tmk:GasAnalysis' */
+#ifndef SOAP_TYPE_tmk__GasAnalysis
+#define SOAP_TYPE_tmk__GasAnalysis (856)
 #endif
 
-/* ns2__FireAlarm has binding name 'ns2__FireAlarm' for type 'ns2:FireAlarm' */
-#ifndef SOAP_TYPE_ns2__FireAlarm
-#define SOAP_TYPE_ns2__FireAlarm (855)
+/* tmk__FireAlarm has binding name 'tmk__FireAlarm' for type 'tmk:FireAlarm' */
+#ifndef SOAP_TYPE_tmk__FireAlarm
+#define SOAP_TYPE_tmk__FireAlarm (855)
 #endif
 
-/* ns2__AccessControl has binding name 'ns2__AccessControl' for type 'ns2:AccessControl' */
-#ifndef SOAP_TYPE_ns2__AccessControl
-#define SOAP_TYPE_ns2__AccessControl (854)
+/* tmk__AccessControl has binding name 'tmk__AccessControl' for type 'tmk:AccessControl' */
+#ifndef SOAP_TYPE_tmk__AccessControl
+#define SOAP_TYPE_tmk__AccessControl (854)
 #endif
 
 /* wsa__AttributedURI has binding name 'wsa__AttributedURI' for type 'wsa:AttributedURI' */

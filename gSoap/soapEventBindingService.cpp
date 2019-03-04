@@ -59,7 +59,7 @@ void EventBindingService::EventBindingService_init(soap_mode imode, soap_mode om
         { "xsd", "http://www.w3.org/2001/XMLSchema", "http://www.w3.org/*/XMLSchema", NULL },
         { "chan", "http://schemas.microsoft.com/ws/2005/02/duplex", NULL, NULL },
         { "wsa5", "http://www.w3.org/2005/08/addressing", "http://schemas.xmlsoap.org/ws/2004/08/addressing", NULL },
-        { "ns2", "http://www.inforion.ru/schemas/sstmk/onvif/topics/sensors", NULL, NULL },
+        { "tmk", "http://www.inforion.ru/schemas/sstmk/onvif/topics/sensors", NULL, NULL },
         { "xmime", "http://www.w3.org/2005/05/xmlmime", NULL, NULL },
         { "tt", "http://www.onvif.org/ver10/schema", NULL, NULL },
         { "xop", "http://www.w3.org/2004/08/xop/include", NULL, NULL },

@@ -1,6 +1,8 @@
 #include "Device.h"
 #include "Event.h"
 #include "LicenseChecker.h"
+#include "PullPointSubscription.h"
+#include "SubscriptionManager.h"
 
 #include <gSoap/thread_setup.h>
 #include <gSoap/httpda.h>
@@ -23,6 +25,8 @@ int main(int argc, char *argv[])
 
 	auto device = std::make_shared<Onvif::Device>(soap);
 	auto event = std::make_shared<Onvif::Event>(soap);
+	auto pullPointSubscription = std::make_shared<Onvif::PullPointSubscription>(soap);
+	auto subscriptionManager = std::make_shared<Onvif::SubscriptionManager>(soap);
 
 	if (!soap_valid_socket(soap_bind(soap, NULL, 8080, 100)))
 		exit(EXIT_FAILURE);
@@ -37,9 +41,15 @@ int main(int argc, char *argv[])
 		{
 			soap_stream_fault(soap, std::cerr);
 		}
-		else if (err = device->dispatch() == SOAP_NO_METHOD)
+		else if ((err = device->dispatch()) == SOAP_NO_METHOD)
 		{
-			err = event->dispatch();
+			if ((err = event->dispatch()) == SOAP_NO_METHOD)
+			{
+				if ((err = pullPointSubscription->dispatch()) == SOAP_NO_METHOD)
+				{
+					err = pullPointSubscription->dispatch();
+				}
+			}
 		}
 
 		if (err)

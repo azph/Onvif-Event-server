@@ -45,13 +45,19 @@ gsoap_generate(
     )
 
 set(Onvif_SRCS
+	src/AuthorisationHolder.cpp
+	src/AuthorisationHolder.h
 	src/Device.cpp
 	src/Device.h
 	src/Event.cpp
-	src/Event.h
+	src/Event.h	
 	src/LicenseChecker.h
 	src/LicenseChecker.cpp
 	src/md5Util.h
+	src/PullPointSubscription.cpp
+	src/PullPointSubscription.h
+	src/SubscriptionManager.cpp
+	src/SubscriptionManager.h
 	src/main.cpp
 )
 
