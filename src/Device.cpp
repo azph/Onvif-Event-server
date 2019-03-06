@@ -33,6 +33,14 @@ tt__DateTime* toDateTime(struct soap* soap, std::tm* time)
 	return result;
 }
 
+bool* soap_new_req_bool(struct soap* soap, bool value)
+{
+	auto result = soap_new_bool(soap);
+	*result = value;
+
+	return result;
+}
+
 int Device::GetSystemDateAndTime(_tds__GetSystemDateAndTime *tds__GetSystemDateAndTime, _tds__GetSystemDateAndTimeResponse &tds__GetSystemDateAndTimeResponse)
 {
 	// local
@@ -85,6 +93,11 @@ int Device::GetServices(_tds__GetServices *tds__GetServices, _tds__GetServicesRe
 	auto deviceService = soap_new_tds__Service(soap);
 	deviceService->Namespace = SOAP_NAMESPACE_OF_tds;
 	deviceService->XAddr = soap->endpoint;
+	if (tds__GetServices->IncludeCapability)
+	{
+		deviceService->Capabilities = soap_new_req__tds__Service_Capabilities(soap);
+		deviceService->Capabilities->__any.set(createCapabilities(), SOAP_TYPE_tds__DeviceServiceCapabilities);
+	}
 	tds__GetServicesResponse.Service.push_back(deviceService);
 
 	// Event service.
@@ -93,6 +106,37 @@ int Device::GetServices(_tds__GetServices *tds__GetServices, _tds__GetServicesRe
 	eventService->XAddr = soap->endpoint;
 	tds__GetServicesResponse.Service.push_back(eventService);
 
+	return SOAP_OK;
+}
+
+tds__DeviceServiceCapabilities* Device::createCapabilities()
+{
+	auto deviceCapabilities = soap_new_req_tds__DeviceServiceCapabilities(soap,
+		soap_new_req_tds__NetworkCapabilities(soap),
+		soap_new_req_tds__SecurityCapabilities(soap),
+		soap_new_req_tds__SystemCapabilities(soap));
+
+	deviceCapabilities->Security->HttpDigest = soap_new_req_bool(soap, true);
+	deviceCapabilities->Security->UsernameToken = soap_new_req_bool(soap, true);
+
+	deviceCapabilities->System->DiscoveryBye = soap_new_req_bool(soap, true);
+	deviceCapabilities->System->DiscoveryResolve = soap_new_req_bool(soap, true);
+	deviceCapabilities->System->RemoteDiscovery = soap_new_req_bool(soap, false);
+	deviceCapabilities->System->SystemBackup = soap_new_req_bool(soap, false);
+	deviceCapabilities->System->SystemLogging = soap_new_req_bool(soap, false);
+	deviceCapabilities->System->FirmwareUpgrade = soap_new_req_bool(soap, false);
+
+	return deviceCapabilities;
+}
+
+int Device::GetServiceCapabilities(_tds__GetServiceCapabilities *tds__GetServiceCapabilities, _tds__GetServiceCapabilitiesResponse &tds__GetServiceCapabilitiesResponse)
+{
+	if (!AuthorisationHolder::getInstance().verifyPassword(soap))
+	{
+		return 401;
+	}
+
+	tds__GetServiceCapabilitiesResponse.Capabilities = createCapabilities();
 	return SOAP_OK;
 }
 

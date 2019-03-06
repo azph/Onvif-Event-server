@@ -10,11 +10,13 @@
 
 int main(int argc, char *argv[])
 {
+#ifndef WIN32
 	if (!isKeyValid())
 	{
 		std::cerr << "Licene key is invalid" << std::endl;
 		return -1;
 	}
+#endif
 	
 	// make OpenSSL MT-safe with mutex
 	CRYPTO_thread_setup();
@@ -47,7 +49,7 @@ int main(int argc, char *argv[])
 			{
 				if ((err = pullPointSubscription->dispatch()) == SOAP_NO_METHOD)
 				{
-					err = pullPointSubscription->dispatch();
+					err = subscriptionManager->dispatch();
 				}
 			}
 		}

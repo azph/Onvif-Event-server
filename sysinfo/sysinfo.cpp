@@ -1,6 +1,7 @@
 #include <string>
 #include <regex>
 #include <fstream>
+#include <sstream>
 
 #include "sysinfo.h"
 

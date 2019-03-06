@@ -16,12 +16,13 @@ namespace Onvif
 	{
 		timeval* tm = soap_new_xsd__dateTime(soap);
 
-		ULONGLONG uts = time * 1000;
-		tm->tv_sec = static_cast<long>(uts / 1000000);
-		tm->tv_usec = static_cast<long>(uts % 1000000);
+		tm->tv_sec = static_cast<long>(time / 1000000);
+		tm->tv_usec = static_cast<long>(time % 1000000);
 
 		return tm;
 	}
+
+	
 
 PullPointSubscription::PullPointSubscription(struct soap *_soap):
 	PullPointSubscriptionBindingService(_soap)
@@ -38,7 +39,8 @@ wsnt__NotificationMessageHolderType* CreateMetallDetectorEvent(struct soap* soap
 
 	_tt__Message * tt_msg = soap_new__tt__Message(soap);
 
-	auto cur_tssTime = std::time(nullptr);
+	auto cur_tssTime = std::chrono::duration_cast<std::chrono::microseconds>(std::chrono::system_clock::now().time_since_epoch()).count();
+
 	tt_msg->UtcTime = *convertTime(soap, cur_tssTime);
 
 	tt_msg->PropertyOperation = soap_new_tt__PropertyOperation(soap);
@@ -77,17 +79,17 @@ int PullPointSubscription::PullMessages(_tev__PullMessages *tev__PullMessages, _
 	}
 
 
-	auto cur_tssTime = std::time(nullptr);
-	auto termTime = cur_tssTime + tev__PullMessages->Timeout.count();
+	auto cur_tssTime = std::chrono::duration_cast<std::chrono::microseconds>(std::chrono::system_clock::now().time_since_epoch());
+	auto termTime = cur_tssTime + std::chrono::duration_cast<std::chrono::microseconds>(tev__PullMessages->Timeout);
 
 
 	std::async(std::launch::async,
 		[&]()
 	{
-		std::this_thread::sleep_for(std::chrono::milliseconds(100));
+		std::this_thread::sleep_until(std::chrono::system_clock::time_point(termTime));
 
-		tev__PullMessagesResponse.CurrentTime = *convertTime(this->soap, cur_tssTime);
-		tev__PullMessagesResponse.TerminationTime = *convertTime(this->soap, cur_tssTime + 60000000);
+		tev__PullMessagesResponse.CurrentTime = *convertTime(this->soap, cur_tssTime.count());
+		tev__PullMessagesResponse.TerminationTime = *convertTime(this->soap, cur_tssTime.count() + 60000000);
 
 		auto message = CreateMetallDetectorEvent(soap, tt__PropertyOperation::Initialized);
 

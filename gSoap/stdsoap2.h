@@ -645,7 +645,7 @@ extern intmax_t __strtoull(const char*, char**, int);
 # define SOAP_PURE_VIRTUAL = 0
 # define SOAP_PURE_VIRTUAL_COPY = 0
 #elif defined(WITH_DEFAULT_VIRTUAL)
-# define SOAP_PURE_VIRTUAL { return SOAP_NO_METHOD; }
+# define SOAP_PURE_VIRTUAL { return SOAP_NO_DATA; }
 # define SOAP_PURE_VIRTUAL_COPY
 #else
 # define SOAP_PURE_VIRTUAL

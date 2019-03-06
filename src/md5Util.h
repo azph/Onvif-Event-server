@@ -18,7 +18,7 @@ std::string StringToMD5(const std::string& input)
 	for (int index = 0; index < MD5_DIGEST_LENGTH; ++index) 
 		// use u_int16_t because u_int8_t is typedef to unsigned char
 		// char in stream inereted by symbol
-		stream << std::hex << static_cast<u_int16_t>(md5digest[index]);
+		stream << std::hex << static_cast<std::uint16_t>(md5digest[index]);
 
 	return stream.str();
 }
