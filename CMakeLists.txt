@@ -54,6 +54,8 @@ set(Onvif_SRCS
 	src/LicenseChecker.h
 	src/LicenseChecker.cpp
 	src/md5Util.h
+	src/OnvifServer.h
+	src/OnvifServer.cpp
 	src/PullPointSubscription.cpp
 	src/PullPointSubscription.h
 	src/SubscriptionManager.cpp

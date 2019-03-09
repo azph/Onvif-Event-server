@@ -8,6 +8,8 @@
 namespace Onvif
 {
 soap_dom_element createMetalDetectorDescription(struct soap* soap);
+soap_dom_element createSteamDetectorDescription(struct soap* soap);
+soap_dom_element createRadiationMonitoringDescription(struct soap* soap);
 
 Event::Event(struct soap *_soap):
 	EventBindingService(_soap)
@@ -24,7 +26,8 @@ int Event::CreatePullPointSubscription(_tev__CreatePullPointSubscription *tev__C
 	}
 
 	std::time_t lt = std::time(nullptr) * 1000;
-	std::string str = soap->endpoint + std::string("?sub=1");
+	std::string uuid = soap_rand_uuid(soap, "");
+	std::string str = soap->endpoint + std::string("?sub=") + uuid;
 	tev__CreatePullPointSubscriptionResponse.SubscriptionReference.Address = soap_strdup(soap, str.c_str());
 
 	tev__CreatePullPointSubscriptionResponse.wsnt__CurrentTime.tv_sec = lt / 1000000;
@@ -70,42 +73,117 @@ int Event::GetEventProperties(_tev__GetEventProperties *tev__GetEventProperties,
 
 	tev__GetEventPropertiesResponse.wstop__TopicSet = tev__GetEventPropertiesResponse.wstop__TopicSet = soap_new_wstop__TopicSetType(soap);
 
-	tev__GetEventPropertiesResponse.wstop__TopicSet->__any.push_back(createMetalDetectorDescription(soap));
+	auto holder = soap_new_tt__AnyHolder(soap);
+	holder->__any.push_back(createMetalDetectorDescription(soap));
+	holder->__any.push_back(createSteamDetectorDescription(soap));
+	holder->__any.push_back(createRadiationMonitoringDescription(soap));
+
+	soap_dom_element DeviceEl(soap);
+	DeviceEl.set(holder, SOAP_TYPE_tt__AnyHolder);
+	DeviceEl.name = "tns1:Device";
+
+	tev__GetEventPropertiesResponse.wstop__TopicSet->__any.push_back(DeviceEl);
+
 	return soap_wsa_reply(this->soap, nullptr, "http://www.onvif.org/ver10/events/wsdl/EventPortType/GetEventPropertiesResponse");
 }
 
 soap_dom_element createMetalDetectorDescription(struct soap* soap)
 {
-	tt__MessageDescription * _MessageDescription_RelayEvt = soap_new_tt__MessageDescription(soap);
+	tt__MessageDescription * detectMessage = soap_new_tt__MessageDescription(soap);
 
-	_MessageDescription_RelayEvt->Source = soap_new_tt__ItemListDescription(soap);
+	detectMessage->Source = soap_new_tt__ItemListDescription(soap);
 
 	_tt__ItemListDescription_SimpleItemDescription sourceDescr;
 	sourceDescr.Name = "Id";
 	sourceDescr.Type = "xsd:string";
-	_MessageDescription_RelayEvt->Source->SimpleItemDescription.push_back(sourceDescr);
+	detectMessage->Source->SimpleItemDescription.push_back(sourceDescr);
 
-	_MessageDescription_RelayEvt->Data = soap_new_tt__ItemListDescription(soap);
+	detectMessage->Data = soap_new_tt__ItemListDescription(soap);
 
 	_tt__ItemListDescription_SimpleItemDescription PictureDescr;
 	PictureDescr.Name = "Picture";
 	PictureDescr.Type = "xsd:string";
-	_MessageDescription_RelayEvt->Data->SimpleItemDescription.push_back(PictureDescr);
+	detectMessage->Data->SimpleItemDescription.push_back(PictureDescr);
 
 	_tt__ItemListDescription_SimpleItemDescription elemDescr;
 	elemDescr.Name = "Account";
 	elemDescr.Type = "xsd:string";
-	_MessageDescription_RelayEvt->Data->SimpleItemDescription.push_back(elemDescr);
+	detectMessage->Data->SimpleItemDescription.push_back(elemDescr);
 
 	soap_dom_element msgDescr(soap);
-	msgDescr.set(_MessageDescription_RelayEvt, SOAP_TYPE_tt__MessageDescription);
+	msgDescr.set(detectMessage, SOAP_TYPE_tt__MessageDescription);
 	msgDescr.name = "tt:MessageDescription";
 
-	soap_dom_element relayEvtDescrRelayEl = AddHolder(soap, msgDescr, "tmk:Detect", true);
-	soap_dom_element relayEvtDescrTriggerEl = AddHolder(soap, relayEvtDescrRelayEl, "tmk:MetalDetector", false);
-	soap_dom_element relayEvtDescrDeviceEl = AddHolder(soap, relayEvtDescrTriggerEl, "tns1:Device", false);
+	soap_dom_element DetectEl = AddHolder(soap, msgDescr, "tmk:Detect", true);
+	soap_dom_element MetalDetectorEl = AddHolder(soap, DetectEl, "tmk:MetalDetector", false);
 
-	return relayEvtDescrDeviceEl;
-
+	return MetalDetectorEl;
 }
+
+soap_dom_element createSteamDetectorDescription(struct soap* soap)
+{
+	tt__MessageDescription * detectMessage = soap_new_tt__MessageDescription(soap);
+
+	detectMessage->Source = soap_new_tt__ItemListDescription(soap);
+
+	_tt__ItemListDescription_SimpleItemDescription sourceDescr;
+	sourceDescr.Name = "Id";
+	sourceDescr.Type = "xsd:string";
+	detectMessage->Source->SimpleItemDescription.push_back(sourceDescr);
+
+	detectMessage->Data = soap_new_tt__ItemListDescription(soap);
+
+	_tt__ItemListDescription_SimpleItemDescription PictureDescr;
+	PictureDescr.Name = "Picture";
+	PictureDescr.Type = "xsd:string";
+	detectMessage->Data->SimpleItemDescription.push_back(PictureDescr);
+
+	_tt__ItemListDescription_SimpleItemDescription elemDescr;
+	elemDescr.Name = "Account";
+	elemDescr.Type = "xsd:string";
+	detectMessage->Data->SimpleItemDescription.push_back(elemDescr);
+
+	soap_dom_element msgDescr(soap);
+	msgDescr.set(detectMessage, SOAP_TYPE_tt__MessageDescription);
+	msgDescr.name = "tt:MessageDescription";
+
+	soap_dom_element DetectEl = AddHolder(soap, msgDescr, "tmk:Detect", true);
+	soap_dom_element SteamDetectorEl = AddHolder(soap, DetectEl, "tmk:SteamDetector", false);
+
+	return SteamDetectorEl;
+}
+
+soap_dom_element createRadiationMonitoringDescription(struct soap* soap)
+{
+	tt__MessageDescription * detectMessage = soap_new_tt__MessageDescription(soap);
+
+	detectMessage->Source = soap_new_tt__ItemListDescription(soap);
+
+	_tt__ItemListDescription_SimpleItemDescription sourceDescr;
+	sourceDescr.Name = "Id";
+	sourceDescr.Type = "xsd:string";
+	detectMessage->Source->SimpleItemDescription.push_back(sourceDescr);
+
+	detectMessage->Data = soap_new_tt__ItemListDescription(soap);
+
+	_tt__ItemListDescription_SimpleItemDescription PictureDescr;
+	PictureDescr.Name = "Picture";
+	PictureDescr.Type = "xsd:string";
+	detectMessage->Data->SimpleItemDescription.push_back(PictureDescr);
+
+	_tt__ItemListDescription_SimpleItemDescription elemDescr;
+	elemDescr.Name = "Account";
+	elemDescr.Type = "xsd:string";
+	detectMessage->Data->SimpleItemDescription.push_back(elemDescr);
+
+	soap_dom_element msgDescr(soap);
+	msgDescr.set(detectMessage, SOAP_TYPE_tt__MessageDescription);
+	msgDescr.name = "tt:MessageDescription";
+
+	soap_dom_element DetectEl = AddHolder(soap, msgDescr, "tmk:Detect", true);
+	soap_dom_element RadiationMonitoringEl = AddHolder(soap, DetectEl, "tmk:RadiationMonitoring", false);
+
+	return RadiationMonitoringEl;
+}
+
 }

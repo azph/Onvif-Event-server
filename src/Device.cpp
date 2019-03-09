@@ -3,6 +3,7 @@
 #include <set>
 #include <map>
 #include <ctime>
+#include <sstream>
 
 #include "AuthorisationHolder.h"
 
@@ -14,7 +15,7 @@ Device::Device(struct soap *_soap):
 {
 }
 
-tt__DateTime* toDateTime(struct soap* soap, std::tm* time)
+tt__DateTime* toDateTime(struct soap* soap, const std::tm* time)
 {
 	tt__DateTime* result = soap_new_tt__DateTime(soap);
 	
@@ -31,6 +32,13 @@ tt__DateTime* toDateTime(struct soap* soap, std::tm* time)
 	result->Date->Day = time->tm_mday;
 	
 	return result;
+}
+
+std::string getHost(struct soap* soap, char* sufix = "")
+{
+	std::ostringstream host;
+	host << "http://" << soap->host << ":" << soap->proxy_port << soap->path << sufix;
+	return host.str();
 }
 
 bool* soap_new_req_bool(struct soap* soap, bool value)
@@ -89,10 +97,13 @@ int Device::GetServices(_tds__GetServices *tds__GetServices, _tds__GetServicesRe
 		return 401;
 	}
 
+	
+	auto host = getHost(soap);
 	// Device service.
 	auto deviceService = soap_new_tds__Service(soap);
 	deviceService->Namespace = SOAP_NAMESPACE_OF_tds;
-	deviceService->XAddr = soap->endpoint;
+	deviceService->XAddr = host;
+	deviceService->Version = soap_new_req_tt__OnvifVersion(soap, 2, 4);
 	if (tds__GetServices->IncludeCapability)
 	{
 		deviceService->Capabilities = soap_new_req__tds__Service_Capabilities(soap);
@@ -102,8 +113,9 @@ int Device::GetServices(_tds__GetServices *tds__GetServices, _tds__GetServicesRe
 
 	// Event service.
 	auto eventService = soap_new_tds__Service(soap);
-	eventService->Namespace = SOAP_NAMESPACE_OF_tds;
-	eventService->XAddr = soap->endpoint;
+	eventService->Namespace = SOAP_NAMESPACE_OF_tev;
+	eventService->XAddr = host;
+	eventService->Version = soap_new_req_tt__OnvifVersion(soap, 2, 4);
 	tds__GetServicesResponse.Service.push_back(eventService);
 
 	return SOAP_OK;
@@ -180,7 +192,7 @@ int Device::GetCapabilities(_tds__GetCapabilities *tds__GetCapabilities, _tds__G
 	// Device.
 	auto deviceCapabilities = soap_new_tt__DeviceCapabilities(soap);
 
-	deviceCapabilities->XAddr = soap->endpoint;
+	deviceCapabilities->XAddr = getHost(soap);
 	deviceCapabilities->System = soap_new_tt__SystemCapabilities(soap);
 	deviceCapabilities->System->DiscoveryResolve = true;
 	deviceCapabilities->System->DiscoveryBye = true;
@@ -198,7 +210,7 @@ int Device::GetCapabilities(_tds__GetCapabilities *tds__GetCapabilities, _tds__G
 
 	// Event.
 	tds__GetCapabilitiesResponse.Capabilities->Events = soap_new_req_tt__EventCapabilities(soap,
-		soap->endpoint, false, false, false);
+		getHost(soap), false, false, false);
 
 	return SOAP_OK;
 }

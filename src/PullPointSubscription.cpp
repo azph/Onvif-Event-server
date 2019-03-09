@@ -82,7 +82,6 @@ int PullPointSubscription::PullMessages(_tev__PullMessages *tev__PullMessages, _
 	auto cur_tssTime = std::chrono::duration_cast<std::chrono::microseconds>(std::chrono::system_clock::now().time_since_epoch());
 	auto termTime = cur_tssTime + std::chrono::duration_cast<std::chrono::microseconds>(tev__PullMessages->Timeout);
 
-
 	std::async(std::launch::async,
 		[&]()
 	{
