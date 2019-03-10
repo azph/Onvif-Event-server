@@ -58,6 +58,8 @@ set(Onvif_SRCS
 	src/OnvifServer.cpp
 	src/PullPointSubscription.cpp
 	src/PullPointSubscription.h
+	src/RealTimeClock.cpp
+	src/RealTimeClock.h
 	src/SoapHelpers.cpp
 	src/SoapHelpers.h
 	src/SubscriptionManager.cpp
