@@ -6,6 +6,7 @@
 #include <sstream>
 
 #include "AuthorisationHolder.h"
+#include "SoapHelpers.h"
 
 namespace Onvif
 {
@@ -13,40 +14,6 @@ namespace Onvif
 Device::Device(struct soap *_soap):
 	DeviceBindingService(_soap)
 {
-}
-
-tt__DateTime* toDateTime(struct soap* soap, const std::tm* time)
-{
-	tt__DateTime* result = soap_new_tt__DateTime(soap);
-	
-	// Time.
-	result->Time = soap_new_tt__Time(soap);
-	result->Time->Hour = time->tm_hour;
-	result->Time->Minute = time->tm_min;
-	result->Time->Second = time->tm_sec;
-
-	// Date.
-	result->Date = soap_new_tt__Date(soap);
-	result->Date->Year = time->tm_year + 1900; // Start of epoch.
-	result->Date->Month = time->tm_mon + 1;
-	result->Date->Day = time->tm_mday;
-	
-	return result;
-}
-
-std::string getHost(struct soap* soap, char* sufix = "")
-{
-	std::ostringstream host;
-	host << "http://" << soap->host << ":" << soap->proxy_port << soap->path << sufix;
-	return host.str();
-}
-
-bool* soap_new_req_bool(struct soap* soap, bool value)
-{
-	auto result = soap_new_bool(soap);
-	*result = value;
-
-	return result;
 }
 
 int Device::GetSystemDateAndTime(_tds__GetSystemDateAndTime *tds__GetSystemDateAndTime, _tds__GetSystemDateAndTimeResponse &tds__GetSystemDateAndTimeResponse)
@@ -63,12 +30,12 @@ int Device::GetSystemDateAndTime(_tds__GetSystemDateAndTime *tds__GetSystemDateA
 	systemDateTime->TimeZone = soap_new_tt__TimeZone(soap);
 	//systemDateTime->TimeZone->TZ = *_tzname;
 
-	systemDateTime->LocalDateTime = toDateTime(soap, now);
+	systemDateTime->LocalDateTime = SoapHelpers::toDateTime(soap, now);
 	
 	// utc
 	std::time_t utc = std::time(0);
 	std::tm* gmt = std::gmtime(&utc);
-	systemDateTime->UTCDateTime = toDateTime(soap, gmt);
+	systemDateTime->UTCDateTime = SoapHelpers::toDateTime(soap, gmt);
 
 	tds__GetSystemDateAndTimeResponse.SystemDateAndTime = systemDateTime;
 
@@ -98,7 +65,7 @@ int Device::GetServices(_tds__GetServices *tds__GetServices, _tds__GetServicesRe
 	}
 
 	
-	auto host = getHost(soap);
+	auto host = SoapHelpers::getHost(soap);
 	// Device service.
 	auto deviceService = soap_new_tds__Service(soap);
 	deviceService->Namespace = SOAP_NAMESPACE_OF_tds;
@@ -127,7 +94,8 @@ tds__DeviceServiceCapabilities* Device::createCapabilities()
 		soap_new_req_tds__NetworkCapabilities(soap),
 		soap_new_req_tds__SecurityCapabilities(soap),
 		soap_new_req_tds__SystemCapabilities(soap));
-
+	
+	using namespace SoapHelpers;
 	deviceCapabilities->Security->HttpDigest = soap_new_req_bool(soap, true);
 	deviceCapabilities->Security->UsernameToken = soap_new_req_bool(soap, true);
 
@@ -192,7 +160,7 @@ int Device::GetCapabilities(_tds__GetCapabilities *tds__GetCapabilities, _tds__G
 	// Device.
 	auto deviceCapabilities = soap_new_tt__DeviceCapabilities(soap);
 
-	deviceCapabilities->XAddr = getHost(soap);
+	deviceCapabilities->XAddr = SoapHelpers::getHost(soap);
 	deviceCapabilities->System = soap_new_tt__SystemCapabilities(soap);
 	deviceCapabilities->System->DiscoveryResolve = true;
 	deviceCapabilities->System->DiscoveryBye = true;
@@ -210,7 +178,7 @@ int Device::GetCapabilities(_tds__GetCapabilities *tds__GetCapabilities, _tds__G
 
 	// Event.
 	tds__GetCapabilitiesResponse.Capabilities->Events = soap_new_req_tt__EventCapabilities(soap,
-		getHost(soap), false, false, false);
+		SoapHelpers::getHost(soap), false, false, false);
 
 	return SOAP_OK;
 }

@@ -17596,8 +17596,16 @@ soap_QName2s(struct soap *soap, const char *s)
       n = 0;
       while (s[n] && !soap_coblank((soap_wchar)s[n]))
       {
-        if (s[n] == ':')
-          r = s;
+		  if (s[n] == ':')
+		  {
+			  r = s;
+		  }
+
+		  if (s[n] == '/')
+		  {
+			  n++;
+			  break;
+		  }
         n++;
       }
       if (*s != '"') /* non-quoted: pass string as is */
@@ -17607,7 +17615,8 @@ soap_QName2s(struct soap *soap, const char *s)
           soap_utilize_ns(soap, s, 1);
 #endif
         r = s;
-        m = n + 1;
+
+        m = n > 0 && s[n -1] == '/' ? n : n + 1;
       }
       else /* prefix quoted URI-based string */
       {

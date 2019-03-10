@@ -26,7 +26,6 @@ private:
 	void onStartServices();
 	
 private:
-	const std::uint32_t m_maxThreadCount;
 	std::thread m_serverTread;
 
 };

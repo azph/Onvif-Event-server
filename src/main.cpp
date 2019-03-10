@@ -1,5 +1,7 @@
 #include "LicenseChecker.h"
 
+#include <iostream>
+
 #include <gSoap/thread_setup.h>
 
 #include"OnvifServer.h"

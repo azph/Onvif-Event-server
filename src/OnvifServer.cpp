@@ -1,6 +1,7 @@
 #include "OnvifServer.h"
 
 #include <list>
+#include <algorithm>
 
 #include <gSoap/httpda.h>
 #include <gSoap/wsaapi.h>
@@ -12,6 +13,8 @@
 
 namespace Onvif
 {
+
+const int MAX_THREADS_COUNT = 10;
 
 Onvif::OnvifServer& OnvifServer::getInstance()
 {
@@ -30,8 +33,7 @@ void OnvifServer::stop()
 	m_serverTread.join();
 }
 
-OnvifServer::OnvifServer():
-	m_maxThreadCount(std::thread::hardware_concurrency())
+OnvifServer::OnvifServer()
 {
 
 }
@@ -44,6 +46,7 @@ OnvifServer::~OnvifServer()
 void OnvifServer::onStartServices()
 {
 	struct soap *soap = soap_new1(SOAP_XML_STRICT | SOAP_XML_CANONICAL | SOAP_C_UTFSTRING);
+	//struct soap *soap = soap_new();
 	soap_register_plugin_arg(soap, http_da, http_da_md5());
 	soap_register_plugin(soap, soap_wsa);
 
@@ -58,15 +61,15 @@ void OnvifServer::onStartServices()
 		if (!soap_valid_socket(soap_accept(soap)))
 			exit(EXIT_FAILURE);
 		
-		auto tsoap = soap_copy(soap);
+		auto soapCopy = soap_copy(soap);
 
-		auto device = std::make_shared<Onvif::Device>(tsoap);
-		auto event = std::make_shared<Onvif::Event>(tsoap);
-		auto pullPointSubscription = std::make_shared<Onvif::PullPointSubscription>(tsoap);
-		auto subscriptionManager = std::make_shared<Onvif::SubscriptionManager>(tsoap);
-		while (futureList.size() >= m_maxThreadCount)
+		auto device = std::make_shared<Onvif::Device>(soapCopy);
+		auto event = std::make_shared<Onvif::Event>(soapCopy);
+		auto pullPointSubscription = std::make_shared<Onvif::PullPointSubscription>(soapCopy);
+		auto subscriptionManager = std::make_shared<Onvif::SubscriptionManager>(soapCopy);
+		while (futureList.size() >= MAX_THREADS_COUNT)
 		{
-			auto& it = std::find_if(futureList.begin(), futureList.end(), 
+			const auto& it = std::find_if(futureList.begin(), futureList.end(), 
 				[](const std::future<void>& f) { return f.wait_for(std::chrono::milliseconds(0)) == std::future_status::ready; });
 			
 			if (it != futureList.end())
@@ -82,9 +85,9 @@ void OnvifServer::onStartServices()
 		{
 			int err = 0;
 
-			if (soap_begin_serve(tsoap))
+			if (soap_begin_serve(soapCopy))
 			{
-				soap_stream_fault(tsoap, std::cerr);
+				soap_stream_fault(soapCopy, std::cerr);
 			}
 			else if ((err = device->dispatch()) == SOAP_NO_METHOD)
 			{
@@ -99,11 +102,12 @@ void OnvifServer::onStartServices()
 
 			if (err)
 			{
-				soap_send_fault(tsoap);
+				soap_send_fault(soapCopy);
 			}
 
-			soap_destroy(tsoap);
-			soap_end(tsoap);
+			soap_destroy(soapCopy);
+			soap_end(soapCopy);
+			soap_free(soapCopy);
 		});
 
 		futureList.push_back(std::move(f));

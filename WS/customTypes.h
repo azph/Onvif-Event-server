@@ -1,6 +1,6 @@
 
 // Customize wsnt_TopicExpressionType to prevent ignoring message topic.
-class wsnt__TopicExpressionTypeAxxon
+class wsnt__TopicExpressionTypeCustom
 {
 public:
 	// was:

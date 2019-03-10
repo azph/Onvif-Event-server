@@ -58,6 +58,6 @@ tmd = http://www.onvif.org/ver10/deviceIO/wsdl
 # see customtypes.h for nore info
 #--------------------------------------------------------------
 
-wsnt__TopicExpressionType = #import "customtypes.h"| wsnt__TopicExpressionTypeAxxon
+wsnt__TopicExpressionType = #import "customtypes.h"| wsnt__TopicExpressionTypeCustom
 xsd__dateTime = #import "struct_timeval.h"
 xsd__duration = #import "chrono_duration.h" | xsd__duration

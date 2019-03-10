@@ -3,6 +3,7 @@
 #include <gSoap/wsaapi.h>
 
 #include "AuthorisationHolder.h"
+#include "SoapHelpers.h"
 
 
 namespace Onvif
@@ -16,8 +17,6 @@ Event::Event(struct soap *_soap):
 {
 }
 
-
-
 int Event::CreatePullPointSubscription(_tev__CreatePullPointSubscription *tev__CreatePullPointSubscription, _tev__CreatePullPointSubscriptionResponse &tev__CreatePullPointSubscriptionResponse)
 {
 	if (!AuthorisationHolder::getInstance().verifyPassword(soap))
@@ -25,16 +24,21 @@ int Event::CreatePullPointSubscription(_tev__CreatePullPointSubscription *tev__C
 		return 401;
 	}
 
-	std::time_t lt = std::time(nullptr) * 1000;
 	std::string uuid = soap_rand_uuid(soap, "");
-	std::string str = soap->endpoint + std::string("?sub=") + uuid;
+	std::string str = SoapHelpers::getHost(soap) + std::string("?sub=") + uuid;
 	tev__CreatePullPointSubscriptionResponse.SubscriptionReference.Address = soap_strdup(soap, str.c_str());
 
-	tev__CreatePullPointSubscriptionResponse.wsnt__CurrentTime.tv_sec = lt / 1000000;
-	tev__CreatePullPointSubscriptionResponse.wsnt__CurrentTime.tv_usec = lt % 1000000;
+	tev__CreatePullPointSubscriptionResponse.wsnt__CurrentTime = *SoapHelpers::convertTime(soap, SoapHelpers::getCurrentTime());
 
-	tev__CreatePullPointSubscriptionResponse.wsnt__CurrentTime.tv_sec = lt / 1000000 + 60;
-	tev__CreatePullPointSubscriptionResponse.wsnt__CurrentTime.tv_usec = lt % 1000000;
+
+	std::chrono::nanoseconds lifetime(30000000000);
+	if (tev__CreatePullPointSubscription->InitialTerminationTime)
+	{
+		soap_s2xsd__duration(this->soap, tev__CreatePullPointSubscription->InitialTerminationTime->c_str(), &lifetime);
+	}
+
+	tev__CreatePullPointSubscriptionResponse.wsnt__TerminationTime = *SoapHelpers::convertTime(
+		soap, SoapHelpers::getCurrentTime() + std::chrono::duration_cast<std::chrono::microseconds>(lifetime).count());
 	
 	return soap_wsa_reply(this->soap, nullptr, "http://www.onvif.org/ver10/events/wsdl/EventPortType/CreatePullPointSubscriptionResponse");
 }
