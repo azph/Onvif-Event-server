@@ -5,6 +5,8 @@
 #include <ctime>
 #include <sstream>
 
+#include <sysinfo/sysinfo.h>
+
 #include "AuthorisationHolder.h"
 #include "SoapHelpers.h"
 
@@ -196,8 +198,11 @@ int Device::GetNetworkInterfaces(_tds__GetNetworkInterfaces *tds__GetNetworkInte
 	networkInterface->token = "eth0";
 
 	networkInterface->Info = soap_new_tt__NetworkInterfaceInfo(soap);
-	// TODO: MAC Address.
-	networkInterface->Info->HwAddress = ""; 
+	
+#ifndef WIN32
+	networkInterface->Info->HwAddress = GetMac();
+#endif
+
 	networkInterface->Info->Name = soap_new_std__string(soap);
 	*networkInterface->Info->Name = networkInterface->token;
 

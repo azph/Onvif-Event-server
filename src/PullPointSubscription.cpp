@@ -126,15 +126,15 @@ int PullPointSubscription::PullMessages(_tev__PullMessages *tev__PullMessages, _
 
 
 	auto cur_tssTime = SoapHelpers::getCurrentTime();
-	auto termTime = cur_tssTime + std::chrono::duration_cast<std::chrono::microseconds>(tev__PullMessages->Timeout).count();
+	auto termTime = cur_tssTime + std::chrono::duration_cast<std::chrono::milliseconds>(tev__PullMessages->Timeout).count();
 
 	std::async(std::launch::async,
 		[&]()
 	{
-		std::this_thread::sleep_until(std::chrono::system_clock::from_time_t(cur_tssTime + 50000));
+		std::this_thread::sleep_until(std::chrono::system_clock::from_time_t((cur_tssTime + 50) * 1000));
 
 		tev__PullMessagesResponse.CurrentTime = *SoapHelpers::convertTime(this->soap, cur_tssTime);
-		tev__PullMessagesResponse.TerminationTime = *SoapHelpers::convertTime(this->soap, termTime + 30000000);
+		tev__PullMessagesResponse.TerminationTime = *SoapHelpers::convertTime(this->soap, termTime + 30000);
 
 		tev__PullMessagesResponse.wsnt__NotificationMessage.push_back(CreateMetallDetectorEvent(soap, tt__PropertyOperation::Initialized));
 		tev__PullMessagesResponse.wsnt__NotificationMessage.push_back(CreateSteamDetectorEvent(soap, tt__PropertyOperation::Initialized));

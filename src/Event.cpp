@@ -38,7 +38,7 @@ int Event::CreatePullPointSubscription(_tev__CreatePullPointSubscription *tev__C
 	}
 
 	tev__CreatePullPointSubscriptionResponse.wsnt__TerminationTime = *SoapHelpers::convertTime(
-		soap, SoapHelpers::getCurrentTime() + std::chrono::duration_cast<std::chrono::microseconds>(lifetime).count());
+		soap, SoapHelpers::getCurrentTime() + std::chrono::duration_cast<std::chrono::milliseconds>(lifetime).count());
 	
 	return soap_wsa_reply(this->soap, nullptr, "http://www.onvif.org/ver10/events/wsdl/EventPortType/CreatePullPointSubscriptionResponse");
 }

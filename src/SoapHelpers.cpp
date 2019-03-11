@@ -6,7 +6,7 @@ namespace SoapHelpers
 
 std::uint64_t getCurrentTime()
 {
-	return std::chrono::duration_cast<std::chrono::microseconds>(std::chrono::system_clock::now().time_since_epoch()).count();
+	return std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::system_clock::now().time_since_epoch()).count();
 }
 
 tt__DateTime* toDateTime(struct soap* soap, const std::tm* time)
@@ -28,12 +28,12 @@ tt__DateTime* toDateTime(struct soap* soap, const std::tm* time)
 	return result;
 }
 
-timeval* convertTime(soap* soap, std::time_t timeMicroseconds)
+timeval* convertTime(soap* soap, std::time_t timeMiliseconds)
 {
 	timeval* tm = soap_new_xsd__dateTime(soap);
 
-	tm->tv_sec = static_cast<long>(timeMicroseconds / 1000000);
-	tm->tv_usec = static_cast<long>(timeMicroseconds % 1000000);
+	tm->tv_sec = static_cast<long>(timeMiliseconds / 1000);
+	tm->tv_usec = static_cast<long>(timeMiliseconds % 1000) * 1000;
 
 	return tm;
 }
