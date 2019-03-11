@@ -21,11 +21,11 @@ class RealTimeClock
 		return instance;
 	}
 	
-	void Connect();
 	void SetTime(std::tm& time);
 	std::tm GetTime();
 	
 	private:
+	void connect();
 	uint8_t convertFromRegisterFormat(uint8_t input);
 	uint8_t convertToRegisterFormat(uint8_t input);
 	

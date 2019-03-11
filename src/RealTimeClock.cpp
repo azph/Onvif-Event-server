@@ -13,9 +13,12 @@
 
 RealTimeClock::RealTimeClock(std::string& deviceFile, uint16_t slaveAddress):
 	m_connected(false),
+	m_fileDescriptor(-1),
 	m_deviceFile(deviceFile),
 	m_slaveAddress(slaveAddress)
-{}
+{
+	connect();
+}
 
 RealTimeClock::~RealTimeClock()
 {
@@ -23,7 +26,7 @@ RealTimeClock::~RealTimeClock()
 		close(m_fileDescriptor);
 }
 
-void RealTimeClock::Connect()
+void RealTimeClock::connect()
 {
 	m_fileDescriptor = open(m_deviceFile.c_str(), O_RDWR);
 	
@@ -32,8 +35,8 @@ void RealTimeClock::Connect()
 		std::stringstream stream;
 		stream << "Can't open " << m_deviceFile << ": ";
 		stream << strerror(errno) << std::endl;
-		
-		throw std::runtime_error(stream.str());
+		//TODO Log
+		return;
 	}
 	
 	if (ioctl(m_fileDescriptor, I2C_SLAVE, m_slaveAddress) < 0)
@@ -41,8 +44,8 @@ void RealTimeClock::Connect()
 		std::stringstream stream;
 		stream << "Can't connect to " << m_slaveAddress << ": ";
 		stream << strerror(errno) << std::endl;
-		
-		throw std::runtime_error(stream.str());
+		//TODO Log
+		return;
 	}
 	
 	m_connected = true;
@@ -52,7 +55,8 @@ void RealTimeClock::SetTime(std::tm& time)
 {
 	std::lock_guard<std::mutex> lock(m_mutex);
 	
-	uint8_t buf[7];
+	const size_t BUFFER_SIZE = 8;
+	uint8_t buf[BUFFER_SIZE];
 	
 	// First buf element is start register position
 	buf[0] = 0x00;
@@ -65,7 +69,7 @@ void RealTimeClock::SetTime(std::tm& time)
 	buf[6] = convertToRegisterFormat(time.tm_mon + 1);
 	buf[7] = convertToRegisterFormat(time.tm_year - 100);
 	
-	if (write(m_fileDescriptor, buf, 8) != 8 )
+	if (write(m_fileDescriptor, buf, BUFFER_SIZE) != BUFFER_SIZE )
 	{
 		std::stringstream stream;
 		stream << "Can't set time: " << strerror(errno) << std::endl;
@@ -77,7 +81,8 @@ void RealTimeClock::SetTime(std::tm& time)
 std::tm RealTimeClock::GetTime()
 {
 	uint8_t position = 0x00;
-	uint8_t buf[7];
+	const size_t BUFFER_SIZE = 7;
+	uint8_t buf[BUFFER_SIZE];
 	
 	{
 		std::lock_guard<std::mutex> lock(m_mutex);
@@ -91,7 +96,7 @@ std::tm RealTimeClock::GetTime()
 			throw std::runtime_error(stream.str());
 		}
 		
-		if (read(m_fileDescriptor, buf, 7) != 7)
+		if (read(m_fileDescriptor, buf, BUFFER_SIZE) != BUFFER_SIZE)
 		{
 			std::stringstream stream;
 			stream << "Can't get position: " << strerror(errno) << std::endl;
