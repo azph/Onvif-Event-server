@@ -1,5 +1,6 @@
 #include "SoapHelpers.h"
 
+#include <winsock2.h>
 
 namespace SoapHelpers
 {
@@ -40,9 +41,23 @@ timeval* convertTime(soap* soap, std::time_t timeMiliseconds)
 
 std::string getHost(struct soap* soap, char* sufix)
 {
-	std::ostringstream host;
-	host << "http://" << soap->host << ":" << soap->proxy_port << soap->path << sufix;
-	return host.str();
+	std::string endpoint = soap->endpoint;
+	std::ostringstream port;
+	port << ":" << soap->proxy_port;
+	if (endpoint.find(port.str() + soap->path) != std::string::npos)
+	{
+		return endpoint + sufix;
+	}
+	auto pos = endpoint.find(soap->path);
+
+	if (pos != std::string::npos)
+	{
+		std::ostringstream host;
+		host << endpoint.substr(0, pos) << port.str() << soap->path << sufix;
+		return host.str();
+	}
+	
+	return endpoint;
 }
 
 bool* soap_new_req_bool(struct soap* soap, bool value)

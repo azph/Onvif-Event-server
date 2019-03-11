@@ -18,7 +18,7 @@ A commercial use license is available from Genivia Inc., contact@genivia.com
 
 #include "soapH.h"
 
-SOAP_SOURCE_STAMP("@(#) soapC_nnn.cpp ver 2.8.78 2019-03-03 12:56:03 GMT")
+SOAP_SOURCE_STAMP("@(#) soapC_nnn.cpp ver 2.8.78 2019-03-11 21:45:00 GMT")
 
 
 #ifndef WITH_NOGLOBAL
@@ -765,8 +765,8 @@ SOAP_FMAC3 void * SOAP_FMAC4 soap_getelement(struct soap *soap, const char *tag,
 		return soap_in_wsnt__SubscriptionPolicyType(soap, tag, NULL, "wsnt:SubscriptionPolicyType");
 	case SOAP_TYPE_wsnt__FilterType:
 		return soap_in_wsnt__FilterType(soap, tag, NULL, "wsnt:FilterType");
-	case SOAP_TYPE_wsnt__TopicExpressionTypeAxxon:
-		return soap_in_wsnt__TopicExpressionTypeAxxon(soap, tag, NULL, "wsnt:TopicExpressionTypeAxxon");
+	case SOAP_TYPE_wsnt__TopicExpressionTypeCustom:
+		return soap_in_wsnt__TopicExpressionTypeCustom(soap, tag, NULL, "wsnt:TopicExpressionTypeCustom");
 	case SOAP_TYPE_wsnt__QueryExpressionType:
 		return soap_in_wsnt__QueryExpressionType(soap, tag, NULL, "wsnt:QueryExpressionType");
 	case SOAP_TYPE_tt__LocationEntity:
@@ -2514,8 +2514,8 @@ SOAP_FMAC3 void * SOAP_FMAC4 soap_getelement(struct soap *soap, const char *tag,
 		return soap_in_PointerTowsnt__SubscriptionPolicyType(soap, tag, NULL, "wsnt:SubscriptionPolicyType");
 	case SOAP_TYPE_PointerTowstop__TopicSetType:
 		return soap_in_PointerTowstop__TopicSetType(soap, tag, NULL, "wstop:TopicSetType");
-	case SOAP_TYPE_PointerTowsnt__TopicExpressionTypeAxxon:
-		return soap_in_PointerTowsnt__TopicExpressionTypeAxxon(soap, tag, NULL, "wsnt:TopicExpressionTypeAxxon");
+	case SOAP_TYPE_PointerTowsnt__TopicExpressionTypeCustom:
+		return soap_in_PointerTowsnt__TopicExpressionTypeCustom(soap, tag, NULL, "wsnt:TopicExpressionTypeCustom");
 	case SOAP_TYPE_PointerTowsa5__EndpointReferenceType:
 		return soap_in_PointerTowsa5__EndpointReferenceType(soap, tag, NULL, "wsa5:EndpointReferenceType");
 	case SOAP_TYPE_PointerTott__PropertyOperation:
@@ -4178,9 +4178,9 @@ SOAP_FMAC3 void * SOAP_FMAC4 soap_getelement(struct soap *soap, const char *tag,
 		{	*type = SOAP_TYPE_wsnt__FilterType;
 			return soap_in_wsnt__FilterType(soap, tag, NULL, NULL);
 		}
-		if (!soap_match_tag(soap, t, "wsnt:TopicExpressionTypeAxxon"))
-		{	*type = SOAP_TYPE_wsnt__TopicExpressionTypeAxxon;
-			return soap_in_wsnt__TopicExpressionTypeAxxon(soap, tag, NULL, NULL);
+		if (!soap_match_tag(soap, t, "wsnt:TopicExpressionTypeCustom"))
+		{	*type = SOAP_TYPE_wsnt__TopicExpressionTypeCustom;
+			return soap_in_wsnt__TopicExpressionTypeCustom(soap, tag, NULL, NULL);
 		}
 		if (!soap_match_tag(soap, t, "wsnt:QueryExpressionType"))
 		{	*type = SOAP_TYPE_wsnt__QueryExpressionType;
@@ -8907,7 +8907,7 @@ SOAP_FMAC3 int SOAP_FMAC4 soap_putelement(struct soap *soap, const void *ptr, co
 	case SOAP_TYPE__wsnt__NotificationMessage:
 		return soap_out__wsnt__NotificationMessage(soap, "wsnt:NotificationMessage", id, (const wsnt__NotificationMessageHolderType *)ptr, "");
 	case SOAP_TYPE__wsnt__Topic:
-		return soap_out__wsnt__Topic(soap, "wsnt:Topic", id, (const wsnt__TopicExpressionTypeAxxon *)ptr, "");
+		return soap_out__wsnt__Topic(soap, "wsnt:Topic", id, (const wsnt__TopicExpressionTypeCustom *)ptr, "");
 	case SOAP_TYPE__wsnt__SubscriptionPolicy:
 		return soap_out__wsnt__SubscriptionPolicy(soap, "wsnt:SubscriptionPolicy", id, (const wsnt__SubscriptionPolicyType *)ptr, "");
 	case SOAP_TYPE__wsnt__Filter:
@@ -8915,7 +8915,7 @@ SOAP_FMAC3 int SOAP_FMAC4 soap_putelement(struct soap *soap, const void *ptr, co
 	case SOAP_TYPE__wsnt__TopicExpressionDialect:
 		return soap_out__wsnt__TopicExpressionDialect(soap, "wsnt:TopicExpressionDialect", id, (const std::string *)ptr, "");
 	case SOAP_TYPE__wsnt__TopicExpression:
-		return soap_out__wsnt__TopicExpression(soap, "wsnt:TopicExpression", id, (const wsnt__TopicExpressionTypeAxxon *)ptr, "");
+		return soap_out__wsnt__TopicExpression(soap, "wsnt:TopicExpression", id, (const wsnt__TopicExpressionTypeCustom *)ptr, "");
 	case SOAP_TYPE__tt__Polygon:
 		return soap_out__tt__Polygon(soap, "tt:Polygon", id, (const tt__Polygon *)ptr, "");
 	case SOAP_TYPE__tt__Polyline:
@@ -9438,8 +9438,8 @@ SOAP_FMAC3 int SOAP_FMAC4 soap_putelement(struct soap *soap, const void *ptr, co
 		return ((wsnt__SubscriptionPolicyType *)ptr)->soap_out(soap, tag, id, "wsnt:SubscriptionPolicyType");
 	case SOAP_TYPE_wsnt__FilterType:
 		return ((wsnt__FilterType *)ptr)->soap_out(soap, tag, id, "wsnt:FilterType");
-	case SOAP_TYPE_wsnt__TopicExpressionTypeAxxon:
-		return ((wsnt__TopicExpressionTypeAxxon *)ptr)->soap_out(soap, tag, id, "wsnt:TopicExpressionTypeAxxon");
+	case SOAP_TYPE_wsnt__TopicExpressionTypeCustom:
+		return ((wsnt__TopicExpressionTypeCustom *)ptr)->soap_out(soap, tag, id, "wsnt:TopicExpressionTypeCustom");
 	case SOAP_TYPE_wsnt__QueryExpressionType:
 		return ((wsnt__QueryExpressionType *)ptr)->soap_out(soap, tag, id, "wsnt:QueryExpressionType");
 	case SOAP_TYPE__tt__Message:
@@ -11720,8 +11720,8 @@ SOAP_FMAC3 int SOAP_FMAC4 soap_putelement(struct soap *soap, const void *ptr, co
 		return soap_out_PointerTowsnt__SubscriptionPolicyType(soap, tag, id, (wsnt__SubscriptionPolicyType *const*)ptr, "wsnt:SubscriptionPolicyType");
 	case SOAP_TYPE_PointerTowstop__TopicSetType:
 		return soap_out_PointerTowstop__TopicSetType(soap, tag, id, (wstop__TopicSetType *const*)ptr, "wstop:TopicSetType");
-	case SOAP_TYPE_PointerTowsnt__TopicExpressionTypeAxxon:
-		return soap_out_PointerTowsnt__TopicExpressionTypeAxxon(soap, tag, id, (wsnt__TopicExpressionTypeAxxon *const*)ptr, "wsnt:TopicExpressionTypeAxxon");
+	case SOAP_TYPE_PointerTowsnt__TopicExpressionTypeCustom:
+		return soap_out_PointerTowsnt__TopicExpressionTypeCustom(soap, tag, id, (wsnt__TopicExpressionTypeCustom *const*)ptr, "wsnt:TopicExpressionTypeCustom");
 	case SOAP_TYPE_PointerTowsa5__EndpointReferenceType:
 		return soap_out_PointerTowsa5__EndpointReferenceType(soap, tag, id, (struct wsa5__EndpointReferenceType *const*)ptr, "wsa5:EndpointReferenceType");
 	case SOAP_TYPE_PointerTott__PropertyOperation:
@@ -12756,7 +12756,7 @@ SOAP_FMAC3 void SOAP_FMAC4 soap_markelement(struct soap *soap, const void *ptr, 
 		soap_serialize__wsnt__NotificationMessage(soap, (const wsnt__NotificationMessageHolderType *)ptr);
 		break;
 	case SOAP_TYPE__wsnt__Topic:
-		soap_serialize__wsnt__Topic(soap, (const wsnt__TopicExpressionTypeAxxon *)ptr);
+		soap_serialize__wsnt__Topic(soap, (const wsnt__TopicExpressionTypeCustom *)ptr);
 		break;
 	case SOAP_TYPE__wsnt__SubscriptionPolicy:
 		soap_serialize__wsnt__SubscriptionPolicy(soap, (const wsnt__SubscriptionPolicyType *)ptr);
@@ -12768,7 +12768,7 @@ SOAP_FMAC3 void SOAP_FMAC4 soap_markelement(struct soap *soap, const void *ptr, 
 		soap_serialize__wsnt__TopicExpressionDialect(soap, (const std::string *)ptr);
 		break;
 	case SOAP_TYPE__wsnt__TopicExpression:
-		soap_serialize__wsnt__TopicExpression(soap, (const wsnt__TopicExpressionTypeAxxon *)ptr);
+		soap_serialize__wsnt__TopicExpression(soap, (const wsnt__TopicExpressionTypeCustom *)ptr);
 		break;
 	case SOAP_TYPE__tt__Polygon:
 		soap_serialize__tt__Polygon(soap, (const tt__Polygon *)ptr);
@@ -13553,8 +13553,8 @@ SOAP_FMAC3 void SOAP_FMAC4 soap_markelement(struct soap *soap, const void *ptr, 
 	case SOAP_TYPE_wsnt__FilterType:
 		((wsnt__FilterType *)ptr)->soap_serialize(soap);
 		break;
-	case SOAP_TYPE_wsnt__TopicExpressionTypeAxxon:
-		((wsnt__TopicExpressionTypeAxxon *)ptr)->soap_serialize(soap);
+	case SOAP_TYPE_wsnt__TopicExpressionTypeCustom:
+		((wsnt__TopicExpressionTypeCustom *)ptr)->soap_serialize(soap);
 		break;
 	case SOAP_TYPE_wsnt__QueryExpressionType:
 		((wsnt__QueryExpressionType *)ptr)->soap_serialize(soap);
@@ -17378,8 +17378,8 @@ SOAP_FMAC3 void SOAP_FMAC4 soap_markelement(struct soap *soap, const void *ptr, 
 	case SOAP_TYPE_PointerTowstop__TopicSetType:
 		soap_serialize_PointerTowstop__TopicSetType(soap, (wstop__TopicSetType *const*)ptr);
 		break;
-	case SOAP_TYPE_PointerTowsnt__TopicExpressionTypeAxxon:
-		soap_serialize_PointerTowsnt__TopicExpressionTypeAxxon(soap, (wsnt__TopicExpressionTypeAxxon *const*)ptr);
+	case SOAP_TYPE_PointerTowsnt__TopicExpressionTypeCustom:
+		soap_serialize_PointerTowsnt__TopicExpressionTypeCustom(soap, (wsnt__TopicExpressionTypeCustom *const*)ptr);
 		break;
 	case SOAP_TYPE_PointerTowsa5__EndpointReferenceType:
 		soap_serialize_PointerTowsa5__EndpointReferenceType(soap, (struct wsa5__EndpointReferenceType *const*)ptr);
@@ -18765,8 +18765,8 @@ SOAP_FMAC3 void * SOAP_FMAC4 soap_instantiate(struct soap *soap, int t, const ch
 		return (void*)soap_instantiate_xsd__token__(soap, -1, type, arrayType, n);
 	case SOAP_TYPE_xsd__unsignedInt_:
 		return (void*)soap_instantiate_xsd__unsignedInt_(soap, -1, type, arrayType, n);
-	case SOAP_TYPE_wsnt__TopicExpressionTypeAxxon:
-		return (void*)soap_instantiate_wsnt__TopicExpressionTypeAxxon(soap, -1, type, arrayType, n);
+	case SOAP_TYPE_wsnt__TopicExpressionTypeCustom:
+		return (void*)soap_instantiate_wsnt__TopicExpressionTypeCustom(soap, -1, type, arrayType, n);
 	case SOAP_TYPE_tds__AutoGeoModes__:
 		return (void*)soap_instantiate_tds__AutoGeoModes__(soap, -1, type, arrayType, n);
 	case SOAP_TYPE_tds__StorageType__:
@@ -21305,8 +21305,8 @@ SOAP_FMAC3 void * SOAP_FMAC4 soap_instantiate(struct soap *soap, int t, const ch
 		return (void*)soap_instantiate_std__vectorTemplateOf_wsrfbf__BaseFaultType_Description(soap, -1, type, arrayType, n);
 	case SOAP_TYPE_std__vectorTemplateOfPointerTowsnt__NotificationMessageHolderType:
 		return (void*)soap_instantiate_std__vectorTemplateOfPointerTowsnt__NotificationMessageHolderType(soap, -1, type, arrayType, n);
-	case SOAP_TYPE_std__vectorTemplateOfwsnt__TopicExpressionTypeAxxon:
-		return (void*)soap_instantiate_std__vectorTemplateOfwsnt__TopicExpressionTypeAxxon(soap, -1, type, arrayType, n);
+	case SOAP_TYPE_std__vectorTemplateOfwsnt__TopicExpressionTypeCustom:
+		return (void*)soap_instantiate_std__vectorTemplateOfwsnt__TopicExpressionTypeCustom(soap, -1, type, arrayType, n);
 	case SOAP_TYPE_std__vectorTemplateOfPointerTott__FileProgress:
 		return (void*)soap_instantiate_std__vectorTemplateOfPointerTott__FileProgress(soap, -1, type, arrayType, n);
 	case SOAP_TYPE_std__vectorTemplateOftt__OSDType:
@@ -21722,11 +21722,11 @@ SOAP_FMAC3 int SOAP_FMAC4 soap_fdelete(struct soap *soap, struct soap_clist *p)
 		else
 			SOAP_DELETE_ARRAY(soap, static_cast<xsd__unsignedInt_*>(p->ptr), xsd__unsignedInt_);
 		break;
-	case SOAP_TYPE_wsnt__TopicExpressionTypeAxxon:
+	case SOAP_TYPE_wsnt__TopicExpressionTypeCustom:
 		if (p->size < 0)
-			SOAP_DELETE(soap, static_cast<wsnt__TopicExpressionTypeAxxon*>(p->ptr), wsnt__TopicExpressionTypeAxxon);
+			SOAP_DELETE(soap, static_cast<wsnt__TopicExpressionTypeCustom*>(p->ptr), wsnt__TopicExpressionTypeCustom);
 		else
-			SOAP_DELETE_ARRAY(soap, static_cast<wsnt__TopicExpressionTypeAxxon*>(p->ptr), wsnt__TopicExpressionTypeAxxon);
+			SOAP_DELETE_ARRAY(soap, static_cast<wsnt__TopicExpressionTypeCustom*>(p->ptr), wsnt__TopicExpressionTypeCustom);
 		break;
 	case SOAP_TYPE_tds__AutoGeoModes__:
 		if (p->size < 0)
@@ -28608,9 +28608,9 @@ SOAP_FMAC3 int SOAP_FMAC4 soap_fdelete(struct soap *soap, struct soap_clist *p)
 		break;
 	case SOAP_TYPE__wsnt__TopicExpression:
 		if (p->size < 0)
-			SOAP_DELETE(soap, static_cast<wsnt__TopicExpressionTypeAxxon*>(p->ptr), wsnt__TopicExpressionTypeAxxon);
+			SOAP_DELETE(soap, static_cast<wsnt__TopicExpressionTypeCustom*>(p->ptr), wsnt__TopicExpressionTypeCustom);
 		else
-			SOAP_DELETE_ARRAY(soap, static_cast<wsnt__TopicExpressionTypeAxxon*>(p->ptr), wsnt__TopicExpressionTypeAxxon);
+			SOAP_DELETE_ARRAY(soap, static_cast<wsnt__TopicExpressionTypeCustom*>(p->ptr), wsnt__TopicExpressionTypeCustom);
 		break;
 	case SOAP_TYPE__wsnt__TopicExpressionDialect:
 		if (p->size < 0)
@@ -28650,9 +28650,9 @@ SOAP_FMAC3 int SOAP_FMAC4 soap_fdelete(struct soap *soap, struct soap_clist *p)
 		break;
 	case SOAP_TYPE__wsnt__Topic:
 		if (p->size < 0)
-			SOAP_DELETE(soap, static_cast<wsnt__TopicExpressionTypeAxxon*>(p->ptr), wsnt__TopicExpressionTypeAxxon);
+			SOAP_DELETE(soap, static_cast<wsnt__TopicExpressionTypeCustom*>(p->ptr), wsnt__TopicExpressionTypeCustom);
 		else
-			SOAP_DELETE_ARRAY(soap, static_cast<wsnt__TopicExpressionTypeAxxon*>(p->ptr), wsnt__TopicExpressionTypeAxxon);
+			SOAP_DELETE_ARRAY(soap, static_cast<wsnt__TopicExpressionTypeCustom*>(p->ptr), wsnt__TopicExpressionTypeCustom);
 		break;
 	case SOAP_TYPE__wsnt__ProducerReference:
 		if (p->size < 0)
@@ -29338,11 +29338,11 @@ SOAP_FMAC3 int SOAP_FMAC4 soap_fdelete(struct soap *soap, struct soap_clist *p)
 		else
 			SOAP_DELETE_ARRAY(soap, static_cast<std::vector<wsnt__NotificationMessageHolderType *> *>(p->ptr), std::vector<wsnt__NotificationMessageHolderType *> );
 		break;
-	case SOAP_TYPE_std__vectorTemplateOfwsnt__TopicExpressionTypeAxxon:
+	case SOAP_TYPE_std__vectorTemplateOfwsnt__TopicExpressionTypeCustom:
 		if (p->size < 0)
-			SOAP_DELETE(soap, static_cast<std::vector<wsnt__TopicExpressionTypeAxxon> *>(p->ptr), std::vector<wsnt__TopicExpressionTypeAxxon> );
+			SOAP_DELETE(soap, static_cast<std::vector<wsnt__TopicExpressionTypeCustom> *>(p->ptr), std::vector<wsnt__TopicExpressionTypeCustom> );
 		else
-			SOAP_DELETE_ARRAY(soap, static_cast<std::vector<wsnt__TopicExpressionTypeAxxon> *>(p->ptr), std::vector<wsnt__TopicExpressionTypeAxxon> );
+			SOAP_DELETE_ARRAY(soap, static_cast<std::vector<wsnt__TopicExpressionTypeCustom> *>(p->ptr), std::vector<wsnt__TopicExpressionTypeCustom> );
 		break;
 	case SOAP_TYPE_std__vectorTemplateOfPointerTott__FileProgress:
 		if (p->size < 0)
@@ -30030,10 +30030,10 @@ SOAP_FMAC3 void SOAP_FMAC4 soap_finsert(struct soap *soap, int t, int tt, void *
 			(*(std::vector<wsnt__NotificationMessageHolderType *> *)p)[index] = *(wsnt__NotificationMessageHolderType **)q;
 		}
 		break;
-	case SOAP_TYPE_std__vectorTemplateOfwsnt__TopicExpressionTypeAxxon:
-		if (t == SOAP_TYPE_wsnt__TopicExpressionTypeAxxon)
-		{	DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Container std::vector<wsnt__TopicExpressionTypeAxxon>  insert type=%d in %d location=%p object=%p at index=%lu\n", t, tt, p, q, (unsigned long)index));
-			(*(std::vector<wsnt__TopicExpressionTypeAxxon> *)p)[index] = *(wsnt__TopicExpressionTypeAxxon *)q;
+	case SOAP_TYPE_std__vectorTemplateOfwsnt__TopicExpressionTypeCustom:
+		if (t == SOAP_TYPE_wsnt__TopicExpressionTypeCustom)
+		{	DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Container std::vector<wsnt__TopicExpressionTypeCustom>  insert type=%d in %d location=%p object=%p at index=%lu\n", t, tt, p, q, (unsigned long)index));
+			(*(std::vector<wsnt__TopicExpressionTypeCustom> *)p)[index] = *(wsnt__TopicExpressionTypeCustom *)q;
 		}
 		break;
 	case SOAP_TYPE_std__vectorTemplateOfPointerTott__FileProgress:
@@ -30742,9 +30742,9 @@ SOAP_FMAC3 void SOAP_FMAC4 soap_finsert(struct soap *soap, int t, int tt, void *
 		DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Copy xsd__unsignedInt_ type=%d location=%p object=%p\n", t, p, q));
 		*(xsd__unsignedInt_*)p = *(xsd__unsignedInt_*)q;
 		break;
-	case SOAP_TYPE_wsnt__TopicExpressionTypeAxxon:
-		DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Copy wsnt__TopicExpressionTypeAxxon type=%d location=%p object=%p\n", t, p, q));
-		*(wsnt__TopicExpressionTypeAxxon*)p = *(wsnt__TopicExpressionTypeAxxon*)q;
+	case SOAP_TYPE_wsnt__TopicExpressionTypeCustom:
+		DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Copy wsnt__TopicExpressionTypeCustom type=%d location=%p object=%p\n", t, p, q));
+		*(wsnt__TopicExpressionTypeCustom*)p = *(wsnt__TopicExpressionTypeCustom*)q;
 		break;
 	case SOAP_TYPE_tds__AutoGeoModes__:
 		DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Copy tds__AutoGeoModes__ type=%d location=%p object=%p\n", t, p, q));
@@ -35345,8 +35345,8 @@ SOAP_FMAC3 void SOAP_FMAC4 soap_finsert(struct soap *soap, int t, int tt, void *
 		*(tt__Polygon*)p = *(tt__Polygon*)q;
 		break;
 	case SOAP_TYPE__wsnt__TopicExpression:
-		DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Copy wsnt__TopicExpressionTypeAxxon type=%d location=%p object=%p\n", t, p, q));
-		*(wsnt__TopicExpressionTypeAxxon*)p = *(wsnt__TopicExpressionTypeAxxon*)q;
+		DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Copy wsnt__TopicExpressionTypeCustom type=%d location=%p object=%p\n", t, p, q));
+		*(wsnt__TopicExpressionTypeCustom*)p = *(wsnt__TopicExpressionTypeCustom*)q;
 		break;
 	case SOAP_TYPE__wsnt__TopicExpressionDialect:
 		DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Copy std::string type=%d location=%p object=%p\n", t, p, q));
@@ -35373,8 +35373,8 @@ SOAP_FMAC3 void SOAP_FMAC4 soap_finsert(struct soap *soap, int t, int tt, void *
 		*(struct wsa5__EndpointReferenceType*)p = *(struct wsa5__EndpointReferenceType*)q;
 		break;
 	case SOAP_TYPE__wsnt__Topic:
-		DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Copy wsnt__TopicExpressionTypeAxxon type=%d location=%p object=%p\n", t, p, q));
-		*(wsnt__TopicExpressionTypeAxxon*)p = *(wsnt__TopicExpressionTypeAxxon*)q;
+		DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Copy wsnt__TopicExpressionTypeCustom type=%d location=%p object=%p\n", t, p, q));
+		*(wsnt__TopicExpressionTypeCustom*)p = *(wsnt__TopicExpressionTypeCustom*)q;
 		break;
 	case SOAP_TYPE__wsnt__ProducerReference:
 		DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Copy struct wsa5__EndpointReferenceType type=%d location=%p object=%p\n", t, p, q));
@@ -43346,7 +43346,7 @@ SOAP_FMAC3 int SOAP_FMAC4 soap_put__wsnt__NotificationMessage(struct soap *soap,
 	return soap_putindependent(soap);
 }
 
-SOAP_FMAC3 int SOAP_FMAC4 soap_put__wsnt__Topic(struct soap *soap, const wsnt__TopicExpressionTypeAxxon *a, const char *tag, const char *type)
+SOAP_FMAC3 int SOAP_FMAC4 soap_put__wsnt__Topic(struct soap *soap, const wsnt__TopicExpressionTypeCustom *a, const char *tag, const char *type)
 {
 	if (soap_out__wsnt__Topic(soap, tag ? tag : "wsnt:Topic", -2, a, type))
 		return soap->error;
@@ -43367,7 +43367,7 @@ SOAP_FMAC3 int SOAP_FMAC4 soap_put__wsnt__Filter(struct soap *soap, const wsnt__
 	return soap_putindependent(soap);
 }
 
-SOAP_FMAC3 int SOAP_FMAC4 soap_put__wsnt__TopicExpression(struct soap *soap, const wsnt__TopicExpressionTypeAxxon *a, const char *tag, const char *type)
+SOAP_FMAC3 int SOAP_FMAC4 soap_put__wsnt__TopicExpression(struct soap *soap, const wsnt__TopicExpressionTypeCustom *a, const char *tag, const char *type)
 {
 	if (soap_out__wsnt__TopicExpression(soap, tag ? tag : "wsnt:TopicExpression", -2, a, type))
 		return soap->error;

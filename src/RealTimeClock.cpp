@@ -1,10 +1,15 @@
-#include <unistd.h>
 #include <errno.h>
 #include <stdlib.h>
-#include <linux/i2c-dev.h>
-#include <sys/ioctl.h>
 #include <fcntl.h>
 #include <cstring>
+
+#ifndef WIN32
+#include <unistd.h>
+#include <linux/i2c-dev.h>
+#include <sys/ioctl.h>
+#else
+#include <corecrt_io.h>
+#endif
 
 #include <sstream>
 #include <stdexcept>
@@ -39,6 +44,7 @@ void RealTimeClock::connect()
 		return;
 	}
 	
+#ifndef WIN32
 	if (ioctl(m_fileDescriptor, I2C_SLAVE, m_slaveAddress) < 0)
 	{
 		std::stringstream stream;
@@ -47,7 +53,8 @@ void RealTimeClock::connect()
 		//TODO Log
 		return;
 	}
-	
+#endif
+
 	m_connected = true;
 }
 

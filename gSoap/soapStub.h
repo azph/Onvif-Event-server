@@ -1016,7 +1016,7 @@ class xsd__nonNegativeInteger__;	/* onvif.h:369 */
 class xsd__string_;	/* onvif.h:376 */
 class xsd__token__;	/* onvif.h:386 */
 class xsd__unsignedInt_;	/* onvif.h:393 */
-class wsnt__TopicExpressionTypeAxxon;	/* customtypes.h:3 */
+class wsnt__TopicExpressionTypeCustom;	/* customtypes.h:3 */
 class tds__AutoGeoModes__;	/* onvif.h:2086 */
 class tds__StorageType__;	/* onvif.h:2120 */
 class tt__Name__;	/* onvif.h:2145 */
@@ -3134,10 +3134,10 @@ class SOAP_CMAC xsd__unsignedInt_ : public soap_dom_element {
 #endif
 
 /* customtypes.h:3 */
-#ifndef SOAP_TYPE_wsnt__TopicExpressionTypeAxxon
-#define SOAP_TYPE_wsnt__TopicExpressionTypeAxxon (763)
-/* complex XML schema type 'wsnt:TopicExpressionTypeAxxon': */
-class SOAP_CMAC wsnt__TopicExpressionTypeAxxon {
+#ifndef SOAP_TYPE_wsnt__TopicExpressionTypeCustom
+#define SOAP_TYPE_wsnt__TopicExpressionTypeCustom (763)
+/* complex XML schema type 'wsnt:TopicExpressionTypeCustom': */
+class SOAP_CMAC wsnt__TopicExpressionTypeCustom {
       public:
         std::string __any;
         /// Required attribute 'Dialect' of XML schema type 'xsd:anyURI'
@@ -3150,8 +3150,8 @@ class SOAP_CMAC wsnt__TopicExpressionTypeAxxon {
         /// Context that manages this object
         struct soap *soap;
       public:
-        /// Return unique type id SOAP_TYPE_wsnt__TopicExpressionTypeAxxon
-        virtual long soap_type(void) const { return SOAP_TYPE_wsnt__TopicExpressionTypeAxxon; }
+        /// Return unique type id SOAP_TYPE_wsnt__TopicExpressionTypeCustom
+        virtual long soap_type(void) const { return SOAP_TYPE_wsnt__TopicExpressionTypeCustom; }
         /// (Re)set members to default values
         virtual void soap_default(struct soap*);
         /// Serialize object to prepare for SOAP 1.1/1.2 encoded output (or with SOAP_XML_GRAPH) by analyzing its (cyclic) structures
@@ -3164,14 +3164,14 @@ class SOAP_CMAC wsnt__TopicExpressionTypeAxxon {
         virtual void *soap_get(struct soap*, const char *tag, const char *type);
         /// Get object from XML, with matching tag and type (NULL matches any tag and type), return pointer to object or NULL on error
         virtual void *soap_in(struct soap*, const char *tag, const char *type);
-        /// Return a new object of type wsnt__TopicExpressionTypeAxxon, default initialized and not managed by a soap context
-        virtual wsnt__TopicExpressionTypeAxxon *soap_alloc(void) const { return SOAP_NEW_UNMANAGED(wsnt__TopicExpressionTypeAxxon); }
+        /// Return a new object of type wsnt__TopicExpressionTypeCustom, default initialized and not managed by a soap context
+        virtual wsnt__TopicExpressionTypeCustom *soap_alloc(void) const { return SOAP_NEW_UNMANAGED(wsnt__TopicExpressionTypeCustom); }
       public:
         /// Constructor with default initializations
-        wsnt__TopicExpressionTypeAxxon() : __any(), Dialect(), __anyAttribute(), __mixed(), soap() { }
-        virtual ~wsnt__TopicExpressionTypeAxxon() { }
-        /// Friend allocator used by soap_new_wsnt__TopicExpressionTypeAxxon(struct soap*, int)
-        friend SOAP_FMAC1 wsnt__TopicExpressionTypeAxxon * SOAP_FMAC2 soap_instantiate_wsnt__TopicExpressionTypeAxxon(struct soap*, int, const char*, const char*, size_t*);
+        wsnt__TopicExpressionTypeCustom() : __any(), Dialect(), __anyAttribute(), __mixed(), soap() { }
+        virtual ~wsnt__TopicExpressionTypeCustom() { }
+        /// Friend allocator used by soap_new_wsnt__TopicExpressionTypeCustom(struct soap*, int)
+        friend SOAP_FMAC1 wsnt__TopicExpressionTypeCustom * SOAP_FMAC2 soap_instantiate_wsnt__TopicExpressionTypeCustom(struct soap*, int, const char*, const char*, size_t*);
 };
 #endif
 
@@ -30996,8 +30996,8 @@ class SOAP_CMAC wsnt__NotificationMessageHolderType : public soap_dom_element {
       public:
         /// Optional element 'wsnt:SubscriptionReference' of XML schema type 'wsa5:EndpointReferenceType'
         struct wsa5__EndpointReferenceType *SubscriptionReference;
-        /// Optional element 'wsnt:Topic' of XML schema type 'wsnt:TopicExpressionTypeAxxon'
-        wsnt__TopicExpressionTypeAxxon *Topic;
+        /// Optional element 'wsnt:Topic' of XML schema type 'wsnt:TopicExpressionTypeCustom'
+        wsnt__TopicExpressionTypeCustom *Topic;
         /// Optional element 'wsnt:ProducerReference' of XML schema type 'wsa5:EndpointReferenceType'
         struct wsa5__EndpointReferenceType *ProducerReference;
         /// Required element 'wsnt:Message' of XML schema type 'wsnt:NotificationMessageHolderType-Message'
@@ -31034,8 +31034,8 @@ class SOAP_CMAC wsnt__NotificationMessageHolderType : public soap_dom_element {
 /* complex XML schema type 'wsnt:NotificationProducerRP': */
 class SOAP_CMAC _wsnt__NotificationProducerRP {
       public:
-        /// Optional element 'wsnt:TopicExpression' of XML schema type 'wsnt:TopicExpressionTypeAxxon'
-        std::vector<wsnt__TopicExpressionTypeAxxon> TopicExpression;
+        /// Optional element 'wsnt:TopicExpression' of XML schema type 'wsnt:TopicExpressionTypeCustom'
+        std::vector<wsnt__TopicExpressionTypeCustom> TopicExpression;
         /// Optional element 'wsnt:FixedTopicSet' of XML schema type 'xsd:boolean'
         bool *FixedTopicSet;	///< optional with default value = (bool)1
         /// Optional element 'wsnt:TopicExpressionDialect' of XML schema type 'xsd:anyURI'
@@ -31310,8 +31310,8 @@ class SOAP_CMAC _wsnt__SubscribeResponse {
 /* complex XML schema type 'wsnt:GetCurrentMessage': */
 class SOAP_CMAC _wsnt__GetCurrentMessage {
       public:
-        /// Required element 'wsnt:Topic' of XML schema type 'wsnt:TopicExpressionTypeAxxon'
-        wsnt__TopicExpressionTypeAxxon Topic;
+        /// Required element 'wsnt:Topic' of XML schema type 'wsnt:TopicExpressionTypeCustom'
+        wsnt__TopicExpressionTypeCustom Topic;
         /// XML DOM element node graph
         std::vector<struct soap_dom_element> __any;
         /// Context that manages this object
@@ -40894,7 +40894,7 @@ typedef tt__Polygon _tt__Polygon;
 /* onvif.h:32046 */
 #ifndef SOAP_TYPE__wsnt__TopicExpression
 #define SOAP_TYPE__wsnt__TopicExpression (1673)
-typedef wsnt__TopicExpressionTypeAxxon _wsnt__TopicExpression;
+typedef wsnt__TopicExpressionTypeCustom _wsnt__TopicExpression;
 #endif
 
 /* onvif.h:32049 */
@@ -40942,7 +40942,7 @@ typedef struct wsa5__EndpointReferenceType _wsnt__SubscriptionReference;
 /* onvif.h:32070 */
 #ifndef SOAP_TYPE__wsnt__Topic
 #define SOAP_TYPE__wsnt__Topic (1681)
-typedef wsnt__TopicExpressionTypeAxxon _wsnt__Topic;
+typedef wsnt__TopicExpressionTypeCustom _wsnt__Topic;
 #endif
 
 /* onvif.h:32073 */
@@ -43772,9 +43772,9 @@ typedef std::string tns1__dummy;
 #define SOAP_TYPE_wsnt__FilterType (765)
 #endif
 
-/* wsnt__TopicExpressionTypeAxxon has binding name 'wsnt__TopicExpressionTypeAxxon' for type 'wsnt:TopicExpressionTypeAxxon' */
-#ifndef SOAP_TYPE_wsnt__TopicExpressionTypeAxxon
-#define SOAP_TYPE_wsnt__TopicExpressionTypeAxxon (763)
+/* wsnt__TopicExpressionTypeCustom has binding name 'wsnt__TopicExpressionTypeCustom' for type 'wsnt:TopicExpressionTypeCustom' */
+#ifndef SOAP_TYPE_wsnt__TopicExpressionTypeCustom
+#define SOAP_TYPE_wsnt__TopicExpressionTypeCustom (763)
 #endif
 
 /* wsnt__QueryExpressionType has binding name 'wsnt__QueryExpressionType' for type 'wsnt:QueryExpressionType' */
@@ -49577,9 +49577,9 @@ typedef std::string tns1__dummy;
 #define SOAP_TYPE_PointerTowstop__TopicSetType (1584)
 #endif
 
-/* wsnt__TopicExpressionTypeAxxon * has binding name 'PointerTowsnt__TopicExpressionTypeAxxon' for type 'wsnt:TopicExpressionTypeAxxon' */
-#ifndef SOAP_TYPE_PointerTowsnt__TopicExpressionTypeAxxon
-#define SOAP_TYPE_PointerTowsnt__TopicExpressionTypeAxxon (1581)
+/* wsnt__TopicExpressionTypeCustom * has binding name 'PointerTowsnt__TopicExpressionTypeCustom' for type 'wsnt:TopicExpressionTypeCustom' */
+#ifndef SOAP_TYPE_PointerTowsnt__TopicExpressionTypeCustom
+#define SOAP_TYPE_PointerTowsnt__TopicExpressionTypeCustom (1581)
 #endif
 
 /* struct wsa5__EndpointReferenceType * has binding name 'PointerTowsa5__EndpointReferenceType' for type 'wsa5:EndpointReferenceType' */
@@ -51772,9 +51772,9 @@ typedef std::string tns1__dummy;
 #define SOAP_TYPE_std__vectorTemplateOfPointerTowsnt__NotificationMessageHolderType (1586)
 #endif
 
-/* std::vector<wsnt__TopicExpressionTypeAxxon>  has binding name 'std__vectorTemplateOfwsnt__TopicExpressionTypeAxxon' for type 'wsnt:TopicExpressionTypeAxxon' */
-#ifndef SOAP_TYPE_std__vectorTemplateOfwsnt__TopicExpressionTypeAxxon
-#define SOAP_TYPE_std__vectorTemplateOfwsnt__TopicExpressionTypeAxxon (1583)
+/* std::vector<wsnt__TopicExpressionTypeCustom>  has binding name 'std__vectorTemplateOfwsnt__TopicExpressionTypeCustom' for type 'wsnt:TopicExpressionTypeCustom' */
+#ifndef SOAP_TYPE_std__vectorTemplateOfwsnt__TopicExpressionTypeCustom
+#define SOAP_TYPE_std__vectorTemplateOfwsnt__TopicExpressionTypeCustom (1583)
 #endif
 
 /* std::vector<tt__FileProgress *>  has binding name 'std__vectorTemplateOfPointerTott__FileProgress' for type 'tt:FileProgress' */

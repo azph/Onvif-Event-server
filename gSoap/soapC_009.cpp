@@ -18,7 +18,7 @@ A commercial use license is available from Genivia Inc., contact@genivia.com
 
 #include "soapH.h"
 
-SOAP_SOURCE_STAMP("@(#) soapC_nnn.cpp ver 2.8.78 2019-03-03 12:56:04 GMT")
+SOAP_SOURCE_STAMP("@(#) soapC_nnn.cpp ver 2.8.78 2019-03-11 21:45:01 GMT")
 
 
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_tds__SetScopes(struct soap *soap, _tds__SetScopes *const*a)
@@ -5931,35 +5931,35 @@ SOAP_FMAC3 wstop__TopicSetType ** SOAP_FMAC4 soap_get_PointerTowstop__TopicSetTy
 	return p;
 }
 
-SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTowsnt__TopicExpressionTypeAxxon(struct soap *soap, wsnt__TopicExpressionTypeAxxon *const*a)
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTowsnt__TopicExpressionTypeCustom(struct soap *soap, wsnt__TopicExpressionTypeCustom *const*a)
 {
 	(void)soap; (void)a; /* appease -Wall -Werror */
 #ifndef WITH_NOIDREF
-	if (!soap_reference(soap, *a, SOAP_TYPE_wsnt__TopicExpressionTypeAxxon))
+	if (!soap_reference(soap, *a, SOAP_TYPE_wsnt__TopicExpressionTypeCustom))
 		(*a)->soap_serialize(soap);
 #endif
 }
 
-SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTowsnt__TopicExpressionTypeAxxon(struct soap *soap, const char *tag, int id, wsnt__TopicExpressionTypeAxxon *const*a, const char *type)
+SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTowsnt__TopicExpressionTypeCustom(struct soap *soap, const char *tag, int id, wsnt__TopicExpressionTypeCustom *const*a, const char *type)
 {
-	id = soap_element_id(soap, tag, id, *a, NULL, 0, type, SOAP_TYPE_wsnt__TopicExpressionTypeAxxon, NULL);
+	id = soap_element_id(soap, tag, id, *a, NULL, 0, type, SOAP_TYPE_wsnt__TopicExpressionTypeCustom, NULL);
 	if (id < 0)
 		return soap->error;
-	return (*a)->soap_out(soap, tag, id, (*a)->soap_type() == SOAP_TYPE_wsnt__TopicExpressionTypeAxxon ? type : NULL);
+	return (*a)->soap_out(soap, tag, id, (*a)->soap_type() == SOAP_TYPE_wsnt__TopicExpressionTypeCustom ? type : NULL);
 }
 
-SOAP_FMAC3 wsnt__TopicExpressionTypeAxxon ** SOAP_FMAC4 soap_in_PointerTowsnt__TopicExpressionTypeAxxon(struct soap *soap, const char *tag, wsnt__TopicExpressionTypeAxxon **a, const char *type)
+SOAP_FMAC3 wsnt__TopicExpressionTypeCustom ** SOAP_FMAC4 soap_in_PointerTowsnt__TopicExpressionTypeCustom(struct soap *soap, const char *tag, wsnt__TopicExpressionTypeCustom **a, const char *type)
 {
 	(void)type; /* appease -Wall -Werror */
 	if (soap_element_begin_in(soap, tag, 1, NULL))
 		return NULL;
 	if (!a)
-		if (!(a = (wsnt__TopicExpressionTypeAxxon **)soap_malloc(soap, sizeof(wsnt__TopicExpressionTypeAxxon *))))
+		if (!(a = (wsnt__TopicExpressionTypeCustom **)soap_malloc(soap, sizeof(wsnt__TopicExpressionTypeCustom *))))
 			return NULL;
 	*a = NULL;
 	if (!soap->null && *soap->href != '#')
 	{	soap_revert(soap);
-		if (!(*a = (wsnt__TopicExpressionTypeAxxon *)soap_instantiate_wsnt__TopicExpressionTypeAxxon(soap, -1, soap->type, soap->arrayType, NULL)))
+		if (!(*a = (wsnt__TopicExpressionTypeCustom *)soap_instantiate_wsnt__TopicExpressionTypeCustom(soap, -1, soap->type, soap->arrayType, NULL)))
 			return NULL;
 		(*a)->soap_default(soap);
 		if (!(*a)->soap_in(soap, tag, NULL))
@@ -5968,23 +5968,23 @@ SOAP_FMAC3 wsnt__TopicExpressionTypeAxxon ** SOAP_FMAC4 soap_in_PointerTowsnt__T
 		}
 	}
 	else
-	{	a = (wsnt__TopicExpressionTypeAxxon **)soap_id_lookup(soap, soap->href, (void**)a, SOAP_TYPE_wsnt__TopicExpressionTypeAxxon, sizeof(wsnt__TopicExpressionTypeAxxon), 0, soap_fbase);
+	{	a = (wsnt__TopicExpressionTypeCustom **)soap_id_lookup(soap, soap->href, (void**)a, SOAP_TYPE_wsnt__TopicExpressionTypeCustom, sizeof(wsnt__TopicExpressionTypeCustom), 0, soap_fbase);
 		if (soap->body && soap_element_end_in(soap, tag))
 			return NULL;
 	}
 	return a;
 }
 
-SOAP_FMAC3 int SOAP_FMAC4 soap_put_PointerTowsnt__TopicExpressionTypeAxxon(struct soap *soap, wsnt__TopicExpressionTypeAxxon *const*a, const char *tag, const char *type)
+SOAP_FMAC3 int SOAP_FMAC4 soap_put_PointerTowsnt__TopicExpressionTypeCustom(struct soap *soap, wsnt__TopicExpressionTypeCustom *const*a, const char *tag, const char *type)
 {
-	if (soap_out_PointerTowsnt__TopicExpressionTypeAxxon(soap, tag ? tag : "wsnt:TopicExpressionTypeAxxon", -2, a, type))
+	if (soap_out_PointerTowsnt__TopicExpressionTypeCustom(soap, tag ? tag : "wsnt:TopicExpressionTypeCustom", -2, a, type))
 		return soap->error;
 	return soap_putindependent(soap);
 }
 
-SOAP_FMAC3 wsnt__TopicExpressionTypeAxxon ** SOAP_FMAC4 soap_get_PointerTowsnt__TopicExpressionTypeAxxon(struct soap *soap, wsnt__TopicExpressionTypeAxxon **p, const char *tag, const char *type)
+SOAP_FMAC3 wsnt__TopicExpressionTypeCustom ** SOAP_FMAC4 soap_get_PointerTowsnt__TopicExpressionTypeCustom(struct soap *soap, wsnt__TopicExpressionTypeCustom **p, const char *tag, const char *type)
 {
-	if ((p = soap_in_PointerTowsnt__TopicExpressionTypeAxxon(soap, tag, p, type)))
+	if ((p = soap_in_PointerTowsnt__TopicExpressionTypeCustom(soap, tag, p, type)))
 		if (soap_getindependent(soap))
 			return NULL;
 	return p;

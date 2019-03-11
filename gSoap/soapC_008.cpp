@@ -18,7 +18,7 @@ A commercial use license is available from Genivia Inc., contact@genivia.com
 
 #include "soapH.h"
 
-SOAP_SOURCE_STAMP("@(#) soapC_nnn.cpp ver 2.8.78 2019-03-03 12:56:04 GMT")
+SOAP_SOURCE_STAMP("@(#) soapC_nnn.cpp ver 2.8.78 2019-03-11 21:45:01 GMT")
 
 
 SOAP_FMAC3 int SOAP_FMAC4 soap_put__saml2__AuthenticatingAuthority(struct soap *soap, char *const*a, const char *tag, const char *type)

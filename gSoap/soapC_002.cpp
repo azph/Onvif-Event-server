@@ -18,7 +18,7 @@ A commercial use license is available from Genivia Inc., contact@genivia.com
 
 #include "soapH.h"
 
-SOAP_SOURCE_STAMP("@(#) soapC_nnn.cpp ver 2.8.78 2019-03-03 12:56:03 GMT")
+SOAP_SOURCE_STAMP("@(#) soapC_nnn.cpp ver 2.8.78 2019-03-11 21:45:00 GMT")
 
 
 void wstop__FullTopicExpression__::soap_default(struct soap *soap)
@@ -19847,7 +19847,7 @@ SOAP_FMAC3 _wsnt__GetCurrentMessageResponse * SOAP_FMAC4 soap_get__wsnt__GetCurr
 void _wsnt__GetCurrentMessage::soap_default(struct soap *soap)
 {
 	this->soap = soap;
-	this->_wsnt__GetCurrentMessage::Topic.wsnt__TopicExpressionTypeAxxon::soap_default(soap);
+	this->_wsnt__GetCurrentMessage::Topic.wsnt__TopicExpressionTypeCustom::soap_default(soap);
 	soap_default_std__vectorTemplateOfxsd__anyType(soap, &this->_wsnt__GetCurrentMessage::__any);
 }
 
@@ -19855,7 +19855,7 @@ void _wsnt__GetCurrentMessage::soap_serialize(struct soap *soap) const
 {
 	(void)soap; /* appease -Wall -Werror */
 #ifndef WITH_NOIDREF
-	soap_embedded(soap, &this->_wsnt__GetCurrentMessage::Topic, SOAP_TYPE_wsnt__TopicExpressionTypeAxxon);
+	soap_embedded(soap, &this->_wsnt__GetCurrentMessage::Topic, SOAP_TYPE_wsnt__TopicExpressionTypeCustom);
 	this->_wsnt__GetCurrentMessage::Topic.soap_serialize(soap);
 	soap_serialize_std__vectorTemplateOfxsd__anyType(soap, &this->_wsnt__GetCurrentMessage::__any);
 #endif
@@ -19904,7 +19904,7 @@ SOAP_FMAC3 _wsnt__GetCurrentMessage * SOAP_FMAC4 soap_in__wsnt__GetCurrentMessag
 		for (;;)
 		{	soap->error = SOAP_TAG_MISMATCH;
 			if (soap_flag_Topic1 && soap->error == SOAP_TAG_MISMATCH)
-			{	if ((a->_wsnt__GetCurrentMessage::Topic).soap_in(soap, "wsnt:Topic", "wsnt:TopicExpressionTypeAxxon"))
+			{	if ((a->_wsnt__GetCurrentMessage::Topic).soap_in(soap, "wsnt:Topic", "wsnt:TopicExpressionTypeCustom"))
 				{	soap_flag_Topic1--;
 					continue;
 				}
@@ -20773,7 +20773,7 @@ SOAP_FMAC3 _wsnt__SubscriptionManagerRP * SOAP_FMAC4 soap_get__wsnt__Subscriptio
 void _wsnt__NotificationProducerRP::soap_default(struct soap *soap)
 {
 	this->soap = soap;
-	soap_default_std__vectorTemplateOfwsnt__TopicExpressionTypeAxxon(soap, &this->_wsnt__NotificationProducerRP::TopicExpression);
+	soap_default_std__vectorTemplateOfwsnt__TopicExpressionTypeCustom(soap, &this->_wsnt__NotificationProducerRP::TopicExpression);
 	this->_wsnt__NotificationProducerRP::FixedTopicSet = NULL;
 	soap_default_std__vectorTemplateOfxsd__anyURI(soap, &this->_wsnt__NotificationProducerRP::TopicExpressionDialect);
 	this->_wsnt__NotificationProducerRP::wstop__TopicSet = NULL;
@@ -20783,7 +20783,7 @@ void _wsnt__NotificationProducerRP::soap_serialize(struct soap *soap) const
 {
 	(void)soap; /* appease -Wall -Werror */
 #ifndef WITH_NOIDREF
-	soap_serialize_std__vectorTemplateOfwsnt__TopicExpressionTypeAxxon(soap, &this->_wsnt__NotificationProducerRP::TopicExpression);
+	soap_serialize_std__vectorTemplateOfwsnt__TopicExpressionTypeCustom(soap, &this->_wsnt__NotificationProducerRP::TopicExpression);
 	soap_serialize_PointerTobool(soap, &this->_wsnt__NotificationProducerRP::FixedTopicSet);
 	soap_serialize_std__vectorTemplateOfxsd__anyURI(soap, &this->_wsnt__NotificationProducerRP::TopicExpressionDialect);
 	soap_serialize_PointerTowstop__TopicSetType(soap, &this->_wsnt__NotificationProducerRP::wstop__TopicSet);
@@ -20800,7 +20800,7 @@ SOAP_FMAC3 int SOAP_FMAC4 soap_out__wsnt__NotificationProducerRP(struct soap *so
 	(void)soap; (void)tag; (void)id; (void)a; (void)type; /* appease -Wall -Werror */
 	if (soap_element_begin_out(soap, tag, soap_embedded_id(soap, id, a, SOAP_TYPE__wsnt__NotificationProducerRP), type))
 		return soap->error;
-	if (soap_out_std__vectorTemplateOfwsnt__TopicExpressionTypeAxxon(soap, "wsnt:TopicExpression", -1, &a->_wsnt__NotificationProducerRP::TopicExpression, ""))
+	if (soap_out_std__vectorTemplateOfwsnt__TopicExpressionTypeCustom(soap, "wsnt:TopicExpression", -1, &a->_wsnt__NotificationProducerRP::TopicExpression, ""))
 		return soap->error;
 	if (soap_out_PointerTobool(soap, "wsnt:FixedTopicSet", -1, &a->_wsnt__NotificationProducerRP::FixedTopicSet, ""))
 		return soap->error;
@@ -20838,7 +20838,7 @@ SOAP_FMAC3 _wsnt__NotificationProducerRP * SOAP_FMAC4 soap_in__wsnt__Notificatio
 		for (;;)
 		{	soap->error = SOAP_TAG_MISMATCH;
 			if (soap->error == SOAP_TAG_MISMATCH)
-			{	if (soap_in_std__vectorTemplateOfwsnt__TopicExpressionTypeAxxon(soap, "wsnt:TopicExpression", &a->_wsnt__NotificationProducerRP::TopicExpression, "wsnt:TopicExpressionTypeAxxon"))
+			{	if (soap_in_std__vectorTemplateOfwsnt__TopicExpressionTypeCustom(soap, "wsnt:TopicExpression", &a->_wsnt__NotificationProducerRP::TopicExpression, "wsnt:TopicExpressionTypeCustom"))
 					continue;
 			}
 			if (soap_flag_FixedTopicSet1 && soap->error == SOAP_TAG_MISMATCH)

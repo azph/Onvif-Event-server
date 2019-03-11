@@ -21,7 +21,7 @@ wsnt__NotificationMessageHolderType* CreateMetallDetectorEvent(struct soap* soap
 {
 	auto msg = soap_new_wsnt__NotificationMessageHolderType(soap);
 
-	msg->Topic = soap_new_wsnt__TopicExpressionTypeAxxon(soap);
+	msg->Topic = soap_new_wsnt__TopicExpressionTypeCustom(soap);
 	msg->Topic->__any = "tns1:Device/tmk:MetalDetector/tmk:Detect";
 	msg->Topic->Dialect = "http://www.onvif.org/ver10/tev/topicExpression/ConcreteSet";
 
@@ -53,7 +53,7 @@ wsnt__NotificationMessageHolderType* CreateSteamDetectorEvent(struct soap* soap,
 {
 	auto msg = soap_new_wsnt__NotificationMessageHolderType(soap);
 
-	msg->Topic = soap_new_wsnt__TopicExpressionTypeAxxon(soap);
+	msg->Topic = soap_new_wsnt__TopicExpressionTypeCustom(soap);
 	msg->Topic->__any = "tns1:Device/tmk:SteamDetector/tmk:Detect";
 	msg->Topic->Dialect = "http://www.onvif.org/ver10/tev/topicExpression/ConcreteSet";
 
@@ -86,7 +86,7 @@ wsnt__NotificationMessageHolderType* CreateRadiationMonitoringEvent(struct soap*
 {
 	auto msg = soap_new_wsnt__NotificationMessageHolderType(soap);
 
-	msg->Topic = soap_new_wsnt__TopicExpressionTypeAxxon(soap);
+	msg->Topic = soap_new_wsnt__TopicExpressionTypeCustom(soap);
 	msg->Topic->__any = "tns1:Device/tmk:RadiationMonitoring/tmk:Detect";
 	msg->Topic->Dialect = "http://www.onvif.org/ver10/tev/topicExpression/ConcreteSet";
 

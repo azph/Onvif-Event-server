@@ -18,7 +18,7 @@ A commercial use license is available from Genivia Inc., contact@genivia.com
 
 #include "soapH.h"
 
-SOAP_SOURCE_STAMP("@(#) soapC_nnn.cpp ver 2.8.78 2019-03-03 12:56:05 GMT")
+SOAP_SOURCE_STAMP("@(#) soapC_nnn.cpp ver 2.8.78 2019-03-11 21:45:01 GMT")
 
 
 SOAP_FMAC3 void SOAP_FMAC4 soap_default_std__vectorTemplateOf_wstop__TopicNamespaceType_Topic(struct soap *soap, std::vector<_wstop__TopicNamespaceType_Topic> *p)
@@ -592,25 +592,25 @@ SOAP_FMAC1 std::vector<wsnt__NotificationMessageHolderType *>  * SOAP_FMAC2 soap
 	return p;
 }
 
-SOAP_FMAC3 void SOAP_FMAC4 soap_default_std__vectorTemplateOfwsnt__TopicExpressionTypeAxxon(struct soap *soap, std::vector<wsnt__TopicExpressionTypeAxxon> *p)
+SOAP_FMAC3 void SOAP_FMAC4 soap_default_std__vectorTemplateOfwsnt__TopicExpressionTypeCustom(struct soap *soap, std::vector<wsnt__TopicExpressionTypeCustom> *p)
 {
 	(void)soap; /* appease -Wall -Werror */
 	p->clear();
 }
 
-SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_std__vectorTemplateOfwsnt__TopicExpressionTypeAxxon(struct soap *soap, const std::vector<wsnt__TopicExpressionTypeAxxon> *a)
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_std__vectorTemplateOfwsnt__TopicExpressionTypeCustom(struct soap *soap, const std::vector<wsnt__TopicExpressionTypeCustom> *a)
 {
 	(void)soap; (void)a;/* appease -Wall -Werror */
 #ifndef WITH_NOIDREF
-	for (std::vector<wsnt__TopicExpressionTypeAxxon> ::const_iterator i = a->begin(); i != a->end(); ++i)
+	for (std::vector<wsnt__TopicExpressionTypeCustom> ::const_iterator i = a->begin(); i != a->end(); ++i)
 		(*i).soap_serialize(soap);
 #endif
 }
 
-SOAP_FMAC3 int SOAP_FMAC4 soap_out_std__vectorTemplateOfwsnt__TopicExpressionTypeAxxon(struct soap *soap, const char *tag, int id, const std::vector<wsnt__TopicExpressionTypeAxxon> *a, const char *type)
+SOAP_FMAC3 int SOAP_FMAC4 soap_out_std__vectorTemplateOfwsnt__TopicExpressionTypeCustom(struct soap *soap, const char *tag, int id, const std::vector<wsnt__TopicExpressionTypeCustom> *a, const char *type)
 {
 	(void)id; (void)type; /* appease -Wall -Werror */
-	for (std::vector<wsnt__TopicExpressionTypeAxxon> ::const_iterator i = a->begin(); i != a->end(); ++i)
+	for (std::vector<wsnt__TopicExpressionTypeCustom> ::const_iterator i = a->begin(); i != a->end(); ++i)
 	{
 		if ((*i).soap_out(soap, tag, id, ""))
 			return soap->error;
@@ -618,7 +618,7 @@ SOAP_FMAC3 int SOAP_FMAC4 soap_out_std__vectorTemplateOfwsnt__TopicExpressionTyp
 	return SOAP_OK;
 }
 
-SOAP_FMAC3 std::vector<wsnt__TopicExpressionTypeAxxon> * SOAP_FMAC4 soap_in_std__vectorTemplateOfwsnt__TopicExpressionTypeAxxon(struct soap *soap, const char *tag, std::vector<wsnt__TopicExpressionTypeAxxon> *a, const char *type)
+SOAP_FMAC3 std::vector<wsnt__TopicExpressionTypeCustom> * SOAP_FMAC4 soap_in_std__vectorTemplateOfwsnt__TopicExpressionTypeCustom(struct soap *soap, const char *tag, std::vector<wsnt__TopicExpressionTypeCustom> *a, const char *type)
 {
 	(void)type; /* appease -Wall -Werror */
 	short soap_flag;
@@ -629,28 +629,28 @@ SOAP_FMAC3 std::vector<wsnt__TopicExpressionTypeAxxon> * SOAP_FMAC4 soap_in_std_
 				break;
 			soap_revert(soap);
 		}
-		if (!a && !(a = soap_new_std__vectorTemplateOfwsnt__TopicExpressionTypeAxxon(soap)))
+		if (!a && !(a = soap_new_std__vectorTemplateOfwsnt__TopicExpressionTypeCustom(soap)))
 			return NULL;
 		if (!a->empty() && a->size() == a->capacity())
 		{	const void *p = &a->front();
 			a->emplace_back();
 			DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Vector capacity increased to %lu to fit %lu items: updating pointers\n", a->capacity(), a->size()));
-			soap_update_pointers(soap, (const char*)&a->front(), (const char*)p, (a->size() - 1) * sizeof(wsnt__TopicExpressionTypeAxxon));
+			soap_update_pointers(soap, (const char*)&a->front(), (const char*)p, (a->size() - 1) * sizeof(wsnt__TopicExpressionTypeCustom));
 		}
 		else
 		{	a->emplace_back();
 		}
-		wsnt__TopicExpressionTypeAxxon *n = &a->back();
+		wsnt__TopicExpressionTypeCustom *n = &a->back();
 		n->soap_default(soap);
 		short soap_shaky = soap_begin_shaky(soap);
 		if (tag && *tag != '-' && (*soap->id || *soap->href == '#'))
-		{	if (!soap_id_forward(soap, *soap->id?soap->id:soap->href, a, (size_t)a->size() - 1, SOAP_TYPE_wsnt__TopicExpressionTypeAxxon, SOAP_TYPE_std__vectorTemplateOfwsnt__TopicExpressionTypeAxxon, sizeof(wsnt__TopicExpressionTypeAxxon), 0, soap_finsert, soap_fbase))
+		{	if (!soap_id_forward(soap, *soap->id?soap->id:soap->href, a, (size_t)a->size() - 1, SOAP_TYPE_wsnt__TopicExpressionTypeCustom, SOAP_TYPE_std__vectorTemplateOfwsnt__TopicExpressionTypeCustom, sizeof(wsnt__TopicExpressionTypeCustom), 0, soap_finsert, soap_fbase))
 				break;
-			if (!soap_in_wsnt__TopicExpressionTypeAxxon(soap, tag, NULL, "wsnt:TopicExpressionTypeAxxon"))
+			if (!soap_in_wsnt__TopicExpressionTypeCustom(soap, tag, NULL, "wsnt:TopicExpressionTypeCustom"))
 				break;
 		}
 		else
-		{	if (!soap_in_wsnt__TopicExpressionTypeAxxon(soap, tag, n, "wsnt:TopicExpressionTypeAxxon"))
+		{	if (!soap_in_wsnt__TopicExpressionTypeCustom(soap, tag, n, "wsnt:TopicExpressionTypeCustom"))
 			{	a->pop_back();
 				break;
 			}
@@ -666,23 +666,23 @@ SOAP_FMAC3 std::vector<wsnt__TopicExpressionTypeAxxon> * SOAP_FMAC4 soap_in_std_
 	return NULL;
 }
 
-SOAP_FMAC1 std::vector<wsnt__TopicExpressionTypeAxxon>  * SOAP_FMAC2 soap_instantiate_std__vectorTemplateOfwsnt__TopicExpressionTypeAxxon(struct soap *soap, int n, const char *type, const char *arrayType, size_t *size)
+SOAP_FMAC1 std::vector<wsnt__TopicExpressionTypeCustom>  * SOAP_FMAC2 soap_instantiate_std__vectorTemplateOfwsnt__TopicExpressionTypeCustom(struct soap *soap, int n, const char *type, const char *arrayType, size_t *size)
 {
-	DBGLOG(TEST, SOAP_MESSAGE(fdebug, "soap_instantiate_std__vectorTemplateOfwsnt__TopicExpressionTypeAxxon(%p, %d, %s, %s)\n", (void*)soap, n, type?type:"", arrayType?arrayType:""));
+	DBGLOG(TEST, SOAP_MESSAGE(fdebug, "soap_instantiate_std__vectorTemplateOfwsnt__TopicExpressionTypeCustom(%p, %d, %s, %s)\n", (void*)soap, n, type?type:"", arrayType?arrayType:""));
 	(void)type; (void)arrayType; /* appease -Wall -Werror */
-	std::vector<wsnt__TopicExpressionTypeAxxon> *p;
-	size_t k = sizeof(std::vector<wsnt__TopicExpressionTypeAxxon> );
-	struct soap_clist *cp = soap_link(soap, SOAP_TYPE_std__vectorTemplateOfwsnt__TopicExpressionTypeAxxon, n, soap_fdelete);
+	std::vector<wsnt__TopicExpressionTypeCustom> *p;
+	size_t k = sizeof(std::vector<wsnt__TopicExpressionTypeCustom> );
+	struct soap_clist *cp = soap_link(soap, SOAP_TYPE_std__vectorTemplateOfwsnt__TopicExpressionTypeCustom, n, soap_fdelete);
 	if (!cp && soap && n != SOAP_NO_LINK_TO_DELETE)
 		return NULL;
 	if (n < 0)
-	{	p = SOAP_NEW(soap, std::vector<wsnt__TopicExpressionTypeAxxon> );
+	{	p = SOAP_NEW(soap, std::vector<wsnt__TopicExpressionTypeCustom> );
 	}
 	else
-	{	p = SOAP_NEW_ARRAY(soap, std::vector<wsnt__TopicExpressionTypeAxxon> , n);
+	{	p = SOAP_NEW_ARRAY(soap, std::vector<wsnt__TopicExpressionTypeCustom> , n);
 		k *= n;
 	}
-	DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Instantiated std::vector<wsnt__TopicExpressionTypeAxxon>  location=%p n=%d\n", (void*)p, n));
+	DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Instantiated std::vector<wsnt__TopicExpressionTypeCustom>  location=%p n=%d\n", (void*)p, n));
 	if (size)
 		*size = k;
 	if (!p)
