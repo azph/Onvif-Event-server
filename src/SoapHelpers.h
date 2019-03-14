@@ -3,6 +3,7 @@
 
 #include <ctime>
 #include <sstream>
+#include <algorithm>
 
 #include <gSoap/soapH.h>
 
