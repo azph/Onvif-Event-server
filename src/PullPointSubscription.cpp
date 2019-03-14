@@ -12,8 +12,9 @@
 namespace Onvif
 {
 
-PullPointSubscription::PullPointSubscription(struct soap *_soap):
-	PullPointSubscriptionBindingService(_soap)
+PullPointSubscription::PullPointSubscription(struct soap *_soap, SubscriptionControllerSP controller):
+	PullPointSubscriptionBindingService(_soap),
+	m_controller(controller)
 {
 }
 
@@ -49,7 +50,7 @@ wsnt__NotificationMessageHolderType* CreateMetallDetectorEvent(struct soap* soap
 	return msg;
 }
 
-wsnt__NotificationMessageHolderType* CreateSteamDetectorEvent(struct soap* soap, tt__PropertyOperation propOperation)
+wsnt__NotificationMessageHolderType* CreateSteamDetectorEvent(struct soap* soap, tt__PropertyOperation propOperation, const std::string& mesures)
 {
 	auto msg = soap_new_wsnt__NotificationMessageHolderType(soap);
 
@@ -72,8 +73,7 @@ wsnt__NotificationMessageHolderType* CreateSteamDetectorEvent(struct soap* soap,
 	tt_msg->Data = soap_new_tt__ItemList(soap);
 	tt_msg->Data->SimpleItem.push_back(*soap_new_req__tt__ItemList_SimpleItem(soap, "Picture", "AAAAAAAAAAAAAA=="));
 	tt_msg->Data->SimpleItem.push_back(*soap_new_req__tt__ItemList_SimpleItem(soap, "Account", "operator"));
-	tt_msg->Data->SimpleItem.push_back(*soap_new_req__tt__ItemList_SimpleItem(soap, "Mesures",
-		"TYPE1, INTENS1, POS1, AMPL1, TYPE2, NTENS2, POS2, AMPL2, TYPE3, INTENS3, POS3, AMPL3, TYPE4, INTENS4, POS4, AMPL4"));
+	tt_msg->Data->SimpleItem.push_back(*soap_new_req__tt__ItemList_SimpleItem(soap, "Mesures", mesures.c_str()));
 
 	msg->Message.__any.set(tt_msg, SOAP_TYPE__tt__Message);
 	msg->SubscriptionReference = soap_new_wsa5__EndpointReferenceType(soap);
@@ -82,7 +82,7 @@ wsnt__NotificationMessageHolderType* CreateSteamDetectorEvent(struct soap* soap,
 	return msg;
 }
 
-wsnt__NotificationMessageHolderType* CreateRadiationMonitoringEvent(struct soap* soap, tt__PropertyOperation propOperation)
+wsnt__NotificationMessageHolderType* CreateRadiationMonitoringEvent(struct soap* soap, tt__PropertyOperation propOperation, const std::string& mesures)
 {
 	auto msg = soap_new_wsnt__NotificationMessageHolderType(soap);
 
@@ -108,7 +108,7 @@ wsnt__NotificationMessageHolderType* CreateRadiationMonitoringEvent(struct soap*
 	tt_msg->Data->SimpleItem.push_back(*soap_new_req__tt__ItemList_SimpleItem(soap, "Picture", "AAAAAAAAAAAAAA=="));
 	tt_msg->Data->SimpleItem.push_back(*soap_new_req__tt__ItemList_SimpleItem(soap, "Category", "Dangerous"));
 	tt_msg->Data->SimpleItem.push_back(*soap_new_req__tt__ItemList_SimpleItem(soap, "Account", "operator"));
-	tt_msg->Data->SimpleItem.push_back(*soap_new_req__tt__ItemList_SimpleItem(soap, "Mesures", "0xRadSignal"));
+	tt_msg->Data->SimpleItem.push_back(*soap_new_req__tt__ItemList_SimpleItem(soap, "Mesures", mesures.c_str()));
 
 	msg->Message.__any.set(tt_msg, SOAP_TYPE__tt__Message);
 	msg->SubscriptionReference = soap_new_wsa5__EndpointReferenceType(soap);
@@ -124,28 +124,65 @@ int PullPointSubscription::PullMessages(_tev__PullMessages *tev__PullMessages, _
 		return 401;
 	}
 
+	std::string uuid = SoapHelpers::getUuidFromHost(soap->path, "sub=");
+	if (uuid.empty())
+	{
+		return soap_wsa_sender_fault(soap, "Invalid URI.", NULL);
+	}
+
+	auto eventSubscription = m_controller->getSubscription(uuid);
 
 	auto cur_tssTime = SoapHelpers::getCurrentTime();
-	auto termTime = cur_tssTime + std::chrono::duration_cast<std::chrono::milliseconds>(tev__PullMessages->Timeout).count();
 
-	std::async(std::launch::async,
-		[&]()
+	if (!eventSubscription || eventSubscription->getTermTime().count() < cur_tssTime)
 	{
-		std::this_thread::sleep_until(std::chrono::system_clock::from_time_t((cur_tssTime + 50) * 1000));
+		return soap_wsa_sender_fault(soap, "Invalid Subscription id", NULL);
+	}
 
-		tev__PullMessagesResponse.CurrentTime = *SoapHelpers::convertTime(this->soap, cur_tssTime);
-		tev__PullMessagesResponse.TerminationTime = *SoapHelpers::convertTime(this->soap, termTime + 30000);
 
-		tev__PullMessagesResponse.wsnt__NotificationMessage.push_back(CreateMetallDetectorEvent(soap, tt__PropertyOperation::Initialized));
-		tev__PullMessagesResponse.wsnt__NotificationMessage.push_back(CreateSteamDetectorEvent(soap, tt__PropertyOperation::Initialized));
-		tev__PullMessagesResponse.wsnt__NotificationMessage.push_back(CreateRadiationMonitoringEvent(soap, tt__PropertyOperation::Initialized));
+	auto waitFor =  std::chrono::duration_cast<std::chrono::milliseconds>(tev__PullMessages->Timeout);
 
-	}).get();
+	eventSubscription->setTermTime(std::chrono::milliseconds(cur_tssTime) + waitFor + DEFAULT_KEEP_ALIVE_TIMEOUT);
+
+	auto messages = eventSubscription->getMessages(waitFor, tev__PullMessages->MessageLimit);
+
+	cur_tssTime = SoapHelpers::getCurrentTime();
+
+	tev__PullMessagesResponse.CurrentTime = *SoapHelpers::convertTime(this->soap, cur_tssTime);
+	eventSubscription->setTermTime(std::chrono::milliseconds(cur_tssTime) + DEFAULT_KEEP_ALIVE_TIMEOUT);
+	tev__PullMessagesResponse.TerminationTime = *SoapHelpers::convertTime(this->soap, eventSubscription->getTermTime().count());
+
+	for (const auto& value : messages)
+	{
+		switch (value.type)
+		{
+		case MessageType::MetallDetector :
+			tev__PullMessagesResponse.wsnt__NotificationMessage.push_back(CreateMetallDetectorEvent(soap, tt__PropertyOperation::Initialized));
+			break;
+		case MessageType::SteamDetector:
+			tev__PullMessagesResponse.wsnt__NotificationMessage.push_back(CreateSteamDetectorEvent(soap, tt__PropertyOperation::Initialized, value.Mesures));
+			break;
+		case MessageType::RadiationMonitoring:
+			tev__PullMessagesResponse.wsnt__NotificationMessage.push_back(CreateRadiationMonitoringEvent(soap, tt__PropertyOperation::Initialized, value.Mesures));
+			break;
+		}
+	}
+
 
 	return soap_wsa_reply(this->soap, nullptr, "http://www.onvif.org/ver10/events/wsdl/PullPointSubscription/PullMessagesResponse");
 }
 
 int PullPointSubscription::SetSynchronizationPoint(_tev__SetSynchronizationPoint *tev__SetSynchronizationPoint, _tev__SetSynchronizationPointResponse &tev__SetSynchronizationPointResponse)
+{
+	if (!AuthorisationHolder::getInstance().verifyPassword(soap))
+	{
+		return 401;
+	}
+
+	return soap_wsa_reply(this->soap, nullptr, "http://www.onvif.org/ver10/events/wsdl/PullPointSubscription/SetSynchronizationPointResponse");
+}
+
+int PullPointSubscription::Unsubscribe(_wsnt__Unsubscribe *wsnt__Unsubscribe, _wsnt__UnsubscribeResponse &wsnt__UnsubscribeResponse)
 {
 	if (!AuthorisationHolder::getInstance().verifyPassword(soap))
 	{

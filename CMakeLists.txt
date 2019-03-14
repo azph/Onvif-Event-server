@@ -62,6 +62,8 @@ set(Onvif_SRCS
 	src/RealTimeClock.h
 	src/SoapHelpers.cpp
 	src/SoapHelpers.h
+	src/SubscriptionController.cpp
+	src/SubscriptionController.h
 	src/SubscriptionManager.cpp
 	src/SubscriptionManager.h
 	src/main.cpp

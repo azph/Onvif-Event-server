@@ -12,9 +12,16 @@ soap_dom_element createMetalDetectorDescription(struct soap* soap);
 soap_dom_element createSteamDetectorDescription(struct soap* soap);
 soap_dom_element createRadiationMonitoringDescription(struct soap* soap);
 
-Event::Event(struct soap *_soap):
-	EventBindingService(_soap)
+Event::Event(struct soap *_soap, SubscriptionControllerSP controller):
+	EventBindingService(_soap),
+	m_controller(controller)
 {
+	m_filterMap = 
+	{
+		{"tns1:Device/tmk:MetalDetector/tmk:Detect",		MessageType::MetallDetector},
+		{"tns1:Device/tmk:SteamDetector/tmk:Detect",		MessageType::SteamDetector},
+		{"tns1:Device/tmk:RadiationMonitoring/tmk:Detect",	MessageType::RadiationMonitoring}
+	};
 }
 
 int Event::CreatePullPointSubscription(_tev__CreatePullPointSubscription *tev__CreatePullPointSubscription, _tev__CreatePullPointSubscriptionResponse &tev__CreatePullPointSubscriptionResponse)
@@ -23,22 +30,43 @@ int Event::CreatePullPointSubscription(_tev__CreatePullPointSubscription *tev__C
 	{
 		return 401;
 	}
+	FilterType filter;
+	if (tev__CreatePullPointSubscription->Filter)
+	{
+		filter.reset(new FilterType::element_type());
+		for (auto value : tev__CreatePullPointSubscription->Filter->__any)
+		{
+			auto it = m_filterMap.find(value.text);
 
+			if (it == m_filterMap.end())
+			{
+				return soap_wsa_sender_fault(soap, "Invalid Filter", NULL);
+			}
+			filter->push_back(it->second);
+		}
+		
+	}
 	std::string uuid = soap_rand_uuid(soap, "");
-	std::string str = SoapHelpers::getHost(soap) + std::string("?sub=") + uuid;
+
+	auto eventSubscription = m_controller->createSubscription(uuid, filter);
+
+	std::string str = SoapHelpers::getHost(soap, std::string("?sub=") + uuid);
 	tev__CreatePullPointSubscriptionResponse.SubscriptionReference.Address = soap_strdup(soap, str.c_str());
 
-	tev__CreatePullPointSubscriptionResponse.wsnt__CurrentTime = *SoapHelpers::convertTime(soap, SoapHelpers::getCurrentTime());
+	auto currTime = SoapHelpers::getCurrentTime();
+	tev__CreatePullPointSubscriptionResponse.wsnt__CurrentTime = *SoapHelpers::convertTime(soap, currTime);
 
+	auto lifetime = std::chrono::duration_cast<std::chrono::nanoseconds>(DEFAULT_KEEP_ALIVE_TIMEOUT);
 
-	std::chrono::nanoseconds lifetime(30000000000);
 	if (tev__CreatePullPointSubscription->InitialTerminationTime)
 	{
 		soap_s2xsd__duration(this->soap, tev__CreatePullPointSubscription->InitialTerminationTime->c_str(), &lifetime);
 	}
+	auto termTime = std::chrono::milliseconds(currTime + std::chrono::duration_cast<std::chrono::milliseconds>(lifetime).count());
+	eventSubscription->setTermTime(termTime);
 
 	tev__CreatePullPointSubscriptionResponse.wsnt__TerminationTime = *SoapHelpers::convertTime(
-		soap, SoapHelpers::getCurrentTime() + std::chrono::duration_cast<std::chrono::milliseconds>(lifetime).count());
+		soap, eventSubscription->getTermTime().count());
 	
 	return soap_wsa_reply(this->soap, nullptr, "http://www.onvif.org/ver10/events/wsdl/EventPortType/CreatePullPointSubscriptionResponse");
 }

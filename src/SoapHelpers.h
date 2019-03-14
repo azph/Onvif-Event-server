@@ -9,13 +9,15 @@
 namespace SoapHelpers
 {
 
-std::uint64_t getCurrentTime();
+std::chrono::milliseconds::rep getCurrentTime();
 
 tt__DateTime* toDateTime(struct soap* soap, const std::tm* time);
 
-timeval* convertTime(soap* soap, std::time_t timeMicroseconds);
+timeval* convertTime(soap* soap, std::chrono::milliseconds::rep timeMicroseconds);
 
-std::string getHost(struct soap* soap, char* sufix = "");
+std::string getHost(struct soap* soap, const std::string& sufix = "");
+
+std::string getUuidFromHost(const std::string& path, const std::string& sufix);
 
 bool* soap_new_req_bool(struct soap* soap, bool value);
 

@@ -10,6 +10,7 @@
 #include "Event.h"
 #include "PullPointSubscription.h"
 #include "SubscriptionManager.h"
+#include "SubscriptionController.h"
 
 namespace Onvif
 {
@@ -55,6 +56,8 @@ void OnvifServer::onStartServices()
 	soap->max_keep_alive = 0;
 
 	std::list<std::future<void> > futureList;
+
+	auto controller = std::make_shared<SubscriptionController>();
 	
 	while (1)
 	{
@@ -64,9 +67,10 @@ void OnvifServer::onStartServices()
 		auto soapCopy = soap_copy(soap);
 
 		auto device = std::make_shared<Onvif::Device>(soapCopy);
-		auto event = std::make_shared<Onvif::Event>(soapCopy);
-		auto pullPointSubscription = std::make_shared<Onvif::PullPointSubscription>(soapCopy);
-		auto subscriptionManager = std::make_shared<Onvif::SubscriptionManager>(soapCopy);
+		auto event = std::make_shared<Onvif::Event>(soapCopy, controller);
+		auto pullPointSubscription = std::make_shared<Onvif::PullPointSubscription>(soapCopy, controller);
+		auto subscriptionManager = std::make_shared<Onvif::SubscriptionManager>(soapCopy, controller);
+
 		while (futureList.size() >= MAX_THREADS_COUNT)
 		{
 			const auto& it = std::find_if(futureList.begin(), futureList.end(), 
@@ -93,9 +97,9 @@ void OnvifServer::onStartServices()
 			{
 				if ((err = event->dispatch()) == SOAP_NO_METHOD)
 				{
-					if ((err = pullPointSubscription->dispatch()) == SOAP_NO_METHOD)
+					if ((err =  subscriptionManager->dispatch()) == SOAP_NO_METHOD)
 					{
-						err = subscriptionManager->dispatch();
+						err = pullPointSubscription->dispatch();
 					}
 				}
 			}

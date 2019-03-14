@@ -3,7 +3,7 @@
 namespace SoapHelpers
 {
 
-std::uint64_t getCurrentTime()
+std::chrono::milliseconds::rep getCurrentTime()
 {
 	return std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::system_clock::now().time_since_epoch()).count();
 }
@@ -27,7 +27,7 @@ tt__DateTime* toDateTime(struct soap* soap, const std::tm* time)
 	return result;
 }
 
-timeval* convertTime(soap* soap, std::time_t timeMiliseconds)
+timeval* convertTime(soap* soap, std::chrono::milliseconds::rep timeMiliseconds)
 {
 	timeval* tm = soap_new_xsd__dateTime(soap);
 
@@ -37,7 +37,7 @@ timeval* convertTime(soap* soap, std::time_t timeMiliseconds)
 	return tm;
 }
 
-std::string getHost(struct soap* soap, char* sufix)
+std::string getHost(struct soap* soap, const std::string& sufix)
 {
 	std::string endpoint = soap->endpoint;
 	std::ostringstream port;
@@ -58,6 +58,17 @@ std::string getHost(struct soap* soap, char* sufix)
 	return endpoint;
 }
 
+std::string getUuidFromHost(const std::string& path, const std::string& sufix)
+{
+	auto pos = path.find(sufix);
+	if (pos != std::string::npos)
+	{
+		return path.substr(pos + sufix.size(), path.size());
+	}
+
+	return {};
+}
+
 bool* soap_new_req_bool(struct soap* soap, bool value)
 {
 	auto result = soap_new_bool(soap);
@@ -65,5 +76,6 @@ bool* soap_new_req_bool(struct soap* soap, bool value)
 
 	return result;
 }
+
 
 }
