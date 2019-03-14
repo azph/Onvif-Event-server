@@ -1,5 +1,7 @@
 cmake_minimum_required(VERSION 3.7)
 
+project(Sphinx)
+
 set(CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake;${CMAKE_SOURCE_DIR}/external/openssl-1.0.2l-vs2017")
 
 include_directories(${CMAKE_SOURCE_DIR})
@@ -155,14 +157,14 @@ set(ONVIF_gSOAP_DEFINITIONS
 
 add_definitions(${ONVIF_gSOAP_DEFINITIONS})
 
-add_executable(Onvif 
+add_executable(SphinxDetectors 
 	${Onvif_SRCS}
 	${Onvif_gSoap} 
 	${Onvif_gSoap_SRCS}
 	${Onvif_gSoap_HDRS}
 	)
 	
-target_link_libraries(Onvif
+target_link_libraries(SphinxDetectors
 	${OPENSSL_LIBRARIES} 
 	${CMAKE_THREAD_LIBS_INIT}
 	sysinfo
@@ -171,8 +173,23 @@ target_link_libraries(Onvif
 if (MSVC)
 	SET(CMAKE_CXX_FLAGS  "${CMAKE_CXX_FLAGS} /bigobj")
 	
-    set_target_properties(Onvif PROPERTIES
+    set_target_properties(SphinxDetectors PROPERTIES
         COMPILE_FLAGS "/wd4005 /wd4018 /wd4101 /wd4267 /wd4244 /wd4800 /wd4996 /wd4477"
         )
 endif()
+
+install(TARGETS SphinxDetectors DESTINATION bin)
+
+# Задать некоторые характеристики пакета:
+set(CPACK_PACKAGE_NAME "SphinxDetectors")
+set(CPACK_PACKAGE_VENDOR "Sphinx")
+set(CPACK_PACKAGE_CONTACT "http://www.sphinx-md.ru/")
+set(CPACK_DEBIAN_PACKAGE_MAINTAINER "info@sphinx-md.ru")
+set(CPACK_PACKAGE_DESCRIPTION "Onvif based event server.")
+
+# Задать используемый генератор пакетов:
+set(CPACK_GENERATOR "DEB")
+
+# Включить стандартный модуль "CPack":
+include(CPack)
 
