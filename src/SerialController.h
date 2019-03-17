@@ -17,9 +17,10 @@ class SerialController
 	~SerialController();
 
 	public:
-	static SerialController& GetInstance(const std::string& deviceFile, const int baudRate)
+	static SerialController& GetInstance()
 	{
-		static SerialController instance {deviceFile, baudRate};
+		std::string dev = "/dev/ttyS0";
+		static SerialController instance {dev, 9600};
 		return instance;
 	}
 

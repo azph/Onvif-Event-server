@@ -10,6 +10,8 @@
 #include <chrono>
 #include <thread>
 
+#include <iostream>
+
 #include "SerialController.h"
 
 SerialController::SerialController(const std::string& deviceFile, const int baudRate):
@@ -47,6 +49,7 @@ void SerialController::connect()
         std::stringstream stream;
 		stream << "Failed to read " << m_deviceFile << " parameters: ";
 		stream << strerror(errno);
+		
 		//TODO Log
 		return;
     }
@@ -88,20 +91,21 @@ std::vector<uint8_t> SerialController::ReadMessage()
 
 	if (availableData == 0)
 	{
-		std::this_thread::sleep_for (std::chrono::milliseconds(500));
+		//std::this_thread::sleep_for (std::chrono::milliseconds(500));
 		return std::vector<uint8_t>();
 	}
 
 	uint8_t buff[256];
 	
 	size_t readedBytes = read(m_fileDescriptor, buff, availableData);
+
     if (readedBytes < 0 || readedBytes == -1) 
     {
-		std::this_thread::sleep_for (std::chrono::milliseconds(500));
+		//std::this_thread::sleep_for (std::chrono::milliseconds(500));
 		return std::vector<uint8_t>();
     }
 
-    std::this_thread::sleep_for (std::chrono::milliseconds(500));
+    //std::this_thread::sleep_for (std::chrono::milliseconds(500));
 
     tcflush (m_fileDescriptor, TCIOFLUSH);
 
