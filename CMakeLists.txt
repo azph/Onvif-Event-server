@@ -182,7 +182,7 @@ if (MSVC)
 endif()
 
 install(TARGETS SphinxDetectors DESTINATION /usr/bin)
-install(TARGETS ${CMAKE_SOURCE_DIR}/scripts/SphinxDetectors_d DESTINATION /etc/init.d)
+install(FILES ${CMAKE_SOURCE_DIR}/scripts/SphinxDetectors_d DESTINATION /etc/init.d)
 
 # Задать некоторые характеристики пакета:
 set(CPACK_PACKAGE_NAME "SphinxDetectors")
