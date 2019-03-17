@@ -1,11 +1,19 @@
 #include "SoapHelpers.h"
 
+#include "RealTimeClock.h"
+
 namespace SoapHelpers
 {
 
 std::chrono::milliseconds::rep getCurrentTime()
 {
+#ifndef WIN32
+	auto time = std::mktime(&RealTimeClock::GetInstance().GetTime());
+	return std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::seconds(time)).count();
+#else
 	return std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::system_clock::now().time_since_epoch()).count();
+#endif
+	
 }
 
 tt__DateTime* toDateTime(struct soap* soap, const std::tm* time)

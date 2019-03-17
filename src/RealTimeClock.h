@@ -11,13 +11,14 @@ class RealTimeClock
 	RealTimeClock(const RealTimeClock&) = delete;
 	RealTimeClock& operator= (RealTimeClock&) = delete;
 	
-	RealTimeClock(std::string& deviceFile, uint16_t slaveAddress);
+	RealTimeClock(const std::string& deviceFile, uint16_t slaveAddress);
 	~RealTimeClock();
 	
 	public:
-	static RealTimeClock& GetInstance(std::string& deviceFile, uint16_t slaveAddress)
+	static RealTimeClock& GetInstance()
 	{
-		static RealTimeClock instance{deviceFile, slaveAddress};
+		std::string fileName = "/dev/i2c-1";
+		static RealTimeClock instance{ fileName, 0x68 };
 		return instance;
 	}
 	
