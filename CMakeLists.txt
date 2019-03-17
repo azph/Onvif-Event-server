@@ -154,6 +154,7 @@ add_subdirectory(sysinfo sysinfo/build)
 
 add_subdirectory(keygen keygen/build)
 
+
 set(ONVIF_gSOAP_DEFINITIONS
 	-DWITH_NONAMESPACES -DWITH_OPENSSL -DWITH_DOM -DWITH_DEFAULT_VIRTUAL -DSOAP_DEBUG)
 
@@ -180,17 +181,23 @@ if (MSVC)
         )
 endif()
 
-install(TARGETS SphinxDetectors DESTINATION bin)
+install(TARGETS SphinxDetectors DESTINATION /usr/bin)
+install(TARGETS ${CMAKE_SOURCE_DIR}/scripts/SphinxDetectors_d DESTINATION /etc/init.d)
 
 # Задать некоторые характеристики пакета:
 set(CPACK_PACKAGE_NAME "SphinxDetectors")
 set(CPACK_PACKAGE_VENDOR "Sphinx")
-set(CPACK_PACKAGE_CONTACT "http://www.sphinx-md.ru/")
-set(CPACK_DEBIAN_PACKAGE_MAINTAINER "info@sphinx-md.ru")
+set(CPACK_PACKAGE_CONTACT "info@sphinx-md.ru")
 set(CPACK_PACKAGE_DESCRIPTION "Onvif based event server.")
+set(CPACK_PACKAGE_VERSION "1.0.1")
+set(CPACK_PACKAGE_VERSION_MAJOR "1")
+set(CPACK_PACKAGE_VERSION_MINOR "0")
+set(CPACK_PACKAGE_VERSION_PATCH "1")
 
 # Задать используемый генератор пакетов:
 set(CPACK_GENERATOR "DEB")
+set(CPACK_DEBIAN_PACKAGE_CONTROL_EXTRA "${CMAKE_SOURCE_DIR}/scripts/postinst;${CMAKE_SOURCE_DIR}/scripts/prerm;")
+set(CPACK_DEBIAN_PACKAGE_MAINTAINER "http://www.sphinx-md.ru/")
 
 # Включить стандартный модуль "CPack":
 include(CPack)
