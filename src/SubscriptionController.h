@@ -9,24 +9,13 @@
 #include <future>
 #include <ctime>
 
+#include "EventReader.h"
+#include <SoapHelpers.h>
+
 namespace Onvif
 {
 
 extern const std::chrono::milliseconds DEFAULT_KEEP_ALIVE_TIMEOUT;
-
-enum class MessageType
-{
-	MetallDetector = 0,
-	SteamDetector,
-	RadiationMonitoring
-};
-
-struct NotificationMessage
-{
-	MessageType type;
-	std::string Mesures;
-	std::chrono::milliseconds time;
-};
 
 typedef std::shared_ptr<std::vector<MessageType> > FilterType;
 
@@ -77,6 +66,8 @@ private:
 
 	bool m_active;
 	std::future<void> m_eventTreadFuture;
+
+	EventReader m_reader;
 };
 
 typedef std::shared_ptr<SubscriptionController> SubscriptionControllerSP;

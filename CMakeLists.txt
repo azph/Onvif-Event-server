@@ -53,6 +53,8 @@ set(Onvif_SRCS
 	src/Device.h
 	src/Event.cpp
 	src/Event.h	
+	src/EventReader.cpp
+	src/EventReader.h
 	src/LicenseChecker.h
 	src/LicenseChecker.cpp
 	src/md5Util.h

@@ -1,6 +1,5 @@
 #include "SubscriptionController.h"
 
-#include <SoapHelpers.h>
 namespace Onvif
 {
 const std::chrono::milliseconds DEFAULT_KEEP_ALIVE_TIMEOUT(60000);
@@ -23,9 +22,9 @@ void EventSubscription::setTermTime(std::chrono::milliseconds termTime)
 	m_termTime = termTime;
 }
 
-std::vector<Onvif::NotificationMessage> EventSubscription::getMessages(std::chrono::milliseconds waitFor, std::uint32_t maxMesages)
+std::vector<NotificationMessage> EventSubscription::getMessages(std::chrono::milliseconds waitFor, std::uint32_t maxMesages)
 {
-	std::vector<Onvif::NotificationMessage> result;
+	std::vector<NotificationMessage> result;
 
 	std::unique_lock<std::mutex> lk(m_mutex);
 	if (m_messages.empty())
@@ -120,20 +119,25 @@ void SubscriptionController::startReadEvents()
 	{
 		while (m_active)
 		{
-			auto curTime = SoapHelpers::getCurrentTime();
-			NotificationMessage messageMetall = { MessageType::MetallDetector, "", std::chrono::milliseconds(curTime) };
-			NotificationMessage messageRad = { MessageType::RadiationMonitoring, "More Than 0,3 mPT", std::chrono::milliseconds(curTime) };
+			//auto curTime = SoapHelpers::getCurrentTime();
+			//NotificationMessage messageMetall = { MessageType::MetallDetector, "", std::chrono::milliseconds(curTime) };
+			///NotificationMessage messageRad = { MessageType::RadiationMonitoring, "More Than 0,3 mPT", std::chrono::milliseconds(curTime) };
+
+			auto messages = m_reader.ReadEvents(); 
 
 			{
 				std::unique_lock<std::mutex> lock(m_mutex);
 				for (auto& value : m_subscriptions)
 				{
-					value.second->sendMessage(messageMetall);
-					value.second->sendMessage(messageRad);
+					for(const auto & mes : messages)
+					{
+						value.second->sendMessage(mes);	
+					}
+			
 				}
 			}
 
-			std::this_thread::sleep_for(std::chrono::milliseconds(5000));
+			std::this_thread::sleep_for(std::chrono::milliseconds(100));
 		}
 	});
 }

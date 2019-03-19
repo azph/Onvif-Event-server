@@ -7,6 +7,20 @@
 
 #include <gSoap/soapH.h>
 
+enum class MessageType
+{
+	MetallDetector = 0,
+	SteamDetector,
+	RadiationMonitoring
+};
+
+struct NotificationMessage
+{
+	MessageType type;
+	std::string Mesures;
+	std::chrono::milliseconds time;
+};
+
 namespace SoapHelpers
 {
 

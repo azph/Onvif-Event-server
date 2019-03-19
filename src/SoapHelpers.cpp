@@ -8,7 +8,8 @@ namespace SoapHelpers
 std::chrono::milliseconds::rep getCurrentTime()
 {
 #ifndef WIN32
-	auto time = std::mktime(&RealTimeClock::GetInstance().GetTime());
+	auto curTime = RealTimeClock::GetInstance().GetTime();
+	auto time = std::mktime(&curTime);
 	return std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::seconds(time)).count();
 #else
 	return std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::system_clock::now().time_since_epoch()).count();
