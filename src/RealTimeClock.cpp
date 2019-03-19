@@ -16,7 +16,7 @@
 
 #include "RealTimeClock.h"
 
-RealTimeClock::RealTimeClock(std::string& deviceFile, uint16_t slaveAddress):
+RealTimeClock::RealTimeClock(const std::string& deviceFile, uint16_t slaveAddress):
 	m_connected(false),
 	m_fileDescriptor(-1),
 	m_deviceFile(deviceFile),

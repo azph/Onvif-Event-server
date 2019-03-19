@@ -18,6 +18,7 @@
 ////
 #include "SerialController.h"
 #include "EventReader.h"
+#include "SoapHelpers.h"
 
 #define LOW_BYTE_EXTRACT(toByteDigit) toByteDigit & 0b0000000011111111
 
@@ -110,21 +111,21 @@ std::string parseUartPacket(const std::vector<uint8_t>& mes, std::vector<Notific
 		case FD_METAL_DETECTED:
 		{
 			resultMessge << "Metal detected";
-			NotificationMessage messageMetall = { MessageType::MetallDetector, "+", std::chrono::milliseconds(111) };
+			NotificationMessage messageMetall = { MessageType::MetallDetector, "+", std::chrono::milliseconds(SoapHelpers::getCurrentTime()) };
 			result.push_back(messageMetall);
 			return resultMessge.str();
 		}
 		case FD_EXPLOSIVE_DETECTED:
 		{
 			resultMessge << (uint16_t)dataBuff[0] << ", " << (uint16_t)dataBuff[1] << ", " << (uint16_t)dataBuff[2] << ", " << (uint16_t)dataBuff[3];
-			NotificationMessage messageExplosive = { MessageType::SteamDetector, resultMessge.str(), std::chrono::milliseconds(111)};
+			NotificationMessage messageExplosive = { MessageType::SteamDetector, resultMessge.str(), std::chrono::milliseconds(SoapHelpers::getCurrentTime())};
 			result.push_back(messageExplosive);
 			return resultMessge.str();
 		}
 		case FD_RAD_DETECTED:
 		{
 			resultMessge << "More than 0.3mSv / h";
-			NotificationMessage messageRad = { MessageType::RadiationMonitoring, resultMessge.str(), std::chrono::milliseconds(111)};
+			NotificationMessage messageRad = { MessageType::RadiationMonitoring, resultMessge.str(), std::chrono::milliseconds(SoapHelpers::getCurrentTime())};
 			result.push_back(messageRad);
 			return resultMessge.str();
 		}
@@ -144,7 +145,7 @@ std::string parseUartPacket(const std::vector<uint8_t>& mes, std::vector<Notific
 			resultMessge << (uint16_t)dataBuff[8] << ", " << (uint16_t)dataBuff[9] << ", " << (uint16_t)dataBuff[10] << ", " << (uint16_t)dataBuff[11] << ", ";
 			resultMessge << (uint16_t)dataBuff[12] << ", " << (uint16_t)dataBuff[13] << ", " << (uint16_t)dataBuff[14] << ", " << (uint16_t)dataBuff[15] << ", ";
 			resultMessge << (uint16_t)dataBuff[16] << ", " << (uint16_t)dataBuff[17] << ", " << (uint16_t)dataBuff[18] << ", " << (uint16_t)dataBuff[19];
-			NotificationMessage messageExplosive = { MessageType::SteamDetector, resultMessge.str(), std::chrono::milliseconds(111)};
+			NotificationMessage messageExplosive = { MessageType::SteamDetector, resultMessge.str(), std::chrono::milliseconds(SoapHelpers::getCurrentTime())};
 			result.push_back(messageExplosive);
 			return resultMessge.str();
 			break;
@@ -193,6 +194,11 @@ std::vector<NotificationMessage> EventReader::ReadEvents()
 	{
 		return result;
 	}
+
+	std::stringstream stream;
+	for(auto& value : data)
+		stream << std::hex << (uint16_t)value;
+	std::cerr << stream.str() << std::endl;
 
 	m_buffer.insert(m_buffer.end(), data.begin(), data.end());
 
