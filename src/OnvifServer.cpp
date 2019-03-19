@@ -6,6 +6,8 @@
 #include <gSoap/httpda.h>
 #include <gSoap/wsaapi.h>
 
+#include <primitives/Logger.h>
+
 #include "Device.h"
 #include "Event.h"
 #include "PullPointSubscription.h"
@@ -26,12 +28,17 @@ Onvif::OnvifServer& OnvifServer::getInstance()
 
 void OnvifServer::start()
 {
+	LOG_INFO << "OnvifServer starting.";
+	m_active = true;
 	m_serverTread = std::thread([&]() { onStartServices(); });
 }
 
 void OnvifServer::stop()
 {
+	LOG_INFO << "OnvifServer stopping.";
+	//m_active = false;
 	m_serverTread.join();
+	LOG_INFO << "OnvifServer stopped.";
 }
 
 OnvifServer::OnvifServer()
@@ -41,13 +48,15 @@ OnvifServer::OnvifServer()
 
 OnvifServer::~OnvifServer()
 {
-
+	stop();
 }
 
 void OnvifServer::onStartServices()
 {
+	LOG_INFO << "OnvifServer started.";
 	struct soap *soap = soap_new1(SOAP_XML_STRICT | SOAP_XML_CANONICAL | SOAP_C_UTFSTRING);
 	//struct soap *soap = soap_new();
+
 	soap_register_plugin_arg(soap, http_da, http_da_md5());
 	soap_register_plugin(soap, soap_wsa);
 
@@ -59,7 +68,7 @@ void OnvifServer::onStartServices()
 
 	auto controller = std::make_shared<SubscriptionController>();
 	
-	while (1)
+	while (m_active)
 	{
 		if (!soap_valid_socket(soap_accept(soap)))
 			exit(EXIT_FAILURE);

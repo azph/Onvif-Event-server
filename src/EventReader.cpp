@@ -1,8 +1,6 @@
 #include <stdlib.h>
-#include <unistd.h>
 #include <fcntl.h>
 #include <errno.h>
-#include <sys/ioctl.h>
 
 #include <cstring>
 #include <sstream>
@@ -16,7 +14,10 @@
 #include <vector>
 #include <sstream>
 ////
+#ifndef WIN32
 #include "SerialController.h"
+#endif
+
 #include "EventReader.h"
 #include "SoapHelpers.h"
 
@@ -171,10 +172,11 @@ std::string parseUartPacket(const std::vector<uint8_t>& mes, std::vector<Notific
 }
 
 
-
 EventReader::EventReader()
 {
+#ifndef WIN32
 	SerialController::GetInstance();
+#endif
 }
 
 EventReader::~EventReader()
@@ -186,9 +188,13 @@ EventReader::~EventReader()
 std::vector<NotificationMessage> EventReader::ReadEvents()
 {
 	std::vector<NotificationMessage> result;
+#ifndef WIN32
 	auto& controller = SerialController::GetInstance();
 
 	auto data = controller.ReadMessage();
+#else
+	std::vector<uint8_t> data;
+#endif
 
 	if(data.empty())
 	{

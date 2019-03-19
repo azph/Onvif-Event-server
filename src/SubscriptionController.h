@@ -64,7 +64,7 @@ private:
 	mutable std::mutex m_mutex;
 	std::map<std::string, EventSubscriptionSP> m_subscriptions;
 
-	bool m_active;
+	std::atomic<bool> m_active;
 	std::future<void> m_eventTreadFuture;
 
 	EventReader m_reader;

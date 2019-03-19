@@ -3,6 +3,8 @@
 #include <fcntl.h>
 #include <cstring>
 
+#include <primitives/Logger.h>
+
 #ifndef WIN32
 #include <unistd.h>
 #include <linux/i2c-dev.h>
@@ -40,7 +42,7 @@ void RealTimeClock::connect()
 		std::stringstream stream;
 		stream << "Can't open " << m_deviceFile << ": ";
 		stream << strerror(errno) << std::endl;
-		//TODO Log
+		LOG_ERROR << stream.str();
 		return;
 	}
 	
@@ -50,7 +52,7 @@ void RealTimeClock::connect()
 		std::stringstream stream;
 		stream << "Can't connect to " << m_slaveAddress << ": ";
 		stream << strerror(errno) << std::endl;
-		//TODO Log
+		LOG_ERROR << stream.str();
 		return;
 	}
 #endif
@@ -81,7 +83,7 @@ void RealTimeClock::SetTime(std::tm& time)
 		std::stringstream stream;
 		stream << "Can't set time: " << strerror(errno) << std::endl;
 		
-		throw std::runtime_error(stream.str());
+		LOG_ERROR <<stream.str();
 	}
 }
 
@@ -100,7 +102,8 @@ std::tm RealTimeClock::GetTime()
 			std::stringstream stream;
 			stream << "Can't write position: " << strerror(errno) << std::endl;
 			
-			throw std::runtime_error(stream.str());
+			LOG_ERROR << stream.str();
+			return {};
 		}
 		
 		if (read(m_fileDescriptor, buf, BUFFER_SIZE) != BUFFER_SIZE)
@@ -108,7 +111,8 @@ std::tm RealTimeClock::GetTime()
 			std::stringstream stream;
 			stream << "Can't get position: " << strerror(errno) << std::endl;
 		
-			throw std::runtime_error(stream.str());
+			LOG_ERROR << stream.str();
+			return {};
 		}
 	}
 

@@ -66,7 +66,7 @@ SubscriptionController::SubscriptionController() :
 
 SubscriptionController::~SubscriptionController()
 {
-
+	stopReadEvents();
 }
 
 EventSubscriptionSP SubscriptionController::createSubscription(const std::string& uuid, FilterType filter)

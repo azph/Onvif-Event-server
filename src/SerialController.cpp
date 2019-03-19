@@ -1,14 +1,19 @@
 #include <stdlib.h>
-#include <unistd.h>
 #include <fcntl.h>
 #include <errno.h>
-#include <sys/ioctl.h>
 
 #include <cstring>
 #include <sstream>
 #include <stdexcept>
 #include <chrono>
 #include <thread>
+
+#ifndef WIN32
+#include <unistd.h>
+#include <sys/ioctl.h>
+#else
+#include <corecrt_io.h>
+#endif
 
 #include <iostream>
 
@@ -85,7 +90,10 @@ std::vector<uint8_t> SerialController::ReadMessage()
 	// The delays required for the accumulation system input buffer
 
 	if (!m_connected)
-		throw std::runtime_error("Failed to read message. Device is not open");
+	{
+		LOG_ERROR << "Failed to read message. Device is not open";
+		return {};
+	}
 
 	int availableData = serialDataAvail(m_fileDescriptor);
 

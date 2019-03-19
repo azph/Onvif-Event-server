@@ -27,6 +27,7 @@ private:
 	
 private:
 	std::thread m_serverTread;
+	std::atomic<bool> m_active;
 
 };
 }

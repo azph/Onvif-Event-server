@@ -3,6 +3,8 @@
 #include <fstream>
 #include <sstream>
 
+#include <primitives/Logger.h>
+
 #include "sysinfo.h"
 
 std::string GetMac()
@@ -10,8 +12,11 @@ std::string GetMac()
 	//MAC is unique for each network adapter
 	
 	std::ifstream inFile("/sys/class/net/eth0/address");
-	if(!inFile.is_open())
-		throw std::runtime_error("Can't open eth0 file");
+	if (!inFile.is_open())
+	{
+		LOG_ERROR << "Can't open eth0 file";
+		return {};
+	}
 		
 	std::string mac;
 	inFile >> mac;
@@ -26,7 +31,10 @@ std::string GetMicroSDCID()
 	
 	std::ifstream inFile("/sys/block/mmcblk0/device/cid");
 	if(!inFile.is_open())
-		throw std::runtime_error("Can't open cid file");
+	{
+		LOG_ERROR << "Can't open cid file";
+		return {};
+	}
 	
 	std::string cid;
 	inFile >> cid;
@@ -39,7 +47,10 @@ std::string GetCPUSerial()
 {
 	std::ifstream inFile("/proc/cpuinfo");
 	if(!inFile.is_open())
-		throw std::runtime_error("Can't open cpuinfo file");
+	{
+		LOG_ERROR << "Can't open cpuinfo file";
+		return {};
+	}
 	
 	std::stringstream stream;
 	stream << inFile.rdbuf();
@@ -53,7 +64,10 @@ std::string GetCPUSerial()
 	std::regex_search(cpuinfo, match, reg);
 	
 	if (match.size() < 2)
-		throw std::runtime_error("Can't parse Serial from cpuinfo");
+	{
+		LOG_ERROR << "Can't parse Serial from cpuinfo";
+		return {};
+	}
 	
 	// match[0] Serial		: 0000000060036360
 	// match[1] 0000000060036360

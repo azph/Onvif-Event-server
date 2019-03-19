@@ -64,8 +64,6 @@ set(Onvif_SRCS
 	src/PullPointSubscription.h
 	src/RealTimeClock.cpp
 	src/RealTimeClock.h
-	src/SerialController.cpp
-	src/SerialController.h
 	src/SoapHelpers.cpp
 	src/SoapHelpers.h
 	src/SubscriptionController.cpp
@@ -75,13 +73,20 @@ set(Onvif_SRCS
 	src/main.cpp
 )
 
+if (UNIX)
+set(Onvif_SRCS
+	${Onvif_SRCS}
+	src/SerialController.cpp
+	src/SerialController.h
+)
+endif()
+
 set(Onvif_gSoap
 	gSoap/soap.nsmap
 	)
 source_group("gSoap" FILES ${Onvif_gSoap})
 
 set(Onvif_gSoap_SRCS
-	gSoap/Authorization.cpp
 	gSoap/chrono_duration.cpp
 	gSoap/dom.cpp
 	gSoap/httpda.c
@@ -112,7 +117,6 @@ set(Onvif_gSoap_SRCS
 	gSoap/soapPullPointBindingService.cpp
 	gSoap/soapPullPointSubscriptionBindingService.cpp
 	gSoap/soapSubscriptionManagerBindingService.cpp
-	gSoap/SoapWrapper.cpp
 	gSoap/stdsoap2.cpp
 	gSoap/struct_timeval.cpp
 	gSoap/threads.c
@@ -124,7 +128,6 @@ set(Onvif_gSoap_SRCS
 source_group("gSoap\\Source Files" FILES ${Onvif_gSoap_SRCS})
 
 set(Onvif_gSoap_HDRS
-	gSoap/Authorization.h
 	WS/chrono_duration.h
 	gSoap/mecevp.h
 	gSoap/smdevp.h
@@ -139,7 +142,6 @@ set(Onvif_gSoap_HDRS
 	gSoap/soapPullPointBindingService.h
 	gSoap/soapPullPointSubscriptionBindingService.h
 	gSoap/soapSubscriptionManagerBindingService.h
-	gSoap/SoapWrapper.h
 	gSoap/stdsoap2.h
 	gSoap/threads.h
 	gSoap/thread_setup.h
@@ -156,6 +158,7 @@ add_subdirectory(sysinfo sysinfo/build)
 
 add_subdirectory(keygen keygen/build)
 
+include(./Primitives/CMakeLists.txt)
 
 set(ONVIF_gSOAP_DEFINITIONS
 	-DWITH_NONAMESPACES -DWITH_OPENSSL -DWITH_DOM -DWITH_DEFAULT_VIRTUAL -DSOAP_DEBUG)
@@ -167,6 +170,7 @@ add_executable(SphinxDetectors
 	${Onvif_gSoap} 
 	${Onvif_gSoap_SRCS}
 	${Onvif_gSoap_HDRS}
+	${Primitives_SRCS}
 	)
 	
 target_link_libraries(SphinxDetectors
