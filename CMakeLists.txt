@@ -158,7 +158,7 @@ add_subdirectory(sysinfo sysinfo/build)
 
 add_subdirectory(keygen keygen/build)
 
-include(./Primitives/CMakeLists.txt)
+include(./primitives/CMakeLists.txt)
 
 set(ONVIF_gSOAP_DEFINITIONS
 	-DWITH_NONAMESPACES -DWITH_OPENSSL -DWITH_DOM -DWITH_DEFAULT_VIRTUAL -DSOAP_DEBUG)

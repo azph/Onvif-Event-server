@@ -1,6 +1,7 @@
 #pragma once
 
 #include <iostream>
+#include <string>
 #include <sstream>
 #include <ctime>
 
@@ -25,7 +26,7 @@ class AtomicWriter {
     std::ostringstream st;
     std::ostream &stream;
 public:
-    AtomicWriter(std::ostream &s=std::clog):stream(s) { }
+    AtomicWriter(std::ostream &s=std::cerr):stream(s) { }
     template <typename T>
     AtomicWriter& operator<<(T const& t) {
         st << t;
@@ -38,10 +39,8 @@ public:
 	~AtomicWriter() { st << std::endl;  stream << st.str(); }
 };
 
-#define __SHORT_FILE__ (strrchr(__FILE__, '/') ? strrchr(__FILE__, '/') + 1 : __FILE__)
-
 // Main log macro
-#define __LOG__(logLevel)  AtomicWriter() << getFormattedTime() << " " << logLevel << " [" << __func__ << "] [ " << __SHORT_FILE__ << ":" << __LINE__<< "] "
+#define __LOG__(logLevel)  AtomicWriter() << getFormattedTime() << " " << logLevel << " [" << __func__ << "] [ " << __FILE__ << ":" << __LINE__<< "] "
 
 #define LOG_ERROR __LOG__("ERROR")
 #define LOG_WARNING __LOG__("WARNING")

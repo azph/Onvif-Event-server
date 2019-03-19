@@ -17,6 +17,8 @@
 
 #include <iostream>
 
+#include <primitives/Logger.h>
+
 #include "SerialController.h"
 
 SerialController::SerialController(const std::string& deviceFile, const int baudRate):
