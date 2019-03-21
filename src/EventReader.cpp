@@ -6,6 +6,7 @@
 #include <sstream>
 #include <stdexcept>
 #include <thread>
+#include <iomanip>
 ////
 #include <string>
 #include <iostream>
@@ -17,6 +18,8 @@
 #ifndef WIN32
 #include "SerialController.h"
 #endif
+
+#include <primitives/Logger.h>
 
 #include "EventReader.h"
 #include "SoapHelpers.h"
@@ -47,6 +50,39 @@
 #define HANDHELD_DETECTOR_3 0x3
 #define HANDHELD_DETECTOR_4 0x4
 
+inline bool checkHighestBitOfByte(uint8_t byte)
+{
+	// 1xxx xxxx
+	// 000000001
+	return byte >> 7;
+}
+
+std::string notificationToString(NotificationMessage& message)
+{
+	std::string messageType;
+	switch(message.type)
+	{
+		case MessageType::MetallDetector:
+		messageType = "Metall detector";
+		break;
+
+		case MessageType::SteamDetector:
+		messageType = "Explosive detector";
+		break;
+
+		case MessageType::RadiationMonitoring:
+		messageType = "Radiation monitoring";
+		break;
+
+		default:
+		messageType = "";
+	}
+
+	std::stringstream stream;
+	stream << messageType << " : " << message.Mesures << " : " << std::to_string(message.time.count());
+	return stream.str();
+}
+
 uint16_t combine2Bytes(uint8_t high, uint8_t low)
 {
 	uint16_t result = 0;
@@ -76,7 +112,7 @@ uint8_t calcHashSumm(const std::vector<uint8_t>& message)
 	return 0xff - LOW_BYTE_EXTRACT(checkSumm);
 }
 
-std::string parseUartPacket(const std::vector<uint8_t>& mes, std::vector<NotificationMessage>& result)
+void parseUartPacket(const std::vector<uint8_t>& mes, std::vector<NotificationMessage>& result)
 {
 	const uint8_t frameType = mes[FRAME_TYPE];
 	uint8_t dataStartPos = 0;
@@ -86,13 +122,14 @@ std::string parseUartPacket(const std::vector<uint8_t>& mes, std::vector<Notific
 	case 0x8f:
 		dataStartPos = 8;
 		break;
+
 	case 0x83:
 		dataStartPos = 10;
 		break;
+
 	default:
-		// unknow frameType
-		// log and exit
-		break;
+		LOG_ERROR << "Unknow frame type " << static_cast<uint16_t>(frameType);
+		return;
 	}
 
 	uint16_t sourceID = combine2Bytes(mes[SRC_ID_MSB], mes[SRC_ID_LSB]);
@@ -101,7 +138,6 @@ std::string parseUartPacket(const std::vector<uint8_t>& mes, std::vector<Notific
 
 	// Ignore command id byte
 	auto dataBuff = mes.begin() + dataStartPos + 1;
-	// Ignore control summ byte (last byte in)
 
 	std::stringstream resultMessge;
 
@@ -112,26 +148,30 @@ std::string parseUartPacket(const std::vector<uint8_t>& mes, std::vector<Notific
 		case FD_METAL_DETECTED:
 		{
 			resultMessge << "Metal detected";
-			NotificationMessage messageMetall = { MessageType::MetallDetector, "+", std::chrono::milliseconds(SoapHelpers::getCurrentTime()) };
+			NotificationMessage messageMetall = { MessageType::MetallDetector, "", std::chrono::milliseconds(SoapHelpers::getCurrentTime()) };
 			result.push_back(messageMetall);
-			return resultMessge.str();
+			LOG_INFO << notificationToString(messageMetall);
+			return;
 		}
 		case FD_EXPLOSIVE_DETECTED:
 		{
 			resultMessge << (uint16_t)dataBuff[0] << ", " << (uint16_t)dataBuff[1] << ", " << (uint16_t)dataBuff[2] << ", " << (uint16_t)dataBuff[3];
 			NotificationMessage messageExplosive = { MessageType::SteamDetector, resultMessge.str(), std::chrono::milliseconds(SoapHelpers::getCurrentTime())};
 			result.push_back(messageExplosive);
-			return resultMessge.str();
+			LOG_INFO << notificationToString(messageExplosive);
+			return;
 		}
 		case FD_RAD_DETECTED:
 		{
 			resultMessge << "More than 0.3mSv / h";
 			NotificationMessage messageRad = { MessageType::RadiationMonitoring, resultMessge.str(), std::chrono::milliseconds(SoapHelpers::getCurrentTime())};
 			result.push_back(messageRad);
-			return resultMessge.str();
+			LOG_INFO << notificationToString(messageRad);
+			return;
 		}
 		default:
-			return "";
+			LOG_ERROR << "Unknow frame detecor message type " << static_cast<uint16_t>(comandCode);
+			return;
 		}
 	}
 	if (sourceID == EXPLOSIVE_DETECTOR)
@@ -148,27 +188,41 @@ std::string parseUartPacket(const std::vector<uint8_t>& mes, std::vector<Notific
 			resultMessge << (uint16_t)dataBuff[16] << ", " << (uint16_t)dataBuff[17] << ", " << (uint16_t)dataBuff[18] << ", " << (uint16_t)dataBuff[19];
 			NotificationMessage messageExplosive = { MessageType::SteamDetector, resultMessge.str(), std::chrono::milliseconds(SoapHelpers::getCurrentTime())};
 			result.push_back(messageExplosive);
-			return resultMessge.str();
-			break;
+			LOG_INFO << notificationToString(messageExplosive);
+			return;
 		}
 		default:
-			// unknow message
-			break;
+			LOG_ERROR << "Unknow explosive detecor message type " << static_cast<uint16_t>(comandCode);
+			return;
 		}
 	}
 	else if (sourceID == HANDHELD_DETECTOR_1 || sourceID == HANDHELD_DETECTOR_2
 		|| sourceID == HANDHELD_DETECTOR_3 || sourceID == HANDHELD_DETECTOR_4)
 	{
+		if(checkHighestBitOfByte(dataBuff[0]))
+		{
+			resultMessge << "Metal detected";
+			NotificationMessage messageMetall = { MessageType::MetallDetector, "", std::chrono::milliseconds(SoapHelpers::getCurrentTime()) };
+			result.push_back(messageMetall);
+			LOG_INFO << notificationToString(messageMetall);
+		}
 
+		if(checkHighestBitOfByte(dataBuff[2]))
+		{
+			resultMessge << "More than 0.3mSv / h";
+			NotificationMessage messageRad = { MessageType::RadiationMonitoring, resultMessge.str(), std::chrono::milliseconds(SoapHelpers::getCurrentTime())};
+			result.push_back(messageRad);
+			LOG_INFO << notificationToString(messageRad);
+		}
 
+		return;
 	}
 	else
 	{
-		// unknow source id
-		// return, log
+		LOG_ERROR << "Unknow source id message type " << static_cast<uint16_t>(sourceID);
+		return;
 	}
 
-	
 }
 
 
@@ -203,8 +257,9 @@ std::vector<NotificationMessage> EventReader::ReadEvents()
 
 	std::stringstream stream;
 	for(auto& value : data)
-		stream << std::hex << (uint16_t)value;
-	std::cerr << stream.str() << std::endl;
+		stream << std::setfill('0') << std::setw(2) << std::hex << static_cast<int>(value) << " ";
+
+	LOG_INFO << "Recived row data : " << stream.str();
 
 	m_buffer.insert(m_buffer.end(), data.begin(), data.end());
 
@@ -223,18 +278,24 @@ std::vector<NotificationMessage> EventReader::ReadEvents()
 
 		const uint16_t frameLength = combine2Bytes(msbValue, lsbValue);
 
-		if (m_buffer.size() < frameLength + 3)
+		if (m_buffer.size() < frameLength + 4)
 		{
 			return result;
 		}
 
-		std::vector<uint8_t> mes;
+		std::vector<uint8_t> uartPacket;
 		auto end = m_buffer.begin();
-		std::advance(end, frameLength + 3);
-		std::copy(m_buffer.begin(), end, std::back_inserter(mes));
+		std::advance(end, frameLength + 4);
+		std::copy(m_buffer.begin(), end, std::back_inserter(uartPacket));
 		m_buffer.erase(m_buffer.begin(), end);
-		// check summ
-		auto event = parseUartPacket(mes, result);
+		
+		if(!checkHashSumm(uartPacket))
+		{
+			LOG_ERROR << "Control sum is wrong";
+			return result;	
+		}
+
+		parseUartPacket(uartPacket, result);
 		
 	}
 }
