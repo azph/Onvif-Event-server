@@ -195,10 +195,10 @@ set(CPACK_PACKAGE_NAME "SphinxDetectors")
 set(CPACK_PACKAGE_VENDOR "Sphinx")
 set(CPACK_PACKAGE_CONTACT "info@sphinx-md.ru")
 set(CPACK_PACKAGE_DESCRIPTION "Onvif based event server.")
-set(CPACK_PACKAGE_VERSION "1.0.1")
+set(CPACK_PACKAGE_VERSION "1.0.2")
 set(CPACK_PACKAGE_VERSION_MAJOR "1")
 set(CPACK_PACKAGE_VERSION_MINOR "0")
-set(CPACK_PACKAGE_VERSION_PATCH "1")
+set(CPACK_PACKAGE_VERSION_PATCH "2")
 
 # Задать используемый генератор пакетов:
 set(CPACK_GENERATOR "DEB")
