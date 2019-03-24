@@ -6,6 +6,7 @@
 #include <sstream>
 
 #include <sysinfo/sysinfo.h>
+#include <primitives/Config.h>
 
 #include "AuthorisationHolder.h"
 #include "SoapHelpers.h"
@@ -53,9 +54,13 @@ int Device::GetDeviceInformation(_tds__GetDeviceInformation *tds__GetDeviceInfor
 
 	tds__GetDeviceInformationResponse.Manufacturer = "Sphinx";
 	tds__GetDeviceInformationResponse.Model = "OKO-STRIM";
-	tds__GetDeviceInformationResponse.FirmwareVersion = "1.0.0";
-	tds__GetDeviceInformationResponse.SerialNumber = "1.0.0";
-	tds__GetDeviceInformationResponse.HardwareId = "1.0.0";
+	tds__GetDeviceInformationResponse.FirmwareVersion = "1.0.2";
+
+#ifndef WIN32
+	tds__GetDeviceInformationResponse.SerialNumber = GetCPUSerial();
+	tds__GetDeviceInformationResponse.HardwareId = GetMicroSDCID();
+#endif
+
 	return SOAP_OK;
 }
 
@@ -232,6 +237,46 @@ int Device::GetZeroConfiguration(_tds__GetZeroConfiguration *tds__GetZeroConfigu
 	tds__GetZeroConfigurationResponse.ZeroConfiguration->Addresses.push_back("");
 	tds__GetZeroConfigurationResponse.ZeroConfiguration->Enabled = false;
 	tds__GetZeroConfigurationResponse.ZeroConfiguration->InterfaceToken = "eth0";
+	return SOAP_OK;
+}
+
+int Device::GetUsers(_tds__GetUsers *tds__GetUsers, _tds__GetUsersResponse &tds__GetUsersResponse)
+{
+	if (!AuthorisationHolder::getInstance().verifyPassword(soap))
+	{
+		return 401;
+	}
+
+	auto user = soap_new_req_tt__User(soap, Config::getInstance().getOption("userid"), tt__UserLevel::Administrator);
+	tds__GetUsersResponse.User.push_back(user);
+
+	return SOAP_OK;
+}
+
+int Device::SetUser(_tds__SetUser *tds__SetUser, _tds__SetUserResponse &tds__SetUserResponse)
+{
+	if (!AuthorisationHolder::getInstance().verifyPassword(soap))
+	{
+		return 401;
+	}
+
+	if (tds__SetUser->User.empty())
+	{
+		return SOAP_NO_DATA;
+	}
+
+	const auto username = Config::getInstance().getOption("userid");
+
+	auto user = tds__SetUser->User.front();
+	if (user->Username != username || !user->Password || user->Password->empty())
+	{
+		return SOAP_NO_DATA;
+	}
+
+	const std::string nonceBase64 = soap_s2base64(soap, (unsigned char*)user->Password->c_str(), NULL, user->Password->size());
+
+	Config::getInstance().setOption("hash", nonceBase64);
+	
 	return SOAP_OK;
 }
 

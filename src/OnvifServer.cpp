@@ -7,6 +7,7 @@
 #include <gSoap/wsaapi.h>
 
 #include <primitives/Logger.h>
+#include <primitives/Config.h>
 
 #include "Device.h"
 #include "Event.h"
@@ -36,7 +37,7 @@ void OnvifServer::start()
 void OnvifServer::stop()
 {
 	LOG_INFO << "OnvifServer stopping.";
-	//m_active = false;
+	m_active = false;
 	m_serverTread.join();
 	LOG_INFO << "OnvifServer stopped.";
 }
@@ -59,8 +60,9 @@ void OnvifServer::onStartServices()
 
 	soap_register_plugin_arg(soap, http_da, http_da_md5());
 	soap_register_plugin(soap, soap_wsa);
+	const int port = std::stoi(Config::getInstance().getOption("port"));
 
-	if (!soap_valid_socket(soap_bind(soap, NULL, 8080, 100)))
+	if (!soap_valid_socket(soap_bind(soap, NULL, port, 100)))
 		exit(EXIT_FAILURE);
 	soap->max_keep_alive = 0;
 
@@ -94,7 +96,7 @@ void OnvifServer::onStartServices()
 			futureList.front().wait_for(std::chrono::milliseconds(500));
 		}
 
-		auto f = std::async([=]()
+		auto f = std::async(std::launch::async, [=]()
 		{
 			int err = 0;
 

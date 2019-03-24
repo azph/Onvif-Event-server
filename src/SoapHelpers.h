@@ -27,6 +27,7 @@ namespace SoapHelpers
 std::chrono::milliseconds::rep getCurrentTime();
 
 tt__DateTime* toDateTime(struct soap* soap, const std::tm* time);
+std::tm fromDateTime(const tt__DateTime* time);
 
 timeval* convertTime(soap* soap, std::chrono::milliseconds::rep timeMicroseconds);
 

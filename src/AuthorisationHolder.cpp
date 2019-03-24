@@ -2,6 +2,8 @@
 
 #include <gSoap/httpda.h>
 
+#include <primitives/Config.h>
+
 namespace Onvif
 {
 
@@ -14,9 +16,16 @@ namespace Onvif
 
 bool AuthorisationHolder::verifyPassword(struct soap *soap)
 {
-	static const std::string authrealm = "WEB SERVER";
-	static const std::string passwd = "0eydozFnrrsF";
-	static const std::string userid = "admin";
+	auto& config = Config::getInstance();
+	static const std::string authrealm = config.getOption("authrealm");
+	const std::string hash = config.getOption("hash");
+
+	int noncelen;
+	const char *nonce;
+	nonce = soap_base642s(soap, hash.c_str(), NULL, 0, &noncelen);
+	const std::string passwd(nonce, noncelen);
+
+	const std::string userid = config.getOption("userid");
 
 	if (soap->authrealm && soap->userid && authrealm == soap->authrealm && userid == soap->userid
 		&& http_da_verify_post(soap, passwd.c_str()) == SOAP_OK)

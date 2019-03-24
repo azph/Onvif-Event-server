@@ -36,6 +36,24 @@ tt__DateTime* toDateTime(struct soap* soap, const std::tm* time)
 	return result;
 }
 
+std::tm fromDateTime(const tt__DateTime* time)
+{
+	std::tm result;
+
+	// Time.
+	result.tm_sec = time->Time->Second;
+	result.tm_min = time->Time->Minute;
+	result.tm_hour = time->Time->Hour;
+
+
+	// Date.
+	result.tm_mday = time->Date->Day;
+	result.tm_mon = time->Date->Month -1;
+	result.tm_year = time->Date->Year - 1900;
+
+	return result;
+}
+
 timeval* convertTime(soap* soap, std::chrono::milliseconds::rep timeMiliseconds)
 {
 	timeval* tm = soap_new_xsd__dateTime(soap);
