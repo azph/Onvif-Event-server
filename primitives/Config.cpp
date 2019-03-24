@@ -76,7 +76,7 @@ std::string Config::getOption(const std::string &name) const
 	std::ifstream i(m_file_name);
 	i >> config;
 	
-	return  config.contains(name) ? config[name] : std::string();
+	return  config.contains(name) ? config[name].get<std::string>() : std::string();
 }
 
 void Config::setOption(const std::string& name, const std::string& option)

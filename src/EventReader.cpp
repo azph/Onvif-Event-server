@@ -298,4 +298,5 @@ std::vector<NotificationMessage> EventReader::ReadEvents()
 		parseUartPacket(uartPacket, result);
 		
 	}
+	return result;
 }

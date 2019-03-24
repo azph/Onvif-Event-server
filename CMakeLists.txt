@@ -187,9 +187,6 @@ if (MSVC)
         )
 endif()
 
-install(TARGETS SphinxDetectors DESTINATION /usr/bin)
-install(FILES ${CMAKE_SOURCE_DIR}/scripts/SphinxDetectors_d DESTINATION /etc/init.d)
-
 # Задать некоторые характеристики пакета:
 set(CPACK_PACKAGE_NAME "SphinxDetectors")
 set(CPACK_PACKAGE_VENDOR "Sphinx")
@@ -199,6 +196,11 @@ set(CPACK_PACKAGE_VERSION "1.0.2")
 set(CPACK_PACKAGE_VERSION_MAJOR "1")
 set(CPACK_PACKAGE_VERSION_MINOR "0")
 set(CPACK_PACKAGE_VERSION_PATCH "2")
+
+
+install(TARGETS SphinxDetectors DESTINATION /usr/bin)
+install(FILES ${CMAKE_SOURCE_DIR}/scripts/SphinxDetectors_d DESTINATION /etc/init.d)
+install(FILES ${CMAKE_SOURCE_DIR}/resource/settings.json DESTINATION /var/lib/${CPACK_PACKAGE_NAME})
 
 # Задать используемый генератор пакетов:
 set(CPACK_GENERATOR "DEB")
