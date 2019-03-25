@@ -181,11 +181,12 @@ void parseUartPacket(const std::vector<uint8_t>& mes, std::vector<NotificationMe
 		case ED_EXPLOSIVE_DETECTED:
 		{
 			std::cout << "Im here" << std::endl;
-			resultMessge << (uint16_t)dataBuff[0] << ", " << (uint16_t)dataBuff[1] << ", " << (uint16_t)dataBuff[2] << ", " << (uint16_t)dataBuff[3] << ", ";
-			resultMessge << (uint16_t)dataBuff[4] << ", " << (uint16_t)dataBuff[5] << ", " << (uint16_t)dataBuff[6] << ", " << (uint16_t)dataBuff[7] << ", ";
-			resultMessge << (uint16_t)dataBuff[8] << ", " << (uint16_t)dataBuff[9] << ", " << (uint16_t)dataBuff[10] << ", " << (uint16_t)dataBuff[11] << ", ";
-			resultMessge << (uint16_t)dataBuff[12] << ", " << (uint16_t)dataBuff[13] << ", " << (uint16_t)dataBuff[14] << ", " << (uint16_t)dataBuff[15] << ", ";
-			resultMessge << (uint16_t)dataBuff[16] << ", " << (uint16_t)dataBuff[17] << ", " << (uint16_t)dataBuff[18] << ", " << (uint16_t)dataBuff[19];
+			resultMessge << (uint16_t)dataBuff[0] << ", " << (uint16_t)dataBuff[1] << ", " << combine2Bytes(dataBuff[2], dataBuff[3]) << ", ";
+			resultMessge << combine2Bytes(dataBuff[4], dataBuff[5]) << ", " << (uint16_t)dataBuff[6] << ", " << (uint16_t)dataBuff[7] << ", ";
+			resultMessge << combine2Bytes(dataBuff[8], dataBuff[9]) << ", " << combine2Bytes(dataBuff[10], dataBuff[11]) << ", ";
+			resultMessge << (uint16_t)dataBuff[12] << ", " << (uint16_t)dataBuff[13] << ", " << combine2Bytes(dataBuff[14], dataBuff[15]) << ", ";
+			resultMessge << combine2Bytes(dataBuff[16], dataBuff[17]) << ", " << (uint16_t)dataBuff[18] << ", " << (uint16_t)dataBuff[19] << ", ";
+			resultMessge << combine2Bytes(dataBuff[20], dataBuff[21]) << ", " << combine2Bytes(dataBuff[22], dataBuff[23]);
 			NotificationMessage messageExplosive = { MessageType::SteamDetector, resultMessge.str(), std::chrono::milliseconds(SoapHelpers::getCurrentTime())};
 			result.push_back(messageExplosive);
 			LOG_INFO << notificationToString(messageExplosive);
@@ -209,7 +210,7 @@ void parseUartPacket(const std::vector<uint8_t>& mes, std::vector<NotificationMe
 
 		if(checkHighestBitOfByte(dataBuff[2]))
 		{
-			resultMessge << "More than 0.3mSv / h";
+			resultMessge << "More than 0.3microSv / h";
 			NotificationMessage messageRad = { MessageType::RadiationMonitoring, resultMessge.str(), std::chrono::milliseconds(SoapHelpers::getCurrentTime())};
 			result.push_back(messageRad);
 			LOG_INFO << notificationToString(messageRad);
