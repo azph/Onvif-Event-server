@@ -117,7 +117,7 @@ std::vector<uint8_t> SerialController::ReadMessage()
 
     //std::this_thread::sleep_for (std::chrono::milliseconds(500));
 
-    tcflush (m_fileDescriptor, TCIOFLUSH);
+    //tcflush (m_fileDescriptor, TCIOFLUSH);
 
     std::vector<uint8_t> message;
 	std::copy(std::begin(buff), std::begin(buff) + readedBytes, std::back_inserter(message));

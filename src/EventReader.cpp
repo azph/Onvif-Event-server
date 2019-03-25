@@ -267,7 +267,7 @@ std::vector<NotificationMessage> EventReader::ReadEvents()
 	{
 		auto it = std::find(m_buffer.begin(), m_buffer.end(), START_BYTE_VALUE);
 
-		m_buffer.erase(m_buffer.begin(), it);	
+		m_buffer.erase(m_buffer.begin(), it);
 
 		if (m_buffer.size() <= 4)
 		{
@@ -287,13 +287,15 @@ std::vector<NotificationMessage> EventReader::ReadEvents()
 		auto end = m_buffer.begin();
 		std::advance(end, frameLength + 4);
 		std::copy(m_buffer.begin(), end, std::back_inserter(uartPacket));
-		m_buffer.erase(m_buffer.begin(), end);
 		
 		if(!checkHashSumm(uartPacket))
 		{
-			LOG_ERROR << "Control sum is wrong";
-			return result;	
+			LOG_ERROR << "Control sum is wrong! Skip current START_BYTE_VALUE";
+
+			m_buffer.erase(m_buffer.begin()); // Skip.
+			continue;
 		}
+		m_buffer.erase(m_buffer.begin(), end);
 
 		parseUartPacket(uartPacket, result);
 		
