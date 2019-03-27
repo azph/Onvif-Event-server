@@ -22,7 +22,7 @@ bool isKeyValid()
 	
 	auto currentSystemKey = StringToMD5(sysinfo.str());
 	
-	std::ifstream keyFile("server.key");
+	std::ifstream keyFile("/var/lib/SphinxDetectors/server.key");
 	if (!keyFile.is_open())
 	{
 		std::cerr << "Can't open server.key file" << std::endl;

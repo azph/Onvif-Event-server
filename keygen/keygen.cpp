@@ -19,7 +19,7 @@ int main()
 		return -1;
 	}
 	
-	std::ofstream keyFile("server.key", std::ios_base::out | std::ios_base::trunc);
+	std::ofstream keyFile("/var/lib/SphinxDetectors/server.key", std::ios_base::out | std::ios_base::trunc);
 	if (!keyFile.is_open())
 	{
 		std::cerr << "Can't create server.key file" << std::endl;

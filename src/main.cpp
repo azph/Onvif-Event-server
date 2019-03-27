@@ -1,4 +1,5 @@
 #include "LicenseChecker.h"
+#include "GPIOController.h"
 
 #include <iostream>
 
@@ -25,7 +26,10 @@ int main(int argc, char *argv[])
 	CRYPTO_thread_setup();
 
 	Onvif::OnvifServer::getInstance().start();
-
+	
+	GPIOClass GPIO24{};
+	
+	GPIO24.Write("1");
 
 	std::future<int> future = promise.get_future();
 	std::atexit([]()
@@ -39,6 +43,7 @@ int main(int argc, char *argv[])
 	});
 
 	int value = future.get();
+	GPIO24.Write("0");
 	LOG_INFO << "Exit ";
 	return 0;
 }
