@@ -49,6 +49,7 @@ public:
 	~SubscriptionController();
 
 	EventSubscriptionSP createSubscription(const std::string& uuid, FilterType filters);
+	void removeStaleSubscriptions();
 	bool removeSubscription(const std::string& uuid);
 
 	EventSubscriptionSP getSubscription(const std::string& uuid) const;
@@ -66,8 +67,6 @@ private:
 
 	std::atomic<bool> m_active;
 	std::future<void> m_eventTreadFuture;
-
-	EventReader m_reader;
 };
 
 typedef std::shared_ptr<SubscriptionController> SubscriptionControllerSP;

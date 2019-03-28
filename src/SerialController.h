@@ -4,30 +4,33 @@
 #include <string>
 #include <vector>
 #include <algorithm>
+#include <memory>
 
 #include <termios.h>
-
+// not singleton anymore
 class SerialController
 {
 	SerialController() = delete;
 	SerialController(const SerialController&) = delete;
 	SerialController& operator=(SerialController) = delete;
 
+public:
+
 	SerialController(const std::string& deviceFile, const int baudRate);
 	~SerialController();
 
-	public:
-	static SerialController& GetInstance()
+	typedef std::shared_ptr<SerialController> SerialControllerP;
+	SerialControllerP CreateInstance()
 	{
 		std::string dev = "/dev/ttyS0";
-		static SerialController instance {dev, 9600};
+		auto instance = std::make_shared<SerialController>(dev, 9600);
 		return instance;
 	}
 
+	void connect();
 	std::vector<uint8_t> ReadMessage();
 
 	private:
-	void connect();
 	speed_t getRate(int rate);
 	int serialDataAvail(const int fileDescriptor);
 

@@ -74,6 +74,7 @@ EventSubscriptionSP SubscriptionController::createSubscription(const std::string
 	auto subscription = std::make_shared<EventSubscription>(filter);
 	{
 		std::unique_lock<std::mutex> lock(m_mutex);
+		removeStaleSubscriptions();
 		m_subscriptions[uuid] = subscription;
 	}
 	if (m_active == false)
@@ -82,6 +83,23 @@ EventSubscriptionSP SubscriptionController::createSubscription(const std::string
 	}
 
 	return subscription;
+}
+
+void SubscriptionController::removeStaleSubscriptions()
+{
+	auto cur_tssTime = SoapHelpers::getCurrentTime();
+
+	for (auto iter = m_subscriptions.begin(); iter != m_subscriptions.end(); )
+	{
+		if (iter->second->getTermTime().count() < cur_tssTime) 
+		{
+			m_subscriptions.erase(iter++);
+		}
+		else 
+		{
+			++iter;
+		}
+	}
 }
 
 bool SubscriptionController::removeSubscription(const std::string& uuid)
@@ -117,13 +135,10 @@ void SubscriptionController::startReadEvents()
 	m_active = true;
 	m_eventTreadFuture = std::async([&]()
 	{
+		EventReader reader;
 		while (m_active)
 		{
-			//auto curTime = SoapHelpers::getCurrentTime();
-			//NotificationMessage messageMetall = { MessageType::MetallDetector, "", std::chrono::milliseconds(curTime) };
-			///NotificationMessage messageRad = { MessageType::RadiationMonitoring, "More Than 0,3 mPT", std::chrono::milliseconds(curTime) };
-
-			auto messages = m_reader.ReadEvents(); 
+			auto messages = reader.ReadEvents(); 
 
 			{
 				std::unique_lock<std::mutex> lock(m_mutex);

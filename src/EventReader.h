@@ -9,6 +9,10 @@
 
 #include "SoapHelpers.h"
 
+#ifndef WIN32
+#include "SerialController.h"
+#endif
+
 class EventReader
 {
 	EventReader(const EventReader&) = delete;
@@ -23,6 +27,9 @@ class EventReader
 
 	private:
 	std::list<std::uint8_t> m_buffer;
+#ifndef WIN32
+	SerialControllerP m_controller;
+#endif
 };
 
 #endif

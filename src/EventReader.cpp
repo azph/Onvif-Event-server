@@ -230,7 +230,7 @@ void parseUartPacket(const std::vector<uint8_t>& mes, std::vector<NotificationMe
 EventReader::EventReader()
 {
 #ifndef WIN32
-	SerialController::GetInstance();
+	m_controller = SerialController::CreateInstance();
 #endif
 }
 
@@ -243,12 +243,17 @@ EventReader::~EventReader()
 std::vector<NotificationMessage> EventReader::ReadEvents()
 {
 	std::vector<NotificationMessage> result;
-#ifndef WIN32
-	auto& controller = SerialController::GetInstance();
 
-	auto data = controller.ReadMessage();
+#ifndef WIN32
+	auto data = m_controller->ReadMessage();
 #else
+
 	std::vector<uint8_t> data;
+	NotificationMessage messageMetall = { MessageType::MetallDetector, "", std::chrono::milliseconds(SoapHelpers::getCurrentTime()) };
+	result.push_back(messageMetall);
+
+	std::this_thread::sleep_for(std::chrono::seconds(1));
+
 #endif
 
 	if(data.empty())
