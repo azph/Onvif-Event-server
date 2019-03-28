@@ -35,7 +35,7 @@ echo "Syncronization..."
 echo "======================================="
 
 if ! grep -Pzo "echo ds3231 0x68 > /sys/class/i2c-adapter/i2c-1/new_device\nsleep 5\nhwclock -s" /etc/rc.local
-then sed -i 's/exit 0/echo ds3231 0x68 > \/sys\/class\/i2c-adapter\/i2c-1\/new_device\nsleep 5\nhwclock -s\nexit 0/' /etc/rc.local
+then sed -i ':a;N;$!ba;s/\nexit 0/echo ds3231 0x68 > \/sys\/class\/i2c-adapter\/i2c-1\/new_device\nsleep 5\nhwclock -s\nexit 0/' /etc/rc.local
 fi
 
 # Set system time in ds3231 from system
