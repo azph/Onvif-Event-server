@@ -43,8 +43,9 @@ wsnt__NotificationMessageHolderType* CreateMetallDetectorEvent(struct soap* soap
 	*tt_msg->PropertyOperation = propOperation;
 
 	tt_msg->Source = soap_new_tt__ItemList(soap);
-
 	tt_msg->Source->SimpleItem.push_back(*soap_new_req__tt__ItemList_SimpleItem(soap, "Id", getID()));
+
+	tt_msg->Key = soap_new_tt__ItemList(soap);
 
 	tt_msg->Data = soap_new_tt__ItemList(soap);
 	tt_msg->Data->SimpleItem.push_back(*soap_new_req__tt__ItemList_SimpleItem(soap, "Picture", SPHINX_LOGO));
@@ -75,6 +76,8 @@ wsnt__NotificationMessageHolderType* CreateSteamDetectorEvent(struct soap* soap,
 	tt_msg->Source = soap_new_tt__ItemList(soap);
 	tt_msg->Source->SimpleItem.push_back(*soap_new_req__tt__ItemList_SimpleItem(soap, "Id", getID()));
 
+	tt_msg->Key = soap_new_tt__ItemList(soap);
+
 	tt_msg->Data = soap_new_tt__ItemList(soap);
 	tt_msg->Data->SimpleItem.push_back(*soap_new_req__tt__ItemList_SimpleItem(soap, "Picture", SPHINX_LOGO));
 	tt_msg->Data->SimpleItem.push_back(*soap_new_req__tt__ItemList_SimpleItem(soap, "Account", "operator"));
@@ -103,9 +106,9 @@ wsnt__NotificationMessageHolderType* CreateRadiationMonitoringEvent(struct soap*
 	*tt_msg->PropertyOperation = propOperation;
 
 	tt_msg->Source = soap_new_tt__ItemList(soap);
-
-	tt_msg->Source = soap_new_tt__ItemList(soap);
 	tt_msg->Source->SimpleItem.push_back(*soap_new_req__tt__ItemList_SimpleItem(soap, "Id", getID()));
+
+	tt_msg->Key = soap_new_tt__ItemList(soap);
 
 	tt_msg->Data = soap_new_tt__ItemList(soap);
 	tt_msg->Data->SimpleItem.push_back(*soap_new_req__tt__ItemList_SimpleItem(soap, "Picture", SPHINX_LOGO));
