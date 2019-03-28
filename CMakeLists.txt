@@ -55,6 +55,8 @@ set(Onvif_SRCS
 	src/Event.h	
 	src/EventReader.cpp
 	src/EventReader.h
+	src/GPIOController.cpp
+	src/GPIOController.h
 	src/LicenseChecker.h
 	src/LicenseChecker.cpp
 	src/md5Util.h
@@ -192,10 +194,10 @@ set(CPACK_PACKAGE_NAME "SphinxDetectors")
 set(CPACK_PACKAGE_VENDOR "Sphinx")
 set(CPACK_PACKAGE_CONTACT "info@sphinx-md.ru")
 set(CPACK_PACKAGE_DESCRIPTION "Onvif based event server.")
-set(CPACK_PACKAGE_VERSION "1.0.3")
+set(CPACK_PACKAGE_VERSION "1.0.4")
 set(CPACK_PACKAGE_VERSION_MAJOR "1")
 set(CPACK_PACKAGE_VERSION_MINOR "0")
-set(CPACK_PACKAGE_VERSION_PATCH "3")
+set(CPACK_PACKAGE_VERSION_PATCH "4")
 
 
 install(TARGETS SphinxDetectors DESTINATION /usr/bin)
