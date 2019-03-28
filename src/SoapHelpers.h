@@ -36,6 +36,7 @@ std::string getHost(struct soap* soap, const std::string& sufix = "");
 std::string getUuidFromHost(const std::string& path, const std::string& sufix);
 
 bool* soap_new_req_bool(struct soap* soap, bool value);
+int* soap_new_req_int(struct soap* soap, int value);
 
 }
 

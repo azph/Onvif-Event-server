@@ -104,5 +104,12 @@ bool* soap_new_req_bool(struct soap* soap, bool value)
 	return result;
 }
 
+int* soap_new_req_int(struct soap* soap, int value)
+{
+	auto result = soap_new_int(soap);
+	*result = value;
+
+	return result;
+}
 
 }

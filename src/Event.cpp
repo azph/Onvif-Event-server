@@ -24,6 +24,30 @@ Event::Event(struct soap *_soap, SubscriptionControllerSP controller):
 	};
 }
 
+tev__Capabilities* Event::createCapabilities(struct soap* soap)
+{
+	auto eventCapabilities = soap_new_req_tev__Capabilities(soap);
+
+	using namespace SoapHelpers;
+	eventCapabilities->WSSubscriptionPolicySupport = soap_new_req_bool(soap, false);
+	eventCapabilities->WSPullPointSupport = soap_new_req_bool(soap, true);
+	eventCapabilities->WSPausableSubscriptionManagerInterfaceSupport = soap_new_req_bool(soap, false);
+	eventCapabilities->MaxPullPoints = soap_new_req_int(soap, 8);
+
+	return eventCapabilities;
+}
+
+int Event::GetServiceCapabilities(_tev__GetServiceCapabilities *tev__GetServiceCapabilities, _tev__GetServiceCapabilitiesResponse &tev__GetServiceCapabilitiesResponse)
+{
+	if (!AuthorisationHolder::getInstance().verifyPassword(soap))
+	{
+		return 401;
+	}
+
+	tev__GetServiceCapabilitiesResponse.Capabilities = createCapabilities(soap);
+	return SOAP_OK;
+}
+
 int Event::CreatePullPointSubscription(_tev__CreatePullPointSubscription *tev__CreatePullPointSubscription, _tev__CreatePullPointSubscriptionResponse &tev__CreatePullPointSubscriptionResponse)
 {
 	if (!AuthorisationHolder::getInstance().verifyPassword(soap))

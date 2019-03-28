@@ -11,6 +11,8 @@
 #include "AuthorisationHolder.h"
 #include "SoapHelpers.h"
 
+#include "Event.h"
+
 namespace Onvif
 {
 
@@ -80,8 +82,9 @@ int Device::GetServices(_tds__GetServices *tds__GetServices, _tds__GetServicesRe
 	deviceService->Version = soap_new_req_tt__OnvifVersion(soap, 2, 4);
 	if (tds__GetServices->IncludeCapability)
 	{
+		auto servCapab = soap_new_req__tds__GetServiceCapabilitiesResponse(soap, createCapabilities());
 		deviceService->Capabilities = soap_new_req__tds__Service_Capabilities(soap);
-		deviceService->Capabilities->__any.set(createCapabilities(), SOAP_TYPE_tds__DeviceServiceCapabilities);
+		deviceService->Capabilities->__any.set(servCapab, SOAP_TYPE_tds__DeviceServiceCapabilities);
 	}
 	tds__GetServicesResponse.Service.push_back(deviceService);
 
@@ -89,6 +92,12 @@ int Device::GetServices(_tds__GetServices *tds__GetServices, _tds__GetServicesRe
 	auto eventService = soap_new_tds__Service(soap);
 	eventService->Namespace = SOAP_NAMESPACE_OF_tev;
 	eventService->XAddr = host;
+	if (tds__GetServices->IncludeCapability)
+	{
+		auto servCapab = soap_new_req__tev__GetServiceCapabilitiesResponse(soap, Event::createCapabilities(soap));
+		eventService->Capabilities = soap_new_req__tds__Service_Capabilities(soap);
+		eventService->Capabilities->__any.set(servCapab, SOAP_TYPE_tds__DeviceServiceCapabilities);
+	}
 	eventService->Version = soap_new_req_tt__OnvifVersion(soap, 2, 4);
 	tds__GetServicesResponse.Service.push_back(eventService);
 
@@ -165,9 +174,8 @@ int Device::GetCapabilities(_tds__GetCapabilities *tds__GetCapabilities, _tds__G
 	tds__GetCapabilitiesResponse.Capabilities = soap_new_tt__Capabilities(soap);
 	
 	// Device.
-	auto deviceCapabilities = soap_new_tt__DeviceCapabilities(soap);
+	auto deviceCapabilities = soap_new_req_tt__DeviceCapabilities(soap, SoapHelpers::getHost(soap));
 
-	deviceCapabilities->XAddr = SoapHelpers::getHost(soap);
 	deviceCapabilities->System = soap_new_tt__SystemCapabilities(soap);
 	deviceCapabilities->System->DiscoveryResolve = true;
 	deviceCapabilities->System->DiscoveryBye = true;
@@ -185,7 +193,7 @@ int Device::GetCapabilities(_tds__GetCapabilities *tds__GetCapabilities, _tds__G
 
 	// Event.
 	tds__GetCapabilitiesResponse.Capabilities->Events = soap_new_req_tt__EventCapabilities(soap,
-		SoapHelpers::getHost(soap), false, false, false);
+		SoapHelpers::getHost(soap), false, true, false);
 
 	return SOAP_OK;
 }
