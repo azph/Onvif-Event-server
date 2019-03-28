@@ -56,8 +56,10 @@ void OnvifServer::onStartServices()
 {
 	LOG_INFO << "OnvifServer started.";
 	struct soap *soap = soap_new1(SOAP_XML_STRICT | SOAP_XML_CANONICAL | SOAP_C_UTFSTRING);
-	//struct soap *soap = soap_new();
-
+	soap_set_test_logfile(soap, nullptr);
+	soap_set_recv_logfile(soap, nullptr);
+	soap_set_sent_logfile(soap, nullptr);
+	 
 	soap_register_plugin_arg(soap, http_da, http_da_md5());
 	soap_register_plugin(soap, soap_wsa);
 	const int port = std::stoi(Config::getInstance().getOption("port"));
