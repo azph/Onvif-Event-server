@@ -7,6 +7,10 @@
 #include <memory>
 
 #include <termios.h>
+
+class SerialController;
+typedef std::shared_ptr<SerialController> SerialControllerP;
+
 // not singleton anymore
 class SerialController
 {
@@ -19,8 +23,8 @@ public:
 	SerialController(const std::string& deviceFile, const int baudRate);
 	~SerialController();
 
-	typedef std::shared_ptr<SerialController> SerialControllerP;
-	SerialControllerP CreateInstance()
+	
+	static SerialControllerP CreateInstance()
 	{
 		std::string dev = "/dev/ttyS0";
 		auto instance = std::make_shared<SerialController>(dev, 9600);

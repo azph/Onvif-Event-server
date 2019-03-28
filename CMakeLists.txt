@@ -204,6 +204,7 @@ install(TARGETS SphinxDetectors DESTINATION /usr/bin)
 install(FILES ${CMAKE_SOURCE_DIR}/scripts/SphinxDetectors_d DESTINATION /etc/init.d)
 install(FILES ${CMAKE_SOURCE_DIR}/resource/settings.json DESTINATION /var/lib/${CPACK_PACKAGE_NAME})
 install(FILES ${CMAKE_SOURCE_DIR}/scripts/synctime DESTINATION /var/lib/${CPACK_PACKAGE_NAME})
+install(FILES ${CMAKE_SOURCE_DIR}/scripts/led_of DESTINATION /var/lib/${CPACK_PACKAGE_NAME})
 
 # Задать используемый генератор пакетов:
 set(CPACK_GENERATOR "DEB")

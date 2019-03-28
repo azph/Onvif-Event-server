@@ -68,6 +68,7 @@ case "$1" in
             echo "Stopped"
             if [ -f "$pid_file" ]; then
                 rm "$pid_file"
+		sudo /var/lib/SphinxDetectors/led_of
             fi
         fi
     else
