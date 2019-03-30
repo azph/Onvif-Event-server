@@ -35,7 +35,7 @@ private:
 
 	std::condition_variable m_cv;
 	std::mutex m_mutex;
-	std::atomic<int> m_atomic;
+	bool m_messageReceived;
 	std::queue<NotificationMessage> m_messages;
 	FilterType m_filter;
 };

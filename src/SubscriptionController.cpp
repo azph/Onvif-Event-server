@@ -6,7 +6,7 @@ const std::chrono::milliseconds DEFAULT_KEEP_ALIVE_TIMEOUT(60000);
 
 EventSubscription::EventSubscription(FilterType filter) :
 	m_termTime(SoapHelpers::getCurrentTime()),
-	m_atomic(ATOMIC_VAR_INIT(0)),
+	m_messageReceived(false),
 	m_filter(filter)
 {
 
@@ -29,7 +29,8 @@ std::vector<NotificationMessage> EventSubscription::getMessages(std::chrono::mil
 	std::unique_lock<std::mutex> lk(m_mutex);
 	if (m_messages.empty())
 	{
-		if (!m_cv.wait_for(lk, waitFor, [this]() {return m_atomic == 1; }))
+		m_messageReceived = false;
+		if (!m_cv.wait_for(lk, waitFor, [this]() { return m_messageReceived == true; }))
 		{
 			return result;
 		}
@@ -46,15 +47,17 @@ std::vector<NotificationMessage> EventSubscription::getMessages(std::chrono::mil
 
 void EventSubscription::sendMessage(const NotificationMessage& message)
 {
-	std::unique_lock<std::mutex> lk(m_mutex);
-	
 	if (m_filter && std::find(m_filter->begin(), m_filter->end(), message.type) == m_filter->end())
 	{
 		return;
 	}
 
-	m_messages.push(message);
-	m_atomic = 1;
+	{
+		std::unique_lock<std::mutex> lk(m_mutex);
+		m_messages.push(message);
+		m_messageReceived = true;
+	}
+
 	m_cv.notify_all();
 }
 
