@@ -44,8 +44,9 @@ void OnvifServer::start()
 				catch (const std::exception& e)
 				{
 					LOG_INFO << "Can't start services! exception: " << e.what();
-					std::this_thread::sleep_for(std::chrono::seconds(20));
 				}
+				
+				std::this_thread::sleep_for(std::chrono::seconds(20));
 			}
 		});
 }
@@ -84,6 +85,7 @@ bool OnvifServer::onStartServices()
 	if (!soap_valid_socket(soap_bind(soap, NULL, port, 100)))
 	{
 		LOG_ERROR << "Can't start services! soap_bind error";
+		soap_free(soap);
 		return false;
 	}
 
@@ -98,6 +100,7 @@ bool OnvifServer::onStartServices()
 		if (!soap_valid_socket(soap_accept(soap)))
 		{
 			LOG_ERROR << "Can't start services! soap_accept error";
+			soap_free(soap);
 			return false;
 		}
 
