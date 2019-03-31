@@ -23,7 +23,7 @@ private:
 	OnvifServer(const OnvifServer&) = delete;
 	OnvifServer& operator= (const OnvifServer&) = delete;
 
-	void onStartServices();
+	bool onStartServices();
 	
 private:
 	std::thread m_serverTread;

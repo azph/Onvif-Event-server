@@ -36,16 +36,17 @@ void OnvifServer::start()
 			{
 				try
 				{
-					onStartServices();
-					break;
+					if (onStartServices())
+					{
+						break;
+					}
 				}
 				catch (const std::exception& e)
 				{
-					LOG_INFO << "Can't start services! " << e.what();
+					LOG_INFO << "Can't start services! exception: " << e.what();
 					std::this_thread::sleep_for(std::chrono::seconds(20));
 				}
 			}
-
 		});
 }
 
@@ -67,7 +68,7 @@ OnvifServer::~OnvifServer()
 	stop();
 }
 
-void OnvifServer::onStartServices()
+bool OnvifServer::onStartServices()
 {
 	LOG_INFO << "OnvifServer started.";
 
@@ -81,7 +82,11 @@ void OnvifServer::onStartServices()
 	const int port = std::stoi(Config::getInstance().getOption("port"));
 
 	if (!soap_valid_socket(soap_bind(soap, NULL, port, 100)))
-		exit(EXIT_FAILURE);
+	{
+		LOG_ERROR << "Can't start services! soap_bind error";
+		return false;
+	}
+
 	soap->max_keep_alive = 0;
 
 	std::list<std::future<void> > futureList;
@@ -91,8 +96,11 @@ void OnvifServer::onStartServices()
 	while (m_active)
 	{
 		if (!soap_valid_socket(soap_accept(soap)))
-			exit(EXIT_FAILURE);
-		
+		{
+			LOG_ERROR << "Can't start services! soap_accept error";
+			return false;
+		}
+
 		auto soapCopy = soap_copy(soap);
 
 		auto device = std::make_shared<Onvif::Device>(soapCopy);
@@ -120,6 +128,7 @@ void OnvifServer::onStartServices()
 
 			if (soap_begin_serve(soapCopy))
 			{
+				LOG_ERROR << "soap_begin_serve error";
 				soap_stream_fault(soapCopy, std::cerr);
 			}
 			else if ((err = device->dispatch()) == SOAP_NO_METHOD)
@@ -147,7 +156,10 @@ void OnvifServer::onStartServices()
 		
 	}
 
+	LOG_INFO << "release soap pointer: soap_free .";
 	soap_free(soap); // safe to delete when abc, uvw, xyz are also deleted
+
+	return true;
 }
 
 }
