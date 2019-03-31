@@ -31,7 +31,22 @@ void OnvifServer::start()
 {
 	LOG_INFO << "OnvifServer starting.";
 	m_active = true;
-	m_serverTread = std::thread([&]() { onStartServices(); });
+	m_serverTread = std::thread([&]() {
+			while (m_active)
+			{
+				try
+				{
+					onStartServices();
+					break;
+				}
+				catch (const std::exception& e)
+				{
+					LOG_INFO << "Can't start services! " << e.what();
+					std::this_thread::sleep_for(std::chrono::seconds(20));
+				}
+			}
+
+		});
 }
 
 void OnvifServer::stop()
@@ -55,6 +70,7 @@ OnvifServer::~OnvifServer()
 void OnvifServer::onStartServices()
 {
 	LOG_INFO << "OnvifServer started.";
+
 	struct soap *soap = soap_new1(SOAP_XML_STRICT | SOAP_XML_CANONICAL | SOAP_C_UTFSTRING);
 	soap_set_test_logfile(soap, nullptr);
 	soap_set_recv_logfile(soap, nullptr);
