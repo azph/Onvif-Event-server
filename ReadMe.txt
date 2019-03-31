@@ -33,9 +33,6 @@
 
 Устанавливаем клиент ONVIF Device Manager (https://netix.dl.sourceforge.net/project/onvifdm/onvifdm-v2.2.250/odm-v2.2.250.msi)
 
-После установки необходимо настроить способ получения событий. 
-Для этого открыть ONVIF Device Manager перейти  в настройки ApplicationSettings -> Event subscription type и выбрать Only Pull Point
-
 логин - admin
 пароль по умолчанию - admin 
 
