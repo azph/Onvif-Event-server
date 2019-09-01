@@ -18,8 +18,14 @@ Event::Event(struct soap *_soap, SubscriptionControllerSP controller):
 {
 	m_filterMap = 
 	{
+		{"tns1:Device/MetalDetector/Detect",		MessageType::MetallDetector},
+		{"tns1:Device/tmk:MetalDetector/Detect",		MessageType::MetallDetector},
 		{"tns1:Device/tmk:MetalDetector/tmk:Detect",		MessageType::MetallDetector},
+		{"tns1:Device/SteamDetector/Detect",		MessageType::SteamDetector},
+		{"tns1:Device/tmk:SteamDetector/Detect",		MessageType::SteamDetector},
 		{"tns1:Device/tmk:SteamDetector/tmk:Detect",		MessageType::SteamDetector},
+		{"tns1:Device/RadiationMonitoring/Detect",	MessageType::RadiationMonitoring},
+		{"tns1:Device/tmk:RadiationMonitoring/Detect",	MessageType::RadiationMonitoring},
 		{"tns1:Device/tmk:RadiationMonitoring/tmk:Detect",	MessageType::RadiationMonitoring}
 	};
 }
