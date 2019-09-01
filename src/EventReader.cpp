@@ -210,6 +210,7 @@ void parseUartPacket(const std::vector<uint8_t>& mes, std::vector<NotificationMe
 
 		if(checkHighestBitOfByte(dataBuff[2]))
 		{
+			resultMessge.str("");
 			resultMessge << "More than 0.3microSv / h";
 			NotificationMessage messageRad = { MessageType::RadiationMonitoring, resultMessge.str(), std::chrono::milliseconds(SoapHelpers::getCurrentTime())};
 			result.push_back(messageRad);
