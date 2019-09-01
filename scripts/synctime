@@ -49,5 +49,14 @@ date
 echo "Current ds3231 date:"
 hwclock -r
 
+echo "Disable ntp"
+systemctl stop ntp.service
+systemctl disable ntp.service
+
+echo "Disable fake clock"
+systemctl stop fake-hwclock.service
+systemctl disable fake-hwclock.service
+
+
 
 
