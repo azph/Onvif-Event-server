@@ -56,7 +56,7 @@ int Device::GetDeviceInformation(_tds__GetDeviceInformation *tds__GetDeviceInfor
 
 	tds__GetDeviceInformationResponse.Manufacturer = "Sphinx";
 	tds__GetDeviceInformationResponse.Model = "OKO-STRIM";
-	tds__GetDeviceInformationResponse.FirmwareVersion = "1.0.7";
+	tds__GetDeviceInformationResponse.FirmwareVersion = "1.0.9";
 
 #ifndef WIN32
 	tds__GetDeviceInformationResponse.SerialNumber = GetCPUSerial();
